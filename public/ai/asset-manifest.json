@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f426a692.css",
+    "main.js": "/static/js/main.e32fd843.js",
+    "index.html": "/index.html",
+    "index.mobile.html": "/index.mobile.html",
+    "mobile.css": "/static/css/mobile.css",
+    "mobile.js": "/static/js/mobile.js",
+    "main.f426a692.css.map": "/static/css/main.f426a692.css.map",
+    "main.e32fd843.js.map": "/static/js/main.e32fd843.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f426a692.css",
+    "static/js/main.e32fd843.js"
+  ]
+}

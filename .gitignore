@@ -1,0 +1,101 @@
+/node_modules
+/public/hot
+/public/storage
+/public/css/app-custom.css
+/public/user-uploads/*
+!public/user-uploads/.htaccess
+/storage/*.key
+/vendor
+.env
+.env.backup
+.venv/
+venv/
+env/
+AI Enterprise Business/*_venv/
+AI Enterprise Business/**/venv/
+AI Enterprise Business/**/.venv/
+AI Enterprise Business/**/env/
+AI Enterprise Business/**/lib/
+AI Enterprise Business/**/Lib/
+AI Enterprise Business/**/site-packages/
+AI Enterprise Business/**/executable/
+.gitattributes
+.env.bak.
+*.bak.
+
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.php-cs-fixer.cache
+/.idea
+/.vscode
+/.vagrant
+*.zip
+.DS_Store
+mix.js.map
+mix-manifest.json
+ngrok
+/storage/installed
+/storage/framework/laravel-excel/
+grumphp.yml
+/bootstrap/cache/*
+storage/reviewed
+storage/fonts/installed-fonts.json
+resources/lang/*
+!resources/lang/eng/
+!resources/lang/vendor/backup/eng
+!resources/lang/eng.json
+craveva-verify/
+resources/views/sections/custom_script.blade.php
+demo_db_copy.sql
+database/maxmind/
+public/css/app-custom.css
+public/css/theme-custom.css
+public/css/custom-css/theme-custom.css
+/archive
+
+# Python / AI Services
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.pytest_cache/
+.mypy_cache/
+
+# AI Data & Models (Large Files)
+*.bin
+*.pickle
+*.pkl
+*.h5
+*.onnx
+*.pt
+*.pth
+*.tflite
+AI Enterprise Business/*/data_level0.bin
+AI Enterprise Business/*/header.bin
+AI Enterprise Business/*/length.bin
+AI Enterprise Business/*/link_lists.bin
+AI Enterprise Business/*/index_metadata.pickle
+
+# Secrets & Infrastructure
+*.pem
+*.ppk
+*.pub
+GCP_INFRASTRUCTURE Version 1.0.md
+reset_db.sh

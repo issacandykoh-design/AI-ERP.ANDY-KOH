@@ -1,0 +1,341 @@
+PURCHASE MODULE USER GUIDE
+
+OVERVIEW
+The Purchase module is a comprehensive procurement management system that handles vendor relationships, purchase orders, inventory management, billing, and financial tracking. This module provides complete end-to-end purchase workflow management with integrated reporting and analytics capabilities.
+
+MAIN NAVIGATION
+Access the Purchase module through the main navigation menu. All Purchase module features are organized under the following main sections:
+- Vendors Management
+- Purchase Orders
+- Purchase Products
+- Purchase Inventory
+- Purchase Bills
+- Vendor Payments
+- Vendor Credits
+- Purchase Settings
+- Reports
+
+VENDOR MANAGEMENT
+
+Vendor List Interface (Route: /account/vendors)
+The vendor management interface provides comprehensive vendor relationship management with the following features:
+
+Filter Section:
+- Date Range Filter: Select specific date ranges using the date picker input field to filter vendor records by creation or modification dates
+- Vendor Category Filter: Dropdown selection to filter vendors by their assigned categories (displays all available vendor categories)
+- Search Field: Real-time text search functionality to find vendors by name, company, email, or other vendor details
+- Clear Filters Button: Reset all applied filters to display the complete vendor list
+
+Action Buttons:
+- Add Vendor Button (Route: /account/vendors/create): Opens the vendor creation form in a right-side modal. This button is visible only to users with 'add_vendor' permissions
+- Quick Actions Dropdown: Bulk operations selector for applying actions to multiple selected vendors simultaneously
+- Delete Action: Bulk deletion of selected vendors with confirmation dialog
+
+Data Table Features:
+- Sortable columns for vendor information including name, company, category, contact details, and financial summaries
+- Pagination controls for navigating through large vendor datasets
+- Row selection checkboxes for bulk operations
+- Individual vendor action buttons in each row (Edit, View, Delete)
+
+Vendor Creation Form (Route: /account/vendors/create)
+The vendor creation interface includes comprehensive vendor information capture:
+
+Primary Information Fields:
+- Primary Contact Name: Text input for the main contact person's name
+- Vendor Category: Dropdown selection with option to add new categories inline
+- Company Name: Text input for the vendor's business name
+- Email Address: Email validation input field
+- Phone Number: Contact number input with formatting
+- Website URL: Optional website address field
+- Opening Balance: Numerical input for initial account balance
+- Currency Selection: Dropdown for vendor's preferred currency
+
+Address Information:
+- Billing Address Section: Complete address form including street, city, state, postal code, and country
+- Shipping Address Section: Separate shipping address with option to copy from billing address
+- Address Validation: Real-time validation for required address fields
+
+Form Actions:
+- Save Button: Creates the vendor record and returns to vendor list
+- Save & Add More Button: Creates the vendor and opens a new blank form for additional vendor entry
+- Cancel Button: Discards changes and returns to vendor list without saving
+
+Vendor Detail View (Route: /account/vendors/{id})
+The vendor detail interface provides comprehensive vendor information and relationship management:
+
+Financial Summary Dashboard:
+- Total Bill Amount: Aggregate of all bills from this vendor
+- Total Payment Amount: Sum of all payments made to this vendor
+- Total Credit Amount: Available vendor credits
+- Used Credits: Applied credit amounts
+- Unused Credits: Remaining credit balance
+- Vendor Payments Graph: Visual representation of payment history over time
+
+Tabbed Information Sections:
+- Overview Tab: General vendor information and financial summary
+- Notes Tab: Vendor-specific notes and communications history
+- Contacts Tab: Multiple contact persons associated with the vendor
+- Purchase Orders Tab: All purchase orders placed with this vendor
+- Bills Tab: Complete billing history and outstanding amounts
+- Payments Tab: Payment history and transaction records
+- History Tab: Complete audit trail of vendor interactions
+
+PURCHASE ORDER MANAGEMENT
+
+Purchase Order List Interface (Route: /account/purchase-order)
+The purchase order management system provides complete order lifecycle management:
+
+Filter Section:
+- Date Range Filter: Filter orders by creation date, expected delivery date, or last modified date
+- Billed Status Filter: Filter options include All, Billed, Unbilled to track order billing status
+- Search Field: Text search across order numbers, vendor names, and order descriptions
+- Clear Filters Button: Reset all filters to display complete order list
+
+Action Buttons:
+- Add Order Button (Route: /account/purchase-order/create): Opens purchase order creation form. Visible to users with 'add_purchase_order' permissions
+- Quick Actions: Bulk operations for selected orders including status changes and deletions
+
+Purchase Order Creation (Route: /account/purchase-order/create)
+Comprehensive order creation interface with the following components:
+
+Order Information:
+- Auto-generated Order Number: System-generated sequential numbering with customizable prefixes
+- Vendor Selection: Searchable dropdown of active vendors
+- Order Date: Date picker for order placement date
+- Expected Delivery Date: Estimated delivery date selection
+- Currency Selection: Order currency based on vendor preferences or company defaults
+
+Product Selection:
+- Product Search: Real-time product search with category filtering
+- Product Categories: Filter products by categories and subcategories
+- Quantity Input: Numerical input with unit type selection
+- Unit Price: Price per unit with currency formatting
+- Tax Application: Tax calculation and application options
+- Discount Management: Line-item and order-level discount application
+
+Order Totals:
+- Subtotal Calculation: Automatic calculation of line item totals
+- Tax Calculation: Applied tax amounts with breakdown
+- Discount Application: Applied discounts with percentage or fixed amount options
+- Grand Total: Final order amount including all adjustments
+
+Form Actions:
+- Save as Draft: Save order without sending to vendor
+- Save and Send: Complete order and send to vendor
+- Save and Print: Generate PDF and save order
+- Cancel: Discard changes and return to order list
+
+PURCHASE PRODUCTS MANAGEMENT
+
+Product List Interface (Route: /account/purchase-products)
+Comprehensive product catalog management with advanced filtering and bulk operations:
+
+Filter Section:
+- Product Category Filter: Multi-level category selection including main categories and subcategories
+- Unit Type Filter: Filter by measurement units (pieces, kilograms, liters, etc.)
+- Product Type Filter: Filter by product type (Goods or Services)
+- Search Field: Real-time search across product names, SKUs, and descriptions
+- Clear Filters Button: Reset all applied filters
+
+Action Buttons:
+- Add Product Button (Route: /account/purchase-products/create): Opens product creation form for users with 'add_product' permissions
+- Shopping Cart Button (Route: /account/purchase-products/cart): Access shopping cart with product counter badge (visible to clients with order permissions)
+- Empty Cart Button: Clear all items from shopping cart with confirmation dialog
+
+Bulk Operations:
+- Change Purchase Status: Enable or disable products for purchase
+- Change Product Status: Activate or deactivate products
+- Delete Products: Bulk deletion with confirmation
+
+Product Management Features:
+- Product Image Management: Upload and manage product images
+- Inventory Tracking: Real-time stock level monitoring
+- Price Management: Cost price and selling price management
+- Status Management: Active/inactive status control
+
+PURCHASE INVENTORY MANAGEMENT
+
+Inventory List Interface (Route: /account/purchase-inventory)
+Complete inventory tracking and management system:
+
+Filter Section:
+- Date Range Filter: Filter inventory records by date ranges
+- Inventory Status Filter: Filter by Active or Inactive inventory items
+- Search Field: Search across product names, SKUs, and inventory details
+- Clear Filters Button: Reset all applied filters
+
+Action Buttons:
+- Add Inventory Button (Route: /account/purchase-inventory/create): Create new inventory records for users with 'add_inventory' permissions
+
+Inventory Features:
+- Stock Level Monitoring: Real-time inventory quantity tracking
+- Inventory Adjustments: Manual stock adjustments with reason codes
+- Inventory Valuation: Cost-based inventory valuation
+- Low Stock Alerts: Automatic notifications for low inventory levels
+- Inventory History: Complete audit trail of inventory movements
+
+PURCHASE BILLS MANAGEMENT
+
+Bills List Interface (Route: /account/bills)
+Comprehensive bill management and payment tracking:
+
+Filter Section:
+- Date Range Filter: Filter bills by creation date, due date, or payment date
+- Search Field: Search across bill numbers, vendor names, and amounts
+- Advanced Filters: Additional filtering options including vendor selection and bill status
+
+Advanced Filter Options:
+- Vendor Filter: Select specific vendors to filter bills
+- Status Filter: Filter by bill status (Open, Paid, Partially Paid, Draft)
+- Clear Filters Button: Reset all applied filters
+
+Action Buttons:
+- Add Bill Button: Create new bills (permission-based visibility)
+- Quick Actions: Bulk operations for selected bills
+
+Bill Management Features:
+- Bill Creation: Create bills from purchase orders or manually
+- Payment Tracking: Track partial and full payments
+- Due Date Management: Monitor and alert on due dates
+- Bill Approval Workflow: Multi-level approval process
+- PDF Generation: Generate and download bill PDFs
+
+VENDOR PAYMENTS MANAGEMENT
+
+Vendor Payments Interface (Route: /account/vendor-payments)
+Complete payment processing and tracking system:
+
+Filter Section:
+- Date Range Filter: Filter payments by payment date or creation date
+- Search Field: Search across payment references, vendor names, and amounts
+- Clear Filters Button: Reset all applied filters
+
+Action Buttons:
+- Add Vendor Payment Button (Route: /account/vendor-payments/create): Create new vendor payments for users with 'add_vendor_payment' permissions
+- Quick Actions: Bulk operations including payment deletions
+
+Payment Features:
+- Payment Creation: Process payments against outstanding bills
+- Payment Methods: Support for various payment methods (bank transfer, check, cash, etc.)
+- Payment Allocation: Allocate payments across multiple bills
+- Payment History: Complete payment audit trail
+- Payment Reconciliation: Match payments with bank statements
+
+VENDOR CREDITS MANAGEMENT
+
+Vendor Credits Interface (Route: /account/vendor-credits)
+Manage vendor credit notes and credit applications:
+
+Filter Section:
+- Date Range Filter: Filter credits by creation or application date
+- Vendor Filter: Filter credits by specific vendors
+- Search Field: Search across credit numbers and descriptions
+- Clear Filters Button: Reset all applied filters
+
+Action Buttons:
+- Quick Actions: Bulk operations for credit management
+
+Credit Features:
+- Credit Note Creation: Generate credit notes for returns or adjustments
+- Credit Application: Apply credits against outstanding bills
+- Credit Tracking: Monitor used and unused credit balances
+- Credit History: Complete audit trail of credit transactions
+
+PURCHASE SETTINGS
+
+Settings Interface (Route: /account/purchase-settings)
+Comprehensive configuration management for the Purchase module:
+
+Settings Tabs:
+- General Settings Tab: Basic purchase module configuration
+- Notification Settings Tab: Email and system notification preferences
+
+General Settings Features:
+- Purchase Order Numbering: Configure order number prefixes and sequences
+- Default Currency: Set default currency for purchase transactions
+- Tax Configuration: Configure default tax rates and tax calculation methods
+- Approval Workflows: Set up multi-level approval processes
+- Email Templates: Customize email templates for purchase communications
+
+Notification Settings:
+- Purchase Order Notifications: Configure notifications for order creation, approval, and delivery
+- Bill Notifications: Set up alerts for bill creation, due dates, and payments
+- Inventory Notifications: Configure low stock and inventory movement alerts
+- Vendor Notifications: Set up vendor communication preferences
+
+REPORTS AND ANALYTICS
+
+Reports Interface (Route: /account/reports)
+Comprehensive reporting and analytics dashboard:
+
+Report Categories:
+- Vendor Report Tab: Vendor balance and transaction reports
+- Order Report Tab: Purchase order analysis and tracking
+- Inventory Summary Tab: Stock levels and inventory valuation
+- Inventory Valuation Summary Tab: Detailed inventory valuation reports
+
+Report Features:
+- Date Range Selection: Filter reports by specific date ranges
+- Export Options: Export reports in PDF, Excel, and CSV formats
+- Interactive Charts: Visual representation of key metrics
+- Drill-down Capabilities: Detailed analysis of report data
+- Scheduled Reports: Automated report generation and distribution
+
+Vendor Balance Reports:
+- Outstanding Balances: Current vendor payables
+- Payment History: Historical payment analysis
+- Credit Analysis: Vendor credit utilization and balances
+- Vendor Performance: Delivery and quality metrics
+
+Purchase Order Reports:
+- Order Status Analysis: Track order completion rates
+- Vendor Performance: Delivery time and quality metrics
+- Cost Analysis: Purchase cost trends and analysis
+- Order Volume Reports: Purchase volume by period and vendor
+
+Inventory Reports:
+- Stock Level Reports: Current inventory positions
+- Inventory Movement: Stock in/out analysis
+- Valuation Reports: Inventory value by category and location
+- Low Stock Reports: Items requiring reorder
+
+SYSTEM INTEGRATION
+
+The Purchase module integrates seamlessly with other system modules:
+
+Financial Integration:
+- Automatic journal entries for purchase transactions
+- Integration with accounts payable
+- Cost center allocation and tracking
+- Budget monitoring and alerts
+
+Inventory Integration:
+- Real-time inventory updates from purchase receipts
+- Automatic stock adjustments
+- Integration with warehouse management
+- Serial number and batch tracking
+
+User Permissions:
+- Role-based access control for all purchase functions
+- Granular permissions for create, read, update, and delete operations
+- Approval workflow permissions
+- Report access controls
+
+MOBILE RESPONSIVENESS
+
+All Purchase module interfaces are fully responsive and optimized for mobile devices:
+- Touch-friendly interface elements
+- Responsive data tables with horizontal scrolling
+- Mobile-optimized forms and input fields
+- Gesture-based navigation support
+
+SECURITY FEATURES
+
+The Purchase module implements comprehensive security measures:
+- User authentication and authorization
+- Data encryption for sensitive information
+- Audit trails for all transactions
+- Role-based access controls
+- Session management and timeout controls
+
+This comprehensive user guide covers all major features and functionalities of the Purchase module, providing detailed explanations of each interface element, button, and workflow to ensure effective system utilization and user productivity.

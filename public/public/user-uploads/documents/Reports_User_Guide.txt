@@ -1,0 +1,545 @@
+REPORTS MODULE - COMPREHENSIVE USER GUIDE
+
+==================================================
+MODULE OVERVIEW
+==================================================
+
+The Reports module provides comprehensive reporting and analytics capabilities across all business functions within the ERP system. This module enables users to generate, view, and analyze various types of reports including task reports, time log reports, financial reports, expense reports, leave reports, attendance reports, sales reports, and lead reports. Each report type offers advanced filtering options, data visualization through charts, and export capabilities.
+
+==================================================
+ACCESS AND PERMISSIONS
+==================================================
+
+PERMISSION REQUIREMENTS:
+- view_task_report: Access to task-related reports
+- view_timelogs: Access to time log reports  
+- view_expense_report: Access to expense reports
+- view_finance_report: Access to financial reports
+- view_income_expense_report: Access to income vs expense reports
+- view_leave_report: Access to leave reports
+- view_attendance_report: Access to attendance reports
+- view_lead_report: Access to lead reports
+- view_sales_report: Access to sales reports
+
+NAVIGATION ACCESS:
+The Reports section is accessible through the main navigation menu, with individual report types displayed based on user permissions. Each report type appears as a separate menu item under the Reports section.
+
+==================================================
+MAIN INTERFACE FEATURES
+==================================================
+
+COMMON FILTER COMPONENTS:
+All report interfaces include standardized filter sections with the following elements:
+
+1. DATE RANGE FILTER
+   - Input field for selecting date ranges
+   - Placeholder text: "Select date range"
+   - Uses daterangepicker component for easy date selection
+   - Default range typically set to current month
+
+2. DROPDOWN FILTERS
+   - Employee selection with live search capability
+   - Project selection with live search capability
+   - Client selection with live search capability (where applicable)
+   - Category selection for specific report types
+   - Status filters for various report types
+
+3. RESET FILTERS BUTTON
+   - Clear all applied filters
+   - Hidden by default, appears when filters are applied
+   - Icon: times-circle
+   - Text: "Clear Filters"
+
+4. MORE FILTERS SECTION
+   - Expandable section for additional filter options
+   - Contains advanced filtering options specific to each report type
+
+==================================================
+TASK REPORTS SECTION
+==================================================
+
+MAIN TASK REPORT
+Route: /task-report
+Controller: TaskReportController@index
+Permission: view_task_report
+
+INTERFACE FEATURES:
+- Date range filter for task completion periods
+- Status filter with options: All, Hide Completed Tasks, and custom task board statuses
+- Project filter with live search functionality
+- Advanced filters including client selection, assigned to, assigned by, task categories, and labels
+- Data table displaying task information with sorting and pagination
+- Chart visualization showing task distribution
+
+FILTER OPTIONS:
+- Duration: Date range picker for filtering tasks by date
+- Status: Dropdown with task status options
+- Project: Searchable dropdown of available projects
+- Client: Searchable dropdown of clients (in more filters)
+- Assigned To: Searchable dropdown of employees (in more filters)
+- Assigned By: Searchable dropdown of employees (in more filters)
+- Categories: Task category selection (in more filters)
+- Labels: Task label selection (in more filters)
+
+EMPLOYEE-WISE TASK REPORT
+Route: /employee-wise-task-report
+Controller: TaskReportController@employeeWiseTaskReport
+Permission: view_task_report
+
+INTERFACE FEATURES:
+- Date range filter for task analysis period
+- Employee filter for specific employee task reports
+- Warning alert about missed deadline column
+- Navigation tabs for switching between different task report views
+- Data table with employee-specific task metrics
+
+NAVIGATION TABS:
+- Task Report: General task reporting (list icon)
+- Employee-wise Task Report: Current active tab (people icon)
+- Consolidated Task Report: Consolidated view (calendar icon)
+
+CONSOLIDATED TASK REPORT
+Route: /consolidated-task-report
+Controller: TaskReportController@consolidatedTaskReport
+Permission: view_task_report
+
+INTERFACE FEATURES:
+- Similar filtering options as main task report
+- Consolidated view of task data across all employees
+- Chart visualization for task analytics
+- Export functionality for consolidated data
+
+==================================================
+TIME LOG REPORTS SECTION
+==================================================
+
+MAIN TIME LOG REPORT
+Route: /time-log-report
+Controller: TimelogReportController@index
+Permission: view_timelogs
+
+INTERFACE FEATURES:
+- Date range filter for time log periods
+- Employee filter with live search
+- Project filter with live search
+- Advanced filters for client, status, and invoice generation
+- Data table displaying time log entries
+- Chart visualization for time tracking analytics
+
+FILTER OPTIONS:
+- Duration: Date range picker for time log filtering
+- Employee: Searchable dropdown of employees
+- Project: Searchable dropdown of projects
+- Client: Client selection (in more filters)
+- Status: Approved/Pending status filter (in more filters)
+- Invoice Generate: Filter by invoice generation status (in more filters)
+- Task: Task-specific filtering (in more filters)
+
+CONSOLIDATED TIME LOG REPORT
+Route: /time-log-consolidated-report
+Controller: TimelogReportController@consolidatedReport
+Permission: view_timelogs
+
+INTERFACE FEATURES:
+- Date range filter for consolidated analysis
+- Employee filter (no "All" option, specific employee required)
+- Three summary widgets displaying key metrics
+- Navigation tabs for different time log report views
+- Data table with consolidated time log data
+
+SUMMARY WIDGETS:
+- Total Hours Worked: Displays total working hours with clock icon
+- Total Break: Shows total break time with hourglass icon
+- Total Earnings: Displays earnings with coins icon
+
+NAVIGATION TABS:
+- Time Log Report: General time log reporting (list icon)
+- Consolidated Report: Current active tab (clipboard-data icon)
+- Project-wise Report: Project-specific analysis (list icon)
+
+PROJECT-WISE TIME LOG REPORT
+Route: /project-wise-timelog-report
+Controller: TimelogReportController@projectWiseReport
+Permission: view_timelogs
+
+INTERFACE FEATURES:
+- Date range filter for project analysis
+- Employee filter with live search
+- Project filter with live search
+- Export functionality for project-wise data
+- Navigation tabs for report type switching
+- Data table with project-specific time log metrics
+
+EXPORT FUNCTIONALITY:
+- Export Excel button for data export
+- Exports project-wise time log data
+- Available when user has export permissions
+
+==================================================
+FINANCE REPORTS SECTION
+==================================================
+
+MAIN FINANCE REPORT
+Route: /finance-report
+Controller: FinanceReportController@index
+Permission: view_finance_report
+
+INTERFACE FEATURES:
+- Date range filter for financial analysis periods
+- Client filter with live search (if clients module enabled)
+- Project filter with live search
+- Total earnings widget displaying financial summary
+- Chart visualization for financial data analysis
+- Data table with financial metrics and transactions
+
+SUMMARY WIDGET:
+- Total Earnings: Displays total earnings with coins icon
+- Value updates based on applied filters
+
+CHART FEATURES:
+- Bar chart visualization of financial data
+- Interactive chart with data point details
+- Responsive design for different screen sizes
+
+==================================================
+EXPENSE REPORTS SECTION
+==================================================
+
+MAIN EXPENSE REPORT
+Route: /expense-report
+Controller: ExpenseReportController@index
+Permission: view_expense_report
+
+INTERFACE FEATURES:
+- Date range filter for expense analysis
+- Category filter for expense categories
+- Employee filter with live search
+- Project filter with live search
+- Total expenses widget showing expense summary
+- Navigation tabs for different expense report views
+- Chart visualization for expense analytics
+
+FILTER OPTIONS:
+- Duration: Date range picker for expense filtering
+- Category: Dropdown of expense categories
+- Employee: Searchable dropdown of employees
+- Project: Searchable dropdown of projects
+
+SUMMARY WIDGET:
+- Total Expenses: Displays total expenses with coins icon
+
+NAVIGATION TABS:
+- Expense Report: Current active tab (list icon)
+- Expense Category Report: Category-wise analysis (receipt icon)
+
+EXPENSE CATEGORY REPORT
+Route: /expense-report/expense-category-report
+Controller: ExpenseReportController@expenseCategoryReport
+Permission: view_expense_report
+
+INTERFACE FEATURES:
+- Category-specific expense analysis
+- Chart visualization for category breakdown
+- Data table with category-wise expense metrics
+- Similar filtering options as main expense report
+
+==================================================
+LEAVE REPORTS SECTION
+==================================================
+
+MAIN LEAVE REPORT
+Route: /leave-report
+Controller: LeaveReportController@index
+Permission: view_leave_report
+
+INTERFACE FEATURES:
+- Date range filter for leave analysis periods
+- Employee filter with live search
+- Navigation tabs for different leave report views
+- Data table displaying leave records and statistics
+
+NAVIGATION TABS:
+- Leave Quota: Leave quota analysis (pie-chart icon)
+- Leave Report: Current active tab (list icon)
+
+LEAVE QUOTA REPORT
+Route: /leave-report/leave-quota
+Controller: LeaveReportController@leaveQuota
+Permission: view_leave_report
+
+INTERFACE FEATURES:
+- Employee filter for quota analysis
+- Year filter for annual leave quota tracking
+- Export functionality for leave quota data
+- Navigation tabs for report type switching
+- Data table with leave quota information
+
+FILTER OPTIONS:
+- Employee: Searchable dropdown of employees
+- Year: Dropdown with current and previous years (5-year range)
+
+EXPORT FUNCTIONALITY:
+- Export Excel button for leave quota data
+- Available when user has export permissions
+
+==================================================
+ATTENDANCE REPORTS SECTION
+==================================================
+
+MAIN ATTENDANCE REPORT
+Route: /attendance-report
+Controller: AttendanceReportController@index
+Permission: view_attendance_report
+
+INTERFACE FEATURES:
+- Date range filter for attendance analysis
+- Employee filter with live search
+- Data table displaying attendance records
+- Simple interface focused on attendance metrics
+
+FILTER OPTIONS:
+- Duration: Date range picker for attendance filtering
+- Employee: Searchable dropdown of employees
+
+==================================================
+SALES REPORTS SECTION
+==================================================
+
+MAIN SALES REPORT
+Route: /sales-report
+Controller: SalesReportController@index
+Permission: view_sales_report
+
+INTERFACE FEATURES:
+- Date range filter for sales analysis periods
+- Client filter with live search
+- Data table displaying sales metrics and transactions
+- Responsive table design for various screen sizes
+
+FILTER OPTIONS:
+- Duration: Date range picker for sales filtering
+- Client: Searchable dropdown of clients
+
+==================================================
+INCOME VS EXPENSE REPORTS SECTION
+==================================================
+
+INCOME VS EXPENSE REPORT
+Route: /income-expense-report
+Controller: IncomeVsExpenseReportController@index
+Permission: view_income_expense_report
+
+INTERFACE FEATURES:
+- Date range filter for comparative analysis
+- Two summary widgets for earnings and expenses comparison
+- Chart visualization showing income vs expense trends
+- Simplified interface focused on financial comparison
+
+SUMMARY WIDGETS:
+- Total Earnings: Displays total income with coins icon
+- Total Expenses: Displays total expenses with coins icon
+
+CHART FEATURES:
+- Comparative chart visualization
+- Interactive data representation
+- Real-time updates based on date range selection
+
+==================================================
+LEAD REPORTS SECTION
+==================================================
+
+MAIN LEAD REPORT
+Route: /lead-report
+Controller: LeadReportController@index
+Permission: view_lead_report
+
+INTERFACE FEATURES:
+- Tabbed interface with Profile and Lead Report sections
+- Date range filter for lead analysis
+- Lead agent filter with live search
+- Information alert about deal close date
+- Data table with lead metrics and conversion data
+
+TAB NAVIGATION:
+- Profile: Lead profile analysis
+- Lead Report: Current active tab for lead reporting
+
+FILTER OPTIONS:
+- Duration: Date range picker for lead filtering
+- Lead Agent: Searchable dropdown of lead agents
+
+LEAD REPORT CHART
+Route: /lead-report/chart
+Controller: LeadReportController@chart
+Permission: view_lead_report
+
+INTERFACE FEATURES:
+- Chart visualization for lead analytics
+- Interactive chart components
+- Lead conversion and pipeline analysis
+
+==================================================
+CHART VISUALIZATIONS
+==================================================
+
+CHART TYPES AVAILABLE:
+1. Pie Charts: Used for task distribution and category breakdowns
+2. Bar Charts: Used for financial data and comparative analysis
+3. Line Charts: Used for expense trends and time-based analysis
+4. Interactive Charts: All charts support hover interactions and data point details
+
+CHART FEATURES:
+- Full-screen expansion capability
+- Responsive design for mobile and desktop
+- Real-time data updates based on filter changes
+- Export functionality for chart data
+- Color-coded data representation
+
+==================================================
+DATA EXPORT FUNCTIONALITY
+==================================================
+
+EXPORT OPTIONS:
+- Excel export available for most report types
+- Export buttons appear when user has appropriate permissions
+- Filtered data export maintains applied filter criteria
+- Export includes all visible columns and data
+
+EXPORT PERMISSIONS:
+- Controlled by canDataTableExport() function
+- User must have appropriate export permissions
+- Export functionality varies by report type
+
+==================================================
+RESPONSIVE DESIGN FEATURES
+==================================================
+
+MOBILE OPTIMIZATION:
+- Responsive filter sections that adapt to screen size
+- Mobile-friendly data tables with horizontal scrolling
+- Touch-optimized dropdown selections
+- Collapsible filter sections for mobile devices
+
+DESKTOP FEATURES:
+- Full-width data tables with advanced sorting
+- Multi-column layouts for filters
+- Enhanced chart visualizations
+- Keyboard navigation support
+
+==================================================
+DATA TABLE FEATURES
+==================================================
+
+COMMON TABLE FUNCTIONALITY:
+- Server-side processing for large datasets
+- Advanced sorting on all columns
+- Pagination with configurable page sizes
+- Search functionality across all visible columns
+- Column visibility controls
+- Responsive table design
+
+TABLE STYLING:
+- Consistent styling across all report tables
+- Hover effects for better user experience
+- Border-less design for modern appearance
+- Proper spacing and typography
+
+==================================================
+FILTER INTERACTION PATTERNS
+==================================================
+
+FILTER BEHAVIOR:
+- Real-time filtering with immediate results
+- Filter persistence during session
+- Clear visual indication of active filters
+- Reset functionality to clear all filters
+- Live search in dropdown filters
+
+FILTER VALIDATION:
+- Date range validation for logical date selections
+- Required field validation where applicable
+- Error handling for invalid filter combinations
+
+==================================================
+PERMISSION-BASED ACCESS CONTROL
+==================================================
+
+ACCESS CONTROL FEATURES:
+- Module-level permission checking
+- Feature-level permission validation
+- Dynamic menu generation based on permissions
+- Graceful handling of unauthorized access attempts
+
+PERMISSION HIERARCHY:
+- Admin users have access to all reports
+- Manager users have access to team-related reports
+- Employee users have limited access to personal reports
+- Client users have access to project-related reports only
+
+==================================================
+TECHNICAL IMPLEMENTATION DETAILS
+==================================================
+
+FRONTEND TECHNOLOGIES:
+- Laravel Blade templating engine
+- Bootstrap CSS framework for responsive design
+- jQuery for interactive functionality
+- DataTables for advanced table features
+- Chart.js and Frappe Charts for visualizations
+- Bootstrap Select for enhanced dropdowns
+- DateRangePicker for date selection
+
+BACKEND ARCHITECTURE:
+- Laravel framework with MVC pattern
+- Dedicated controller for each report type
+- DataTable classes for server-side processing
+- Permission middleware for access control
+- Query optimization for large datasets
+
+==================================================
+USER EXPERIENCE ENHANCEMENTS
+==================================================
+
+USABILITY FEATURES:
+- Consistent interface design across all report types
+- Intuitive navigation with clear visual hierarchy
+- Loading indicators for data processing
+- Error handling with user-friendly messages
+- Keyboard shortcuts for common actions
+
+ACCESSIBILITY FEATURES:
+- Screen reader compatible interface
+- Keyboard navigation support
+- High contrast color schemes
+- Proper ARIA labels and descriptions
+- Responsive design for various devices
+
+==================================================
+PERFORMANCE OPTIMIZATION
+==================================================
+
+OPTIMIZATION FEATURES:
+- Lazy loading for large datasets
+- Efficient database queries with proper indexing
+- Client-side caching for frequently accessed data
+- Optimized chart rendering for better performance
+- Pagination to handle large result sets
+
+==================================================
+INTEGRATION CAPABILITIES
+==================================================
+
+SYSTEM INTEGRATION:
+- Seamless integration with all ERP modules
+- Real-time data synchronization
+- Cross-module data relationships
+- Unified user experience across modules
+
+DATA SOURCES:
+- Task management system integration
+- Time tracking system integration
+- Financial management system integration
+- HR management system integration
+- CRM system integration
+
+This comprehensive user guide covers all aspects of the Reports module, providing detailed information about each report type, their features, navigation patterns, and technical implementation. The guide is structured to support AI knowledge base integration with clear, consistent, and non-redundant information suitable for vectorization and intelligent assistance.

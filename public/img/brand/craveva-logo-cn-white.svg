@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="70" viewBox="0 0 220 70" role="img" aria-label="Craveva 可瑞华">
+  <defs>
+    <style>
+      .cn { fill: #FFFFFF; font-size: 14px; font-family: "Microsoft YaHei", "Noto Sans SC", "PingFang SC", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-weight: 700; }
+      .wordmark { fill: #FFFFFF; font-size: 30px; font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-weight: 800; font-style: italic; }
+      .domain { fill: #FFFFFF; font-size: 12px; font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-weight: 700; }
+      .swoosh { fill: #FFFFFF; opacity: 0.95; }
+    </style>
+  </defs>
+
+  <!-- Chinese caption -->
+  <text class="cn" x="50%" y="16" text-anchor="middle">可瑞华</text>
+
+  <!-- Wordmark -->
+  <text class="wordmark" x="50%" y="45" text-anchor="middle">Craveva</text>
+
+  <!-- Swoosh (stylized underline) -->
+  <path class="swoosh" d="M22 52 C 65 68, 155 68, 198 52 C 165 60, 115 62, 70 56 C 55 54, 40 53, 22 52 Z"/>
+
+  <!-- .com -->
+  <text class="domain" x="110" y="57" text-anchor="middle">.com</text>
+</svg>

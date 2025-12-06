@@ -1,0 +1,54 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#f8f9fa;stop-opacity:0.95" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGradient)"/>
+  
+  <!-- Floating Elements -->
+  <circle cx="80" cy="60" r="25" fill="white" opacity="0.1"/>
+  <circle cx="320" cy="80" r="35" fill="white" opacity="0.08"/>
+  <circle cx="50" cy="200" r="20" fill="white" opacity="0.12"/>
+  <circle cx="350" cy="220" r="30" fill="white" opacity="0.06"/>
+  
+  <!-- Login Card -->
+  <rect x="80" y="40" width="240" height="220" fill="url(#cardGradient)" rx="16" stroke="white" stroke-width="1" opacity="0.9"/>
+  
+  <!-- Logo Area -->
+  <circle cx="200" cy="80" r="25" fill="#667eea"/>
+  <text x="200" y="85" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold" text-anchor="middle">C</text>
+  
+  <text x="200" y="105" font-family="Arial, sans-serif" font-size="20" fill="#2c3e50" font-weight="bold" text-anchor="middle">Craveva</text>
+  <text x="200" y="120" font-family="Arial, sans-serif" font-size="12" fill="#6c757d" text-anchor="middle">Modern Business Platform</text>
+  
+  <!-- Form Fields -->
+  <text x="100" y="145" font-family="Arial, sans-serif" font-size="11" fill="#495057">Email</text>
+  <rect x="100" y="150" width="200" height="30" fill="white" stroke="#e9ecef" stroke-width="1" rx="6"/>
+  <text x="110" y="168" font-family="Arial, sans-serif" font-size="10" fill="#adb5bd">Enter your email address</text>
+  
+  <text x="100" y="195" font-family="Arial, sans-serif" font-size="11" fill="#495057">Password</text>
+  <rect x="100" y="200" width="200" height="30" fill="white" stroke="#e9ecef" stroke-width="1" rx="6"/>
+  <text x="110" y="218" font-family="Arial, sans-serif" font-size="10" fill="#adb5bd">••••••••••••</text>
+  
+  <!-- Login Button -->
+  <rect x="100" y="240" width="200" height="35" fill="#667eea" rx="8"/>
+  <text x="200" y="260" font-family="Arial, sans-serif" font-size="13" fill="white" font-weight="bold" text-anchor="middle">Sign In to Craveva</text>
+  
+  <!-- Additional Elements -->
+  <text x="200" y="285" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" opacity="0.8">Secure • Modern • Reliable</text>
+  
+  <!-- Decorative Dots -->
+  <circle cx="120" cy="30" r="2" fill="white" opacity="0.4"/>
+  <circle cx="140" cy="25" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="160" cy="30" r="2" fill="white" opacity="0.3"/>
+  <circle cx="280" cy="25" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="300" cy="30" r="2" fill="white" opacity="0.4"/>
+</svg>

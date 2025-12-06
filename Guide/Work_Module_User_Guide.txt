@@ -1,0 +1,1030 @@
+WORK MODULE - COMPREHENSIVE USER GUIDE
+
+========================================
+TABLE OF CONTENTS
+========================================
+
+1. PROJECTS MODULE
+   1.1 Project Management Interface
+   1.2 Project Creation and Configuration
+   1.3 Project Filters and Search
+   1.4 Project Actions and Operations
+   1.5 Project Views and Navigation
+   1.6 Project Files and Documents
+   1.7 Project Members Management
+   1.8 Project Milestones
+   1.9 Project Calendar and Gantt Chart
+
+2. TASKS MODULE
+   2.1 Task Management Interface
+   2.2 Task Creation and Assignment
+   2.3 Task Filters and Organization
+   2.4 Task Actions and Status Management
+   2.5 Task Board (Kanban View)
+   2.6 Task Comments and Collaboration
+   2.7 Task Labels and Categories
+   2.8 Task Dependencies and Relationships
+
+3. TIMELOGS MODULE
+   3.1 Time Tracking Interface
+   3.2 Manual Time Logging
+   3.3 Timer Functionality
+   3.4 Weekly Timesheets
+   3.5 Time Log Approval Workflow
+   3.6 Time Tracking Reports and Export
+
+========================================
+1. PROJECTS MODULE
+========================================
+
+1.1 PROJECT MANAGEMENT INTERFACE
+--------------------------------
+
+Main Projects Page: /projects (projects.index route)
+
+The Projects module provides comprehensive project management capabilities with the following interface elements:
+
+HEADER SECTION:
+- Page title: "Projects"
+- Add Project button (+ icon) - Creates new project
+- Project Templates button - Access to project templates
+- Import Projects button - Bulk import functionality
+- Quick Actions dropdown - Batch operations on selected projects
+
+FILTER PANEL:
+The projects interface includes extensive filtering options:
+
+Duration Filter:
+- Date range picker for project timeline filtering
+- Supports custom date ranges and predefined periods
+- Route: projects.index with date parameters
+
+Status Filter:
+- All Projects
+- Not Started
+- In Progress
+- On Hold
+- Canceled
+- Finished
+- Under Review
+
+Progress Filter:
+- All Progress Levels
+- 0% - 25%
+- 26% - 50%
+- 51% - 75%
+- 76% - 100%
+
+Date Filter Type:
+- Deadline (filter by project deadline)
+- Start Date (filter by project start date)
+
+Client Filter:
+- Dropdown list of all clients
+- Multi-select capability for client-specific filtering
+
+Project Category Filter:
+- Categorization based on project types
+- Custom categories defined in project settings
+
+Project Member Filter:
+- Filter by assigned team members
+- Shows projects where specific users are involved
+
+Department Filter:
+- Filter projects by department assignment
+- Organizational structure-based filtering
+
+Pinned Status Filter:
+- All Projects
+- Pinned Projects Only
+- Non-Pinned Projects
+
+Public Status Filter:
+- All Projects
+- Public Projects
+- Private Projects
+
+Search Functionality:
+- Text-based search across project names and descriptions
+- Real-time search with auto-suggestions
+
+1.2 PROJECT CREATION AND CONFIGURATION
+--------------------------------------
+
+Create Project: /projects/create (projects.create route)
+
+PROJECT BASIC INFORMATION:
+- Project Name (required)
+- Project Summary/Description
+- Project Category selection
+- Project Sub-Category (if applicable)
+- Client Assignment
+- Start Date and Deadline
+- Project Budget and Currency
+- Hours Estimate allocation
+
+PROJECT SETTINGS:
+- Project Status (Not Started, In Progress, On Hold, etc.)
+- Progress Calculation Method:
+  * Manual progress entry
+  * Calculate through tasks completion
+- Project Visibility:
+  * Public (visible to all team members)
+  * Private (restricted access)
+- Client Permissions:
+  * Client can view project
+  * Client can manage tasks
+  * Send task notifications to client
+- Time Tracking Settings:
+  * Allow manual time logs
+  * Enable timer functionality
+
+PROJECT TEAM ASSIGNMENT:
+- Project Manager selection
+- Team member assignment
+- Role-based permissions
+- Department allocation
+
+1.3 PROJECT FILTERS AND SEARCH
+------------------------------
+
+Advanced Filtering System:
+Route: projects.index with filter parameters
+
+FILTER COMBINATIONS:
+Users can combine multiple filters for precise project discovery:
+- Date range + Status + Client
+- Progress level + Department + Member
+- Category + Public status + Pinned status
+
+SEARCH FUNCTIONALITY:
+- Global search across project attributes
+- Search by project name, description, client name
+- Auto-complete suggestions
+- Search history retention
+
+FILTER PERSISTENCE:
+- Filter settings saved in user session
+- Quick filter reset functionality
+- Bookmark-able filtered views
+
+1.4 PROJECT ACTIONS AND OPERATIONS
+----------------------------------
+
+INDIVIDUAL PROJECT ACTIONS:
+Available through project dropdown menus and detail pages:
+
+View Project: /projects/{id} (projects.show route)
+- Complete project overview
+- Project statistics and metrics
+- Activity timeline
+- File attachments
+- Team member list
+
+Edit Project: /projects/{id}/edit (projects.edit route)
+- Modify project details
+- Update team assignments
+- Change project settings
+- Adjust timeline and budget
+
+Duplicate Project: /projects/duplicate-project/{id} (projects.duplicate_project route)
+- Create copy of existing project
+- Maintain team structure
+- Copy project settings and configuration
+
+Archive Project: /projects/archive-restore/{id} (projects.archive_restore route)
+- Move project to archived status
+- Maintain data integrity
+- Restore capability available
+
+Delete Project: /projects/{id} (projects.destroy route)
+- Permanent project removal
+- Confirmation dialog required
+- Data backup recommended
+
+Pin/Unpin Project:
+- Pin Project: /projects/store-pin (projects.store_pin route)
+- Unpin Project: /projects/destroy-pin/{id} (projects.destroy_pin route)
+- Quick access to important projects
+- Personal pinning system
+
+Change Project Status: /projects/updateStatus/{id} (projects.update_status route)
+- Status workflow management
+- Progress tracking
+- Notification system integration
+
+BULK ACTIONS:
+Quick Actions: /projects/apply-quick-action (projects.apply_quick_action route)
+
+Available bulk operations:
+- Change Status (multiple projects)
+- Archive Selected Projects
+- Delete Multiple Projects
+- Assign Project Manager
+- Update Project Category
+
+1.5 PROJECT VIEWS AND NAVIGATION
+--------------------------------
+
+PROJECT LIST VIEW: /projects (projects.index route)
+- Tabular display of all projects
+- Sortable columns (name, client, status, progress, deadline)
+- Pagination support
+- Row selection for bulk actions
+- Quick action buttons per row
+
+ARCHIVED PROJECTS: /projects/archive (projects.archive route)
+- View archived projects
+- Restore functionality
+- Permanent deletion option
+- Archive management tools
+
+PROJECT CALENDAR: /projects (calendar view)
+- Calendar-based project visualization
+- Deadline tracking
+- Milestone display
+- Drag-and-drop rescheduling
+
+GANTT CHART VIEW: /projects/burndown/{projectId} (projects.burndown route)
+- Project timeline visualization
+- Task dependencies
+- Critical path analysis
+- Progress tracking
+- Resource allocation view
+
+PROJECT KANBAN BOARD: /taskboard (taskboard.index route)
+- Visual project workflow
+- Drag-and-drop task management
+- Status-based columns
+- Real-time updates
+
+1.6 PROJECT FILES AND DOCUMENTS
+-------------------------------
+
+File Management System:
+Integrated within project detail pages
+
+FILE OPERATIONS:
+- Upload Files: Drag-and-drop or browse functionality
+- File Categories: Documents, Images, Videos, Other
+- Version Control: File versioning system
+- Access Permissions: Role-based file access
+- Download Files: Direct download links
+- File Preview: In-browser preview for supported formats
+
+SUPPORTED FILE TYPES:
+- Documents: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX
+- Images: JPG, PNG, GIF, SVG
+- Archives: ZIP, RAR
+- Text Files: TXT, CSV
+
+FILE ORGANIZATION:
+- Folder structure creation
+- File tagging system
+- Search within files
+- File activity tracking
+
+1.7 PROJECT MEMBERS MANAGEMENT
+-----------------------------
+
+Team Management: /projects/members/{id} (projects.members route)
+
+MEMBER OPERATIONS:
+- Add Team Members: User selection from employee list
+- Remove Members: Member removal with confirmation
+- Role Assignment: Project-specific role assignment
+- Permission Management: Granular permission control
+
+MEMBER ROLES:
+- Project Manager: Full project control
+- Team Lead: Team coordination responsibilities
+- Developer: Task execution and reporting
+- Viewer: Read-only access to project information
+
+MEMBER PERMISSIONS:
+- View Project Details
+- Edit Project Information
+- Manage Project Tasks
+- Upload/Download Files
+- Invite Additional Members
+- Access Time Tracking
+- View Project Reports
+
+NOTIFICATION SETTINGS:
+- Email notifications for project updates
+- Task assignment notifications
+- Deadline reminders
+- Status change alerts
+
+1.8 PROJECT MILESTONES
+----------------------
+
+Milestone Management System:
+Integrated within project workflow
+
+MILESTONE FEATURES:
+- Create Milestones: Define project checkpoints
+- Milestone Dates: Set target completion dates
+- Progress Tracking: Monitor milestone completion
+- Dependencies: Link milestones to tasks and deliverables
+- Notifications: Milestone deadline alerts
+
+MILESTONE TYPES:
+- Project Kickoff
+- Design Completion
+- Development Phase
+- Testing Phase
+- Project Delivery
+- Custom Milestones
+
+MILESTONE TRACKING:
+- Visual progress indicators
+- Completion percentage
+- Delay notifications
+- Impact analysis on project timeline
+
+1.9 PROJECT CALENDAR AND GANTT CHART
+------------------------------------
+
+CALENDAR VIEW:
+- Monthly/Weekly/Daily project calendar
+- Project deadlines visualization
+- Milestone markers
+- Team availability display
+- Meeting and event integration
+
+GANTT CHART FUNCTIONALITY:
+Route: /projects/gantt-data (projects.gantt_data route)
+
+GANTT FEATURES:
+- Task timeline visualization
+- Dependency mapping
+- Critical path identification
+- Resource allocation display
+- Progress tracking bars
+- Drag-and-drop timeline adjustment
+
+GANTT INTERACTIONS:
+- Zoom in/out timeline
+- Task duration modification
+- Dependency creation/removal
+- Progress updates
+- Resource reassignment
+
+========================================
+2. TASKS MODULE
+========================================
+
+2.1 TASK MANAGEMENT INTERFACE
+-----------------------------
+
+Main Tasks Page: /tasks (tasks.index route)
+
+The Tasks module provides comprehensive task management with the following interface:
+
+HEADER SECTION:
+- Page title: "Tasks"
+- Add Task button (+ icon) - Creates new task
+- Unassigned Tasks button - View tasks without assignees
+- Recurring Tasks button - Manage recurring task templates
+- Quick Actions dropdown - Batch operations on selected tasks
+
+FILTER PANEL:
+Extensive filtering system for task organization:
+
+Duration Filter:
+- Date range picker for task timeline filtering
+- Custom date ranges and predefined periods
+
+Status Filter:
+- All Tasks
+- Incomplete
+- To Do
+- In Progress
+- Under Review
+- Completed
+
+Search by Task:
+- Text-based search across task titles and descriptions
+- Real-time search functionality
+
+Date Filter Options:
+- Start Date: Filter by task start date
+- Due Date: Filter by task deadline
+- Completed On: Filter by completion date
+
+Pinned/Private Status:
+- All Tasks
+- Pinned Tasks Only
+- Private Tasks Only
+
+Project Filter:
+- Filter tasks by associated project
+- Multi-project selection capability
+
+Client Filter:
+- Filter tasks by client association
+- Client-specific task views
+
+Assigned To Filter:
+- Filter by task assignee
+- Team member-specific task lists
+
+Assigned By Filter:
+- Filter by task creator
+- Manager-specific task assignments
+
+Label Filter:
+- Filter by task labels/tags
+- Color-coded label system
+
+Priority Filter:
+- High Priority
+- Medium Priority
+- Low Priority
+- No Priority Set
+
+Task Category Filter:
+- Custom task categories
+- Department-specific categories
+
+Billable Task Filter:
+- Billable Tasks Only
+- Non-Billable Tasks
+- All Tasks
+
+2.2 TASK CREATION AND ASSIGNMENT
+--------------------------------
+
+Create Task: /tasks/create (tasks.create route)
+
+TASK BASIC INFORMATION:
+- Task Title (required)
+- Task Description/Details
+- Project Association
+- Task Category selection
+- Priority Level (High/Medium/Low)
+
+TASK ASSIGNMENT:
+- Assign To: Select team member(s)
+- Assigned By: Task creator information
+- Department Assignment
+- Client Notification settings
+
+TASK SCHEDULING:
+- Start Date
+- Due Date
+- Time Estimate (hours/minutes)
+- Recurring Task Setup
+
+TASK SETTINGS:
+- Task Status (To Do, In Progress, Under Review, Completed)
+- Privacy Settings (Public/Private)
+- Billable Status (Billable/Non-Billable)
+- Task Dependencies
+- File Attachments
+
+TASK LABELS:
+- Apply color-coded labels
+- Create custom labels
+- Label-based organization
+- Multi-label assignment
+
+2.3 TASK FILTERS AND ORGANIZATION
+---------------------------------
+
+Advanced Task Filtering:
+Route: tasks.index with filter parameters
+
+FILTER COMBINATIONS:
+- Status + Priority + Assignee
+- Project + Client + Date Range
+- Labels + Category + Billable Status
+
+TASK SORTING OPTIONS:
+- Sort by Due Date
+- Sort by Priority
+- Sort by Creation Date
+- Sort by Assignee
+- Sort by Project
+- Sort by Status
+
+TASK GROUPING:
+- Group by Project
+- Group by Assignee
+- Group by Status
+- Group by Priority
+- Group by Client
+
+SAVED FILTERS:
+- Save frequently used filter combinations
+- Quick filter access
+- Personal filter preferences
+
+2.4 TASK ACTIONS AND STATUS MANAGEMENT
+--------------------------------------
+
+INDIVIDUAL TASK ACTIONS:
+
+View Task: /tasks/{id} (tasks.show route)
+- Complete task details
+- Task activity timeline
+- Comments and discussions
+- File attachments
+- Time tracking information
+
+Edit Task: /tasks/{id}/edit (tasks.edit route)
+- Modify task details
+- Update assignments
+- Change priority and status
+- Adjust timeline
+
+Change Task Status: /tasks/change-status (tasks.change_status route)
+Available status transitions:
+- To Do → In Progress
+- In Progress → Under Review
+- Under Review → Completed
+- Any Status → On Hold
+
+Task Actions Menu:
+- Pin/Unpin Task: /tasks/store-pin (tasks.store_pin route)
+- Set Reminder: /tasks/reminder (tasks.reminder route)
+- Check Task: /tasks/check-task/{taskID} (tasks.check_task route)
+- Send for Approval: /tasks/send-approval (tasks.send_approval route)
+- Delete Task: Standard delete operation
+
+BULK TASK ACTIONS:
+Quick Actions: /tasks/apply-quick-action (tasks.apply_quick_action route)
+
+Available bulk operations:
+- Change Status (multiple tasks)
+- Assign to Team Member
+- Change Priority Level
+- Add Labels
+- Delete Selected Tasks
+- Mark as Billable/Non-Billable
+
+2.5 TASK BOARD (KANBAN VIEW)
+----------------------------
+
+Taskboard Interface: /taskboard (taskboard.index route)
+
+KANBAN BOARD FEATURES:
+- Visual workflow representation
+- Drag-and-drop task movement
+- Status-based columns
+- Real-time updates
+- Collaborative editing
+
+BOARD COLUMNS:
+Default columns based on task status:
+- To Do
+- In Progress
+- Under Review
+- Completed
+- Custom Status Columns
+
+TASK CARDS:
+Each task card displays:
+- Task title and description
+- Assignee avatar
+- Due date indicator
+- Priority level indicator
+- Label/tag display
+- Progress indicator
+
+BOARD INTERACTIONS:
+- Drag tasks between columns
+- Quick edit task details
+- Add new tasks directly to columns
+- Filter tasks within board view
+- Collapse/expand columns
+
+BOARD CUSTOMIZATION:
+- Custom column creation
+- Column order modification
+- Card display preferences
+- Board layout options
+
+2.6 TASK COMMENTS AND COLLABORATION
+-----------------------------------
+
+Task Discussion System:
+Integrated within task detail pages
+
+COMMENT FEATURES:
+- Add Comments: Rich text comment system
+- Reply to Comments: Threaded discussion
+- Edit Comments: Comment modification capability
+- Delete Comments: Comment removal with permissions
+- Comment Notifications: Real-time notification system
+
+COMMENT TYPES:
+- General Comments: Discussion and updates
+- Status Change Comments: Automatic status notifications
+- File Upload Comments: File sharing with context
+- Mention Comments: @mention team members
+
+COLLABORATION TOOLS:
+- Real-time typing indicators
+- Comment read receipts
+- Comment history tracking
+- Comment search functionality
+
+NOTIFICATION SYSTEM:
+- Email notifications for new comments
+- In-app notification alerts
+- Comment digest emails
+- Mention notifications
+
+2.7 TASK LABELS AND CATEGORIES
+------------------------------
+
+Label Management System:
+Integrated task organization tools
+
+LABEL FEATURES:
+- Create Custom Labels: Color-coded organization
+- Apply Multiple Labels: Multi-label task assignment
+- Label Filtering: Filter tasks by labels
+- Label Statistics: Usage analytics
+
+LABEL CATEGORIES:
+- Priority Labels (Urgent, High, Medium, Low)
+- Department Labels (Development, Design, Marketing)
+- Status Labels (Bug, Feature, Enhancement)
+- Custom Labels (User-defined categories)
+
+LABEL OPERATIONS:
+- Create Label: Define new labels with colors
+- Edit Label: Modify label properties
+- Delete Label: Remove unused labels
+- Merge Labels: Combine similar labels
+
+CATEGORY MANAGEMENT:
+- Task Categories: Broad task classification
+- Category Hierarchy: Parent-child relationships
+- Category Permissions: Role-based category access
+- Category Reporting: Category-based analytics
+
+2.8 TASK DEPENDENCIES AND RELATIONSHIPS
+---------------------------------------
+
+Task Dependency System:
+Advanced task relationship management
+
+DEPENDENCY TYPES:
+- Finish-to-Start: Task B starts when Task A finishes
+- Start-to-Start: Task B starts when Task A starts
+- Finish-to-Finish: Task B finishes when Task A finishes
+- Start-to-Finish: Task B finishes when Task A starts
+
+DEPENDENCY MANAGEMENT:
+- Add Dependencies: Link related tasks
+- Remove Dependencies: Unlink task relationships
+- Dependency Visualization: Graphical dependency display
+- Critical Path Analysis: Identify critical task sequences
+
+TASK RELATIONSHIPS:
+- Parent-Child Tasks: Hierarchical task structure
+- Subtasks: Break down complex tasks
+- Related Tasks: Associate similar tasks
+- Blocking Tasks: Identify task blockers
+
+DEPENDENCY NOTIFICATIONS:
+- Dependency completion alerts
+- Blocking task notifications
+- Critical path updates
+- Timeline impact warnings
+
+========================================
+3. TIMELOGS MODULE
+========================================
+
+3.1 TIME TRACKING INTERFACE
+---------------------------
+
+Main Timelogs Page: /timelogs (timelogs.index route)
+
+The Timelogs module provides comprehensive time tracking capabilities:
+
+HEADER SECTION:
+- Page title: "Time Logs"
+- Log Time button (+ icon) - Manual time entry
+- Export Excel button - Export time data
+- Quick Actions dropdown - Batch operations on time entries
+
+FILTER PANEL:
+Comprehensive filtering for time log analysis:
+
+Duration Filter:
+- Date range picker for time period selection
+- Custom date ranges and predefined periods
+
+Employee Filter:
+- Filter by specific team members
+- Multi-employee selection
+- Department-based filtering
+
+Department Filter:
+- Filter by organizational departments
+- Cross-department time analysis
+
+Search Functionality:
+- Text-based search across time log descriptions
+- Project and task name search
+
+Advanced Filters (More Filters Panel):
+
+Project Filter:
+- Filter by associated projects
+- Project-specific time analysis
+
+Status Filter:
+- All Time Logs
+- Approved
+- Pending Approval
+- Rejected
+- Active (currently running timers)
+
+Invoice Generation Filter:
+- All Time Logs
+- Invoiced Time
+- Non-Invoiced Time
+
+3.2 MANUAL TIME LOGGING
+-----------------------
+
+Create Time Log: /timelogs/create (timelogs.create route)
+
+MANUAL TIME ENTRY:
+- Project Selection: Choose associated project
+- Task Selection: Select specific task (optional)
+- Employee Assignment: Assign time to team member
+- Start Date and Time: Define time log start
+- End Date and Time: Define time log end
+- Total Hours: Automatic calculation or manual entry
+- Memo/Description: Detailed time log description
+
+TIME LOG SETTINGS:
+- Billable Status: Mark time as billable/non-billable
+- Approval Required: Submit for manager approval
+- Break Time: Account for break periods
+- Overtime Classification: Regular/overtime hours
+
+TIME CALCULATION:
+- Automatic duration calculation
+- Break time deduction
+- Overtime rate application
+- Rounding rules application
+
+3.3 TIMER FUNCTIONALITY
+-----------------------
+
+Active Timer System:
+Real-time time tracking capabilities
+
+TIMER OPERATIONS:
+- Start Timer: /timelogs/start-timer (timelogs.start_timer route)
+- Stop Timer: /timelogs/stop-timer (timelogs.stop_timer route)
+- Pause Timer: /timelogs/pause-timer (timelogs.pause_timer route)
+- Resume Timer: /timelogs/resume-timer (timelogs.resume_timer route)
+
+TIMER FEATURES:
+- Project/Task Association: Link timer to specific work
+- Real-time Display: Live timer countdown/countup
+- Multiple Timers: Support for concurrent timers
+- Timer Notifications: Break reminders and alerts
+- Auto-save: Automatic timer state preservation
+
+TIMER INTERFACE:
+- Active Timer Display: Current running timer information
+- Timer Controls: Start, stop, pause, resume buttons
+- Timer History: Previous timer sessions
+- Quick Timer Start: One-click timer activation
+
+TIMER SETTINGS:
+- Default Project/Task: Pre-selected work items
+- Break Reminders: Configurable break notifications
+- Auto-stop Rules: Automatic timer termination
+- Idle Detection: Automatic pause on inactivity
+
+3.4 WEEKLY TIMESHEETS
+---------------------
+
+Weekly Timesheet Management: /weekly-timesheets (weekly-timesheets.index route)
+
+TIMESHEET INTERFACE:
+- Weekly Grid View: 7-day timesheet layout
+- Project/Task Rows: Organized by work items
+- Daily Time Columns: Time entry for each day
+- Total Calculations: Daily and weekly totals
+
+TIMESHEET FEATURES:
+- Bulk Time Entry: Enter time for multiple days
+- Copy Previous Week: Duplicate previous timesheet
+- Template Usage: Apply timesheet templates
+- Validation Rules: Ensure data accuracy
+
+TIMESHEET OPERATIONS:
+- Create Timesheet: New weekly timesheet
+- Edit Timesheet: Modify existing entries
+- Submit for Approval: Send to manager
+- Approve Timesheet: Manager approval process
+- Reject Timesheet: Return for corrections
+
+TIMESHEET STATUS:
+- Draft: Work in progress
+- Submitted: Awaiting approval
+- Approved: Manager approved
+- Rejected: Requires corrections
+
+3.5 TIME LOG APPROVAL WORKFLOW
+------------------------------
+
+Approval System:
+Manager-based time log validation
+
+APPROVAL PROCESS:
+- Submit for Approval: Employee submission
+- Manager Review: Approval workflow
+- Approve Time Log: /timelogs/approve_timelog (timelogs.approve_timelog route)
+- Reject Time Log: Return with comments
+- Revert to Pending: /timelogs/revert_to_pending (timelogs.revert_to_pending route)
+
+APPROVAL INTERFACE:
+- Pending Approval Queue: Manager dashboard
+- Approval Actions: Approve/reject buttons
+- Bulk Approval: Multiple time log approval
+- Rejection Comments: Feedback system
+
+APPROVAL NOTIFICATIONS:
+- Submission notifications to managers
+- Approval confirmations to employees
+- Rejection notifications with reasons
+- Deadline reminders for approvals
+
+APPROVAL REPORTS:
+- Pending Approval Summary
+- Approval History
+- Manager Approval Statistics
+- Employee Submission Patterns
+
+3.6 TIME TRACKING REPORTS AND EXPORT
+------------------------------------
+
+Reporting System:
+Comprehensive time tracking analytics
+
+REPORT TYPES:
+- Employee Time Reports: Individual time analysis
+- Project Time Reports: Project-based time tracking
+- Department Reports: Departmental time analysis
+- Client Time Reports: Client billing analysis
+
+EXPORT FUNCTIONALITY:
+- Export Time Logs: /timelogs/export_time_logs (timelogs.export_time_logs route)
+- Excel Export: Detailed spreadsheet export
+- PDF Reports: Formatted report generation
+- CSV Export: Data analysis compatibility
+
+REPORT FILTERS:
+- Date Range Selection
+- Employee/Department Filtering
+- Project/Client Filtering
+- Billable/Non-Billable Filtering
+- Approval Status Filtering
+
+REPORT FEATURES:
+- Summary Statistics: Total hours, averages
+- Detailed Breakdowns: Day-by-day analysis
+- Graphical Charts: Visual time representation
+- Comparative Analysis: Period-over-period comparison
+
+TIME ANALYTICS:
+- Productivity Metrics: Efficiency analysis
+- Utilization Rates: Resource utilization
+- Overtime Analysis: Overtime pattern identification
+- Billing Analysis: Revenue impact assessment
+
+========================================
+NAVIGATION AND URL REFERENCE
+========================================
+
+PROJECTS MODULE ROUTES:
+- Main Projects: /projects
+- Create Project: /projects/create
+- View Project: /projects/{id}
+- Edit Project: /projects/{id}/edit
+- Archive Projects: /projects/archive
+- Project Members: /projects/members/{id}
+- Project Gantt: /projects/burndown/{projectId}
+- Import Projects: /projects/import
+
+TASKS MODULE ROUTES:
+- Main Tasks: /tasks
+- Create Task: /tasks/create
+- View Task: /tasks/{id}
+- Edit Task: /tasks/{id}/edit
+- Task Board: /taskboard
+- Waiting Approval: /tasks/waiting-approval
+- Task Members: /tasks/members/{id}
+- Project Tasks: /tasks/project_tasks/{id}
+
+TIMELOGS MODULE ROUTES:
+- Main Timelogs: /timelogs
+- Create Time Log: /timelogs/create
+- View Time Log: /timelogs/{id}
+- Edit Time Log: /timelogs/{id}/edit
+- Weekly Timesheets: /weekly-timesheets
+- Time Calendar: /timelogs/timelog-calendar
+- By Employee: /timelogs/by-employee
+- Export Time Logs: /timelogs/export-time-logs
+
+TIMER ROUTES:
+- Start Timer: /timelogs/start-timer
+- Stop Timer: /timelogs/stop-timer
+- Pause Timer: /timelogs/pause-timer
+- Resume Timer: /timelogs/resume-timer
+- Active Timer: /timelogs/show-active-timer
+
+APPROVAL ROUTES:
+- Approve Time Log: /timelogs/approve_timelog
+- Reject Time Log: /timelogs/show-reject-modal
+- Revert to Pending: /timelogs/revert_to_pending
+- Pending Approval: /weekly-timesheets/pending-approval
+
+========================================
+PERMISSIONS AND ACCESS CONTROL
+========================================
+
+The Work module implements role-based access control with the following permission levels:
+
+PROJECT PERMISSIONS:
+- View Projects: Basic project visibility
+- Add Projects: Create new projects
+- Edit Projects: Modify project details
+- Delete Projects: Remove projects
+- Manage Project Members: Team assignment
+- Archive Projects: Project archival
+
+TASK PERMISSIONS:
+- View Tasks: Basic task visibility
+- Add Tasks: Create new tasks
+- Edit Tasks: Modify task details
+- Delete Tasks: Remove tasks
+- Assign Tasks: Task assignment capability
+- Manage Task Status: Status workflow control
+
+TIMELOG PERMISSIONS:
+- View Time Logs: Basic time log visibility
+- Add Time Logs: Create time entries
+- Edit Time Logs: Modify time entries
+- Delete Time Logs: Remove time entries
+- Approve Time Logs: Manager approval rights
+- Export Time Data: Data export capability
+
+ADMINISTRATIVE PERMISSIONS:
+- Manage Work Settings: Module configuration
+- View All Projects: Cross-department visibility
+- Manage Categories: Category administration
+- System Reports: Advanced reporting access
+
+========================================
+INTEGRATION FEATURES
+========================================
+
+The Work module integrates seamlessly with other system modules:
+
+CALENDAR INTEGRATION:
+- Project deadlines in calendar
+- Task due dates synchronization
+- Meeting and event coordination
+- Resource availability display
+
+NOTIFICATION SYSTEM:
+- Email notifications for assignments
+- In-app alerts for status changes
+- Deadline reminder notifications
+- Approval workflow notifications
+
+REPORTING INTEGRATION:
+- Financial report integration
+- Resource utilization reports
+- Performance analytics
+- Client billing integration
+
+FILE MANAGEMENT:
+- Document attachment system
+- Version control integration
+- File sharing capabilities
+- Access permission management
+
+USER INTERFACE:
+- Responsive design for mobile access
+- Drag-and-drop functionality
+- Real-time updates
+- Customizable dashboards
+
+This comprehensive guide covers all aspects of the Work module, providing detailed information about features, functionality, and navigation paths for effective system utilization.

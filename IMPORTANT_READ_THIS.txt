@@ -1,0 +1,52 @@
+========================================
+  IMPORTANT: How to Access Your App
+========================================
+
+XAMPP Apache is running on port 80 (localhost)
+This conflicts with Laravel, so we use port 8000 instead.
+
+✅ CORRECT URLS:
+   - Main App: http://localhost:8000
+   - Login: http://localhost:8000/login
+   - Super Admin Login: http://localhost:8000/super-admin-login
+
+❌ WRONG URL (shows XAMPP page):
+   - http://localhost (this shows XAMPP dashboard)
+
+========================================
+  How to Start Your App
+========================================
+
+Option 1: Double-click START_HERE.bat
+   - Automatically starts Laravel on port 8000
+   - Then visit: http://localhost:8000
+
+Option 2: Double-click start_localhost_xampp.bat
+   - Quick start for XAMPP users
+   - Then visit: http://localhost:8000
+
+Option 3: Manual command
+   - Open terminal in this folder
+   - Run: C:\xampp\php\php.exe artisan serve --port=8000
+   - Then visit: http://localhost:8000
+
+========================================
+  Why Port 8000?
+========================================
+
+- XAMPP Apache uses port 80 (localhost)
+- Laravel uses port 8000 (localhost:8000)
+- This avoids conflicts
+- Both can run at the same time
+
+========================================
+  Quick Access Links
+========================================
+
+After starting the server:
+   ✅ http://localhost:8000          (Landing page)
+   ✅ http://localhost:8000/login   (Login page)
+   ✅ http://localhost:8000/super-admin-login (Super admin login)
+
+========================================
+

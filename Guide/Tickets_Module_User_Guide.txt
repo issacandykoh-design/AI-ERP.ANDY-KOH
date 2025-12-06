@@ -1,0 +1,412 @@
+TICKETS MODULE - COMPREHENSIVE USER GUIDE
+
+=== OVERVIEW ===
+The Tickets module is a comprehensive customer support and issue tracking system that enables organizations to manage customer inquiries, technical support requests, and internal issues efficiently. The module provides role-based access control, automated assignment capabilities, and extensive customization options.
+
+=== MAIN DASHBOARD FEATURES ===
+
+1. TICKETS DASHBOARD
+   - Location: /tickets
+   - Description: Central hub displaying ticket statistics and management tools
+   - Features:
+     * Total tickets counter with real-time updates
+     * Status-based counters (Open, Pending, Resolved, Closed)
+     * Interactive filtering system
+     * Quick action buttons for bulk operations
+
+2. TICKET STATISTICS WIDGETS
+   - Total Tickets Widget: Displays overall ticket count
+   - Open Tickets Widget: Shows currently active tickets requiring attention
+   - Pending Tickets Widget: Displays tickets awaiting response or action
+   - Resolved Tickets Widget: Shows tickets marked as resolved
+   - Closed Tickets Widget: Displays completed and closed tickets
+
+=== TICKET MANAGEMENT FEATURES ===
+
+3. CREATE NEW TICKET
+   - Location: /tickets/create (via AJAX modal)
+   - Description: Form for creating new support tickets
+   - Features:
+     * Requester selection (Client or Employee)
+     * Project association capability
+     * Ticket group and agent assignment
+     * Ticket type categorization
+     * Subject and description fields with rich text editor
+     * File attachment support with drag-and-drop functionality
+     * Priority level assignment
+     * Custom fields integration
+
+4. TICKET LISTING AND FILTERING
+   - Location: /tickets (DataTable)
+   - Description: Comprehensive ticket listing with advanced filtering
+   - Features:
+     * Date range filtering with calendar picker
+     * Status filtering (All, Open, Pending, Resolved, Closed)
+     * Agent-based filtering
+     * Priority level filtering
+     * Channel-based filtering
+     * Ticket type filtering
+     * Tag-based filtering
+     * Project-based filtering
+     * Group-based filtering
+     * Real-time search functionality
+     * Sortable columns
+     * Bulk selection capabilities
+
+5. TICKET DETAILS AND EDITING
+   - Location: /tickets/{ticket_number}
+   - Description: Comprehensive ticket view with editing capabilities
+   - Features:
+     * Ticket information display with status badges
+     * Complete conversation thread
+     * Reply functionality with rich text editor
+     * Internal notes system (agent-only visibility)
+     * File attachment management
+     * Status change controls
+     * Assignment modification
+     * Priority adjustment
+     * Custom fields editing
+     * Activity tracking and history
+
+=== TICKET COMMUNICATION FEATURES ===
+
+6. TICKET REPLIES
+   - Description: Communication system for ticket responses
+   - Features:
+     * Rich text editor for formatted responses
+     * File attachment support
+     * Reply templates integration
+     * Status change on reply (Open, Pending, Resolved, Closed)
+     * Email notifications to stakeholders
+     * Reply history tracking
+     * Reply deletion capabilities (with permissions)
+
+7. INTERNAL NOTES
+   - Description: Private communication system for agents
+   - Features:
+     * Agent-only visibility
+     * Rich text formatting
+     * File attachment support
+     * Internal collaboration tools
+     * Note history tracking
+
+8. REPLY TEMPLATES
+   - Location: /ticket-settings?tab=reply-template
+   - Description: Pre-defined response templates for common scenarios
+   - Features:
+     * Template creation and management
+     * Quick template application during replies
+     * Template categorization
+     * Rich text template content
+     * Template editing and deletion
+
+=== TICKET ASSIGNMENT AND ROUTING ===
+
+9. AGENT ASSIGNMENT
+   - Description: System for assigning tickets to support agents
+   - Features:
+     * Manual agent assignment
+     * Group-based assignment
+     * Round-robin automatic assignment
+     * Agent workload balancing
+     * Assignment change tracking
+     * Agent availability consideration
+
+10. TICKET GROUPS
+    - Location: /ticket-settings?tab=group-manage
+    - Description: Organizational structure for ticket categorization
+    - Features:
+      * Group creation and management
+      * Agent group assignments
+      * Group-based permissions
+      * Ticket routing by group
+      * Group performance tracking
+
+11. ROUND-ROBIN ASSIGNMENT
+    - Location: /ticket-settings?tab=round-robin
+    - Description: Automated ticket distribution system
+    - Features:
+      * Equal distribution among agents
+      * Sequential assignment logic
+      * Fair rotation mechanism
+      * Automatic load balancing
+      * Assignment tracking and reporting
+
+=== TICKET CATEGORIZATION FEATURES ===
+
+12. TICKET TYPES
+    - Location: /ticket-settings?tab=type
+    - Description: Classification system for different ticket categories
+    - Features:
+      * Type creation and management
+      * Type-based filtering
+      * Type-specific workflows
+      * Type performance analytics
+      * Custom type definitions
+
+13. TICKET CHANNELS
+    - Location: /ticket-settings?tab=channel
+    - Description: Source tracking for ticket origins
+    - Features:
+      * Channel creation and management
+      * Multi-channel support (Email, Web, Phone, etc.)
+      * Channel-based routing
+      * Channel performance tracking
+      * Integration capabilities
+
+14. TICKET TAGS
+    - Description: Flexible labeling system for ticket organization
+    - Features:
+      * Tag creation and assignment
+      * Multi-tag support per ticket
+      * Tag-based filtering and search
+      * Tag analytics and reporting
+      * Bulk tag operations
+
+=== TICKET SETTINGS AND CONFIGURATION ===
+
+15. AGENT MANAGEMENT
+    - Location: /ticket-settings (default tab)
+    - Description: System for managing support agents
+    - Features:
+      * Agent creation and profile management
+      * Role and permission assignment
+      * Agent group associations
+      * Performance tracking
+      * Availability management
+
+16. TICKET VISIBILITY SETTINGS
+    - Location: /ticket-settings?tab=ticket-agent-setting
+    - Description: Permission system controlling ticket access
+    - Features:
+      * All Tickets: Complete system access
+      * Group Tickets: Access to assigned group tickets only
+      * Assigned Tickets: Access to personally assigned tickets only
+      * Custom permission configurations
+      * Role-based access control
+
+17. EMAIL INTEGRATION
+    - Location: /ticket-settings?tab=email-sync
+    - Description: Email synchronization and notification system
+    - Features:
+      * IMAP settings configuration
+      * Automatic email-to-ticket conversion
+      * Email notification settings
+      * Reply-by-email functionality
+      * Email template management
+
+=== PUBLIC TICKET SUBMISSION ===
+
+18. TICKET FORM CONFIGURATION
+    - Location: /tickets/ticket-form
+    - Description: Public-facing ticket submission form management
+    - Features:
+      * Form field customization
+      * Field ordering and arrangement
+      * Form preview functionality
+      * Embed code generation
+      * Direct link provision
+      * Form styling options
+      * Submission notifications
+
+=== ADVANCED FEATURES ===
+
+19. BULK OPERATIONS
+    - Description: Mass action capabilities for ticket management
+    - Features:
+      * Bulk status changes
+      * Bulk assignment modifications
+      * Bulk deletion (with permissions)
+      * Bulk tag operations
+      * Bulk export functionality
+
+20. TICKET ACTIVITY TRACKING
+    - Description: Comprehensive audit trail for ticket changes
+    - Features:
+      * Status change logging
+      * Assignment change tracking
+      * Reply and note history
+      * File attachment tracking
+      * User action logging
+      * Timestamp recording
+
+21. CUSTOM FIELDS
+    - Description: Extensible field system for additional data capture
+    - Features:
+      * Custom field creation
+      * Field type variety (text, dropdown, checkbox, etc.)
+      * Field validation rules
+      * Conditional field display
+      * Custom field reporting
+
+22. TICKET ANALYTICS AND REPORTING
+    - Description: Performance metrics and reporting system
+    - Features:
+      * Ticket volume analytics
+      * Response time tracking
+      * Resolution time metrics
+      * Agent performance reports
+      * Status distribution charts
+      * Channel effectiveness analysis
+
+=== PERMISSION SYSTEM ===
+
+23. ROLE-BASED ACCESS CONTROL
+    - Description: Comprehensive permission system
+    - Permission Levels:
+      * View Tickets: all, added, owned, both, group_tickets, assigned_tickets
+      * Edit Tickets: all, added, owned, both
+      * Delete Tickets: all, owned
+      * Manage Groups: all (admin only)
+      * Manage Settings: admin permissions required
+
+=== INTEGRATION FEATURES ===
+
+24. PROJECT INTEGRATION
+    - Description: Connection between tickets and project management
+    - Features:
+      * Ticket-project association
+      * Project-based filtering
+      * Project team notifications
+      * Cross-module data sharing
+
+25. USER MANAGEMENT INTEGRATION
+    - Description: Integration with user and client management
+    - Features:
+      * Client ticket history
+      * Employee ticket assignment
+      * User profile integration
+      * Contact information display
+
+=== MOBILE AND RESPONSIVE FEATURES ===
+
+26. RESPONSIVE DESIGN
+    - Description: Mobile-optimized interface
+    - Features:
+      * Mobile-friendly ticket listing
+      * Touch-optimized controls
+      * Responsive sidebar navigation
+      * Mobile reply functionality
+      * Adaptive layout design
+
+=== NOTIFICATION SYSTEM ===
+
+27. REAL-TIME NOTIFICATIONS
+    - Description: Instant notification system for ticket updates
+    - Features:
+      * Status change notifications
+      * Assignment notifications
+      * Reply notifications
+      * Escalation alerts
+      * Email integration
+
+=== SEARCH AND FILTERING ===
+
+28. ADVANCED SEARCH
+    - Description: Comprehensive search functionality
+    - Features:
+      * Full-text search across tickets
+      * Multi-criteria filtering
+      * Saved search preferences
+      * Quick filter buttons
+      * Search result highlighting
+
+=== DATA EXPORT AND IMPORT ===
+
+29. DATA MANAGEMENT
+    - Description: Data portability and backup features
+    - Features:
+      * Ticket data export
+      * Bulk import capabilities
+      * Report generation
+      * Data archiving
+      * Backup and restore
+
+=== SECURITY FEATURES ===
+
+30. SECURITY AND COMPLIANCE
+    - Description: Security measures and compliance features
+    - Features:
+      * Data encryption
+      * Access logging
+      * Permission auditing
+      * Secure file handling
+      * GDPR compliance tools
+
+=== TECHNICAL SPECIFICATIONS ===
+
+Backend Components:
+- TicketController: Main ticket management logic
+- TicketDataTable: Data presentation and filtering
+- Ticket Model: Data structure and relationships
+- Permission System: Role-based access control
+- Email Integration: IMAP and SMTP functionality
+
+Frontend Components:
+- Vue.js/JavaScript: Interactive user interface
+- DataTables: Advanced table functionality
+- Rich Text Editor: Content creation tools
+- File Upload: Drag-and-drop file handling
+- Responsive Design: Mobile optimization
+
+Database Structure:
+- tickets: Main ticket data
+- ticket_replies: Communication threads
+- ticket_groups: Organizational structure
+- ticket_types: Classification system
+- ticket_channels: Source tracking
+- ticket_tags: Labeling system
+
+=== WORKFLOW EXAMPLES ===
+
+Typical Ticket Lifecycle:
+1. Ticket Creation (via form or email)
+2. Automatic Assignment (round-robin or manual)
+3. Agent Response and Status Updates
+4. Customer Communication
+5. Resolution and Closure
+6. Follow-up and Feedback
+
+Common Use Cases:
+- Customer Support Requests
+- Technical Issue Reporting
+- Feature Requests
+- Bug Reports
+- Internal Help Desk
+- Service Requests
+
+=== BEST PRACTICES ===
+
+For Administrators:
+- Configure appropriate permission levels
+- Set up automated assignment rules
+- Create comprehensive reply templates
+- Establish clear escalation procedures
+- Monitor performance metrics regularly
+
+For Agents:
+- Use internal notes for collaboration
+- Apply appropriate tags and categories
+- Maintain professional communication
+- Update ticket status promptly
+- Utilize reply templates efficiently
+
+For End Users:
+- Provide detailed issue descriptions
+- Include relevant attachments
+- Respond promptly to agent inquiries
+- Use appropriate priority levels
+- Follow up on resolved issues
+
+=== TROUBLESHOOTING ===
+
+Common Issues and Solutions:
+- Permission denied errors: Check role assignments
+- Email integration issues: Verify IMAP settings
+- File upload problems: Check file size limits
+- Performance issues: Review database indexing
+- Notification failures: Verify email configuration
+
+=== CONCLUSION ===
+
+The Tickets module provides a comprehensive solution for customer support and issue tracking, offering extensive customization options, robust permission controls, and seamless integration with other system components. Its flexible architecture supports various organizational structures and workflows while maintaining ease of use for both agents and end users.

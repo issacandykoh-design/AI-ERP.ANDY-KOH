@@ -1,0 +1,383 @@
+{
+  "ts": "2025-11-30T16:26:07.258Z",
+  "results": [
+    {
+      "name": "telescope",
+      "url": "http://127.0.0.1:8000/telescope",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8000/telescope/requests",
+      "error": null,
+      "logs": [
+        {
+          "type": "log",
+          "text": "🔍 Browser logger active (MCP server detected). Posting to: http://127.0.0.1:8000/_boost/browser-logs"
+        }
+      ],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/telescope"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.bunny.net/css?family=figtree:300,400,500,600"
+        },
+        {
+          "method": "POST",
+          "url": "http://127.0.0.1:8000/telescope/telescope-api/requests?tag=&before=&take=50&family_hash="
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-600-normal.woff2"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-500-normal.woff2"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-400-normal.woff2"
+        }
+      ],
+      "responses": [
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/telescope"
+        },
+        {
+          "status": 200,
+          "url": "https://fonts.bunny.net/css?family=figtree:300,400,500,600"
+        },
+        {
+          "status": 200,
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-600-normal.woff2"
+        },
+        {
+          "status": 200,
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-500-normal.woff2"
+        },
+        {
+          "status": 200,
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-400-normal.woff2"
+        }
+      ],
+      "screenshot": "D:\\Andy Koh\\Craveva\\craveva.com\\qa\\puppeteer\\qa\\puppeteer\\output\\telescope.png"
+    },
+    {
+      "name": "telescope-views`",
+      "url": "http://127.0.0.1:8000/telescope/views",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8000/telescope/views",
+      "error": null,
+      "logs": [
+        {
+          "type": "log",
+          "text": "🔍 Browser logger active (MCP server detected). Posting to: http://127.0.0.1:8000/_boost/browser-logs"
+        }
+      ],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/telescope/views"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.bunny.net/css?family=figtree:300,400,500,600"
+        },
+        {
+          "method": "POST",
+          "url": "http://127.0.0.1:8000/telescope/telescope-api/views?tag=&before=&take=50&family_hash="
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-600-normal.woff2"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-500-normal.woff2"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-400-normal.woff2"
+        }
+      ],
+      "responses": [
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/telescope/views"
+        },
+        {
+          "status": 200,
+          "url": "https://fonts.bunny.net/css?family=figtree:300,400,500,600"
+        },
+        {
+          "status": 200,
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-600-normal.woff2"
+        },
+        {
+          "status": 200,
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-500-normal.woff2"
+        },
+        {
+          "status": 200,
+          "url": "https://fonts.bunny.net/figtree/files/figtree-latin-400-normal.woff2"
+        }
+      ],
+      "screenshot": "D:\\Andy Koh\\Craveva\\craveva.com\\qa\\puppeteer\\qa\\puppeteer\\output\\telescope-views`.png"
+    },
+    {
+      "name": "language-settings-logged-out`",
+      "url": "http://127.0.0.1:8000/account/settings/language-settings",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8000/login",
+      "error": null,
+      "logs": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        },
+        {
+          "type": "log",
+          "text": "🔍 Browser logger active (MCP server detected). Posting to: http://127.0.0.1:8000/_boost/browser-logs"
+        },
+        {
+          "type": "verbose",
+          "text": "[DOM] Input elements should have autocomplete attributes (suggested: \"current-password\"): (More info: https://goo.gl/9p2vKq) %o"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+        }
+      ],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/account/settings/language-settings"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/login"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/vendor/bootstrap/css/bootstrap.min.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/vendor/animate-css/animate.min.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/vendor/slick/slick.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/vendor/slick/slick-theme.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/fonts/flaticon/flaticon.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/front/plugin/craveva-helper/helper.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/css/main.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/vendor/material-design-iconic-font/css/material-design-iconic-font.min.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/front/img/craveva-logo.png"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/vendor/jquery/jquery.min.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/vendor/bootstrap/js/bootstrap.bundle.min.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/vendor/slick/slick.min.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/vendor/wowjs/wow.min.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/front/plugin/craveva-helper/helper.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/js/main.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/front/img/craveva-logo.png"
+        },
+        {
+          "method": "GET",
+          "url": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/fonts/HelveticaNeue.woff2"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/fonts/HelveticaNeue-Bold.woff2"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/fonts/flaticon/Flaticon.woff2"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/saas/vendor/material-design-iconic-font/fonts/Material-Design-Iconic-Font.woff2?v=2.2.0"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8000/favicon.png"
+        }
+      ],
+      "responses": [
+        {
+          "status": 302,
+          "url": "http://127.0.0.1:8000/account/settings/language-settings"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/login"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/vendor/bootstrap/css/bootstrap.min.css"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/vendor/animate-css/animate.min.css"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/vendor/slick/slick.css"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/vendor/slick/slick-theme.css"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/fonts/flaticon/flaticon.css"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/front/plugin/craveva-helper/helper.css"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/css/main.css"
+        },
+        {
+          "status": 404,
+          "url": "http://127.0.0.1:8000/front/img/craveva-logo.png"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/vendor/material-design-iconic-font/css/material-design-iconic-font.min.css"
+        },
+        {
+          "status": 200,
+          "url": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/vendor/wowjs/wow.min.js"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/vendor/jquery/jquery.min.js"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/vendor/slick/slick.min.js"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/front/plugin/craveva-helper/helper.js"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/js/main.js"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/vendor/bootstrap/js/bootstrap.bundle.min.js"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/fonts/HelveticaNeue.woff2"
+        },
+        {
+          "status": 404,
+          "url": "http://127.0.0.1:8000/front/img/craveva-logo.png"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/fonts/HelveticaNeue-Bold.woff2"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/fonts/flaticon/Flaticon.woff2"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/saas/vendor/material-design-iconic-font/fonts/Material-Design-Iconic-Font.woff2?v=2.2.0"
+        },
+        {
+          "status": 200,
+          "url": "http://127.0.0.1:8000/favicon.png"
+        }
+      ],
+      "screenshot": "D:\\Andy Koh\\Craveva\\craveva.com\\qa\\puppeteer\\qa\\puppeteer\\output\\language-settings-logged-out`.png"
+    },
+    {
+      "name": "login",
+      "url": "http://127.0.0.1:8000/login",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8000/account/super-admin-dashboard",
+      "error": null,
+      "screenshot": "D:\\Andy Koh\\Craveva\\craveva.com\\qa\\puppeteer\\qa\\puppeteer\\output\\login-after.png"
+    },
+    {
+      "name": "language-settings-after-login",
+      "url": "http://127.0.0.1:8000/account/settings/language-settings",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8000/account/settings/language-settings",
+      "error": null,
+      "screenshot": "D:\\Andy Koh\\Craveva\\craveva.com\\qa\\puppeteer\\qa\\puppeteer\\output\\language-settings-after-login.png"
+    },
+    {
+      "name": "language-settings-debug",
+      "url": "http://127.0.0.1:8000/account/settings/language-settings?debug_error=1",
+      "status": 200,
+      "finalUrl": "http://127.0.0.1:8000/account/settings/language-settings?debug_error=1",
+      "error": null,
+      "screenshot": "D:\\Andy Koh\\Craveva\\craveva.com\\qa\\puppeteer\\qa\\puppeteer\\output\\language-settings-debug.png"
+    },
+    {
+      "name": "telescope-exceptions-api-error",
+      "url": "http://127.0.0.1:8000/telescope/telescope-api/exceptions",
+      "status": null,
+      "finalUrl": null,
+      "error": "SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON",
+      "screenshot": null
+    }
+  ]
+}

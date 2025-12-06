@@ -1,0 +1,21 @@
+{
+    "name": "QRCode",
+    "alias": "qrcode",
+    "description": "",
+    "keywords": [],
+    "active": true,
+    "order": 2,
+    "providers": [
+        "Modules\\QRCode\\Providers\\QRCodeServiceProvider",
+        "Modules\\QRCode\\Providers\\EventServiceProvider"
+    ],
+    "aliases": [],
+    "files": [
+        "start.php"
+    ],
+    "permissions": [],
+    "roles_permissions": {
+        "admin": [],
+        "manager": []
+    }
+}

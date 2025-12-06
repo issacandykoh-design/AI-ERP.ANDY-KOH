@@ -1,0 +1,372 @@
+WEBHOOKS MODULE USER GUIDE
+
+OVERVIEW
+The Webhooks module enables automated HTTP requests to external services when specific events occur within the system. This module supports integration with third-party applications by sending real-time data notifications for various entities including Clients, Employees, Invoices, Leads, Projects, Proposals, and Tasks.
+
+INTERFACE FEATURES
+
+1. WEBHOOKS MANAGEMENT INTERFACE
+   Location: /webhooks
+   Route: webhooks.index
+   
+   1.1 Search Functionality
+   - Search Bar: Located at the top of the interface
+   - Function: Filters webhooks by name or URL
+   - Implementation: Real-time search with AJAX requests
+   - Route: webhooks.index (GET with searchText parameter)
+   
+   1.2 Add Webhook Button
+   - Label: "Add Webhook"
+   - Function: Opens modal dialog for creating new webhooks
+   - Route: webhooks.create (GET)
+   - Modal ID: #add-webhook-modal
+   - Implementation: AJAX modal loading
+   
+   1.3 Webhooks Data Table
+   - Displays: Webhook name, entity type, URL, method, status, actions
+   - Pagination: Server-side processing
+   - Sorting: Available on all columns
+   - Route: webhooks.index (DataTable AJAX)
+   
+   1.4 Status Toggle (Quick Action)
+   - Function: Enables/disables webhook without full edit
+   - Options: Active, Inactive
+   - Route: webhooks.apply-quick-action (POST)
+   - Implementation: Dropdown with AJAX submission
+   
+   1.5 Debug Mode Toggle (Quick Action)
+   - Function: Enables/disables debug mode for webhook
+   - Route: webhooks.apply-quick-action (POST)
+   - Parameter: type=debug
+   
+   1.6 Edit Webhook Button
+   - Icon: Edit/pencil icon
+   - Function: Opens edit modal for webhook modification
+   - Route: webhooks.edit (GET)
+   - Modal ID: #edit-webhook-modal
+   
+   1.7 Delete Webhook Button
+   - Icon: Delete/trash icon
+   - Function: Removes webhook after confirmation
+   - Route: webhooks.destroy (DELETE)
+   - Confirmation: SweetAlert dialog
+   - Success Message: "Webhook deleted successfully"
+
+2. WEBHOOK CREATION INTERFACE
+   Location: /webhooks/create (Modal)
+   Route: webhooks.create
+   
+   2.1 Webhook Name Field
+   - Label: "Webhook action name"
+   - Type: Text input
+   - Required: Yes
+   - Validation: String, maximum length validation
+   
+   2.2 Webhook For Field
+   - Label: "Webhook for"
+   - Type: Select dropdown
+   - Options: Client, Employee, Invoice, Lead, Project, Proposal, Task
+   - Function: Determines available variables for request body
+   - AJAX Trigger: Updates variable options on change
+   - Route: webhooks-for-variable/{webhookFor} (GET)
+   
+   2.3 Request URL Field
+   - Label: "Request URL"
+   - Type: URL input
+   - Required: Yes
+   - Validation: Valid URL format
+   - Placeholder: External service endpoint
+   
+   2.4 Request Method Field
+   - Label: "Request method"
+   - Type: Select dropdown
+   - Options: GET, POST, PUT, PATCH, DELETE
+   - Default: POST
+   
+   2.5 Request Format Field
+   - Label: "Request format"
+   - Type: Select dropdown
+   - Options: JSON
+   - Default: JSON
+   
+   2.6 Request Headers Section
+   - Label: "Request headers"
+   - Function: Configures HTTP headers for webhook requests
+   
+   2.6.1 Header Name Dropdown
+   - Type: Select with predefined options
+   - Options: Accept, Accept-Charset, Accept-Encoding, Accept-Language, Accept-Datetime, Authorization, Cache-Control, Connection, Cookie, Content-Length, Content-Type, Date, Expect, Forwarded, From, Host, If-Match, If-Modified-Since, If-None-Match, If-Range, If-Unmodified-Since, Max-Forwards, Origin, Pragma, Proxy-Authorization, Range, Referer, TE, User-Agent, Upgrade, Via, Warning, Custom
+   - Custom Option: Allows manual header name input
+   
+   2.6.2 Header Value Field
+   - Type: Text input
+   - Function: Specifies header value
+   - Required: When header name is selected
+   
+   2.6.3 Add More Headers Button
+   - Label: "Add More"
+   - Function: Dynamically adds additional header fields
+   - Implementation: JavaScript DOM manipulation
+   
+   2.6.4 Remove Header Button
+   - Icon: Minus/remove icon
+   - Function: Removes specific header field
+   - Implementation: JavaScript event handling
+   
+   2.7 Request Body Section
+   - Label: "Request body"
+   - Function: Configures data payload for webhook requests
+   
+   2.7.1 Body Parameter Key Field
+   - Type: Text input
+   - Function: Specifies parameter name
+   - Placeholder: Parameter key
+   
+   2.7.2 Body Parameter Value Field
+   - Type: Text input with variable support
+   - Function: Specifies parameter value
+   - Variables: Dynamic based on "Webhook for" selection
+   - Format: ##VARIABLE_NAME## (e.g., ##NAME##, ##EMAIL##)
+   
+   2.7.3 Add More Body Parameters Button
+   - Label: "Add More"
+   - Function: Dynamically adds additional body parameter fields
+   - Implementation: JavaScript DOM manipulation
+   
+   2.7.4 Remove Body Parameter Button
+   - Icon: Minus/remove icon
+   - Function: Removes specific body parameter field
+   - Implementation: JavaScript event handling
+   
+   2.8 Save Webhook Button
+   - Label: "Save"
+   - Function: Creates new webhook configuration
+   - Route: webhooks.store (POST)
+   - Validation: Server-side validation of all fields
+   - Success Action: Redirects to webhooks index
+   - Error Handling: Displays validation errors
+   
+   2.9 Cancel Button
+   - Label: "Cancel"
+   - Function: Closes modal without saving
+   - Implementation: Modal dismiss
+
+3. WEBHOOK EDITING INTERFACE
+   Location: /webhooks/{id}/edit (Modal)
+   Route: webhooks.edit
+   
+   3.1 Pre-populated Fields
+   - All fields from creation interface
+   - Values: Loaded from existing webhook configuration
+   - Headers: Displays existing request headers
+   - Body Parameters: Shows configured body parameters
+   
+   3.2 Update Webhook Button
+   - Label: "Update"
+   - Function: Saves changes to existing webhook
+   - Route: webhooks.update (PUT)
+   - Validation: Server-side validation
+   - Success Action: Redirects to webhooks index
+   
+   3.3 Dynamic Field Management
+   - Add/Remove Headers: Same functionality as creation
+   - Add/Remove Body Parameters: Same functionality as creation
+   - Variable Updates: Refreshes available variables if "Webhook for" changes
+
+4. WEBHOOKS LOG INTERFACE
+   Location: /webhooks-log
+   Route: webhooks-log.index
+   
+   4.1 Search Functionality
+   - Search Bar: Filters logs by webhook name or response code
+   - Implementation: Real-time search with AJAX
+   - Route: webhooks-log.index (GET with searchText parameter)
+   
+   4.2 Logs Data Table
+   - Columns: Webhook Name, Response Code, Recorded On, Action
+   - Webhook Name: Clickable link to log details
+   - Response Code: Color-coded badges (success: green, warning: yellow, error: red)
+   - Recorded On: Timestamp of webhook execution
+   - Action: View details button
+   
+   4.3 View Log Details Button
+   - Icon: Eye/view icon
+   - Function: Opens detailed log view
+   - Route: webhooks-log.show (GET)
+   - Implementation: Navigation to detail page
+
+5. WEBHOOK LOG DETAILS INTERFACE
+   Location: /webhooks-log/{id}
+   Route: webhooks-log.show
+   
+   5.1 Request Details Section
+   - URL: Displays target webhook URL
+   - Method: Shows HTTP method used
+   - Date: Timestamp of request execution
+   - Webhook For: Entity type that triggered webhook
+   
+   5.2 Request Headers Section
+   - Display: All headers sent with request
+   - Format: Key-value pairs
+   - Source: Headers configured in webhook settings
+   
+   5.3 Request Body Section
+   - Display: Complete request payload
+   - Format: JSON formatted data
+   - Variables: Resolved variable values
+   
+   5.4 Response Section
+   - Status Code: HTTP response code with color coding
+   - Response Body: Complete response from external service
+   - Format: Raw response data
+
+PERMISSION SYSTEM
+
+1. Access Control
+   - Module Permission: webhooks module access required
+   - Role-based Access: Admin and Employee roles supported
+   - Company Isolation: Webhooks are company-specific
+
+2. Operation Permissions
+   - View Webhooks: Read access to webhook configurations
+   - Create Webhooks: Permission to add new webhooks
+   - Edit Webhooks: Permission to modify existing webhooks
+   - Delete Webhooks: Permission to remove webhooks
+   - View Logs: Access to webhook execution logs
+
+API ENDPOINTS
+
+1. Web Routes (Authenticated)
+   - GET /webhooks: Display webhooks index
+   - GET /webhooks/create: Show webhook creation form
+   - POST /webhooks: Store new webhook
+   - GET /webhooks/{id}/edit: Show webhook edit form
+   - PUT /webhooks/{id}: Update existing webhook
+   - DELETE /webhooks/{id}: Delete webhook
+   - POST /webhooks/apply-quick-action: Apply status/debug changes
+   - GET /webhooks-for-variable/{webhookFor}: Get available variables
+   - GET /webhooks-log: Display webhook logs
+   - GET /webhooks-log/{id}: Show specific log details
+
+2. API Routes
+   - GET /api/webhooks: API access to webhooks (auth:api middleware)
+
+TECHNICAL FEATURES
+
+1. Variable System
+   - Client Variables: ##NAME##, ##EMAIL##, ##MOBILE##, ##COMPANY_NAME##, ##ADDRESS##, ##WEBSITE##, ##GST_NUMBER##, ##CITY##, ##STATE##, ##POSTAL_CODE##
+   - Employee Variables: ##NAME##, ##EMAIL##, ##MOBILE##, ##GENDER##, ##ADDRESS##, ##HOURLY_RATE##, ##SLACK_USERNAME##, ##ABOUT_ME##, ##MARITAL_STATUS##, ##EMPLOYMENT_TYPE##
+   - Invoice Variables: ##TOTAL##, ##TOTAL_AMOUNT##, ##DUE_AMOUNT##, ##SUB_TOTAL##, ##DISCOUNT_TYPE##, ##RECURRING##, ##BILLING_FREQUENCY##, ##INVOICE_NUMBER##, ##STATUS##, ##ISSUE_ON##
+   - Lead Variables: ##NAME##, ##EMAIL##, ##COMPANY_NAME##, ##WEBSITE##, ##ADDRESS##, ##MOBILE##, ##OFFICE##, ##CITY##, ##STATE##, ##COUNTRY##, ##POSTAL_CODE##, ##NOTE##
+   - Project Variables: ##PROJECT_NAME##, ##PROJECT_SHORT_CODE##, ##PROJECT_SUMMARY##, ##PROJECT_BUDGET##, ##STATUS##, ##NOTES##
+   - Proposal Variables: ##SUB_TOTAL##, ##TOTAL##, ##DISCOUNT##, ##DISCOUNT_TYPE##, ##DESCRIPTION##, ##CALCULATE_TAX##
+   - Task Variables: ##HEADING##, ##DESCRIPTION##, ##PRIORITY##, ##DUE_ON##, ##CREATE_ON##
+
+2. Request Configuration
+   - HTTP Methods: GET, POST, PUT, PATCH, DELETE
+   - Content Types: JSON format support
+   - Custom Headers: Configurable request headers
+   - Dynamic Body: Variable substitution in request payload
+
+3. Logging System
+   - Request Logging: Complete request details stored
+   - Response Logging: HTTP status codes and response bodies
+   - Error Tracking: Failed webhook attempts recorded
+   - Audit Trail: Timestamp and execution details
+
+4. Status Management
+   - Active/Inactive: Enable or disable webhook execution
+   - Debug Mode: Enhanced logging for troubleshooting
+   - Quick Actions: Rapid status changes without full edit
+
+CONFIGURATION
+
+1. Webhook Settings
+   - Name: Descriptive identifier for webhook
+   - Target Entity: Determines trigger events and available variables
+   - URL: External service endpoint
+   - Method: HTTP request method
+   - Headers: Custom request headers
+   - Body Parameters: Request payload configuration
+
+2. System Configuration
+   - Module Activation: Enable/disable webhooks module
+   - Permission Settings: Role-based access control
+   - Company Isolation: Multi-tenant webhook separation
+
+INTEGRATION
+
+1. Event Triggers
+   - Automatic Execution: Webhooks fire on entity events
+   - Entity Support: Client, Employee, Invoice, Lead, Project, Proposal, Task
+   - Real-time Processing: Immediate webhook execution
+
+2. External Service Integration
+   - HTTP/HTTPS Support: Secure communication protocols
+   - Authentication: Custom header support for API keys
+   - Data Format: JSON payload structure
+   - Error Handling: Retry mechanisms and failure logging
+
+TECHNICAL IMPLEMENTATION
+
+1. Backend Architecture
+   - Controllers: WebhooksController, WebhooksLogController
+   - Models: WebhooksSetting, WebhooksLog, WebhooksRequest
+   - DataTables: WebhookDataTable, WebhookLogsDataTable
+   - Jobs: SendWebhook (asynchronous processing)
+   - Enums: Variable definitions for each entity type
+
+2. Frontend Implementation
+   - Blade Templates: Responsive UI components
+   - JavaScript: AJAX interactions and dynamic form management
+   - Modal Dialogs: Create and edit interfaces
+   - DataTables: Server-side processing for large datasets
+   - SweetAlert: User-friendly confirmation dialogs
+
+3. Database Structure
+   - webhooks_settings: Main webhook configurations
+   - webhooks_logs: Execution history and responses
+   - webhooks_requests: Header and body parameter storage
+   - Company Association: Multi-tenant data isolation
+
+TROUBLESHOOTING
+
+1. Common Issues
+   - Invalid URL: Ensure target URL is accessible and valid
+   - Authentication Failures: Verify API keys and authentication headers
+   - Variable Resolution: Check entity variable availability and syntax
+   - Network Timeouts: Configure appropriate timeout values
+
+2. Debug Features
+   - Debug Mode: Enhanced logging for webhook execution
+   - Log Details: Complete request and response information
+   - Status Monitoring: Real-time webhook status tracking
+   - Error Messages: Detailed failure descriptions
+
+3. Performance Considerations
+   - Asynchronous Processing: Webhooks execute in background jobs
+   - Rate Limiting: Consider external service limitations
+   - Retry Logic: Automatic retry for failed requests
+   - Log Retention: Regular cleanup of old webhook logs
+
+BEST PRACTICES
+
+1. Configuration Guidelines
+   - Descriptive Names: Use clear, meaningful webhook names
+   - Secure URLs: Always use HTTPS for sensitive data
+   - Authentication: Implement proper API key management
+   - Variable Usage: Utilize appropriate variables for each entity type
+
+2. Monitoring and Maintenance
+   - Regular Log Review: Monitor webhook execution success rates
+   - Status Management: Keep inactive webhooks disabled
+   - URL Validation: Verify external service availability
+   - Performance Monitoring: Track response times and failure rates
+
+3. Security Considerations
+   - API Key Protection: Secure storage of authentication credentials
+   - Data Validation: Validate all input parameters
+   - Access Control: Implement proper permission management
+   - Audit Logging: Maintain comprehensive execution logs
+
+This comprehensive user guide provides detailed information about all Webhooks module functionalities, interface elements, and technical implementation details for effective system integration and management.

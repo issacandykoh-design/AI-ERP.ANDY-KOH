@@ -1,0 +1,489 @@
+FINANCE MODULE USER GUIDE
+
+===========================================
+OVERVIEW
+===========================================
+
+The Finance module is a comprehensive financial management system that handles all monetary transactions, billing, and financial reporting within the ERP system. It provides complete functionality for managing invoices, estimates, payments, expenses, credit notes, proposals, orders, recurring transactions, and financial reports.
+
+===========================================
+1. INVOICES MANAGEMENT
+===========================================
+
+1.1 INVOICE INTERFACE
+The Invoice interface provides comprehensive invoice management capabilities with advanced filtering and bulk operations.
+
+MAIN FEATURES:
+- Duration-based filtering with date range picker
+- Client-based filtering (for non-client users)
+- Project-based filtering
+- Invoice status filtering (pending, unpaid, paid, partial, canceled, pending-confirmation)
+- Real-time search functionality
+- Bulk operations with quick actions
+
+ACTION BUTTONS:
+- Add Invoice: Creates new invoice (/invoices/create)
+- Add Recurring Invoice: Creates recurring invoice template (/recurring-invoices/create)
+- Create Timelog Invoice: Generates invoice from timelogs (/invoices/create-timelog)
+
+QUICK ACTIONS:
+- Change Status: Bulk status modification
+- Delete: Bulk invoice deletion
+- Export: Data export functionality
+
+1.2 INVOICE OPERATIONS
+- Invoice Creation: Complete invoice generation with item management
+- Invoice Editing: Modify existing invoice details
+- Invoice Approval: Workflow-based approval system
+- Invoice Sending: Email delivery to clients
+- Payment Recording: Track payments against invoices
+- Credit Application: Apply credit notes to invoices
+- File Management: Upload and manage invoice attachments
+- Status Management: Track invoice lifecycle (draft, sent, paid, overdue)
+
+ROUTE MAPPINGS:
+- Index: /invoices
+- Create: /invoices/create
+- Edit: /invoices/{id}/edit
+- Show: /invoices/{id}
+- Payment Details: /invoices-payment-details
+- File Upload: /invoices/file-upload
+- Send Invoice: /invoices/send-invoice
+- Payment Reminder: /invoices/payment-reminder
+- Download: /invoices/download/{id}
+- Convert to Invoice: /invoices/convert-estimate/{id}
+
+===========================================
+2. ESTIMATES MANAGEMENT
+===========================================
+
+2.1 ESTIMATE INTERFACE
+The Estimate interface manages quotations and proposals with status tracking and template functionality.
+
+MAIN FEATURES:
+- Duration-based filtering
+- Estimate status filtering (waiting, accepted, declined, draft)
+- Search functionality
+- Template management integration
+
+ACTION BUTTONS:
+- Create Estimate: New estimate creation (/estimates/create)
+- Estimate Templates: Manage estimate templates (/estimates-templates)
+- Estimate Requests: Handle estimate requests (/estimate-requests)
+
+2.2 ESTIMATE OPERATIONS
+- Estimate Creation: Generate detailed quotations
+- Template Management: Reusable estimate templates
+- Client Interaction: Send estimates for approval
+- Status Tracking: Monitor estimate lifecycle
+- Conversion: Convert accepted estimates to invoices
+- Item Management: Add/remove estimate line items
+
+ROUTE MAPPINGS:
+- Index: /estimates
+- Create: /estimates/create
+- Edit: /estimates/{id}/edit
+- Show: /estimates/{id}
+- Send: /estimates/send/{id}
+- Accept: /estimates/accept/{id}
+- Decline: /estimates/decline/{id}
+- Download: /estimates/download/{id}
+- Templates: /estimates-templates
+- Requests: /estimate-requests
+
+===========================================
+3. PAYMENTS MANAGEMENT
+===========================================
+
+3.1 PAYMENT INTERFACE
+The Payment interface handles all payment transactions with comprehensive filtering and bulk processing capabilities.
+
+MAIN FEATURES:
+- Duration-based filtering
+- Client and project filtering
+- Payment status filtering (pending, complete, failed)
+- Search functionality
+- Bulk payment processing
+
+ACTION BUTTONS:
+- Add Payment: Record new payment (/payments/create)
+- Bulk Payments: Process multiple payments (/payments/bulk-payment)
+
+3.2 PAYMENT OPERATIONS
+- Payment Recording: Manual payment entry
+- Online Payment Processing: Integration with payment gateways
+- Payment Method Management: Configure payment options
+- Bank Account Management: Track payment accounts
+- Payment Reconciliation: Match payments with invoices
+- Refund Processing: Handle payment reversals
+
+ROUTE MAPPINGS:
+- Index: /payments
+- Create: /payments/create
+- Edit: /payments/{id}/edit
+- Show: /payments/{id}
+- Quick Actions: /payments/quick-action
+- Download: /payments/download/{id}
+- Account List: /payments/account-list
+- Offline Methods: /payments/offline-methods
+- Bulk Payment: /payments/bulk-payment
+
+===========================================
+4. EXPENSES MANAGEMENT
+===========================================
+
+4.1 EXPENSE INTERFACE
+The Expense interface manages all business expenses with approval workflows and categorization.
+
+MAIN FEATURES:
+- Duration-based filtering
+- Status filtering (pending, approved, rejected)
+- Employee-based filtering
+- Project-based filtering
+- Category-based filtering
+- Search functionality
+
+ACTION BUTTONS:
+- Add Expense: Create new expense (/expenses/create)
+- Recurring Expenses: Manage recurring expenses (/recurring-expenses)
+- Import Excel: Bulk expense import (/expenses/import)
+
+4.2 EXPENSE OPERATIONS
+- Expense Creation: Record business expenses
+- Approval Workflow: Multi-level expense approval
+- Category Management: Organize expenses by category
+- Receipt Management: Upload expense receipts
+- Recurring Expenses: Automate regular expenses
+- Expense Reports: Generate expense analytics
+
+ROUTE MAPPINGS:
+- Index: /expenses
+- Create: /expenses/create
+- Edit: /expenses/{id}/edit
+- Show: /expenses/{id}
+- Import: /expenses/import
+- Quick Actions: /expenses/quick-action
+- Status Change: /expenses/change-status
+- Recurring: /recurring-expenses
+- Employee Projects: /expenses/employee-projects
+- Category Employees: /expenses/category-employees
+
+===========================================
+5. CREDIT NOTES MANAGEMENT
+===========================================
+
+5.1 CREDIT NOTE INTERFACE
+The Credit Note interface handles credit memos and refund processing with invoice integration.
+
+MAIN FEATURES:
+- Duration-based filtering
+- Client filtering (for non-client users)
+- Project-based filtering
+- Status filtering (open, closed)
+- Search functionality
+
+5.2 CREDIT NOTE OPERATIONS
+- Credit Note Creation: Generate credit memos
+- Invoice Integration: Apply credits to invoices
+- Credit Tracking: Monitor credit balances
+- File Management: Upload supporting documents
+- Status Management: Track credit note lifecycle
+
+ROUTE MAPPINGS:
+- Index: /credit-notes
+- Create: /credit-notes/create
+- Edit: /credit-notes/{id}/edit
+- Show: /credit-notes/{id}
+- File Upload: /credit-notes/file-upload
+- Apply to Invoice: /credit-notes/apply-invoice
+- Download: /credit-notes/download/{id}
+- Convert Invoice: /credit-notes/convert-invoice/{id}
+
+===========================================
+6. PROPOSALS MANAGEMENT
+===========================================
+
+6.1 PROPOSAL INTERFACE
+The Proposal interface manages business proposals with lead integration and template functionality.
+
+MAIN FEATURES:
+- Duration-based filtering
+- Lead-based filtering
+- Status filtering (accepted, waiting, declined)
+- Search functionality
+- Template management
+
+ACTION BUTTONS:
+- Create Proposal: New proposal creation (/proposals/create)
+- Proposal Templates: Manage proposal templates (/proposal-template)
+
+6.2 PROPOSAL OPERATIONS
+- Proposal Creation: Generate business proposals
+- Lead Integration: Connect proposals to leads
+- Template Management: Reusable proposal templates
+- Client Interaction: Send proposals for review
+- Status Tracking: Monitor proposal progress
+- Conversion: Convert accepted proposals to projects
+
+ROUTE MAPPINGS:
+- Index: /proposals
+- Create: /proposals/create
+- Edit: /proposals/{id}/edit
+- Show: /proposals/{id}
+- Send: /proposals/send/{id}
+- Templates: /proposal-template
+- Download: /proposals/download/{id}
+- Image Management: /proposals/delete-image
+
+===========================================
+7. ORDERS MANAGEMENT
+===========================================
+
+7.1 ORDER INTERFACE
+The Order interface manages product orders with comprehensive status tracking and client integration.
+
+MAIN FEATURES:
+- Duration-based filtering
+- Client filtering (for non-client users)
+- Project-based filtering
+- Status filtering (pending, on-hold, failed, processing, completed, canceled, refunded)
+- Search functionality
+
+ACTION BUTTONS:
+- Add New Order: Create new order (/orders/create or /products for clients)
+
+7.2 ORDER OPERATIONS
+- Order Creation: Generate product/service orders
+- Status Management: Track order lifecycle
+- Payment Integration: Process order payments
+- Inventory Management: Track product availability
+- Shipping Management: Handle order fulfillment
+- Client Portal: Allow client order placement
+
+ROUTE MAPPINGS:
+- Index: /orders
+- Create: /orders/create
+- Edit: /orders/{id}/edit
+- Show: /orders/{id}
+- Products: /products (client interface)
+- Payment: /order-payment/{id}
+
+===========================================
+8. RECURRING INVOICES
+===========================================
+
+8.1 RECURRING INVOICE INTERFACE
+The Recurring Invoice interface automates repetitive billing with flexible scheduling options.
+
+MAIN FEATURES:
+- Duration-based filtering
+- Client filtering
+- Project-based filtering
+- Status filtering (active, inactive)
+- Search functionality
+
+ACTION BUTTONS:
+- Add Recurring Invoice: Create recurring template (/recurring-invoices/create)
+
+8.2 RECURRING INVOICE OPERATIONS
+- Template Creation: Set up recurring invoice templates
+- Schedule Management: Configure billing frequencies
+- Automatic Generation: Auto-create invoices based on schedule
+- Status Control: Activate/deactivate recurring invoices
+- History Tracking: Monitor generated invoices
+
+ROUTE MAPPINGS:
+- Index: /recurring-invoices
+- Create: /recurring-invoices/create
+- Edit: /recurring-invoices/{id}/edit
+- Show: /recurring-invoices/{id}
+- Status Change: /recurring-invoices/change-status
+- Export: /recurring-invoices/export
+- Delete Repeat: /recurring-invoices/delete-repeat-invoices
+
+===========================================
+9. FINANCIAL REPORTS
+===========================================
+
+9.1 FINANCE REPORT INTERFACE
+The Finance Report interface provides comprehensive financial analytics and insights.
+
+MAIN FEATURES:
+- Duration-based filtering
+- Client filtering (if clients module enabled)
+- Project-based filtering
+- Total earnings widget
+- Interactive charts and graphs
+- Detailed financial data tables
+
+9.2 REPORT TYPES
+- Earnings Reports: Track total revenue
+- Expense Reports: Monitor business expenses
+- Income vs Expense: Comparative analysis
+- Client-wise Reports: Revenue by client
+- Project-wise Reports: Profitability analysis
+- Payment Reports: Payment tracking and analysis
+
+ROUTE MAPPINGS:
+- Finance Reports: /reports/finance
+- Expense Reports: /reports/expense
+- Income vs Expense: /reports/income-vs-expense-report
+- Chart Data: /reports/finance/chart-data
+- Expense Chart: /reports/expense/chart-data
+- Category Reports: /reports/expense/category-chart
+
+===========================================
+10. SETTINGS AND CONFIGURATION
+===========================================
+
+10.1 INVOICE SETTINGS
+- Template Management: Customize invoice layouts
+- Prefix Configuration: Set invoice numbering
+- Tax Settings: Configure tax rates and rules
+- Currency Settings: Multi-currency support
+- Terms and Conditions: Default invoice terms
+
+10.2 PAYMENT GATEWAY SETTINGS
+- Gateway Configuration: Set up payment processors
+- Credential Management: Secure API key storage
+- Method Selection: Enable/disable payment methods
+- Fee Configuration: Set processing fees
+
+10.3 OFFLINE PAYMENT SETTINGS
+- Method Creation: Define offline payment options
+- Verification Process: Set approval workflows
+- Documentation: Manage payment proofs
+
+ROUTE MAPPINGS:
+- Invoice Settings: /invoice-settings
+- Payment Gateway: /payment-gateway-settings
+- Offline Payment: /offline-payment-setting
+- Currency Settings: /currency-settings
+
+===========================================
+11. PUBLIC INTERFACES
+===========================================
+
+11.1 CLIENT PORTALS
+- Public Invoice View: /invoice/{hash}
+- Public Estimate View: /estimate/{hash}
+- Public Proposal View: /proposal/{hash}
+- Online Payment Processing: Multiple gateway support
+
+11.2 PAYMENT GATEWAYS
+- Stripe: /stripe-payment/{invoiceId}
+- PayPal: /paypal-payment/{invoiceId}
+- Razorpay: /razorpay-payment/{invoiceId}
+- Paystack: /paystack-payment/{invoiceId}
+- Flutterwave: /flutterwave-payment/{invoiceId}
+- Mollie: /mollie-payment/{invoiceId}
+- Payfast: /payfast-payment/{invoiceId}
+- Authorize.Net: /authorize-payment/{invoiceId}
+- Square: /square-payment/{invoiceId}
+
+===========================================
+12. INTEGRATION FEATURES
+===========================================
+
+12.1 PROJECT INTEGRATION
+- Project-based invoicing
+- Timelog to invoice conversion
+- Project expense tracking
+- Client-project financial reporting
+
+12.2 CLIENT INTEGRATION
+- Client-specific financial data
+- Payment history tracking
+- Credit limit management
+- Statement generation
+
+12.3 EMPLOYEE INTEGRATION
+- Expense submission workflows
+- Approval hierarchies
+- Reimbursement processing
+- Employee financial reports
+
+===========================================
+13. PERMISSIONS AND ACCESS CONTROL
+===========================================
+
+13.1 ROLE-BASED ACCESS
+- Add Invoices: Create new invoices
+- View Invoices: Access invoice data
+- Edit Invoices: Modify existing invoices
+- Delete Invoices: Remove invoices
+- Manage Payments: Handle payment operations
+- Approve Expenses: Expense approval rights
+- View Reports: Access financial reports
+- Manage Settings: Configure finance settings
+
+13.2 CLIENT RESTRICTIONS
+- Limited to own financial data
+- Restricted payment methods
+- View-only access to most features
+- Self-service payment options
+
+===========================================
+14. WORKFLOW PROCESSES
+===========================================
+
+14.1 INVOICE WORKFLOW
+1. Create Invoice → Add Items → Review → Send to Client
+2. Client Receives → Makes Payment → Payment Recorded
+3. Invoice Marked as Paid → Generate Receipt
+
+14.2 EXPENSE WORKFLOW
+1. Employee Submits Expense → Manager Reviews
+2. Approved/Rejected → If Approved → Reimbursement Processed
+3. Expense Recorded in Financial Reports
+
+14.3 ESTIMATE WORKFLOW
+1. Create Estimate → Send to Client → Client Reviews
+2. Accepted → Convert to Invoice → Follow Invoice Workflow
+3. Declined → Archive or Revise
+
+===========================================
+15. REPORTING AND ANALYTICS
+===========================================
+
+15.1 FINANCIAL DASHBOARDS
+- Real-time financial metrics
+- Revenue trends and projections
+- Expense categorization
+- Profit and loss summaries
+- Cash flow analysis
+
+15.2 EXPORT CAPABILITIES
+- PDF generation for all documents
+- Excel export for data analysis
+- CSV export for external systems
+- Bulk export operations
+
+===========================================
+NAVIGATION SUMMARY
+===========================================
+
+PRIMARY ROUTES:
+- /invoices - Invoice management
+- /estimates - Estimate management  
+- /payments - Payment processing
+- /expenses - Expense management
+- /credit-notes - Credit note handling
+- /proposals - Proposal management
+- /orders - Order management
+- /recurring-invoices - Recurring billing
+- /reports/finance - Financial reporting
+
+SETTINGS ROUTES:
+- /invoice-settings - Invoice configuration
+- /payment-gateway-settings - Payment setup
+- /offline-payment-setting - Offline payments
+- /currency-settings - Currency management
+
+PUBLIC ROUTES:
+- /invoice/{hash} - Public invoice view
+- /estimate/{hash} - Public estimate view
+- /proposal/{hash} - Public proposal view
+- /{gateway}-payment/{id} - Payment processing
+
+The Finance module provides a complete financial management solution with robust features for billing, payment processing, expense management, and financial reporting. All components are integrated to provide seamless financial operations within the ERP system.

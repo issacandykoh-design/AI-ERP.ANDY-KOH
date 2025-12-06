@@ -1,0 +1,720 @@
+HR MODULE USER GUIDE
+====================
+
+This comprehensive guide covers all Human Resources (HR) functionalities within the ERP system, providing detailed explanations of features, navigation paths, and user interactions for optimal HR management.
+
+1. EMPLOYEE MANAGEMENT
+======================
+
+1.1 EMPLOYEE LISTING AND OVERVIEW
+----------------------------------
+URL: /employees
+Route: employees.index
+
+The employee listing page provides comprehensive employee management capabilities with advanced filtering and search options.
+
+Filter Options:
+- Employee Selection: Filter by specific employees using searchable dropdown
+- Designation Filter: Filter employees by job designation/position
+- Department Filter: Filter by organizational departments
+- Reporting Manager Filter: Filter by employees' reporting managers
+- Employee Role Filter: Filter by system roles (admin, employee, client, etc.)
+- Status Filter: Filter by active/inactive employee status
+- Gender Filter: Filter by male/female/other gender categories
+- Employment Type Filter: Filter by employment categories:
+  * Probation: Employees in probationary period
+  * Internship: Intern employees
+  * Notice Period: Employees serving notice
+  * New Hires: Recently joined employees
+  * Long Standing: Long-term employees
+
+Search Functionality:
+- Global search field for employee names, emails, and employee IDs
+- Real-time search with instant results
+- Clear filters button to reset all applied filters
+
+Action Buttons (Permission-based):
+- Add New Employee: Create new employee records (requires add_employees permission)
+- Invite Employee: Send invitation emails to new employees
+- Import from Excel: Bulk import employee data from Excel files
+- Export Options: Export employee data in various formats
+
+Employee List Display:
+- Employee photo/avatar with fallback initials
+- Employee ID and full name with salutation
+- Email address and contact information
+- Designation and department details
+- Joining date and employment status
+- Role assignment and permissions level
+- Last login timestamp
+- Action buttons for individual employee management
+
+1.2 EMPLOYEE CREATION AND REGISTRATION
+--------------------------------------
+URL: /employees/create
+Route: employees.create
+Modal URL: /employees/ajax/create
+
+The employee creation form provides comprehensive data collection for new employee registration.
+
+Account Details Section:
+- Employee ID: Auto-generated or manual entry with validation
+- Salutation: Title selection (Mr., Ms., Dr., etc.)
+- Full Name: Required field with validation
+- Email Address: Unique email with validation
+- Date of Birth: Date picker with age validation
+- Designation: Searchable dropdown with add new option (requires add_designation permission)
+- Department: Searchable dropdown with add new option (requires add_department permission)
+- Profile Picture: Image upload with cropping functionality (supports PNG, JPG, JPEG, SVG, BMP)
+
+Contact Information:
+- Country Selection: Searchable dropdown with flag icons
+- Mobile Number: International format with country code selection
+- Address: Multi-line text field for complete address
+- About Me: Biographical information text area
+
+Employment Details:
+- Gender: Male/Female/Others selection
+- Joining Date: Required date field with date picker
+- Reporting Manager: Searchable employee dropdown
+- Language Preference: System language selection with flag icons
+- Role Assignment: System role selection with permissions
+
+Additional Settings:
+- Login Access: Enable/disable system login capability
+- Email Notifications: Enable/disable email notification preferences
+- Hourly Rate: Compensation rate with currency symbol
+- Slack Username: Integration with Slack workspace
+- Skills/Tags: Comma-separated skill tags with autocomplete
+
+Employment Type Configuration:
+- Employment Type: Full-time, Part-time, Contract, Internship, Trainee
+- Probation End Date: For probationary employees
+- Notice Period Dates: Start and end dates for notice period
+- Contract End Date: For contract employees (conditional field)
+- Internship End Date: For interns (conditional field)
+
+Personal Information:
+- Marital Status: Single, Married, Divorced, Widowed options
+- Marriage Anniversary: Date field (conditional on marital status)
+- Company Address: Business location assignment
+
+Integration Features:
+- Telegram Integration: User ID for Telegram notifications (if enabled)
+- Custom Fields: Additional configurable fields based on company requirements
+
+Form Actions:
+- Save: Create employee and return to listing
+- Save & Add More: Create employee and open new form
+- Cancel: Discard changes and close form
+
+1.3 EMPLOYEE PROFILE MANAGEMENT
+-------------------------------
+URL: /employees/{id}
+Route: employees.show
+
+The employee profile provides comprehensive employee information management with tabbed navigation.
+
+Profile Overview:
+- Employee photo with edit capability
+- Full name with salutation and country flag
+- Designation and department information
+- Role assignment and permissions level
+- Last login timestamp and activity status
+- Employment status indicator (active/inactive)
+
+Quick Statistics (for authorized users):
+- Open Tasks Count: Number of pending tasks assigned
+- Projects Count: Number of projects employee is involved in
+- Hours Logged: Total time logged by employee
+- Tickets Count: Number of support tickets assigned
+
+Profile Information Display:
+- Employee ID and full name
+- Designation and department details
+- Gender with appropriate icon
+- Work anniversary calculation and display
+- Date of birth (month and day only for privacy)
+- Email address and mobile number (for authorized users)
+- Slack username integration
+- Hourly rate information (for authorized users)
+
+Profile Tabs Navigation:
+Each tab provides specific employee information based on user permissions:
+
+1.3.1 Profile Tab
+URL: /employees/{id}?tab=profile
+- Complete employee information display
+- Personal and professional details
+- Contact information and preferences
+- Employment history and status
+
+1.3.2 Projects Tab
+URL: /employees/{id}?tab=projects
+Permission: view_employee_projects = 'all'
+- List of projects employee is assigned to
+- Project roles and responsibilities
+- Project status and progress information
+- Project timeline and milestones
+
+1.3.3 Tasks Tab
+URL: /employees/{id}?tab=tasks
+Permission: view_employee_tasks = 'all'
+- Assigned tasks list with status
+- Task priorities and deadlines
+- Task completion statistics
+- Task performance metrics
+
+1.3.4 Attendance Tab
+URL: /employees/{id}?tab=attendance
+Permission: view_attendance != 'none' and != 5
+- Daily attendance records
+- Clock in/out times and locations
+- Attendance statistics and patterns
+- Late arrivals and early departures
+- Monthly attendance summaries
+
+1.3.5 Leaves Tab
+URL: /employees/{id}?tab=leaves
+Permission: view_leave = 'all' or owned access
+- Leave application history
+- Leave balances and quotas
+- Leave approval status
+- Leave calendar view
+- Leave statistics and trends
+
+1.3.6 Leave Quota Tab
+URL: /employees/{id}?tab=leaves-quota
+- Annual leave entitlements
+- Leave type allocations
+- Used vs. available leave days
+- Leave policy compliance
+- Quota adjustments and history
+
+1.3.7 Time Logs Tab
+URL: /employees/{id}?tab=timelogs
+Permission: view_employee_timelogs = 'all'
+- Detailed time tracking records
+- Project-wise time allocation
+- Billable vs. non-billable hours
+- Time log approval status
+- Productivity analytics
+
+1.3.8 Documents Tab
+URL: /employees/{id}?tab=documents
+Permission: view_documents != 'none'
+- Employee document repository
+- Contract documents and agreements
+- Certificates and qualifications
+- Identity and compliance documents
+- Document version control
+
+1.3.9 Emergency Contacts Tab
+URL: /employees/{id}?tab=emergency-contacts
+Permission: manage_emergency_contact = 'all' or own access
+- Emergency contact information
+- Relationship details and priorities
+- Contact verification status
+- Multiple contact management
+
+1.3.10 Increment/Promotions Tab
+URL: /employees/{id}?tab=increment-promotions
+Permission: view_increment_promotion != 'none'
+- Salary increment history
+- Promotion records and dates
+- Performance review outcomes
+- Career progression tracking
+
+1.3.11 Tickets Tab
+URL: /employees/{id}?tab=tickets
+Permission: view_tickets = 'all'
+- Support tickets assigned to employee
+- Ticket resolution statistics
+- Customer service metrics
+- Ticket priority and status tracking
+
+1.3.12 Appreciation Tab
+URL: /employees/{id}?tab=appreciation
+Permission: view_appreciation (non-client users)
+- Employee recognition records
+- Awards and achievements
+- Peer appreciation messages
+- Recognition statistics and trends
+
+1.3.13 Shifts Tab
+URL: /employees/{id}?tab=shifts
+Permission: view_shift_roster = 'all'
+- Shift schedule assignments
+- Shift pattern preferences
+- Shift change requests
+- Roster compliance tracking
+
+1.3.14 Permissions Tab
+URL: /employees/{id}?tab=permissions
+Permission: manage_role_permission_setting = 'all'
+- System permission assignments
+- Role-based access control
+- Permission modification history
+- Security access levels
+
+1.3.15 Activity Tab
+URL: /employees/{id}?tab=activity
+- Employee system activity log
+- Login/logout timestamps
+- Feature usage statistics
+- Audit trail information
+
+1.3.16 Immigration Tab
+URL: /employees/{id}?tab=immigration
+Permission: view_immigration = 'all' or owned access
+- Visa and work permit information
+- Immigration status tracking
+- Document expiry alerts
+- Compliance monitoring
+
+2. ATTENDANCE MANAGEMENT
+========================
+
+2.1 ATTENDANCE OVERVIEW AND TRACKING
+------------------------------------
+URL: /attendances
+Route: attendances.index
+
+The attendance management system provides comprehensive tracking and reporting of employee attendance with multiple view options and filtering capabilities.
+
+Filter Options:
+- Employee Filter: Select specific employees for attendance review
+- Department Filter: Filter by organizational departments
+- Designation Filter: Filter by job positions/roles
+- Month Filter: Select specific month for attendance data
+- Year Filter: Select specific year for attendance records
+
+View Options:
+- Summary View: Consolidated attendance overview with statistics
+- By Member View: Individual employee attendance details
+- By Hour View: Hourly attendance breakdown and analysis
+- By Map Location View: Geographic attendance tracking (if location tracking enabled)
+
+Action Buttons (Permission-based):
+- Mark Attendance: Manual attendance entry (requires add_attendance permission)
+- Export to Excel: Download attendance reports in Excel format
+- Import from Excel: Bulk import attendance data from Excel files
+
+Attendance Display Features:
+- Daily attendance status indicators (Present, Absent, Late, Half Day)
+- Clock in/out times with location information
+- Total working hours calculation
+- Overtime hours tracking
+- Break time monitoring
+- Attendance pattern analysis
+
+2.2 CLOCK IN/OUT FUNCTIONALITY
+------------------------------
+URL: /dashboard/employee (Employee Dashboard)
+Route: dashboard.employee
+
+Real-time Clock Features:
+- Current time display with timezone support
+- Date display with company calendar format
+- Clock In button (when employee not clocked in)
+- Clock Out button (when employee clocked in)
+
+Location Tracking:
+- GPS coordinate capture for attendance verification
+- Location-based attendance validation
+- Geofencing compliance checking
+- Map integration for attendance locations
+
+Shift Validation:
+- Automatic shift schedule verification
+- Early/late arrival detection
+- Shift pattern compliance monitoring
+- Flexible vs. strict timing enforcement
+
+Status Checking:
+- Leave status verification before clock in
+- Holiday calendar integration
+- Work from home status validation
+- Auto clock-out functionality for compliance
+
+2.3 ATTENDANCE SETTINGS AND CONFIGURATION
+-----------------------------------------
+URL: /attendance-settings
+Route: attendance-settings.index
+
+Attendance Policy Configuration:
+- Working hours definition and scheduling
+- Break time policies and enforcement
+- Overtime calculation rules and rates
+- Late arrival grace periods and penalties
+- Early departure policies and approvals
+
+Shift Management:
+- Multiple shift pattern creation
+- Flexible vs. fixed timing options
+- Shift rotation scheduling
+- Weekend and holiday shift assignments
+
+Location Settings:
+- Office location definition and boundaries
+- Geofencing radius configuration
+- Remote work location approval
+- Location tracking accuracy settings
+
+Notification Settings:
+- Attendance reminder notifications
+- Late arrival alert configurations
+- Missing attendance notifications
+- Supervisor alert preferences
+
+3. LEAVE MANAGEMENT
+===================
+
+3.1 LEAVE OVERVIEW AND ADMINISTRATION
+-------------------------------------
+URL: /leaves
+Route: leaves.index
+
+The leave management system provides comprehensive leave tracking, approval workflows, and reporting capabilities.
+
+Filter Options:
+- Date Range Filter: Select specific date periods for leave data
+- Employee Filter: Filter by specific employees
+- Leave Type Filter: Filter by leave categories (Annual, Sick, Personal, etc.)
+- Status Filter: Filter by approval status:
+  * Approved: Confirmed leave applications
+  * Pending: Awaiting approval leave requests
+  * Rejected: Declined leave applications
+
+Search and Navigation:
+- Global search field for employee names and leave details
+- Clear filters button to reset all applied filters
+- Advanced search with multiple criteria
+
+Action Buttons (Permission-based):
+- Add New Leave: Create new leave applications (requires add_leave permission)
+- Export to Excel: Download leave reports in Excel format
+- Bulk Actions: Mass operations on selected leave records
+  * Change Status: Bulk approval/rejection of leave applications
+  * Delete Leaves: Bulk deletion of leave records (requires appropriate permissions)
+
+Leave Display Features:
+- Employee information with photo and designation
+- Leave type and category classification
+- Leave duration (full day, half day, hourly)
+- Leave dates with calendar integration
+- Approval status with color-coded indicators
+- Approver information and approval timestamps
+- Leave balance impact calculation
+
+3.2 LEAVE APPLICATION PROCESS
+-----------------------------
+URL: /leaves/create
+Route: leaves.create
+
+Leave Application Form:
+- Employee Selection: Choose employee for leave application
+- Leave Type Selection: Choose from configured leave types
+- Date Selection: Start and end date with calendar picker
+- Duration Options: Full day, half day (morning/evening), hourly leave
+- Reason Field: Detailed explanation for leave request
+- Attachment Upload: Supporting documents (medical certificates, etc.)
+
+Leave Balance Validation:
+- Real-time balance checking against available quota
+- Leave policy compliance verification
+- Overlapping leave detection and prevention
+- Holiday and weekend consideration
+
+Approval Workflow:
+- Automatic routing to designated approvers
+- Multi-level approval process support
+- Email notifications to approvers and applicants
+- Approval history and audit trail
+
+3.3 LEAVE QUOTA MANAGEMENT
+--------------------------
+URL: /employees/{id}?tab=leaves-quota
+Route: employees.show with leaves-quota tab
+
+Leave Quota Administration:
+- Annual leave entitlement configuration
+- Leave type allocation and limits
+- Carry-forward policy implementation
+- Pro-rata calculation for new joiners
+
+Quota Tracking:
+- Used vs. available leave days display
+- Leave balance calculations and updates
+- Quota expiry date monitoring
+- Leave accrual rate configuration
+
+Quota Adjustments:
+- Manual quota modifications with justification
+- Bonus leave allocation for special circumstances
+- Leave encashment processing
+- Quota transfer between leave types
+
+4. HOLIDAY MANAGEMENT
+=====================
+
+4.1 HOLIDAY CALENDAR ADMINISTRATION
+-----------------------------------
+URL: /holiday
+Route: holiday.index
+
+The holiday management system provides comprehensive holiday planning and calendar management with multiple view options.
+
+Filter Options:
+- Month Filter: Select specific month for holiday display
+- Year Filter: Select specific year for holiday calendar
+
+View Options:
+- Calendar View: Visual calendar display with holiday markers
+- Table View: List format with detailed holiday information
+
+Search Functionality:
+- Holiday name search with real-time filtering
+- Clear filters button to reset search criteria
+
+Action Buttons (Permission-based):
+- Add New Holiday: Create new holiday entries (requires add_holiday permission)
+- Mark Sundays as Holidays: Bulk operation to set all Sundays as holidays
+- Bulk Delete: Mass deletion of selected holiday records
+
+Holiday Display Features:
+- Holiday name and description
+- Holiday date with calendar integration
+- Holiday type classification (National, Religious, Company-specific)
+- Recurring holiday pattern configuration
+- Holiday applicability by location/department
+
+4.2 HOLIDAY CONFIGURATION
+-------------------------
+URL: /holiday/create
+Route: holiday.create
+
+Holiday Creation Form:
+- Holiday Name: Descriptive name for the holiday
+- Holiday Date: Date selection with calendar picker
+- Holiday Type: Classification (Public, Optional, Floating)
+- Description: Detailed holiday information
+- Recurring Pattern: Annual recurrence configuration
+- Location Applicability: Office/branch specific holidays
+- Department Applicability: Department-specific holiday assignments
+
+Holiday Management Features:
+- Holiday conflict detection and resolution
+- Weekend and holiday overlap handling
+- Holiday notification and communication
+- Holiday calendar synchronization with external systems
+
+5. EMPLOYEE SHIFT MANAGEMENT
+============================
+
+5.1 SHIFT SCHEDULING AND ROSTER MANAGEMENT
+------------------------------------------
+URL: /employee-shifts
+Route: employee-shifts.index
+
+The shift management system provides comprehensive scheduling capabilities for managing employee work patterns and roster assignments.
+
+Shift Configuration Display:
+- Shift Name: Descriptive identifier for shift patterns
+- Shift Timing: Start and end times with timezone support
+- Timing Type: Strict vs. Flexible hour enforcement
+- Late Mark Duration: Grace period before marking late arrival
+- Check-ins Per Day: Number of required clock-ins/outs
+- Office Open Days: Working days configuration for each shift
+
+Shift Management Actions:
+- Edit Shift: Modify existing shift configurations
+- Delete Shift: Remove shift patterns (with confirmation)
+- Set Default Shift: Assign default shift for new employees
+- Shift Assignment: Assign specific shifts to employees
+
+Shift Types and Patterns:
+- Fixed Shifts: Standard working hours with strict timing
+- Flexible Shifts: Variable working hours within defined ranges
+- Rotating Shifts: Alternating shift patterns for employees
+- Split Shifts: Multiple work periods within a single day
+
+5.2 SHIFT ROSTER MANAGEMENT
+---------------------------
+URL: /employees/{id}?tab=shifts
+Route: employees.show with shifts tab
+
+Individual Shift Assignment:
+- Current shift assignment display
+- Shift history and change tracking
+- Shift preference recording and management
+- Shift change request processing
+
+Roster Planning:
+- Weekly/monthly roster creation
+- Shift coverage optimization
+- Employee availability consideration
+- Shift swap and exchange management
+
+Shift Compliance Monitoring:
+- Shift adherence tracking and reporting
+- Shift violation detection and alerts
+- Overtime calculation based on shift patterns
+- Shift performance analytics and insights
+
+6. HR DASHBOARD AND ANALYTICS
+=============================
+
+6.1 HR DASHBOARD OVERVIEW
+-------------------------
+URL: /dashboard/advanced?tab=hr
+Route: dashboard.advanced with hr tab parameter
+
+The HR dashboard provides comprehensive analytics and insights for human resources management with real-time data visualization.
+
+Key Widgets and Metrics:
+- Total Leaves Approved: Count of approved leave applications
+- Total New Employees: Recent hiring statistics
+- Total Employee Exits: Attrition tracking and analysis
+- Average Attendance: Attendance percentage calculations
+- Total Today Attendance: Real-time attendance monitoring
+
+Analytical Charts:
+- Department Wise Employee Chart: Employee distribution by departments
+- Designation Wise Employee Chart: Employee distribution by job roles
+- Gender Wise Employee Chart: Gender diversity analytics
+- Role Wise Employee Chart: System role distribution analysis
+- Leaves Taken Chart: Leave utilization patterns and trends
+- Late Attendance Mark Widget: Punctuality tracking and analysis
+- Headcount Widget: Total employee count with trend analysis
+- Joining vs Attrition Chart: Hiring vs. departure trend comparison
+- Birthday Widget: Employee birthday tracking and notifications
+
+Permission Requirements:
+- view_hr_dashboard: Required for accessing HR dashboard features
+- Specific module permissions for individual widget access
+
+6.2 EMPLOYEE DASHBOARD FEATURES
+-------------------------------
+URL: /dashboard/employee
+Route: dashboard.employee
+
+Personal Dashboard Widgets:
+- Profile Widget: Employee personal information and photo
+- Shift Schedule Widget: Current shift timing and schedule
+- Birthday Widget: Upcoming birthdays and celebrations
+- My Task Widget: Personal task assignments and deadlines
+- My Calendar Widget: Personal calendar with events and appointments
+- Projects Widget: Assigned projects and progress tracking
+- Week Timelog Widget: Weekly time tracking summary
+- Leave Widget: Leave balance and upcoming leave plans
+- Notices Widget: Company announcements and notifications
+- Tickets Widget: Assigned support tickets and status
+- Appreciation Widget: Recognition and appreciation messages
+- Work Anniversary Widget: Employment milestone tracking
+- Contract Date Widget: Contract renewal and expiry tracking
+- Follow-ups Widget: Pending follow-up tasks and reminders
+- Internship Date Widget: Internship period tracking (for interns)
+- Notice Period Widget: Notice period countdown (for departing employees)
+- Probation Widget: Probation period status (for probationary employees)
+- Work From Home Widget: WFH requests and approvals
+
+Clock In/Out Functionality:
+- Real-time clock display with current time and date
+- Location-based attendance tracking
+- Shift schedule validation and compliance
+- Leave and holiday status integration
+- Auto clock-out functionality for policy compliance
+
+6.3 EMPLOYEE CALENDAR INTEGRATION
+---------------------------------
+URL: /dashboard/private-calendar
+Route: dashboard.privateCalendar
+
+Personal Calendar Features:
+- Integrated calendar view with multiple event types
+- Event filtering options:
+  * Tasks: Personal and assigned task deadlines
+  * Events: Company events and meetings
+  * Holidays: Company and national holidays
+  * Tickets: Support ticket deadlines and schedules
+  * Leaves: Personal leave applications and approvals
+
+Calendar Management:
+- Date range selection and navigation
+- Event creation and modification
+- Calendar synchronization with external systems
+- Reminder and notification settings
+
+7. HR PERMISSIONS AND ACCESS CONTROL
+====================================
+
+7.1 EMPLOYEE MANAGEMENT PERMISSIONS
+-----------------------------------
+- add_employees: Create new employee records
+- edit_employees: Modify existing employee information
+- view_employees: Access employee listing and profiles
+- delete_employees: Remove employee records from system
+
+7.2 ATTENDANCE MANAGEMENT PERMISSIONS
+------------------------------------
+- add_attendance: Manual attendance entry and modification
+- view_attendance: Access attendance records and reports
+- edit_attendance: Modify existing attendance records
+- manage_attendance_settings: Configure attendance policies
+
+7.3 LEAVE MANAGEMENT PERMISSIONS
+-------------------------------
+- add_leave: Create leave applications
+- view_leave: Access leave records and reports
+- edit_leave: Modify leave applications
+- delete_leave: Remove leave records
+- approve_or_reject_leaves: Leave approval workflow management
+
+7.4 SPECIALIZED HR PERMISSIONS
+------------------------------
+- manage_emergency_contact: Emergency contact information management
+- manage_employee_shifts: Shift scheduling and roster management
+- view_employee_tasks: Access employee task assignments
+- view_employee_projects: Access employee project assignments
+- view_employee_timelogs: Access employee time tracking records
+- manage_award: Employee recognition and award management
+- add_appreciation: Create employee appreciation records
+- view_appreciation: Access appreciation and recognition data
+- manage_role_permission_setting: System role and permission management
+
+7.5 IMMIGRATION AND COMPLIANCE PERMISSIONS
+------------------------------------------
+- add_immigration: Create immigration records
+- view_immigration: Access immigration status information
+- edit_immigration: Modify immigration records
+- delete_immigration: Remove immigration records
+
+8. URL ROUTES AND NAVIGATION REFERENCE
+======================================
+
+8.1 MAIN HR ROUTES
+------------------
+- GET /employees - Employee listing and management
+- GET /employees/create - Employee creation form
+- GET /employees/{id} - Employee profile view
+- GET /employees/{id}/edit - Employee editing form
+- GET /attendances - Attendance management dashboard
+- GET /leaves - Leave management dashboard
+- GET /holiday - Holiday calendar management
+- GET /employee-shifts - Shift management interface
+
+8.2 DASHBOARD ROUTES
+--------------------
+- GET /dashboard/advanced?tab=hr - HR analytics dashboard
+- GET /dashboard/employee - Employee personal dashboard
+- GET /dashboard/private-calendar - Employee calendar view
+
+8.3 AJAX AND MODAL ROUTES
+-------------------------
+- GET /employees/ajax/create - Employee creation modal
+- GET /employees/ajax/profile - Employee profile tab content
+- GET /attendance-settings/ajax/shift - Shift management modal
+- Various tab-specific AJAX routes for employee profile sections
+
+This comprehensive HR user guide provides detailed information about all human resources functionalities, ensuring efficient HR management and optimal user experience within the ERP system. Each feature includes specific URL routes, permission requirements, and detailed functionality descriptions for complete system utilization.

@@ -1,0 +1,66 @@
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+.card-img {
+    margin: 1.25rem;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 4px;
+    overflow: hidden;
+    img{
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+    }
+}
+.card-img-small {
+    flex-shrink: 0;
+    margin: 1.25rem;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    border-radius: 4px;
+    overflow: hidden;
+    border: solid 1px $dark_grey;
+}
+.card-title{
+    line-height: 21px;
+    margin-bottom: 7px;
+}
+.card-text{
+    line-height: 1.50;
+}
+
+/* Global card rounding + hover (broader coverage) */
+.card {
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Apply to common non-card wrappers used as cards */
+.card.border-0.b-shadow-4,
+.bg-white.b-shadow-4,
+.b-shadow-4.border-0 {
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.b-shadow-4:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Keep utility override */
+.card.rounded-0 {
+  border-radius: 0 !important;
+}

@@ -1,0 +1,316 @@
+MESSAGES MODULE - COMPREHENSIVE USER GUIDE
+
+===========================================
+OVERVIEW
+===========================================
+
+The Messages module provides a comprehensive internal communication system that enables real-time messaging between team members, clients, and administrators. The module supports text messaging, file attachments, user mentions, typing indicators, and conversation management with role-based access controls.
+
+===========================================
+MAIN INTERFACE COMPONENTS
+===========================================
+
+1. MESSAGES MAIN INTERFACE
+   - Route: /messages
+   - Controller: MessageController@index
+   - View: resources/views/messages/index.blade.php
+   - Description: Central messaging interface with split-pane layout
+
+2. INTERFACE LAYOUT
+   - Left Panel: Contact list and search functionality
+   - Right Panel: Chat conversation area and message composition
+   - Responsive design with mobile-specific adaptations
+
+===========================================
+CONTACT MANAGEMENT FEATURES
+===========================================
+
+1. CONTACT LIST (LEFT PANEL)
+   - Component: resources/views/messages/user_list.blade.php
+   - Card Component: resources/views/components/cards/message-user.blade.php
+   - Features:
+     * Display all available contacts (employees and clients)
+     * Show last message preview with timestamp
+     * Unread message count indicators with badge display
+     * User profile images and names
+     * Real-time status updates
+
+2. CONTACT SEARCH
+   - Input Field: #user-search
+   - Route: GET /messages (with term parameter)
+   - Functionality:
+     * Real-time search filtering of contact list
+     * Search by user name
+     * Instant results without page reload
+     * Maintains current conversation state
+
+3. CONTACT ACTIONS
+   - Three-dot menu for conversation management
+   - Delete All Messages: Removes entire conversation history
+   - Route: DELETE /messages/destroy-all/{id}
+   - Confirmation dialog with SweetAlert integration
+
+===========================================
+CONVERSATION FEATURES
+===========================================
+
+1. CHAT INTERFACE (RIGHT PANEL)
+   - Component: resources/views/messages/message_list.blade.php
+   - Message Card: resources/views/components/cards/message.blade.php
+   - Features:
+     * Chronological message display
+     * User profile integration with clickable links
+     * Timestamp display with timezone support
+     * Message status indicators
+     * Auto-scroll to latest messages
+
+2. MESSAGE DISPLAY
+   - Rich text message rendering with HTML support
+   - Line break preservation (nl2br function)
+   - User identification with profile images
+   - Timestamp formatting with company timezone
+   - Message ownership indication with background styling
+
+3. MESSAGE ACTIONS
+   - Individual message deletion
+   - Route: DELETE /messages/{id}
+   - Available for message sender and administrators
+   - Confirmation dialog before deletion
+   - Real-time UI updates after deletion
+
+===========================================
+MESSAGE COMPOSITION
+===========================================
+
+1. MESSAGE INPUT AREA
+   - Rich text editor with Quill.js integration
+   - Element ID: #submitTexts
+   - Features:
+     * Rich text formatting (bold, italic, underline, etc.)
+     * Link detection and auto-formatting
+     * Image and video embedding support
+     * Text alignment options
+     * Color and background color selection
+     * List creation (ordered and unordered)
+
+2. USER MENTIONS
+   - Trigger: @ symbol
+   - Function: quillMention() in layouts/app.blade.php
+   - Features:
+     * Auto-complete dropdown with user suggestions
+     * User profile image display in suggestions
+     * Real-time filtering based on typed characters
+     * Notification system for mentioned users
+     * Support for multiple mentions per message
+
+3. MESSAGE SENDING
+   - Send Button: #sendMessage
+   - Route: POST /messages
+   - Keyboard Shortcut: Enter key (without Shift)
+   - Form ID: #sendMessageForm
+   - Validation and error handling
+   - Real-time message delivery
+
+===========================================
+FILE MANAGEMENT
+===========================================
+
+1. FILE ATTACHMENT INTERFACE
+   - Toggle Button: #add-file
+   - Dropzone Integration: #file-upload-dropzone
+   - Features:
+     * Drag and drop file upload
+     * Multiple file selection support
+     * File type restrictions based on system settings
+     * File size limitations (DROPZONE_MAX_FILESIZE)
+     * Maximum file count limits (DROPZONE_MAX_FILES)
+
+2. FILE UPLOAD PROCESS
+   - Route: POST /message-file
+   - Controller: MessageFileController@store
+   - Automatic file processing after message creation
+   - Progress indicators during upload
+   - Error handling with user feedback
+
+3. FILE DISPLAY AND MANAGEMENT
+   - File cards with thumbnails for images
+   - File information display (name, upload date)
+   - File actions dropdown menu:
+     * View: Opens file in new tab
+     * Download: Route GET /message-file/download/{id}
+     * Delete: Available for file uploader only
+   - File type icons for non-image files
+
+4. FILE OPERATIONS
+   - View File: Direct browser viewing for supported formats
+   - Download File: Secure file download with access control
+   - Delete File: Route DELETE /message-file/{id}
+   - File access permissions based on conversation participation
+
+===========================================
+CONVERSATION MANAGEMENT
+===========================================
+
+1. START NEW CONVERSATION
+   - Button: #new-chat (desktop) / #new-chat-mbl (mobile)
+   - Modal: resources/views/messages/create.blade.php
+   - Route: GET /messages/create
+   - Features:
+     * User type selection (Employee/Client)
+     * Recipient selection with search functionality
+     * Message composition with rich text editor
+     * File attachment support
+     * User mention capabilities
+
+2. RECIPIENT SELECTION
+   - Employee Selection: Dropdown with all active employees
+   - Client Selection: Available based on message settings
+   - Search functionality within recipient lists
+   - User profile integration with images and names
+
+3. CONVERSATION SWITCHING
+   - Click on contact in left panel
+   - Route: GET /messages/{id}
+   - Automatic message loading and display
+   - Unread message count updates
+   - Active conversation highlighting
+
+===========================================
+REAL-TIME FEATURES
+===========================================
+
+1. PUSHER INTEGRATION
+   - Real-time message delivery
+   - Channel: 'messages-channel'
+   - Event: 'messages.received'
+   - Configuration in notification settings
+   - Fallback to polling every 10 seconds
+
+2. TYPING INDICATORS
+   - Echo/Laravel WebSockets integration
+   - Private channel: 'chat'
+   - Whisper event: 'typing'
+   - Visual typing indicator with animated dots
+   - Auto-hide after 1.5 seconds of inactivity
+
+3. MESSAGE NOTIFICATIONS
+   - Sound notifications (configurable)
+   - Browser notifications
+   - Email notifications for mentions
+   - OneSignal push notifications
+   - Unread message count updates
+
+===========================================
+SEARCH AND FILTERING
+===========================================
+
+1. CONTACT SEARCH
+   - Real-time search in contact list
+   - Search by user name
+   - Maintains conversation state during search
+   - Clear search functionality
+
+2. MESSAGE HISTORY
+   - Automatic message loading on conversation selection
+   - Chronological message ordering
+   - Pagination for large conversation histories
+   - Message persistence across sessions
+
+===========================================
+PERMISSIONS AND ACCESS CONTROL
+===========================================
+
+1. USER ROLE PERMISSIONS
+   - Admin: Full access to all conversations and management features
+   - Employee: Access based on message settings configuration
+   - Client: Restricted access based on admin/employee message settings
+
+2. MESSAGE SETTINGS INTEGRATION
+   - allow_client_employee: Controls client-employee messaging
+   - allow_client_admin: Controls client-admin messaging
+   - Configurable in notification settings
+
+3. CONVERSATION ACCESS
+   - Participants can view and manage their conversations
+   - Admins can access all conversations
+   - Message deletion permissions based on sender or admin role
+   - File access restricted to conversation participants
+
+===========================================
+MOBILE RESPONSIVENESS
+===========================================
+
+1. MOBILE INTERFACE ADAPTATIONS
+   - Collapsible contact list on mobile devices
+   - Mobile-specific new conversation button
+   - Touch-friendly interface elements
+   - Responsive message display
+
+2. MOBILE NAVIGATION
+   - Back arrow for returning to contact list
+   - Mobile sender name display
+   - Optimized touch targets for buttons and links
+
+===========================================
+TECHNICAL IMPLEMENTATION
+===========================================
+
+1. BACKEND ARCHITECTURE
+   - Controller: app/Http/Controllers/MessageController.php
+   - Model: app/Models/UserChat.php
+   - File Model: app/Models/UserchatFile.php
+   - File Controller: app/Http/Controllers/MessageFileController.php
+
+2. FRONTEND COMPONENTS
+   - Main View: resources/views/messages/index.blade.php
+   - User List: resources/views/messages/user_list.blade.php
+   - Message List: resources/views/messages/message_list.blade.php
+   - Create Modal: resources/views/messages/create.blade.php
+
+3. JAVASCRIPT FUNCTIONALITY
+   - Rich text editor with Quill.js
+   - Real-time messaging with Pusher/Echo
+   - File upload with Dropzone.js
+   - AJAX-based message operations
+   - User mention system integration
+
+4. DATABASE STRUCTURE
+   - user_chats table: Core message storage
+   - userchat_files table: File attachment storage
+   - Relationships with users table for sender/receiver data
+   - Message status tracking and timestamps
+
+5. ROUTING STRUCTURE
+   - GET /messages: Main interface
+   - GET /messages/create: New conversation modal
+   - POST /messages: Send message
+   - GET /messages/{id}: Load conversation
+   - DELETE /messages/{id}: Delete message
+   - DELETE /messages/destroy-all/{id}: Delete conversation
+   - POST /message-file: Upload file
+   - GET /message-file/download/{id}: Download file
+   - DELETE /message-file/{id}: Delete file
+
+===========================================
+INTEGRATION FEATURES
+===========================================
+
+1. USER PROFILE INTEGRATION
+   - Clickable user names link to profile pages
+   - Employee profiles: /employees/{id}
+   - Client profiles: /clients/{id}
+   - Profile image display throughout interface
+
+2. NOTIFICATION SYSTEM
+   - Email notifications for new messages
+   - Push notifications via OneSignal
+   - In-app notification badges
+   - Sound notification support
+
+3. COMPANY SETTINGS INTEGRATION
+   - Timezone support for message timestamps
+   - Date/time format configuration
+   - File upload restrictions based on company settings
+   - Language localization support
+
+This comprehensive guide covers all aspects of the Messages module, providing detailed information about each feature, its corresponding routes, and technical implementation details for effective system usage and maintenance.

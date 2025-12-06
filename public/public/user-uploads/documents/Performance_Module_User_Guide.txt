@@ -1,0 +1,420 @@
+PERFORMANCE MODULE USER GUIDE
+
+OVERVIEW
+The Performance module is a comprehensive OKR (Objectives and Key Results) management system that enables organizations to set, track, and evaluate performance objectives. The module provides tools for objective management, key results tracking, check-ins, meetings, performance scoring, and settings configuration.
+
+MAIN FUNCTIONAL MODULES
+
+1. PERFORMANCE DASHBOARD
+Access: Navigate to Performance module dashboard
+Route: /account/performance-dashboard
+Permissions: view_performance_module
+
+Dashboard Components:
+- Date Range Filter: Select duration for performance data analysis
+  * Input field with date range picker
+  * Default shows current period data
+  * Updates all dashboard components when changed
+
+- Clear Filters Button: Reset all applied filters
+  * Route: JavaScript function reset-filters
+  * Restores default date range
+  * Refreshes all dashboard data
+
+- Objective Progress Chart: Visual representation of objective completion
+  * Displays objective status distribution
+  * Interactive chart with clickable segments
+  * Links to filtered objective views
+
+- Pending Check-ins Card: Shows overdue check-ins
+  * Lists objectives requiring check-in updates
+  * Send Reminder button for each objective
+  * Route: /account/key-results/send-reminder/{id}
+
+- Meetings Card: Displays upcoming meetings
+  * Shows scheduled performance meetings
+  * Send Reminder button for meeting participants
+  * Route: /account/meetings/send_reminder
+
+Dashboard Actions:
+- View Objectives by Status: Click chart segments to filter objectives
+- Send Check-in Reminders: Notify objective owners about pending updates
+- Send Meeting Reminders: Alert participants about upcoming meetings
+
+2. OBJECTIVES MANAGEMENT
+Access: Navigate to Objectives section
+Route: /account/objectives
+Permissions: view_objective
+
+Filter Section:
+- Owner Filter: Select specific employee or view all objectives
+  * Dropdown with employee search functionality
+  * Shows "All" option for comprehensive view
+  * Updates objective list dynamically
+
+- Department Filter: Filter objectives by organizational department
+  * Dropdown showing all available departments
+  * "All" option for cross-departmental view
+  * Real-time filtering capability
+
+- Project Filter: Filter objectives by associated project
+  * Dropdown listing all active projects
+  * "All" option for project-independent objectives
+  * Dynamic content updates
+
+- Status Filter: Filter by objective completion status
+  * Options: Hide Completed, All, specific status types
+  * Default shows incomplete objectives only
+  * Instant filtering on selection
+
+- Search Field: Text-based objective search
+  * Real-time search as user types
+  * Searches objective titles and descriptions
+  * Clears with reset filters function
+
+- Clear Filters Button: Reset all applied filters
+  * Route: JavaScript function reset-filters
+  * Restores default filter states
+  * Refreshes objective list
+
+Action Buttons:
+- Add Objective Button: Create new performance objective
+  * Route: /account/objectives/create
+  * Opens right-side modal form
+  * Permissions: add_objective
+
+Objectives Table:
+- Expand/Collapse Button: Show/hide key results details
+  * Toggle button for each objective row
+  * Reveals associated key results information
+  * Tooltip shows "Expand" instruction
+
+- Objective Title: Clickable link to detailed view
+  * Route: /account/objectives/{id}
+  * Shows objective title with character limit
+  * Displays goal type badge
+
+- Owner Information: Shows assigned objective owners
+  * Profile images with tooltips showing names
+  * Links to employee profiles
+  * Shows "+X" for multiple owners beyond display limit
+
+- Department: Shows associated organizational department
+- Start Date: Objective commencement date
+- End Date: Objective completion deadline
+- Progress & Status: Visual progress indicator
+  * Percentage completion display
+  * Color-coded progress bar
+  * Status badge with completion state
+  * Last updated timestamp
+
+Objective Actions (Dropdown Menu):
+- View Action: Open detailed objective view
+  * Route: /account/objectives/{id}
+  * Shows complete objective information
+
+- Edit Action: Modify objective details
+  * Route: /account/objectives/{id}/edit
+  * Opens right-side modal form
+  * Permissions: edit_objective
+
+- Delete Action: Remove objective permanently
+  * Confirmation dialog with warning message
+  * Route: DELETE /account/objectives/{id}
+  * Permissions: delete_objective
+
+- Add Key Result Action: Create new key result for objective
+  * Route: /account/key-results/create?objectiveId={id}
+  * Opens right-side modal form
+  * Permissions: add_key_result
+
+Key Results Display (Expanded View):
+- Key Result Cards: Individual key result information
+  * Sequential numbering badges
+  * Key result title and description
+  * Metrics badge showing measurement type
+  * Initial, current, and target values
+  * Progress percentage and visual indicator
+  * Last updated information
+
+Key Result Actions:
+- Edit Key Result: Modify key result details
+  * Route: /account/key-results/{id}/edit
+  * Opens right-side modal form
+  * Permissions: edit_key_result
+
+- Delete Key Result: Remove key result permanently
+  * Confirmation dialog required
+  * Route: DELETE /account/key-results/{id}
+  * Permissions: delete_key_result
+
+- Add Check-in: Record progress update
+  * Route: /account/check-ins/create?keyResultId={id}
+  * Opens right-side modal form
+  * Permissions: add_check_in
+
+3. MEETINGS MANAGEMENT
+Access: Navigate to Meetings section
+Route: /account/meetings
+Permissions: view_meeting
+
+Filter Section:
+- Employee Filter: Filter meetings by participant
+  * Dropdown with employee search functionality
+  * "All" option for comprehensive view
+  * Real-time filtering capability
+
+- Search Field: Text-based meeting search
+  * Searches meeting titles and descriptions
+  * Real-time search functionality
+  * Integrates with other filters
+
+- Clear Filters Button: Reset all applied filters
+  * Restores default filter states
+  * Refreshes meeting display
+
+Action Buttons:
+- Add Meeting Button: Create new performance meeting
+  * Route: /account/meetings/create?tab=calendar
+  * Opens right-side modal form
+  * Permissions: add_meeting
+
+View Toggle Buttons:
+- List View Button: Display meetings in tabular format
+  * Route: /account/meetings
+  * Shows detailed meeting information
+  * Default view for meeting management
+
+- Calendar View Button: Display meetings in calendar format
+  * Route: /account/meetings/calendar_view
+  * Visual calendar interface
+  * Drag-and-drop functionality for rescheduling
+
+Calendar Interface:
+- Monthly Calendar Display: Shows meetings by date
+- Meeting Event Blocks: Clickable meeting representations
+- Navigation Controls: Previous/next month buttons
+- Today Button: Jump to current date
+- Event Creation: Click empty dates to create meetings
+
+Meeting Actions:
+- View Meeting: Open detailed meeting information
+- Edit Meeting: Modify meeting details
+- Cancel Meeting: Mark meeting as cancelled
+  * Route: /account/meetings/{id}/mark-as-cancelled
+  * Updates meeting status
+
+- Complete Meeting: Mark meeting as completed
+  * Route: /account/meetings/{id}/mark-as-complete
+  * Records meeting completion
+
+- Send Reminder: Notify meeting participants
+  * Route: /account/meetings/send_reminder
+  * Sends email notifications
+
+4. OKR SCORING
+Access: Navigate to OKR Scoring section
+Route: /account/okr-scoring
+Permissions: view_okr_scoring
+
+Filter Section:
+- Duration Filter: Select date range for scoring analysis
+  * Date range picker input
+  * Filters scoring data by time period
+  * Updates scoring calculations
+
+- Clear Filters Button: Reset date range filter
+  * Restores default date range
+  * Refreshes scoring data
+
+- Download Sheet Button: Export scoring report
+  * Route: JavaScript function downloadReport('monthly')
+  * Generates Excel/CSV export
+  * Contains detailed scoring metrics
+
+Scoring Display:
+- Grading Scale Legend: Color-coded performance indicators
+  * Red: Below 40% (Poor performance)
+  * Yellow: 40-70% (Moderate performance)
+  * Green: Above 70% (Good performance)
+
+- Scoring Table: Detailed performance metrics
+  * Employee names and departments
+  * Objective completion percentages
+  * Key result achievement rates
+  * Overall performance scores
+  * Color-coded cells based on performance
+
+5. PERFORMANCE SETTINGS
+Access: Navigate to Performance Settings
+Route: /account/performance-settings
+Permissions: manage_performance_setting
+
+Settings Navigation Tabs:
+- Goal Type Settings Tab: Configure objective categories
+  * Route: /account/performance-settings
+  * Default active tab
+  * Manage objective classification types
+
+- Key Results Metrics Tab: Configure measurement units
+  * Route: /account/performance-settings?tab=key-results-metrics
+  * Define metrics for key result measurement
+  * Add/edit/delete metrics options
+
+- Notification Settings Tab: Configure system notifications
+  * Route: /account/performance-settings?tab=notification-settings
+  * Set up automated reminders
+  * Configure notification preferences
+
+- Meeting Settings Tab: Configure meeting parameters
+  * Route: /account/performance-settings?tab=meeting-settings
+  * Set default meeting durations
+  * Configure meeting templates
+
+Goal Type Settings:
+- Add Goal Type: Create new objective category
+  * Opens modal form for goal type creation
+  * Define goal type name and properties
+
+- Edit Goal Type: Modify existing goal type
+  * Route: /account/goal-type-settings/{id}/edit
+  * Update goal type properties
+
+- Delete Goal Type: Remove goal type
+  * Confirmation required
+  * Affects associated objectives
+
+Key Results Metrics Settings:
+- Add Key Results Metrics Button: Create new measurement unit
+  * Opens right-side modal form
+  * Define metric name and calculation method
+
+- Metrics List: Display all available metrics
+  * Edit functionality for each metric
+  * Delete option with confirmation
+
+- Edit Metrics: Modify existing measurement units
+  * Update metric properties
+  * Affects associated key results
+
+6. CHECK-INS MANAGEMENT
+Access: Integrated within objectives and key results
+Route: /account/check-ins
+Permissions: add_check_in, view_check_in
+
+Check-in Actions:
+- Add Check-in: Record progress update
+  * Accessible from key results display
+  * Opens modal form for progress entry
+  * Updates key result current values
+
+- View Check-ins: Display historical progress updates
+  * Shows chronological check-in history
+  * Includes progress notes and timestamps
+
+- Send Check-in Reminders: Notify about pending updates
+  * Route: /account/key-results/send-reminder/{id}
+  * Automated reminder system
+
+PERMISSION SYSTEM
+The Performance module implements role-based access control:
+
+View Permissions:
+- view_performance_module: Access to performance dashboard
+- view_objective: View objectives and their details
+- view_key_result: View key results information
+- view_check_in: View check-in history
+- view_meeting: View meeting information
+- view_okr_scoring: Access to scoring reports
+
+Management Permissions:
+- add_objective: Create new objectives
+- edit_objective: Modify existing objectives
+- delete_objective: Remove objectives
+- add_key_result: Create key results
+- edit_key_result: Modify key results
+- delete_key_result: Remove key results
+- add_check_in: Record progress updates
+- add_meeting: Create meetings
+- edit_meeting: Modify meetings
+- delete_meeting: Remove meetings
+- manage_performance_setting: Configure module settings
+
+AJAX FUNCTIONALITY
+The Performance module extensively uses AJAX for dynamic content updates:
+
+Real-time Filtering:
+- Objective filters update content without page refresh
+- Meeting filters provide instant results
+- Dashboard components refresh dynamically
+
+Modal Operations:
+- Create/edit forms open in right-side modals
+- Form submissions use AJAX for seamless experience
+- Success/error messages display without page reload
+
+Data Loading:
+- Progressive loading for large datasets
+- Infinite scroll for extensive objective lists
+- Lazy loading for performance optimization
+
+SEARCH AND FILTERING
+Advanced search capabilities throughout the module:
+
+Text Search:
+- Real-time search in objectives and meetings
+- Searches titles, descriptions, and related content
+- Highlights matching terms in results
+
+Filter Combinations:
+- Multiple filters can be applied simultaneously
+- Filters work together to narrow results
+- Clear filters option resets all selections
+
+Date Range Filtering:
+- Flexible date range selection
+- Preset ranges for common periods
+- Custom date range input
+
+UI DESIGN AND RESPONSIVENESS
+The Performance module follows modern UI/UX principles:
+
+Responsive Design:
+- Mobile-friendly interface
+- Adaptive layouts for different screen sizes
+- Touch-friendly controls for mobile devices
+
+Visual Indicators:
+- Color-coded progress bars
+- Status badges for quick identification
+- Icon-based action buttons
+
+User Experience:
+- Intuitive navigation structure
+- Consistent button placement
+- Clear visual hierarchy
+
+INTEGRATION POINTS
+The Performance module integrates with other system components:
+
+Employee Management:
+- Links to employee profiles
+- Uses employee data for assignments
+- Integrates with organizational structure
+
+Project Management:
+- Associates objectives with projects
+- Links to project details
+- Uses project data for filtering
+
+Notification System:
+- Automated reminder emails
+- System notifications for updates
+- Integration with email templates
+
+Reporting System:
+- Export capabilities for performance data
+- Integration with reporting tools
+- Data visualization components
+
+This comprehensive guide covers all functional aspects of the Performance module, providing detailed information about each feature, button, and operational workflow. The module serves as a complete OKR management solution with robust tracking, reporting, and collaboration capabilities.

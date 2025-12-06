@@ -1,0 +1,24 @@
+{
+    "name": "nwidart/subdomain",
+    "description": "",
+    "authors": [
+        {
+            "name": "Andy Koh",
+            "email": "enquiry@craveva.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Subdomain\\Providers\\SubdomainServiceProvider"
+            ],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Subdomain\\": ""
+        }
+    }
+}

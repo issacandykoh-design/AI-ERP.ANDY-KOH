@@ -1,0 +1,489 @@
+MY CALENDAR FEATURE - COMPREHENSIVE USER GUIDE
+==============================================
+
+TABLE OF CONTENTS
+=================
+1. OVERVIEW
+2. MAIN MY CALENDAR INTERFACE
+3. CALENDAR VIEWS AND NAVIGATION
+4. EVENT TYPES AND DATA SOURCES
+5. FILTERING AND SEARCH FUNCTIONALITY
+6. EMPLOYEE DASHBOARD INTEGRATION
+7. PERMISSIONS AND ACCESS CONTROL
+8. TECHNICAL IMPLEMENTATION
+9. URL ROUTES AND ENDPOINTS
+10. TROUBLESHOOTING AND SUPPORT
+
+1. OVERVIEW
+===========
+
+The My Calendar feature is a comprehensive calendar system that provides users with a unified view of all their scheduled activities, tasks, events, and important dates. It integrates multiple data sources including tasks, events, tickets, leaves, and follow-ups into a single, easy-to-navigate calendar interface.
+
+Key Features:
+- Unified calendar view with multiple data sources
+- Real-time event filtering and type selection
+- Permission-based content display
+- Integration with employee dashboard
+- Multiple calendar view modes (month, week, day, list)
+- Interactive event details and navigation
+- Responsive design for all devices
+
+2. MAIN MY CALENDAR INTERFACE
+=============================
+
+2.1 PRIMARY ACCESS
+------------------
+URL: /my-calendar
+Route: my-calendar.index
+Controller: MyCalendarController@index
+View: resources/views/my-calendar/index.blade.php
+
+The main My Calendar interface provides a full-screen calendar view with comprehensive filtering options and navigation controls.
+
+2.2 INTERFACE COMPONENTS
+------------------------
+
+Filter Section:
+- Type selector dropdown with options: All, Tasks, Events, Tickets, Leaves, Follow-ups
+- Reset filters button for clearing all applied filters
+- Real-time filter application without page refresh
+
+Calendar Display:
+- Full Calendar integration using FullCalendar.js library
+- Multiple view modes: Month, Week, Day, List
+- Navigation controls: Previous, Next, Today buttons
+- Event color coding based on event type and status
+
+2.3 CALENDAR HEADER TOOLBAR
+----------------------------
+Left Section: prev, next, today buttons
+Center Section: Dynamic title showing current date range
+Right Section: dayGridMonth, timeGridWeek, timeGridDay, listWeek view options
+
+3. CALENDAR VIEWS AND NAVIGATION
+=================================
+
+3.1 VIEW MODES
+--------------
+
+Month View (dayGridMonth):
+- Shows full month with events displayed as colored blocks
+- Events are color-coded by type and status
+- Click on date to view day details
+- Hover over events for quick information
+
+Week View (timeGridWeek):
+- Displays weekly schedule with time slots
+- Shows event duration and timing
+- Allows for detailed time-based planning
+- Scroll through time slots for full day view
+
+Day View (timeGridDay):
+- Detailed single-day view with hourly breakdown
+- Perfect for daily schedule management
+- Shows exact event timing and duration
+- Easy navigation between days
+
+List View (listWeek):
+- Chronological list of all events for the week
+- Compact view showing event details
+- Easy scanning of upcoming activities
+- Includes event icons and color coding
+
+3.2 NAVIGATION FEATURES
+-----------------------
+
+Date Navigation:
+- Previous/Next buttons for moving between time periods
+- Today button for quick return to current date
+- Click on date/week names to navigate to specific periods
+- Keyboard shortcuts for quick navigation
+
+Event Interaction:
+- Click on events to view detailed information
+- Event details open in right-side modal
+- Direct navigation to source modules (tasks, events, etc.)
+- Tooltip information on hover
+
+4. EVENT TYPES AND DATA SOURCES
+================================
+
+4.1 SUPPORTED EVENT TYPES
+--------------------------
+
+Tasks:
+- Source: Task management module
+- Display: Task title, due date, project information
+- Color: Based on task board column status
+- Icon: fa-list
+- Permission Required: view_tasks
+- Includes: Assigned tasks, project tasks for clients
+
+Events:
+- Source: Event management module
+- Display: Event name, start/end time, attendee information
+- Color: Based on event label color
+- Icon: fa-calendar
+- Permission Required: view_events
+- Includes: Personal events, meeting invitations
+
+Tickets:
+- Source: Support ticket system
+- Display: Ticket subject, ticket number, status
+- Color: Blue (#1d82f5)
+- Icon: fa-ticket-alt
+- Permission Required: view_tickets
+- Includes: Assigned tickets, created tickets
+
+Leaves:
+- Source: Leave management system
+- Display: Employee name, leave type, duration
+- Color: Based on leave type configuration
+- Icon: fa-plane-departure
+- Permission Required: view_leave
+- Includes: Approved leaves only
+
+Follow-ups:
+- Source: Deal/Lead management system
+- Display: Lead/Deal name, follow-up date
+- Color: Blue (#1d82f5)
+- Icon: fa-thumbs-up
+- Permission Required: view_deals
+- Includes: Assigned lead follow-ups
+
+4.2 DATA FILTERING LOGIC
+------------------------
+
+Permission-Based Display:
+- Events only show if user has appropriate module permissions
+- Content filtered based on user role and access level
+- Personal data prioritized over general company data
+
+Date Range Filtering:
+- Events filtered by start and end date parameters
+- Automatic date range calculation based on calendar view
+- Efficient database queries with date indexing
+
+User-Specific Content:
+- Tasks: Shows assigned tasks and client project tasks
+- Events: Shows attended events and created events
+- Tickets: Shows assigned and created tickets
+- Leaves: Shows all approved company leaves
+- Follow-ups: Shows assigned lead follow-ups
+
+5. FILTERING AND SEARCH FUNCTIONALITY
+=====================================
+
+5.1 TYPE FILTERING
+------------------
+
+Filter Options:
+- All: Display all event types (default)
+- Tasks: Show only task-related events
+- Events: Show only calendar events
+- Tickets: Show only support tickets
+- Leaves: Show only leave applications
+- Follow-ups: Show only deal follow-ups
+
+Filter Behavior:
+- Real-time filtering without page refresh
+- Filter state maintained during navigation
+- Reset option to clear all filters
+- Visual indication of active filters
+
+5.2 ADVANCED FILTERING
+----------------------
+
+Date Range Selection:
+- Automatic date range based on calendar view
+- Custom date range selection capability
+- Persistent date selection across sessions
+- Timezone-aware date handling
+
+Permission-Based Filtering:
+- Automatic filtering based on user permissions
+- Module access validation
+- Role-based content restriction
+- Security-first approach to data display
+
+6. EMPLOYEE DASHBOARD INTEGRATION
+=================================
+
+6.1 DASHBOARD WIDGET
+--------------------
+
+Widget Location: Employee Dashboard
+Widget Name: my_calender (note: spelling in code)
+Widget Title: My Calendar
+Widget Status: Active by default for private dashboard
+
+Widget Features:
+- Compact calendar view within dashboard
+- Event type filtering dropdown
+- Quick access to full calendar view
+- Real-time event updates
+
+6.2 WIDGET CONFIGURATION
+------------------------
+
+Access Control:
+- Requires 'my_calender' widget to be active
+- Module permissions: tasks, events, holidays, tickets, leaves
+- Automatic hiding if no relevant modules are available
+- User-specific widget customization
+
+Filter Options in Widget:
+- Tasks checkbox (if tasks module enabled)
+- Events checkbox (if events module enabled)
+- Holidays checkbox (if holidays module enabled)
+- Tickets checkbox (if tickets module enabled)
+- Leaves checkbox (if leaves module enabled)
+- Follow-ups checkbox (if leads module enabled and user is lead agent)
+
+6.3 WIDGET INTERACTION
+----------------------
+
+Event Display:
+- Color-coded events based on type
+- Icon indicators for different event types
+- Hover tooltips for quick information
+- Click-through to detailed views
+
+Filter Management:
+- Dropdown filter menu with checkboxes
+- Real-time filter application
+- Filter state persistence
+- Visual feedback for active filters
+
+7. PERMISSIONS AND ACCESS CONTROL
+==================================
+
+7.1 MODULE PERMISSIONS
+----------------------
+
+Required Permissions by Event Type:
+- Tasks: view_tasks permission
+- Events: view_events permission
+- Tickets: view_tickets permission
+- Leaves: view_leave permission
+- Follow-ups: view_deals permission
+
+Permission Levels:
+- none: No access to event type
+- owned: Access to own events only
+- added: Access to created events
+- both: Access to owned and created events
+- all: Access to all events
+
+7.2 USER ROLE RESTRICTIONS
+---------------------------
+
+Employee Role:
+- Access to assigned tasks and personal events
+- View own tickets and leave applications
+- See company-wide approved leaves
+- Access to assigned follow-ups if lead agent
+
+Client Role:
+- Access to project tasks for assigned projects
+- View project-related events
+- Limited ticket access (own tickets only)
+- No access to internal leave information
+
+Admin Role:
+- Full access to all calendar events
+- Complete permission override capability
+- System-wide calendar management
+- User calendar configuration access
+
+7.3 DATA SECURITY
+-----------------
+
+Access Validation:
+- Permission checking before data retrieval
+- User ID validation for personal events
+- Role-based query filtering
+- Secure data transmission
+
+Privacy Protection:
+- Personal information filtering
+- Sensitive data masking
+- User-specific data isolation
+- Audit trail for access logging
+
+8. TECHNICAL IMPLEMENTATION
+===========================
+
+8.1 BACKEND ARCHITECTURE
+-------------------------
+
+Controller: MyCalendarController
+- Extends AccountBaseController for common functionality
+- Handles index method for calendar data retrieval
+- Implements permission-based data filtering
+- Returns JSON data for AJAX requests
+
+Models Used:
+- Event: Calendar events and meetings
+- Task: Project and personal tasks
+- Ticket: Support tickets and issues
+- Leave: Employee leave applications
+- DealFollowUp: Sales follow-up activities
+- TaskboardColumn: Task status management
+- User: User information and relationships
+
+Database Queries:
+- Optimized date range queries
+- Permission-based filtering
+- Relationship eager loading
+- Efficient data aggregation
+
+8.2 FRONTEND IMPLEMENTATION
+---------------------------
+
+JavaScript Libraries:
+- FullCalendar.js: Main calendar functionality
+- Moment.js: Date manipulation and formatting
+- jQuery: DOM manipulation and AJAX requests
+- Bootstrap: UI components and styling
+
+Calendar Configuration:
+- Locale support for internationalization
+- Timezone handling for global users
+- Responsive design for mobile devices
+- Custom event rendering and styling
+
+Event Handling:
+- Click events for detailed views
+- Filter change events for real-time updates
+- Navigation events for date changes
+- Resize events for responsive behavior
+
+8.3 STYLING AND THEMING
+-----------------------
+
+CSS Framework: Bootstrap 4/5
+Custom Styles: Integrated with application theme
+Color Coding: Event type and status-based colors
+Icons: Font Awesome icon integration
+Responsive Design: Mobile-first approach
+
+9. URL ROUTES AND ENDPOINTS
+===========================
+
+9.1 PRIMARY ROUTES
+------------------
+
+Main Calendar Route:
+GET /my-calendar
+Route Name: my-calendar.index
+Controller: MyCalendarController@index
+Purpose: Display main calendar interface and return event data
+
+9.2 RELATED ROUTES
+------------------
+
+Event Detail Routes:
+- GET /tasks/{id} - Task details (route: tasks.show)
+- GET /events/{id} - Event details (route: events.show)
+- GET /tickets/{id} - Ticket details (route: tickets.show)
+- GET /leaves/{id} - Leave details (route: leaves.show)
+- GET /deals/{id} - Deal details (route: deals.show)
+
+Dashboard Integration:
+- GET /dashboard/employee - Employee dashboard with calendar widget
+- GET /dashboard/private-calendar - Alternative calendar access
+
+9.3 API ENDPOINTS
+-----------------
+
+Calendar Data API:
+URL: /my-calendar
+Method: GET
+Parameters:
+- start: Start date for event range (YYYY-MM-DD)
+- end: End date for event range (YYYY-MM-DD)
+- type: Event type filter (task|events|tickets|leaves|follow_ups|all)
+
+Response Format: JSON array of event objects
+Event Object Structure:
+{
+    "id": "event_id",
+    "title": "Event Title",
+    "start": "2024-01-01T09:00:00",
+    "end": "2024-01-01T10:00:00",
+    "event_type": "task|event|ticket|leave|follow_up",
+    "extendedProps": {
+        "bg_color": "#color_code",
+        "color": "#text_color",
+        "icon": "fa-icon-name"
+    }
+}
+
+10. TROUBLESHOOTING AND SUPPORT
+===============================
+
+10.1 COMMON ISSUES
+------------------
+
+Calendar Not Loading:
+- Check JavaScript console for errors
+- Verify FullCalendar library loading
+- Confirm user permissions for calendar access
+- Validate date range parameters
+
+Events Not Displaying:
+- Verify module permissions (tasks, events, tickets, etc.)
+- Check user role and access levels
+- Confirm event date ranges
+- Validate filter settings
+
+Performance Issues:
+- Review date range scope (avoid excessive ranges)
+- Check database query optimization
+- Monitor server response times
+- Consider caching for frequently accessed data
+
+10.2 BROWSER COMPATIBILITY
+--------------------------
+
+Supported Browsers:
+- Chrome 70+
+- Firefox 65+
+- Safari 12+
+- Edge 79+
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+Required Features:
+- JavaScript ES6 support
+- CSS Grid and Flexbox
+- AJAX/XMLHttpRequest
+- Local Storage support
+
+10.3 MOBILE CONSIDERATIONS
+--------------------------
+
+Touch Interface:
+- Touch-friendly event selection
+- Swipe navigation between dates
+- Responsive calendar sizing
+- Mobile-optimized filter controls
+
+Performance Optimization:
+- Reduced data loading for mobile
+- Optimized image and asset loading
+- Efficient memory management
+- Battery-conscious update intervals
+
+CONCLUSION
+==========
+
+The My Calendar feature provides a comprehensive, user-friendly interface for managing all calendar-related activities within the Craveva ERP system. With its robust permission system, multiple data source integration, and responsive design, it serves as a central hub for scheduling and time management across the organization.
+
+This guide covers all aspects of the My Calendar functionality, from basic usage to advanced technical implementation details, ensuring complete understanding for both end users and system administrators.
+
+For technical support and additional information, refer to:
+- MyCalendarController.php: Backend logic implementation
+- my-calendar/index.blade.php: Frontend interface template
+- dashboard/employee/widgets/my_calendar.blade.php: Dashboard widget integration
+- Full Calendar documentation: https://fullcalendar.io/docs

@@ -1,0 +1,253 @@
+LETTER MODULE USER GUIDE
+
+OVERVIEW
+The Letter module provides comprehensive functionality for creating, managing, and generating employee letters using customizable templates. The module consists of two main components: Letter Generation and Template Management, each offering distinct features for efficient document creation and administration.
+
+LETTER GENERATION INTERFACE
+
+Main Letter Listing Page
+Route: /letter/generate
+Permission Required: view_letter
+
+The main letter listing interface displays all generated letters in a searchable data table format. Users can access this page through the navigation menu under the Letter section.
+
+Key Features:
+- Search Functionality: Real-time search field allows filtering letters by typing keywords. The search input field (ID: search-text-field) triggers automatic table updates as users type.
+- Clear Filters Button: Resets all applied filters and returns the table to its default state. This button appears when search criteria are active.
+- Add New Letter Button: Primary action button that opens the letter creation interface. This button is conditionally displayed based on add_letter permission.
+- Data Table Display: Paginated table showing letter details including employee name, template type, creation date, and available actions.
+- Quick Actions: Bulk operations dropdown allowing users to perform actions on multiple selected letters simultaneously.
+- Individual Row Actions: Each letter row provides specific action buttons for viewing, editing, and deleting individual letters.
+
+Letter Creation Interface
+Route: /letter/generate/create
+Permission Required: add_letter
+
+The letter creation interface provides a comprehensive form for generating new employee letters with real-time preview capabilities.
+
+Form Components:
+- Letter Type Selection: Dropdown field (ID: template_id) for selecting from available letter templates. When a template is selected, the system automatically populates the description field with the template content via AJAX call to letter.ajax.template route.
+- Employee Selection: Searchable dropdown (ID: employees) for selecting the target employee. When an employee is selected, the system fetches employee-specific variables via AJAX call to letter.employee route and hides the custom employee name field.
+- Custom Employee Name: Text input field (ID: employeeName) that appears when no specific employee is selected, allowing manual entry of employee name for custom letters.
+- Margin Settings: Four numeric input fields for adjusting letter margins (left, right, top, bottom). These settings control the padding applied to the generated letter and update the preview in real-time.
+- Rich Text Editor: Quill-based editor (ID: description) for composing and editing letter content. The editor supports rich text formatting and automatically updates the preview area when content changes.
+- Variable Panel: Right-side panel displaying all available letter variables from the LetterVariable enum. Each variable includes a copy-to-clipboard button for easy insertion into the letter content.
+
+Preview Functionality:
+- Real-time Preview: The right side of the interface displays a live preview of the letter with all variables replaced with actual values.
+- Download Preview: Button that generates a temporary PDF preview for download. This function makes an AJAX POST request to letter.download.preview.store route with the preview HTML content.
+- Print Preview: Button that opens the letter preview in a print-friendly format using an iframe-based printing mechanism.
+- Dynamic Variable Replacement: The preview automatically replaces template variables with employee-specific data as content is modified.
+
+Action Buttons:
+- Save Button: Stores the letter data via AJAX POST request to letter.generate.store route. The button includes loading state management and validation feedback.
+- Cancel Button: Returns to the main letter listing page without saving changes.
+
+Letter Editing Interface
+Route: /letter/generate/{id}/edit
+Permission Required: edit_letter
+
+The letter editing interface allows modification of existing letters with similar functionality to the creation interface.
+
+Key Differences from Creation:
+- Pre-populated Fields: All form fields are populated with existing letter data including template type, employee information, margin settings, and content.
+- Template Type Display: Shows the selected template as read-only text instead of a dropdown selector.
+- Employee Information Handling: Displays different field configurations based on whether the letter was created for a specific employee or with a custom name.
+- Update Button: Replaces the Save button and sends PUT request to letter.generate.update route.
+
+Letter Viewing Interface
+Route: /letter/generate/{id}
+Permission Required: view_letter
+
+The letter viewing interface provides a read-only display of generated letters with action capabilities.
+
+Display Features:
+- Letter Content: Full letter content displayed with applied formatting and variable replacements.
+- Margin Application: Letter content is displayed with the configured margin settings applied as padding.
+- Action Buttons: Download and Print buttons for generating PDF output or printing the letter directly.
+
+Action Functionality:
+- Download Button: Redirects to letter.download route to generate and download a PDF version of the letter.
+- Print Button: Creates an iframe with the letter content and triggers the browser's print functionality.
+
+TEMPLATE MANAGEMENT INTERFACE
+
+Template Listing Page
+Route: /letter/template
+Permission Required: view_template
+
+The template management interface displays all available letter templates in a searchable data table format.
+
+Key Features:
+- Search Functionality: Real-time search field for filtering templates by title or content keywords.
+- Add Template Button: Primary action button for creating new templates, displayed based on add_template permission.
+- Template Data Table: Displays template information including title, description preview, creation date, and available actions.
+- Quick Actions: Bulk operations for managing multiple templates simultaneously.
+- Individual Actions: View, edit, and delete buttons for each template row.
+
+Template Creation Interface
+Route: /letter/template/create
+Permission Required: add_template
+
+The template creation interface provides tools for designing reusable letter templates.
+
+Form Components:
+- Title Field: Required text input for the template name and identification.
+- Description Editor: Rich text editor (Quill-based) for composing template content with variable placeholders.
+- Variable Reference Panel: Right-side panel showing all available letter variables with copy-to-clipboard functionality.
+- Save and Cancel Buttons: Standard form actions for storing or discarding template changes.
+
+Template Editing Interface
+Route: /letter/template/{id}/edit
+Permission Required: edit_template
+
+The template editing interface allows modification of existing templates with pre-populated content.
+
+Features:
+- Pre-filled Form: All fields populated with existing template data.
+- Content Editor: Rich text editor with existing template content loaded.
+- Variable Panel: Same variable reference functionality as creation interface.
+- Update Button: Saves changes via PUT request to letter.template.update route.
+
+Template Viewing Interface
+Route: /letter/template/{id}
+Permission Required: view_template
+
+The template viewing interface displays template content in read-only format for review purposes.
+
+Display Features:
+- Template Title: Displays the template name as a header.
+- Content Display: Shows the template description with formatting preserved.
+- Clean Layout: Simple, focused presentation of template content without editing controls.
+
+LETTER VARIABLES SYSTEM
+
+The Letter module includes a comprehensive variable system that automatically replaces placeholders with employee-specific data.
+
+Available Variables:
+- ##CURRENT_DATE##: Current system date
+- ##EMPLOYEE_ID##: Employee identification number
+- ##EMPLOYEE_NAME##: Full employee name
+- ##EMPLOYEE_ADDRESS##: Employee residential address
+- ##EMPLOYEE_JOINING_DATE##: Date of employment commencement
+- ##EMPLOYEE_EXIT_DATE##: Date of employment termination
+- ##EMPLOYEE_PROBATION_END_DATE##: End date of probationary period
+- ##EMPLOYEE_NOTICE_PERIOD_START_DATE##: Notice period commencement date
+- ##EMPLOYEE_NOTICE_PERIOD_END_DATE##: Notice period end date
+- ##EMPLOYEE_DOB##: Employee date of birth
+- ##EMPLOYEE_DEPARTMENT##: Employee department assignment
+- ##EMPLOYEE_DESIGNATION##: Employee job title or position
+- ##SIGNATORY##: Authorized signatory name
+- ##SIGNATORY_DESIGNATION##: Signatory job title
+- ##SIGNATORY_DEPARTMENT##: Signatory department
+- ##COMPANY_NAME##: Organization name
+
+Variable Usage:
+- Copy-to-Clipboard: Each variable includes a copy button for easy insertion into templates or letters.
+- Automatic Replacement: Variables are automatically replaced with actual values in previews and generated documents.
+- Employee-Specific Data: Variables pull data from the selected employee's profile or use custom values when specified.
+
+PDF GENERATION SYSTEM
+
+The Letter module includes robust PDF generation capabilities for creating professional document outputs.
+
+PDF Features:
+- Custom Margins: User-defined margin settings are applied to PDF output.
+- Rich Text Formatting: Maintains text formatting from the editor in PDF format.
+- Variable Replacement: All template variables are replaced with actual data before PDF generation.
+- Professional Layout: Clean, business-appropriate formatting suitable for official correspondence.
+
+Generation Process:
+- Preview Generation: Creates temporary HTML preview with variable replacements.
+- PDF Conversion: Uses DomPDF library to convert HTML content to PDF format.
+- Download Delivery: Provides immediate download of generated PDF files.
+- Print Integration: Supports direct printing through browser print functionality.
+
+PERMISSION SYSTEM
+
+The Letter module implements comprehensive permission controls for different user roles.
+
+Letter Permissions:
+- add_letter: Allows creation of new letters
+- view_letter: Enables viewing of existing letters
+- edit_letter: Permits modification of letter content
+- delete_letter: Authorizes removal of letters
+
+Template Permissions:
+- add_template: Allows creation of new templates
+- view_template: Enables viewing of existing templates
+- edit_template: Permits modification of template content
+- delete_template: Authorizes removal of templates
+
+Permission Integration:
+- Interface Elements: Buttons and actions are conditionally displayed based on user permissions.
+- Route Protection: All routes include permission checks to prevent unauthorized access.
+- Data Filtering: Users only see data they have permission to access.
+
+AJAX FUNCTIONALITY
+
+The Letter module extensively uses AJAX for enhanced user experience and real-time functionality.
+
+AJAX Endpoints:
+- letter.ajax.template: Retrieves template content for letter creation
+- letter.employee: Fetches employee-specific variable data
+- letter.download.preview.store: Stores preview data for PDF generation
+- letter.generate.store: Saves new letter data
+- letter.generate.update: Updates existing letter information
+- letter.template.store: Creates new template
+- letter.template.update: Modifies existing template
+
+AJAX Features:
+- Real-time Updates: Form changes trigger immediate preview updates
+- Asynchronous Loading: Template and employee data loaded without page refresh
+- Error Handling: Comprehensive error feedback for failed operations
+- Loading States: Visual indicators during AJAX operations
+
+SEARCH AND FILTERING
+
+Both letter and template interfaces include advanced search and filtering capabilities.
+
+Search Features:
+- Real-time Search: Instant filtering as users type search terms
+- Multi-field Search: Searches across multiple data fields simultaneously
+- Filter Reset: One-click option to clear all applied filters
+- Search Persistence: Maintains search state during pagination
+
+Filter Implementation:
+- Client-side Processing: Immediate response to search input
+- Server-side Integration: Efficient database queries for large datasets
+- State Management: Proper handling of filter states and resets
+
+USER INTERFACE DESIGN
+
+The Letter module follows consistent design patterns for optimal user experience.
+
+Design Elements:
+- Responsive Layout: Adapts to different screen sizes and devices
+- Consistent Styling: Matches overall application design language
+- Intuitive Navigation: Clear pathways between different module sections
+- Visual Feedback: Loading states, success messages, and error notifications
+
+Accessibility Features:
+- Keyboard Navigation: Full functionality accessible via keyboard
+- Screen Reader Support: Proper labeling and semantic markup
+- Color Contrast: Adequate contrast ratios for visual accessibility
+- Focus Management: Clear focus indicators for interactive elements
+
+INTEGRATION POINTS
+
+The Letter module integrates seamlessly with other system components.
+
+System Integration:
+- User Management: Pulls employee data from user profiles
+- Permission System: Integrates with role-based access controls
+- Company Settings: Respects multi-company configurations
+- File Management: Handles PDF generation and download processes
+
+Data Relationships:
+- Employee Records: Links letters to specific employee profiles
+- Template System: Maintains relationships between letters and templates
+- Audit Trail: Tracks creation and modification activities
+- Company Segregation: Ensures data isolation in multi-tenant environments
+
+This comprehensive guide covers all aspects of the Letter module functionality, providing detailed information about each feature, interface element, and system capability for effective utilization and administration.

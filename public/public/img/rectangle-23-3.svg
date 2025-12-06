@@ -1,0 +1,27 @@
+<svg width="1023" height="900" viewBox="0 0 1023 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_n_177_180)">
+<rect width="1023" height="900" fill="url(#paint0_linear_177_180)"/>
+</g>
+<defs>
+<filter id="filter0_n_177_180" x="0" y="0" width="1023" height="900" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="5473" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(0, 0, 0, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect1_noise_177_180">
+<feMergeNode in="shape" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+<linearGradient id="paint0_linear_177_180" x1="-8.93025e-06" y1="-18" x2="818.776" y2="1038.46" gradientUnits="userSpaceOnUse">
+<stop offset="0.158654" stop-color="#584D3F"/>
+<stop offset="1" stop-color="#9E7652"/>
+</linearGradient>
+</defs>
+</svg>

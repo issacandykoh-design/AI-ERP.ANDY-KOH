@@ -1,0 +1,383 @@
+ASSETS MODULE - COMPREHENSIVE USER GUIDE
+
+OVERVIEW
+The Assets module provides comprehensive asset management functionality for tracking, lending, and monitoring company assets. This module enables organizations to maintain detailed records of their physical assets, manage lending operations, and track asset history throughout their lifecycle.
+
+MAIN INTERFACE FEATURES
+
+1. ASSETS LISTING PAGE
+   Route: /assets
+   Controller: AssetController@index
+   
+   1.1 FILTER CONTROLS
+   - Asset Type Filter: Dropdown selection to filter assets by their type category
+     * Functionality: Dynamically filters the asset list based on selected asset type
+     * Implementation: JavaScript event listener updates DataTable via AJAX
+   
+   - Employee Filter: Dropdown selection to filter assets by assigned employee
+     * Functionality: Shows assets currently assigned to specific employees
+     * Implementation: Employee data populated from database, filters applied via DataTable
+   
+   - Status Filter: Dropdown selection to filter assets by current status
+     * Available Options: Available, Lent, Non-functional, Damaged
+     * Functionality: Filters assets based on their operational status
+     * Implementation: Status-based filtering through DataTable parameters
+   
+   - Search Field: Text input for keyword-based asset search
+     * Functionality: Searches across asset names, serial numbers, and descriptions
+     * Implementation: Real-time search with debounced input handling
+   
+   - Reset Filters Button: Clears all applied filters and search criteria
+     * Functionality: Resets all filter dropdowns and search field to default state
+     * Implementation: JavaScript function resets form elements and refreshes DataTable
+
+   1.2 ACTION BUTTONS
+   - Add Asset Button: Primary action button for creating new assets
+     * Route: /assets/create
+     * Permission Required: add_asset
+     * Functionality: Opens asset creation modal with form fields
+     * Implementation: AJAX modal loading via $.ajaxModal function
+   
+   - Lend Asset Button: Available for assets with "available" status
+     * Route: /asset/{asset}/history/create
+     * Permission Required: add_assets_history
+     * Functionality: Opens lending form modal for asset assignment
+     * Implementation: Dynamic button visibility based on asset status and permissions
+   
+   - Return Asset Button: Available for assets with "lent" status
+     * Route: /asset/{asset}/history/return/{history}
+     * Permission Required: edit_assets_history
+     * Functionality: Opens return form modal for asset retrieval
+     * Implementation: Conditional display based on asset lending status
+
+   1.3 ASSET DATA TABLE
+   - Dynamic Data Display: Server-side processed asset listing
+     * Columns: Asset Name, Type, Serial Number, Status, Employee, Actions
+     * Functionality: Sortable columns with pagination support
+     * Implementation: Laravel DataTables with AJAX processing
+   
+   - Status Indicators: Visual status representation with colored icons
+     * Available: Green circle icon
+     * Lent: Orange circle icon
+     * Non-functional: Red circle icon
+     * Damaged: Red circle icon
+   
+   - Action Dropdown: Per-row action menu for asset operations
+     * Edit Action: Opens asset editing modal
+     * Delete Action: Confirms and removes asset record
+     * Lend Action: Initiates asset lending process (status-dependent)
+     * Return Action: Initiates asset return process (status-dependent)
+
+2. ASSET CREATION INTERFACE
+   Route: /assets/create
+   Controller: AssetController@create
+   
+   2.1 FORM FIELDS
+   - Asset Name Field: Required text input for asset identification
+     * Validation: Required, maximum 255 characters
+     * Functionality: Primary asset identifier for system records
+   
+   - Asset Type Selection: Dropdown with existing asset types
+     * Data Source: AssetType model records
+     * Functionality: Categorizes assets for filtering and reporting
+     * Additional Feature: "Add New Type" button for inline type creation
+   
+   - Serial Number Field: Text input for unique asset identification
+     * Validation: Optional, unique constraint
+     * Functionality: Hardware or manufacturer serial number tracking
+   
+   - Asset Value Field: Numeric input for financial tracking
+     * Validation: Optional, decimal format
+     * Functionality: Asset valuation for accounting purposes
+   
+   - Location Field: Text input for physical asset placement
+     * Validation: Optional, maximum 255 characters
+     * Functionality: Tracks current physical location of asset
+   
+   - Status Selection: Dropdown for initial asset status
+     * Available Options: Available, Non-functional, Damaged
+     * Restriction: "Lent" status excluded from creation (requires lending process)
+     * Functionality: Sets initial operational status
+   
+   - Asset Picture Upload: File input for visual asset documentation
+     * Supported Formats: JPG, PNG, GIF
+     * Functionality: Visual identification and documentation
+     * Implementation: File upload with image preview
+   
+   - Description Field: Textarea for detailed asset information
+     * Validation: Optional, unlimited text
+     * Functionality: Additional asset details and specifications
+
+   2.2 ACTION BUTTONS
+   - Save Button: Submits asset creation form
+     * Route: POST /assets
+     * Controller: AssetController@store
+     * Functionality: Validates and creates new asset record
+     * Implementation: AJAX form submission with validation feedback
+   
+   - Cancel Button: Closes creation modal without saving
+     * Functionality: Discards form data and returns to asset listing
+     * Implementation: Modal dismissal with confirmation if data exists
+
+3. ASSET EDITING INTERFACE
+   Route: /assets/{asset}/edit
+   Controller: AssetController@edit
+   
+   3.1 PRE-POPULATED FORM FIELDS
+   - All creation fields with existing asset data
+   - Status Field Restrictions: "Lent" status unavailable for direct editing
+     * Business Logic: Lending status managed through lending/return processes
+     * Implementation: Conditional option filtering based on current status
+   
+   3.2 ACTION BUTTONS
+   - Update Button: Saves asset modifications
+     * Route: PUT /assets/{asset}
+     * Controller: AssetController@update
+     * Functionality: Validates and updates existing asset record
+     * Implementation: AJAX form submission with optimistic UI updates
+   
+   - Cancel Button: Discards changes and closes modal
+     * Functionality: Returns to previous state without modifications
+     * Implementation: Modal dismissal with unsaved changes warning
+
+4. ASSET DETAILS VIEW
+   Route: /assets/{asset}
+   Controller: AssetController@show
+   
+   4.1 ASSET INFORMATION DISPLAY
+   - Asset Name: Primary asset identifier
+   - Asset Type: Category classification with formatted display
+   - Status: Current operational status with colored indicator
+   - Serial Number: Unique identification number
+   - Asset Value: Financial valuation with currency formatting
+   - Location: Current physical placement
+   - Asset Image: Visual representation with full-size preview link
+   
+   4.2 ACTION DROPDOWN MENU
+   - Edit Asset Option: Opens asset editing modal
+     * Permission Required: edit_asset
+     * Route: /assets/{asset}/edit
+     * Functionality: Allows asset information modification
+   
+   - Lend Asset Option: Initiates lending process (available status only)
+     * Permission Required: add_assets_history
+     * Functionality: Opens lending form for asset assignment
+     * Conditional Display: Only visible for available assets
+   
+   - Return Asset Option: Initiates return process (lent status only)
+     * Permission Required: edit_assets_history
+     * Functionality: Opens return form for asset retrieval
+     * Conditional Display: Only visible for lent assets
+
+   4.3 ASSET HISTORY SECTION
+   - Historical Record Display: Chronological listing of asset lending/return events
+   - History Entry Information:
+     * Lent To: Employee who received the asset
+     * Date Given: When asset was lent with timezone formatting
+     * Return Date: Scheduled return date (if specified)
+     * Date of Return: Actual return date (if returned)
+     * Returned By: Employee who returned the asset
+     * Notes: Additional comments or observations
+   
+   - History Action Menu: Per-entry management options
+     * Edit History: Modifies existing history record
+       - Permission Required: edit_assets_history
+       - Route: /asset/{asset}/history/{history}/edit
+     * Delete History: Removes history record with confirmation
+       - Permission Required: delete_assets_history
+       - Route: DELETE /asset/{asset}/history/{history}
+       - Implementation: SweetAlert2 confirmation dialog
+
+5. ASSET LENDING INTERFACE
+   Route: /asset/{asset}/history/create
+   Controller: AssetHistoryController@create
+   
+   5.1 LENDING FORM FIELDS
+   - Employee Selection: Searchable dropdown of all employees
+     * Data Source: User model with employee role
+     * Validation: Required selection
+     * Functionality: Assigns asset to specific employee
+     * Implementation: Select2 with search functionality
+   
+   - Date Given Field: Date picker for lending date
+     * Validation: Required, date format
+     * Default Value: Current date
+     * Functionality: Records when asset was lent
+     * Implementation: Datepicker with timezone handling
+   
+   - Return Date Field: Optional date picker for expected return
+     * Validation: Optional, must be future date
+     * Functionality: Sets expected return timeline
+     * Implementation: Datepicker with date validation
+   
+   - Notes Field: Textarea for lending comments
+     * Validation: Optional, unlimited text
+     * Functionality: Records lending conditions or special instructions
+     * Implementation: Expandable textarea with character counter
+
+   5.2 ACTION BUTTONS
+   - Save Button: Processes asset lending
+     * Route: POST /asset/{asset}/history
+     * Controller: AssetHistoryController@store
+     * Functionality: Creates history record and updates asset status to "lent"
+     * Implementation: AJAX submission with status update confirmation
+   
+   - Close Button: Cancels lending process
+     * Functionality: Closes modal without creating lending record
+     * Implementation: Modal dismissal with form reset
+
+6. ASSET RETURN INTERFACE
+   Route: /asset/{asset}/history/return/{history}
+   Controller: AssetHistoryController@returnAsset
+   
+   6.1 RETURN INFORMATION DISPLAY
+   - Lent To: Shows employee who currently has the asset
+   - Date Given: Displays when asset was originally lent
+   - Return Date: Shows scheduled return date (if set)
+   
+   6.2 RETURN FORM FIELDS
+   - Returned By Selection: Dropdown of employees who can process return
+     * Default Selection: Current asset holder
+     * Validation: Required selection
+     * Functionality: Records who physically returned the asset
+   
+   - Date of Return Field: Date picker for actual return date
+     * Validation: Required, cannot be before lending date
+     * Default Value: Current date
+     * Functionality: Records actual return timestamp
+     * Implementation: Datepicker with validation constraints
+   
+   - Notes Field: Textarea for return condition comments
+     * Pre-populated: Original lending notes
+     * Functionality: Updates or adds return-specific observations
+     * Implementation: Editable textarea with existing content
+
+   6.3 ACTION BUTTONS
+   - Save Button: Processes asset return
+     * Route: PUT /asset/{asset}/history/{history}
+     * Controller: AssetHistoryController@update
+     * Functionality: Updates history record and changes asset status to "available"
+     * Implementation: AJAX submission with status synchronization
+   
+   - Close Button: Cancels return process
+     * Functionality: Maintains current lending status
+     * Implementation: Modal dismissal without changes
+
+7. ASSET SETTINGS MANAGEMENT
+   Route: /asset-setting
+   Controller: AssetSettingController@index
+   
+   7.1 ASSET TYPE MANAGEMENT INTERFACE
+   - Asset Type Listing: Tabular display of all asset types
+     * Columns: Index Number, Type Name, Actions
+     * Functionality: Provides overview of available asset categories
+     * Implementation: Server-side rendered table with dynamic updates
+   
+   - Add Asset Type Button: Creates new asset type categories
+     * Permission Required: add_assets_type
+     * Route: /asset-setting/create
+     * Functionality: Opens modal for new type creation
+     * Implementation: AJAX modal with form validation
+
+   7.2 ASSET TYPE ACTIONS
+   - Edit Type Action: Modifies existing asset type
+     * Permission Required: edit_assets_type
+     * Route: /asset-setting/{type}/edit
+     * Functionality: Opens editing modal with pre-populated data
+     * Implementation: AJAX modal with update functionality
+   
+   - Delete Type Action: Removes asset type with confirmation
+     * Permission Required: delete_assets_type
+     * Route: DELETE /asset-type/{type}
+     * Functionality: Removes type after dependency validation
+     * Implementation: SweetAlert2 confirmation with cascade checking
+
+8. ASSET TYPE CREATION INTERFACE
+   Route: /asset-setting/create
+   Controller: AssetSettingController@create
+   
+   8.1 TYPE CREATION FORM
+   - Type Name Field: Required text input for type identification
+     * Validation: Required, unique, maximum 255 characters
+     * Functionality: Creates new asset category for classification
+     * Implementation: Real-time validation with uniqueness checking
+   
+   8.2 ACTION BUTTONS
+   - Save Button: Creates new asset type
+     * Route: POST /asset-type
+     * Controller: AssetTypeController@store
+     * Functionality: Validates and creates new type record
+     * Implementation: AJAX submission with dropdown refresh
+   
+   - Close Button: Cancels type creation
+     * Functionality: Discards form data and closes modal
+     * Implementation: Modal dismissal with form reset
+
+9. ASSET TYPE EDITING INTERFACE
+   Route: /asset-setting/{type}/edit
+   Controller: AssetSettingController@edit
+   
+   9.1 TYPE EDITING FORM
+   - Type Name Field: Pre-populated text input with existing type name
+     * Validation: Required, unique (excluding current record), maximum 255 characters
+     * Functionality: Modifies existing asset type name
+     * Implementation: Form validation with conflict detection
+   
+   9.2 ACTION BUTTONS
+   - Save Button: Updates asset type
+     * Route: PUT /asset-type/{type}
+     * Controller: AssetTypeController@update
+     * Functionality: Validates and updates existing type record
+     * Implementation: AJAX submission with UI synchronization
+   
+   - Cancel Button: Discards changes
+     * Functionality: Returns to settings without modifications
+     * Implementation: Modal dismissal with change detection
+
+PERMISSION SYSTEM
+The Assets module implements a comprehensive permission system controlling user access to various functionalities:
+
+- view_asset: Controls access to asset listing and details
+- add_asset: Enables asset creation functionality
+- edit_asset: Allows asset information modification
+- delete_asset: Permits asset record deletion
+- add_assets_history: Enables asset lending operations
+- edit_assets_history: Allows modification of lending/return records
+- delete_assets_history: Permits removal of history entries
+- add_assets_type: Enables creation of new asset types
+- edit_assets_type: Allows modification of existing asset types
+- delete_assets_type: Permits removal of asset type categories
+
+Each permission supports granular control with "all" or "added" scope, determining whether users can manage all records or only those they created.
+
+TECHNICAL IMPLEMENTATION DETAILS
+
+AJAX FUNCTIONALITY
+All modal operations utilize AJAX for seamless user experience:
+- Form submissions processed without page refresh
+- Real-time validation feedback
+- Dynamic content loading
+- Optimistic UI updates with rollback capability
+
+DATA VALIDATION
+Comprehensive validation implemented at multiple levels:
+- Frontend JavaScript validation for immediate feedback
+- Backend Laravel validation for data integrity
+- Database constraints for referential integrity
+- Business logic validation for status transitions
+
+STATUS MANAGEMENT
+Asset status transitions follow business rules:
+- New assets can be created as Available, Non-functional, or Damaged
+- Assets become "Lent" only through the lending process
+- Lent assets can only return to "Available" status through return process
+- Direct status changes to "Lent" are prevented in editing interface
+
+RESPONSIVE DESIGN
+The interface adapts to various screen sizes:
+- Mobile-optimized modal layouts
+- Responsive table design with horizontal scrolling
+- Touch-friendly button sizing
+- Adaptive form layouts for different devices
+
+This comprehensive guide covers all frontend functionalities of the Assets module, providing detailed explanations of each feature, button, and interface element along with their corresponding routes and implementation details.

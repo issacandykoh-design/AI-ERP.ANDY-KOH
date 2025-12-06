@@ -1,0 +1,83 @@
+<?php
+
+namespace App\Notifications;
+
+use App\Models\UserInvitation;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\App;
+
+class InvitationEmail extends BaseNotification
+{
+
+    /**
+     * @var UserInvitation
+     */
+    private $invite;
+
+    /**
+     * Create a new notification instance.
+     *
+     * @return void
+     */
+    public function __construct(UserInvitation $invite)
+    {
+        $this->invite = $invite;
+        $this->company = $invite->company;
+    }
+
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @param mixed $notifiable
+     * @return array
+     */
+    // phpcs:ignore
+    public function via($notifiable)
+    {
+        return ['mail'];
+    }
+
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param mixed $notifiable
+     * @return MailMessage
+     */
+    // phpcs:ignore
+    public function toMail($notifiable): MailMessage
+    {
+        $build = parent::build($notifiable);
+        $url = route('invitation', $this->invite->invitation_code);
+        $url = getDomainSpecificUrl($url, $this->company);
+
+        $companyLocale = $this->company ? $this->company->locale : null;
+        App::setLocale($notifiable->locale ?? $companyLocale ?? 'en');
+
+        $inviterName = $this->invite->user ? $this->invite->user->name : config('app.name');
+        $content = $inviterName . ' ' . __('email.invitation.subject') . config('app.name') . '.'  . '<br>' . ($this->invite->message ?? '');
+
+        $build
+            ->subject($inviterName . ' ' . __('email.invitation.subject') . config('app.name'))
+            ->line($content)
+            ->action(__('email.invitation.action'), $url);
+
+        parent::resetLocale();
+
+        return $build;
+    }
+
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param mixed $notifiable
+     * @return array
+     */
+    //phpcs:ignore
+    public function toArray($notifiable)
+    {
+        return [
+            //
+        ];
+    }
+
+}

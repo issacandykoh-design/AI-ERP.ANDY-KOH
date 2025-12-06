@@ -1,0 +1,366 @@
+NOTICE BOARD MODULE - COMPREHENSIVE USER GUIDE
+
+OVERVIEW
+The Notice Board module is a centralized communication system that enables administrators and authorized users to create, manage, and distribute notices to employees and clients. This module provides comprehensive functionality for internal communication, announcements, and information sharing within the organization.
+
+MAIN NAVIGATION ACCESS
+- Primary Access: Navigate to "Notice Board" from the main navigation menu
+- Dashboard Widget: Access recent notices through the employee dashboard widget
+- Direct URL: /notices (requires authentication)
+
+MAIN INTERFACE (INDEX PAGE)
+
+Filter Section
+The Notice Board index page provides comprehensive filtering options:
+
+Date Range Filter:
+- Start Date Field: Select beginning date for notice filtering
+- End Date Field: Select ending date for notice filtering  
+- Date Range Picker: Interactive calendar widget for easy date selection
+- Filter Button: Apply selected date range filters
+- Reset Filter Button: Clear all applied filters and return to default view
+
+Search Functionality:
+- Search Input Field: Enter keywords to search notice headings and content
+- Real-time Search: Automatic filtering as you type
+- Search Reset: Clear search terms using the reset filter option
+
+Action Buttons:
+- Add Notice Button: Create new notice (visible based on user permissions)
+  Route: /notices/create
+  Permission: add_notice
+- Export Options: Export notice data in various formats (Excel, CSV, PDF)
+- Bulk Actions: Perform actions on multiple selected notices
+
+Data Table Display:
+The main data table shows notice information with the following columns:
+- Checkbox Column: Select individual notices for bulk actions
+- Action Column: View, edit, and delete options for each notice
+- Heading Column: Notice title/subject
+- Created At Column: Notice creation date and time
+- To Column: Recipients (employees/clients) information
+
+Individual Notice Actions:
+- View Button: Open notice details in modal popup
+  Route: /notices/{id}
+  JavaScript: $.ajaxModal function
+- Edit Button: Modify existing notice (permission-based)
+  Route: /notices/{id}/edit
+  Permission: edit_notice
+- Delete Button: Remove notice with confirmation dialog
+  Route: DELETE /notices/{id}
+  Permission: delete_notice
+
+Bulk Actions:
+- Select All Checkbox: Choose all visible notices
+- Delete Selected: Remove multiple notices simultaneously
+- Confirmation Dialog: SweetAlert confirmation before bulk deletion
+
+NOTICE CREATION INTERFACE
+
+Access Methods:
+- Click "Add Notice" button from main interface
+- Direct route: /notices/create
+- Modal popup: AJAX-loaded form
+
+Form Fields and Components:
+
+Recipient Selection:
+- Radio Button Options:
+  * Employee: Send notice to internal staff members
+  * Client: Send notice to external clients
+- Dynamic Field Display: Form fields change based on selection
+
+Employee Selection (when Employee is selected):
+- Department Dropdown: Filter employees by department
+  Route: GET /employees-by-department
+  JavaScript: Dynamic loading via $.easyAjax
+- Employee Multi-select: Choose specific employees
+  Component: Bootstrap Select Picker
+  Feature: Search and multiple selection capability
+
+Client Selection (when Client is selected):
+- Client Multi-select: Choose specific clients
+  Component: Bootstrap Select Picker
+  Feature: Search and multiple selection capability
+
+Notice Content Fields:
+- Heading Input: Notice title/subject (required field)
+- Department Dropdown: Categorize notice by department
+- Notice Details: Rich text editor for notice content
+  Component: Quill Editor
+  Features: Text formatting, lists, links, styling options
+
+File Attachment System:
+- Dropzone Component: Drag-and-drop file upload interface
+- File Upload Features:
+  * Multiple file selection
+  * Drag-and-drop functionality
+  * File size validation (configurable limit)
+  * File type restrictions
+  * Upload progress indication
+  * Error handling and validation messages
+- CSRF Protection: Automatic token inclusion for security
+
+Form Submission:
+- Save Button: Submit notice for creation
+  Route: POST /notices
+  Method: AJAX submission via $.easyAjax
+- Cancel Button: Close form without saving
+- Validation: Client-side and server-side validation
+- Success Handling: Automatic redirection or modal closure
+
+NOTICE EDITING INTERFACE
+
+Access Methods:
+- Click "Edit" button from notice list or detail view
+- Direct route: /notices/{id}/edit
+- Permission required: edit_notice
+
+Pre-filled Form Fields:
+All form fields are populated with existing notice data:
+- Recipient type (Employee/Client) pre-selected
+- Selected employees/clients displayed
+- Notice heading filled
+- Department selected
+- Notice content loaded in Quill editor
+- Existing attachments displayed
+
+Edit-Specific Features:
+- Existing File Management: View and delete current attachments
+- Content Preservation: Maintain formatting in rich text editor
+- Selective Updates: Modify only necessary fields
+- Version Control: Track changes and modifications
+
+Form Submission:
+- Update Button: Save changes to existing notice
+  Route: PUT /notices/{id}
+  Method: AJAX submission via $.easyAjax
+- Cancel Button: Discard changes and return to previous view
+
+NOTICE DETAIL VIEW
+
+Access Methods:
+- Click "View" button from notice list
+- Click notice title from dashboard widget
+- Direct route: /notices/{id}
+- Modal display: AJAX-loaded content
+
+Information Display:
+- Notice Heading: Prominent title display
+- Creation Date: Formatted date and time
+- Recipients Information: List of employees/clients who received the notice
+- Notice Description: Full content with preserved formatting
+- Attachment List: Files attached to the notice
+
+Action Buttons (Permission-Based):
+- Edit Notice Button: Modify notice content
+  Route: /notices/{id}/edit
+  Permission: edit_notice
+- Delete Notice Button: Remove notice with confirmation
+  Route: DELETE /notices/{id}
+  Permission: delete_notice
+  Confirmation: SweetAlert dialog
+
+Read Status Tracking (Admin Feature):
+- Read By Section: Shows which employees have viewed the notice
+- User List: Names and read timestamps
+- Read Status Indicators: Visual confirmation of notice delivery
+
+File Management:
+- File List Display: All attached files with details
+- File Actions:
+  * View File: Open file in new tab/window
+  * Download File: Direct file download
+    Route: GET /notice-files/{id}/download
+  * Delete File: Remove attachment (permission-based)
+    Route: DELETE /notice-files/{id}
+    Permission: delete_notice_files
+    Confirmation: SweetAlert dialog
+
+DATATABLES FUNCTIONALITY
+
+Table Configuration:
+- Server-side Processing: Efficient handling of large datasets
+- Pagination: Navigate through multiple pages of notices
+- Sorting: Click column headers to sort data
+- Search Integration: Global search across all columns
+- Responsive Design: Adaptive layout for different screen sizes
+
+Export Features:
+- Excel Export: Download notice data as Excel file
+- CSV Export: Export data in comma-separated format
+- PDF Export: Generate PDF report of notices
+- Print Option: Browser-based printing functionality
+
+Column Management:
+- Column Visibility: Show/hide specific columns
+- Column Reordering: Drag and drop column arrangement
+- Column Filtering: Individual column search options
+
+PERMISSION SYSTEM
+
+User Roles and Access:
+- Super Admin: Full access to all notice functions
+- Admin: Comprehensive notice management capabilities
+- HR Manager: Employee-focused notice management
+- Employee: View assigned notices, limited creation rights
+- Client: View client-specific notices only
+
+Permission-Based Features:
+- add_notice: Create new notices
+- edit_notice: Modify existing notices
+- delete_notice: Remove notices
+- view_notice: Access notice content
+- delete_notice_files: Remove file attachments
+- manage_all_notices: Admin-level access to all notices
+
+Conditional Display:
+- Buttons and actions appear based on user permissions
+- Menu items filtered by access rights
+- Data visibility controlled by user role
+
+FILE MANAGEMENT SYSTEM
+
+Upload Capabilities:
+- Multiple File Types: Support for documents, images, and other file formats
+- File Size Limits: Configurable maximum file size
+- Drag-and-Drop Interface: Intuitive file selection
+- Progress Tracking: Visual upload progress indication
+
+File Storage:
+- Secure Storage: Files stored in protected directory
+- Organized Structure: Files categorized by notice
+- Access Control: Permission-based file access
+
+File Operations:
+- Download: Direct file download with proper headers
+- View: In-browser file viewing when supported
+- Delete: Secure file removal with confirmation
+- List: Display all files associated with notice
+
+JAVASCRIPT FUNCTIONALITY
+
+Core JavaScript Features:
+- AJAX Operations: Asynchronous data loading and submission
+- Modal Management: Dynamic modal popup handling
+- Form Validation: Client-side input validation
+- File Upload: Dropzone.js integration for file handling
+- Rich Text Editing: Quill editor for content creation
+
+Interactive Elements:
+- Date Range Picker: Calendar widget for date selection
+- Select Pickers: Enhanced dropdown menus with search
+- Confirmation Dialogs: SweetAlert for user confirmations
+- Dynamic Content: Real-time form field updates
+
+Error Handling:
+- AJAX Error Management: Graceful handling of server errors
+- Validation Messages: User-friendly error notifications
+- Network Error Recovery: Retry mechanisms for failed requests
+
+NOTIFICATION SYSTEM INTEGRATION
+
+Email Notifications:
+- New Notice Alerts: Automatic email notifications for new notices
+- Update Notifications: Alerts when notices are modified
+- Recipient Targeting: Emails sent to selected employees/clients
+
+In-App Notifications:
+- Dashboard Alerts: Notice notifications on user dashboard
+- Real-time Updates: Instant notification delivery
+- Notification History: Track of all sent notifications
+
+Notification Templates:
+- Standardized Formats: Consistent notification appearance
+- Customizable Content: Personalized notification messages
+- Multi-language Support: Notifications in user's preferred language
+
+MOBILE RESPONSIVENESS
+
+Responsive Design:
+- Mobile-First Approach: Optimized for mobile devices
+- Touch-Friendly Interface: Large buttons and touch targets
+- Adaptive Layout: Content adjusts to screen size
+- Mobile Navigation: Simplified menu structure for mobile
+
+Mobile-Specific Features:
+- Swipe Gestures: Touch-based navigation
+- Mobile File Upload: Camera and gallery integration
+- Offline Capability: Basic functionality without internet
+- Mobile Notifications: Push notifications on mobile devices
+
+SECURITY FEATURES
+
+Data Protection:
+- CSRF Protection: Cross-site request forgery prevention
+- Input Sanitization: Protection against malicious input
+- File Upload Security: Validation and scanning of uploaded files
+- Access Control: Role-based permission system
+
+Authentication:
+- User Authentication: Required login for access
+- Session Management: Secure session handling
+- Permission Validation: Server-side permission checks
+- Audit Trail: Logging of user actions and changes
+
+TECHNICAL INTEGRATION
+
+Backend Integration:
+- Laravel Framework: Built on Laravel PHP framework
+- Database Integration: MySQL/PostgreSQL database support
+- API Endpoints: RESTful API for data operations
+- Middleware: Authentication and permission middleware
+
+Frontend Technologies:
+- Bootstrap Framework: Responsive CSS framework
+- jQuery Library: JavaScript functionality
+- DataTables Plugin: Advanced table functionality
+- Quill Editor: Rich text editing capabilities
+- Dropzone.js: File upload handling
+
+MAINTENANCE AND MONITORING
+
+System Maintenance:
+- Database Optimization: Regular database maintenance
+- File Cleanup: Automated removal of orphaned files
+- Performance Monitoring: System performance tracking
+- Error Logging: Comprehensive error logging system
+
+User Activity Monitoring:
+- Access Logs: Track user access patterns
+- Action Logging: Record user actions and changes
+- Performance Metrics: Monitor system usage and performance
+- Security Monitoring: Track security-related events
+
+TROUBLESHOOTING GUIDE
+
+Common Issues and Solutions:
+
+File Upload Problems:
+- Check file size limits in server configuration
+- Verify file type restrictions
+- Ensure proper directory permissions
+- Check network connectivity for large files
+
+Permission Issues:
+- Verify user role assignments
+- Check permission configurations
+- Confirm database permission records
+- Review middleware settings
+
+Display Problems:
+- Clear browser cache and cookies
+- Check JavaScript console for errors
+- Verify CSS and JavaScript file loading
+- Test with different browsers
+
+Performance Issues:
+- Monitor database query performance
+- Check server resource usage
+- Optimize large file handling
+- Review caching configurations
+
+CONCLUSION
+
+The Notice Board module provides a comprehensive communication platform with robust features for creating, managing, and distributing notices throughout the organization. Its intuitive interface, powerful functionality, and flexible permission system make it an essential tool for organizational communication and information sharing.

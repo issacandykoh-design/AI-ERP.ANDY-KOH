@@ -1,0 +1,735 @@
+PAYROLL MODULE - COMPREHENSIVE USER GUIDE
+
+==================================================
+OVERVIEW
+==================================================
+
+The Payroll module is a comprehensive salary management system that handles employee compensation, salary calculations, overtime management, and payroll reporting. This module provides complete payroll processing capabilities including salary slip generation, payment tracking, tax deductions, and detailed reporting features.
+
+==================================================
+MAIN PAYROLL MANAGEMENT INTERFACE
+==================================================
+
+ACCESSING THE PAYROLL MODULE
+- Navigate to the Payroll section from the main menu
+- Route: /account/payroll
+- Permission Required: view_payroll (all/added/owned/both)
+
+PAYROLL GENERATION INTERFACE
+
+Filter Section:
+1. Year Selection Dropdown
+   - Purpose: Select the payroll year for processing
+   - Options: Current year and 4 previous years
+   - Default: Current year
+
+2. Payroll Cycle Selection
+   - Purpose: Choose salary cycle type
+   - Options: Monthly, Weekly, Semi-monthly, Bi-weekly
+   - Route: Uses payroll cycle configuration
+
+3. Month Selection
+   - Purpose: Select specific month for payroll processing
+   - Dynamic based on selected cycle
+   - Admin users can select specific months
+
+4. Search Field
+   - Purpose: Search employees by name or employee ID
+   - Real-time filtering capability
+   - Placeholder: "Start typing..."
+
+5. Clear Filters Button
+   - Purpose: Reset all filter selections
+   - Icon: times-circle
+   - Functionality: Clears all applied filters
+
+Payroll Generation Form:
+1. Include Expense Claims Checkbox
+   - Purpose: Include approved expense claims in salary calculation
+   - Default: Checked
+   - Field Name: includeExpenseClaims
+
+2. Add Timelogs Checkbox
+   - Purpose: Include project time logs in salary calculation
+   - Default: Unchecked
+   - Field Name: addTimelogs
+
+3. Use Attendance Checkbox
+   - Purpose: Calculate salary based on attendance records
+   - Default: Unchecked
+   - Field Name: useAttendance
+   - Popover: Explains attendance-based calculation
+
+4. Department Selection
+   - Purpose: Filter employees by department
+   - Options: All available departments
+   - Field: employee_department
+
+5. Employee Selection
+   - Purpose: Select specific employees for payroll generation
+   - Type: Multi-select dropdown
+   - Field: employee_id[]
+   - Live search enabled
+
+6. Generate Payslip Button
+   - Purpose: Process payroll for selected employees
+   - Route: POST /account/payroll/generate
+   - Icon: paper-plane
+   - Permission Required: add_payroll
+
+PAYROLL DATA TABLE
+
+Quick Actions:
+1. Change Status Action
+   - Purpose: Bulk update payroll status
+   - Options: Generated, Review, Locked, Paid
+   - Permission Required: edit_payroll
+
+2. Regenerate Payslip Action
+   - Purpose: Regenerate salary slips for selected employees
+   - Permission Required: add_payroll
+
+Data Table Features:
+- Employee information display
+- Salary slip status indicators
+- Net salary amounts
+- Payment dates
+- Action buttons for individual records
+
+Individual Record Actions:
+1. View Button
+   - Purpose: Display detailed salary slip information
+   - Route: GET /account/payroll/{id}
+   - Opens modal with complete salary breakdown
+
+2. Edit Button
+   - Purpose: Modify salary slip details
+   - Route: GET /account/payroll/{id}/edit
+   - Permission Required: edit_payroll
+   - Available only for non-paid status
+
+3. Download PDF Button
+   - Purpose: Download salary slip as PDF
+   - Route: GET /account/payroll/download/{id}
+   - Generates formatted salary slip document
+
+4. Status Update Button
+   - Purpose: Change individual payroll status
+   - Route: POST /account/payroll/updateStatus
+   - Status options: Generated, Review, Locked, Paid
+
+==================================================
+EMPLOYEE SALARY MANAGEMENT
+==================================================
+
+ACCESSING EMPLOYEE SALARY
+- Route: /account/employee-salary
+- Purpose: Manage employee salary structures and increments
+
+Filter Section:
+1. Designation Filter
+   - Purpose: Filter employees by job designation
+   - Options: All designations + "All" option
+   - Live search enabled
+
+2. Department Filter
+   - Purpose: Filter employees by department
+   - Options: All departments + "All" option
+   - Live search enabled
+
+3. Search Field
+   - Purpose: Search employees by name or details
+   - Real-time filtering
+
+4. Clear Filters Button
+   - Purpose: Reset all applied filters
+
+Employee Salary Actions:
+1. Make Salary Button
+   - Purpose: Create initial salary structure for employee
+   - Route: GET /account/employee-salary/make-salary/{id}
+   - Opens salary creation form
+
+2. Edit Salary Button
+   - Purpose: Modify existing salary structure
+   - Route: GET /account/employee-salary/edit-salary/{id}
+   - Opens salary editing interface
+
+3. Salary Increment Button
+   - Purpose: Process salary increment for employee
+   - Route: GET /account/employee-salary/increment/{id}
+   - Opens increment processing form
+
+4. View Salary Details Button
+   - Purpose: Display complete salary breakdown
+   - Shows earnings, deductions, and net salary
+
+Salary Structure Components:
+- Basic Salary configuration
+- Allowances and benefits
+- Deduction components
+- Tax calculations
+- Net salary computation
+
+==================================================
+PAYROLL SETTINGS CONFIGURATION
+==================================================
+
+ACCESSING PAYROLL SETTINGS
+- Route: /account/payroll-settings
+- Purpose: Configure payroll system parameters
+
+Settings Tabs:
+
+1. SALARY COMPONENTS TAB
+   - Route: /account/payroll-settings
+   - Purpose: Manage earning and deduction components
+
+   Add New Salary Component Button:
+   - Purpose: Create new salary component
+   - Route: POST /account/payroll-settings/salary-components
+   - Icon: plus
+   - Opens component creation modal
+
+   Component Management:
+   - Edit existing components
+   - Delete unused components
+   - Set component types (earning/deduction)
+   - Configure calculation methods
+
+2. SALARY GROUPS TAB
+   - Route: /account/payroll-settings?tab=salary-groups
+   - Purpose: Manage employee salary groupings
+
+   Add New Salary Group Button:
+   - Purpose: Create new salary group
+   - Route: POST /account/payroll-settings/salary-groups
+   - Icon: plus
+
+   Group Management Features:
+   - Assign employees to groups
+   - Configure group-specific components
+   - Manage employee assignments
+   - Route: POST /account/payroll-settings/salary-groups/manage-employee
+
+3. SALARY TDS TAB
+   - Route: /account/payroll-settings?tab=salary-tds
+   - Purpose: Configure tax deduction settings
+
+   Add New TDS Button:
+   - Purpose: Create tax deduction rule
+   - Route: POST /account/payroll-settings/salary-tds
+   - Icon: plus
+
+   TDS Status Button:
+   - Purpose: Enable/disable TDS calculations
+   - Route: POST /account/payroll-settings/salary-tds/status
+   - Icon: plus (secondary)
+
+   TDS Management:
+   - Tax slab configuration
+   - Deduction percentages
+   - Status management
+   - Route: GET /account/payroll-settings/salary-tds/get-status
+
+4. PAYMENT METHODS TAB
+   - Route: /account/payroll-settings?tab=payment-methods
+   - Purpose: Configure salary payment methods
+
+   Add New Payment Method Button:
+   - Purpose: Create payment method
+   - Route: POST /account/payroll-settings/payment-methods
+   - Icon: plus
+
+   Payment Method Features:
+   - Bank transfer configuration
+   - Cash payment setup
+   - Check payment options
+   - Digital payment methods
+
+5. SALARY SETTING TAB
+   - Route: /account/payroll-settings?tab=salary-setting
+   - Purpose: Configure salary slip data fields
+
+   Features:
+   - Custom field configuration
+   - Salary slip layout settings
+   - Data display preferences
+
+6. PAYROLL CURRENCY SETTING TAB
+   - Route: /account/payroll-settings?tab=payroll-currency-setting
+   - Purpose: Configure currency settings
+
+   Features:
+   - Multi-currency support
+   - Exchange rate management
+   - Currency display preferences
+
+==================================================
+OVERTIME MANAGEMENT
+==================================================
+
+OVERTIME REQUESTS INTERFACE
+- Route: /account/overtime-requests
+- Purpose: Manage employee overtime requests
+
+Filter Section:
+1. Designation Filter
+   - Purpose: Filter by employee designation
+   - Options: All designations
+
+2. Department Filter
+   - Purpose: Filter by department
+   - Options: All departments
+
+3. Employee Filter
+   - Purpose: Filter by specific employee
+   - Options: All employees with live search
+
+4. Year Selection
+   - Purpose: Filter by year
+   - Options: Current year and 4 previous years
+
+5. Month Selection
+   - Purpose: Filter by month
+   - Options: All months with localized names
+
+Overtime Status Dashboard:
+1. Requested Counter
+   - Purpose: Display total overtime requests
+   - Visual: Blue colored counter
+
+2. Approved Counter
+   - Purpose: Display approved overtime requests
+   - Visual: Green colored counter
+
+3. Rejected Counter
+   - Purpose: Display rejected overtime requests
+   - Visual: Red colored counter
+
+Overtime Request Actions:
+1. Create Overtime Request Button
+   - Purpose: Submit new overtime request
+   - Route: POST /account/overtime-requests
+   - Opens request creation form
+
+2. View Request Button
+   - Purpose: Display request details
+   - Route: GET /account/overtime-requests/{id}
+   - Shows overtime hours and justification
+
+3. Approve Request Button
+   - Purpose: Approve overtime request
+   - Route: GET /account/overtime-request-accept/{id}
+   - Updates request status to approved
+
+4. Change Status Button
+   - Purpose: Modify request status
+   - Route: POST /account/overtime-change-status
+   - Options: Pending, Approved, Rejected
+
+5. Get User Policy Button
+   - Purpose: Display applicable overtime policy
+   - Route: GET /account/overtime-request-policy/{id}
+   - Shows policy details and rates
+
+==================================================
+OVERTIME SETTINGS CONFIGURATION
+==================================================
+
+ACCESSING OVERTIME SETTINGS
+- Route: /account/overtime-settings
+- Purpose: Configure overtime policies and rates
+
+Settings Tabs:
+
+1. PAY CODE TAB
+   - Route: /account/overtime-settings?tab=pay-code
+   - Purpose: Manage overtime pay codes
+
+   Add New Pay Code Button:
+   - Purpose: Create overtime pay code
+   - Route: POST /account/overtime-settings/pay-codes
+   - Icon: plus
+
+   Pay Code Features:
+   - Overtime rate configuration
+   - Code naming and description
+   - Rate calculation methods
+
+2. OVERTIME POLICY TAB
+   - Route: /account/overtime-settings?tab=overtime-policy
+   - Purpose: Manage overtime policies
+
+   Add New Overtime Policy Button:
+   - Purpose: Create overtime policy
+   - Route: POST /account/overtime-settings/overtime-policies
+   - Icon: plus
+
+   Policy Management:
+   - Policy rules configuration
+   - Eligibility criteria
+   - Rate structures
+
+3. OVERTIME POLICY EMPLOYEE TAB
+   - Route: /account/overtime-settings?tab=overtime-policy-employee
+   - Purpose: Assign policies to employees
+
+   Employee Quick Action:
+   - Purpose: Bulk assign policies to employees
+   - Route: POST /account/overtime-settings/overtime-policies/employee-quick-action
+
+   Policy Assignment Features:
+   - Individual employee assignment
+   - Bulk policy application
+   - Policy removal
+   - Route: GET /account/overtime-policy-remove/{id}
+
+4. EMPLOYEE HOURLY RATE TAB
+   - Route: /account/overtime-settings?tab=employee-hourly-rate
+   - Purpose: Configure employee hourly rates
+
+   Features:
+   - Individual rate setting
+   - Bulk rate updates
+   - Rate history tracking
+
+==================================================
+PAYROLL REPORTS
+==================================================
+
+ACCESSING PAYROLL REPORTS
+- Route: /account/payroll-reports
+- Purpose: Generate and view payroll reports
+
+Report Tabs:
+
+1. SALARY EXPORT TAB
+   - Route: /account/payroll-reports
+   - Purpose: Export salary data
+
+   Export Report Button:
+   - Purpose: Generate salary report export
+   - Route: GET /account/payroll-export-reports
+   - Formats: Excel, PDF, CSV
+
+   Export Features:
+   - Date range selection
+   - Employee filtering
+   - Department-wise reports
+   - Salary component breakdown
+
+2. COMPANY TDS REPORT TAB
+   - Route: /account/payroll-reports?tab=company-tds
+   - Purpose: Generate company tax reports
+
+   Features:
+   - TDS summary reports
+   - Tax liability calculations
+   - Compliance reporting
+   - Period-wise analysis
+
+3. EMPLOYEE TDS REPORT TAB
+   - Route: /account/payroll-reports?tab=employee-tds
+   - Purpose: Generate employee tax reports
+
+   Fetch TDS Button:
+   - Purpose: Retrieve employee TDS data
+   - Route: GET /account/payroll-reports/fetch-tds{id}
+
+   Features:
+   - Individual employee TDS
+   - Tax deduction summaries
+   - Annual tax statements
+   - Form 16 generation
+
+==================================================
+PAYROLL EXPENSES MANAGEMENT
+==================================================
+
+ACCESSING PAYROLL EXPENSES
+- Route: /account/payroll-expenses
+- Purpose: Manage expense claims in payroll
+
+Filter Section:
+1. Date Range Filter
+   - Purpose: Filter expenses by date range
+   - Field: datatableRange
+   - Type: Date range picker
+
+2. Search Field
+   - Purpose: Search expenses by description or amount
+   - Real-time filtering capability
+
+3. Clear Filters Button
+   - Purpose: Reset all applied filters
+
+Expense Actions:
+1. Quick Actions Dropdown
+   - Purpose: Bulk operations on selected expenses
+   - Options: Change Status, Delete
+
+2. Change Status Action
+   - Purpose: Update expense status
+   - Options: Pending, Approved, Rejected
+
+3. View Expense Button
+   - Purpose: Display expense details
+   - Route: GET /account/payroll-expenses/{id}
+   - Shows expense breakdown and attachments
+
+4. Delete Expense Button
+   - Purpose: Remove expense record
+   - Route: DELETE /account/payroll-expenses/{id}
+   - Confirmation required
+
+==================================================
+SALARY SLIP DETAILED VIEW
+==================================================
+
+SALARY SLIP MODAL FEATURES
+
+Header Information:
+- Employee name and photo
+- Designation and department
+- Employee ID and joining date
+- Payment method information
+- Salary slip duration and cycle
+
+Status Indicators:
+1. Generated Status
+   - Color: Green
+   - Meaning: Salary slip created
+
+2. Review Status
+   - Color: Blue
+   - Meaning: Under review
+
+3. Locked Status
+   - Color: Red
+   - Meaning: Locked for changes
+
+4. Paid Status
+   - Color: Dark Green
+   - Meaning: Payment completed
+
+Action Buttons:
+1. Edit Button
+   - Purpose: Modify salary slip
+   - Route: GET /account/payroll/{id}/edit
+   - Available for non-paid status only
+
+2. Download Button
+   - Purpose: Download PDF salary slip
+   - Route: GET /account/payroll/download/{id}
+   - Generates formatted document
+
+Salary Breakdown:
+1. Earnings Section
+   - Basic salary display
+   - Allowances and benefits
+   - Overtime payments
+   - Additional earnings
+
+2. Deductions Section
+   - Tax deductions (TDS)
+   - Provident fund
+   - Insurance premiums
+   - Other deductions
+
+3. Net Pay Calculation
+   - Total earnings summary
+   - Total deductions summary
+   - Final net pay amount
+   - Currency formatting
+
+Custom Fields Display:
+- Employee-specific custom fields
+- Configurable data fields
+- Additional information display
+
+==================================================
+PERMISSION SYSTEM
+==================================================
+
+Payroll Module Permissions:
+
+1. View Payroll Permission
+   - Levels: all, added, owned, both
+   - Controls: Access to payroll data
+
+2. Add Payroll Permission
+   - Levels: all, added
+   - Controls: Payroll generation capability
+
+3. Edit Payroll Permission
+   - Levels: all, added, owned, both
+   - Controls: Salary slip modification
+
+4. Delete Payroll Permission
+   - Levels: all, added, owned, both
+   - Controls: Payroll record deletion
+
+Permission Validation:
+- Route-level permission checks
+- Action-specific validations
+- User role-based access control
+- Company-specific permissions
+
+==================================================
+AJAX FUNCTIONALITY
+==================================================
+
+Dynamic Loading Features:
+
+1. Employee Loading by Department
+   - Route: GET /account/payroll/get_employee/{payrollCycle?}/{departmentId?}
+   - Purpose: Filter employees by department and cycle
+
+2. Payroll Cycle Data
+   - Route: POST /account/payroll/get-cycle-data
+   - Purpose: Load cycle-specific information
+
+3. Expense Title Retrieval
+   - Route: POST /account/payroll/get_expense_title
+   - Purpose: Get expense claim titles
+
+4. Status Updates
+   - Route: GET /account/payroll/get-status
+   - Purpose: Retrieve current payroll status
+
+5. Salary Data Retrieval
+   - Route: GET /account/employee-salary/get-salary
+   - Purpose: Load employee salary information
+
+6. Updated Salary Information
+   - Route: GET /account/employee-salary/get-updated-salary
+   - Purpose: Get modified salary data
+
+Modal Operations:
+- Right modal initialization
+- Dynamic content loading
+- Form submission handling
+- Real-time data updates
+
+==================================================
+SEARCH AND FILTERING
+==================================================
+
+Search Capabilities:
+
+1. Global Search
+   - Employee name search
+   - Employee ID search
+   - Real-time filtering
+   - Case-insensitive matching
+
+2. Advanced Filters
+   - Department-based filtering
+   - Designation-based filtering
+   - Date range filtering
+   - Status-based filtering
+
+3. DataTable Integration
+   - Server-side processing
+   - Pagination support
+   - Sorting capabilities
+   - Export functionality
+
+Filter Persistence:
+- Session-based filter storage
+- URL parameter handling
+- Filter state maintenance
+- Clear filter functionality
+
+==================================================
+UI DESIGN AND COMPONENTS
+==================================================
+
+Design Elements:
+
+1. Card-based Layout
+   - White background cards
+   - Shadow effects (b-shadow-4)
+   - Rounded corners
+   - Responsive design
+
+2. Button Styles
+   - Primary buttons (blue theme)
+   - Secondary buttons (grey theme)
+   - Icon integration
+   - Hover effects
+
+3. Form Components
+   - Select pickers with search
+   - Checkbox components
+   - Input field styling
+   - Validation indicators
+
+4. Status Badges
+   - Color-coded status indicators
+   - Dynamic status updates
+   - Consistent styling
+   - Accessibility features
+
+5. Data Tables
+   - Responsive table design
+   - Action column integration
+   - Sorting capabilities
+   - Pagination controls
+
+Responsive Features:
+- Mobile-friendly interface
+- Tablet optimization
+- Desktop full-width layout
+- Touch-friendly controls
+
+==================================================
+INTEGRATION POINTS
+==================================================
+
+Module Dependencies:
+
+1. Employee Management Integration
+   - Employee data synchronization
+   - Department information
+   - Designation details
+   - Joining date information
+
+2. Attendance System Integration
+   - Attendance-based calculations
+   - Working hours computation
+   - Leave deduction handling
+   - Overtime hour tracking
+
+3. Expense Management Integration
+   - Expense claim inclusion
+   - Approval workflow integration
+   - Reimbursement processing
+   - Category-wise reporting
+
+4. Time Tracking Integration
+   - Project time log inclusion
+   - Billable hour calculations
+   - Client-specific rates
+   - Time-based compensation
+
+5. Currency System Integration
+   - Multi-currency support
+   - Exchange rate handling
+   - Currency formatting
+   - Regional preferences
+
+API Endpoints:
+- RESTful API structure
+- JSON response format
+- Authentication required
+- Rate limiting applied
+
+==================================================
+CONCLUSION
+==================================================
+
+The Payroll module provides comprehensive salary management capabilities with intuitive user interfaces, robust permission systems, and extensive customization options. The module supports various payroll cycles, multiple payment methods, tax calculations, and detailed reporting features. All interfaces are designed for ease of use while maintaining professional standards and regulatory compliance requirements.
+
+This user guide covers all major functionalities, interface elements, and operational procedures within the Payroll module, providing complete reference documentation for system users and administrators.

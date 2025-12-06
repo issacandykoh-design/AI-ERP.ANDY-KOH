@@ -1,0 +1,36 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#ecf0f1"/>
+  
+  <!-- Login Container -->
+  <rect x="100" y="50" width="200" height="200" fill="white" rx="8" stroke="#bdc3c7" stroke-width="1"/>
+  
+  <!-- Header -->
+  <rect x="100" y="50" width="200" height="60" fill="#3498db" rx="8"/>
+  <rect x="100" y="102" width="200" height="8" fill="white"/>
+  
+  <text x="200" y="75" font-family="Arial, sans-serif" font-size="18" fill="white" font-weight="bold" text-anchor="middle">Craveva</text>
+  <text x="200" y="95" font-family="Arial, sans-serif" font-size="12" fill="#ecf0f1" text-anchor="middle">Business Suite</text>
+  
+  <!-- Login Form -->
+  <text x="120" y="135" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">Email Address</text>
+  <rect x="120" y="140" width="160" height="25" fill="#f8f9fa" stroke="#bdc3c7" stroke-width="1" rx="3"/>
+  <text x="125" y="155" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d">user@example.com</text>
+  
+  <text x="120" y="180" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50">Password</text>
+  <rect x="120" y="185" width="160" height="25" fill="#f8f9fa" stroke="#bdc3c7" stroke-width="1" rx="3"/>
+  <text x="125" y="200" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d">••••••••</text>
+  
+  <!-- Login Button -->
+  <rect x="120" y="220" width="160" height="30" fill="#2ecc71" rx="4"/>
+  <text x="200" y="238" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold" text-anchor="middle">Sign In</text>
+  
+  <!-- Footer -->
+  <text x="200" y="270" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" text-anchor="middle">© 2024 Craveva - Classic Login</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="50" cy="80" r="15" fill="#e74c3c" opacity="0.3"/>
+  <circle cx="350" cy="220" r="20" fill="#f39c12" opacity="0.3"/>
+  <rect x="30" y="200" width="30" height="30" fill="#9b59b6" opacity="0.2" rx="4"/>
+  <rect x="340" y="60" width="25" height="25" fill="#1abc9c" opacity="0.2" rx="4"/>
+</svg>

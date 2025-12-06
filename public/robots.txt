@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+Host: hub.craveva.com
+Sitemap: https://hub.craveva.com/sitemap.xml

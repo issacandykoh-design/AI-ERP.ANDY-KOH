@@ -1,0 +1,664 @@
+CLIENTS SECTION - COMPREHENSIVE USER GUIDE
+
+===========================================
+OVERVIEW
+===========================================
+
+The Clients section provides comprehensive client relationship management functionality within the ERP system. This module enables users to manage client information, contacts, documents, notes, and track various business interactions including projects, invoices, payments, and orders.
+
+===========================================
+MAIN CLIENT LISTING PAGE
+===========================================
+
+URL: /clients
+Route: clients.index
+Description: The primary interface for viewing and managing all clients in the system.
+
+FILTERING AND SEARCH CAPABILITIES:
+
+1. Date Range Filter
+   - Function: Filter clients by creation date range
+   - Implementation: Uses datatableRange component
+   - Usage: Select start and end dates to filter client records
+
+2. Client Selection Filter
+   - Function: Filter by specific client
+   - Field: client dropdown
+   - Usage: Select individual client from dropdown list
+
+3. Category Filter
+   - Function: Filter clients by category
+   - Field: filter_category_id
+   - Usage: Select client category to narrow results
+
+4. Sub-Category Filter
+   - Function: Filter clients by sub-category
+   - Field: filter_sub_category_id
+   - Dependency: Dynamically loads based on selected category
+   - AJAX Endpoint: get_client_sub_categories
+
+5. Project Filter
+   - Function: Filter clients by associated project
+   - Field: project_id
+   - Usage: Select project to show related clients
+
+6. Contract Type Filter
+   - Function: Filter by contract type
+   - Field: contract_type_id
+   - Usage: Filter clients based on contract arrangements
+
+7. Country Filter
+   - Function: Filter clients by country
+   - Field: country_id
+   - Usage: Select country to show clients from specific location
+
+8. Status Filter
+   - Function: Filter by active/inactive status
+   - Options: Active, Inactive
+   - Usage: Toggle between active and inactive clients
+
+9. Verification Status Filter
+   - Function: Filter by client verification status
+   - Usage: Show verified or unverified clients
+
+10. Search Functionality
+    - Field: search-text-field
+    - Function: General text search across client data
+    - Implementation: Real-time search with AJAX data loading
+
+ACTION BUTTONS AND CONTROLS:
+
+1. Add New Client Button
+   - URL: /clients/create
+   - Route: clients.create
+   - Function: Navigate to client creation form
+   - Permission: add_clients
+
+2. Import Clients Button
+   - URL: /clients/import
+   - Route: clients.import
+   - Function: Bulk import clients from file
+   - Permission: add_clients
+
+3. View Toggle Buttons
+   - All Clients View: /clients
+   - Unverified Clients View: Separate view for pending verification
+
+4. Quick Actions
+   - Change Status: Bulk status modification for selected clients
+   - Delete: Bulk deletion of selected clients
+   - Implementation: Uses SweetAlert for confirmation
+
+5. Individual Row Actions
+   - Verify User: Approve client verification (.verify-user)
+   - Delete Row: Remove individual client (.delete-table-row)
+   - Edit: Modify client information
+
+6. Reset Filters Button
+   - Function: Clear all applied filters
+   - Visibility: Shows when filters are active
+
+===========================================
+CLIENT CREATION
+===========================================
+
+URL: /clients/create
+Route: clients.create
+Description: Comprehensive form for adding new clients to the system.
+
+FORM SECTIONS:
+
+1. Personal Information
+   - Salutation: Title selection (Mr., Mrs., Ms., Dr., etc.)
+   - Full Name: Client's complete name
+   - Email Address: Primary email contact
+   - Country: Country selection with flag display
+   - Mobile Number: Phone number with country code
+   - Gender: Gender selection
+   - Language: Preferred language setting
+   - Profile Picture: Image upload for client avatar
+
+2. Company Details
+   - Company Name: Business name
+   - Website: Company website URL
+   - Tax Name: Legal business name for tax purposes
+   - GST Number: Tax identification number
+   - Office Phone: Business phone number
+   - City: Business location city
+   - State: Business location state/province
+   - Postal Code: ZIP/postal code
+   - Address: Complete business address
+   - Company Logo: Business logo upload
+
+3. Administrative Settings
+   - Client Category: Business category classification
+   - Sub-Category: Detailed business classification
+   - Client Login Permission: Enable/disable client portal access
+   - Email Notifications: Configure notification preferences
+   - Added By: User who created the client record
+
+4. Additional Information
+   - Shipping Address: Delivery address if different from business address
+   - Telegram User ID: Integration with Telegram messaging
+   - Notes Section: Additional client information
+   - Custom Fields: Configurable additional data fields
+
+FORM FUNCTIONALITY:
+
+1. Dynamic Sub-Category Loading
+   - AJAX call triggered by category selection
+   - Endpoint: Loads relevant sub-categories
+
+2. Country-Based Phone Code
+   - Automatic phone code update based on country selection
+   - Real-time field updates
+
+3. Save Options
+   - Standard Save: Save and return to client list
+   - Save and Add More: Save current client and create another
+
+4. Lead Integration
+   - Pre-fill functionality when converting from lead
+   - leadID parameter support
+
+5. Category Management
+   - Add New Category: Modal for creating client categories
+   - Add New Sub-Category: Modal for creating sub-categories
+   - Permission-based visibility
+
+FORM SUBMISSION:
+- Endpoint: /clients (POST)
+- Route: clients.store
+- Method: AJAX submission with $.easyAjax
+- Validation: Server-side and client-side validation
+
+===========================================
+CLIENT EDITING
+===========================================
+
+URL: /clients/{id}/edit
+Route: clients.edit
+Description: Modify existing client information with pre-populated data.
+
+FEATURES:
+- All creation form fields with existing data
+- Status modification (Active/Inactive)
+- Permission-based field access
+- Same dynamic functionality as creation form
+- Update endpoint: /clients/{id} (PUT)
+
+PERMISSIONS:
+- edit_clients: all, added, both
+- Field-level permission controls
+- User role-based restrictions
+
+===========================================
+CLIENT PROFILE VIEW
+===========================================
+
+URL: /clients/{id}
+Route: clients.show
+Description: Comprehensive client information display with tabbed navigation.
+
+PROFILE OVERVIEW:
+
+1. Client Summary Card
+   - Profile picture and name with salutation
+   - Company name and country flag
+   - Last login timestamp
+   - Status indicator (Active/Inactive)
+   - Edit button (permission-based)
+
+2. Statistics Widgets
+   - Total Projects: Project count for client
+   - Total Earnings: Sum of all payments received
+   - Total Unpaid Invoices: Outstanding invoice amount
+
+3. Detailed Information Display
+   - Full Name: Complete client name with salutation
+   - Email Address: Primary contact email
+   - Company Name: Business name
+   - Company Logo: Business logo display
+   - Mobile Number: Phone with country code
+   - Gender: Gender information with icon
+   - Office Phone: Business contact number
+   - Website: Company website link
+   - GST Number: Tax identification
+   - Address: Complete business address
+   - State: Business location state
+   - City: Business location city
+   - Postal Code: ZIP/postal code
+   - Language: Preferred language setting
+   - Added By: User who created the record
+   - Custom Fields: Additional configured fields
+
+4. Visual Analytics
+   - Project Status Chart: Pie chart showing project distribution
+   - Invoice Status Chart: Pie chart showing invoice status breakdown
+   - Full-screen chart viewing capability
+
+NAVIGATION TABS:
+
+1. Profile Tab
+   - URL: /clients/{id}
+   - Default view with client information and statistics
+
+2. Projects Tab
+   - URL: /clients/{id}?tab=projects
+   - Lists all projects associated with the client
+   - Module dependency: projects module enabled
+
+3. Invoices Tab
+   - URL: /clients/{id}?tab=invoices
+   - Shows all invoices for the client
+   - Module dependency: invoices module enabled
+
+4. Estimates Tab
+   - URL: /clients/{id}?tab=estimates
+   - Displays all estimates/quotes for the client
+   - Module dependency: estimates module enabled
+
+5. Credit Notes Tab
+   - URL: /clients/{id}?tab=creditnotes
+   - Shows credit notes issued to the client
+
+6. Payments Tab
+   - URL: /clients/{id}?tab=payments
+   - Lists all payments received from the client
+   - Module dependency: payments module enabled
+
+7. Contacts Tab
+   - URL: /clients/{id}?tab=contacts
+   - Manages client contact persons
+   - Permission: view_client_contacts
+
+8. Documents Tab
+   - URL: /clients/{id}?tab=documents
+   - File management for client documents
+   - Permission: view_client_document
+
+9. Notes Tab
+   - URL: /clients/{id}?tab=notes
+   - Client notes and communications
+   - Permission: view_client_note
+
+10. Tickets Tab
+    - URL: /clients/{id}?tab=tickets
+    - Support tickets related to the client
+    - Permission: view_tickets
+
+11. Orders Tab
+    - URL: /clients/{id}?tab=orders
+    - Client orders and purchases
+    - Module dependency: orders module enabled
+    - Permission: view_order
+
+12. GDPR Tab
+    - URL: /clients/{id}?tab=gdpr
+    - GDPR compliance and data management
+    - Dependency: GDPR module enabled
+
+SPECIAL FEATURES:
+
+1. Client Approval System
+   - Verification pending alert for unapproved clients
+   - Approve button for admin users
+   - Endpoint: /clients/{id}/approve (POST)
+
+2. Mobile Responsive Design
+   - Collapsible sidebar navigation
+   - Touch-friendly interface
+   - Responsive chart displays
+
+===========================================
+CLIENT CONTACTS MANAGEMENT
+===========================================
+
+URL: /clients/{id}/contacts/create
+Route: clients.contacts.create
+Description: Manage additional contact persons for client companies.
+
+CONTACT CREATION FORM:
+
+1. Personal Information
+   - Title/Salutation: Professional title
+   - Full Name: Contact person's name
+   - Email Address: Contact email
+   - Password: Login credentials (if portal access enabled)
+   - Country: Contact's country
+   - Mobile Number: Contact phone number
+   - Gender: Gender selection
+   - Language: Preferred language
+   - Profile Picture: Contact photo
+
+2. Address Information
+   - Complete address details for the contact person
+
+3. Access Control
+   - Client Login Permission: Enable/disable portal access
+   - Permission-based field visibility
+
+CONTACT EDITING:
+- URL: /clients/contacts/{id}/edit
+- Route: clients.contacts.edit
+- Same form structure with pre-populated data
+
+CONTACT DISPLAY:
+- URL: /clients/contacts/{id}
+- Route: clients.contacts.show
+- Detailed contact information view
+
+FUNCTIONALITY:
+- Dynamic phone code updates
+- Random password generation
+- AJAX form submission
+- Save and add more option
+- Category management integration
+
+===========================================
+CLIENT NOTES MANAGEMENT
+===========================================
+
+URL: /clients/{clientId}/notes/create
+Route: client-notes.create
+Description: Create and manage notes related to client interactions.
+
+NOTE CREATION FORM:
+
+1. Basic Information
+   - Note Title: Descriptive title for the note
+   - Note Type: Public or Private classification
+
+2. Privacy Controls (Private Notes Only)
+   - Employee Selection: Multi-select for note visibility
+   - Visible to Client: Option to show note to client
+   - Password Protection: Require password for viewing
+
+3. Content
+   - Rich Text Editor: Full-featured text editor with formatting
+   - File Attachments: Support for document attachments
+
+NOTE FEATURES:
+
+1. Public Notes
+   - Visible to all authorized users
+   - No additional access restrictions
+
+2. Private Notes
+   - Restricted visibility to selected employees
+   - Optional client visibility
+   - Password protection option
+   - Employee selection with search functionality
+
+3. Rich Text Editing
+   - Quill editor integration
+   - Image upload capability
+   - Formatting options
+
+FORM SUBMISSION:
+- Endpoint: /client-notes (POST)
+- Route: client-notes.store
+- AJAX submission with validation
+
+NOTE EDITING:
+- URL: /client-notes/{id}/edit
+- Route: client-notes.edit
+- Same form structure with existing data
+
+NOTE VIEWING:
+- URL: /client-notes/{id}
+- Route: client-notes.show
+- Password verification for protected notes
+
+PERMISSIONS:
+- add_client_note: Create new notes
+- view_client_note: View existing notes
+- edit_client_note: Modify notes
+- delete_client_note: Remove notes
+
+===========================================
+CLIENT DOCUMENTS MANAGEMENT
+===========================================
+
+Description: Comprehensive file management system for client-related documents.
+
+DOCUMENT DISPLAY:
+- File card interface with thumbnails
+- Document type icons for non-image files
+- Upload date and file information
+- Permission-based action menus
+
+DOCUMENT ACTIONS:
+
+1. View Document
+   - Direct file viewing for supported formats
+   - New tab opening for document review
+
+2. Download Document
+   - URL: /client-docs/{hash}/download
+   - Route: client-docs.download
+   - Secure file download with hash-based URLs
+
+3. Edit Document
+   - Modal-based editing interface
+   - File name modification
+   - File replacement capability
+   - Supported formats: txt, pdf, doc, xls, xlsx, docx, rtf, png, jpg, jpeg, svg
+
+4. Delete Document
+   - Confirmation dialog before deletion
+   - Permanent file removal
+
+DOCUMENT EDITING FORM:
+- File Name: Editable document name
+- File Upload: Replace existing file
+- Format Validation: Restricted file types
+- AJAX submission: /client-docs/{id} (PUT)
+
+PERMISSIONS:
+- add_client_document: Upload new documents
+- view_client_document: View and download documents
+- edit_client_document: Modify document information
+- delete_client_document: Remove documents
+
+PERMISSION LEVELS:
+- all: Full access to all client documents
+- added: Access to documents uploaded by the user
+- owned: Access to documents for owned clients
+- both: Combined added and owned permissions
+
+===========================================
+IMPORT FUNCTIONALITY
+===========================================
+
+URL: /clients/import
+Route: clients.import
+Description: Bulk client import from external files.
+
+IMPORT FEATURES:
+- File upload interface
+- Format validation
+- Progress tracking
+- Error reporting
+- Batch processing
+
+SUPPORTED FORMATS:
+- CSV files
+- Excel spreadsheets
+- Predefined template structure
+
+IMPORT PROCESS:
+1. File selection and upload
+2. Data validation and mapping
+3. Progress monitoring
+4. Error handling and reporting
+5. Successful import confirmation
+
+===========================================
+QUICK CREATE FUNCTIONALITY
+===========================================
+
+URL: /clients/quick-create (AJAX)
+Route: clients.ajax.quick_create
+Description: Simplified client creation for rapid data entry.
+
+QUICK CREATE FORM:
+- Client Name: Essential identification
+- Email Address: Primary contact
+- Company Name: Business identification
+- Streamlined interface for speed
+
+USAGE SCENARIOS:
+- During project creation
+- Invoice generation
+- Quick client addition
+- Lead conversion
+
+===========================================
+GDPR COMPLIANCE
+===========================================
+
+Description: Data protection and privacy management for client information.
+
+GDPR FEATURES:
+- Consent form management
+- Data export capabilities
+- Right to be forgotten implementation
+- Privacy policy compliance
+- Data processing agreements
+
+CONSENT MANAGEMENT:
+- URL: /clients/{id}/gdpr/consent
+- Consent form display and management
+- Consent history tracking
+- Legal compliance documentation
+
+===========================================
+PERMISSION SYSTEM
+===========================================
+
+CLIENT PERMISSIONS:
+- add_clients: Create new client records
+- view_clients: Access client information
+- edit_clients: Modify client data
+- delete_clients: Remove client records
+
+CONTACT PERMISSIONS:
+- add_client_contacts: Create contact persons
+- view_client_contacts: Access contact information
+- edit_client_contacts: Modify contact data
+- delete_client_contacts: Remove contacts
+
+NOTE PERMISSIONS:
+- add_client_note: Create client notes
+- view_client_note: Access notes
+- edit_client_note: Modify notes
+- delete_client_note: Remove notes
+
+DOCUMENT PERMISSIONS:
+- add_client_document: Upload documents
+- view_client_document: Access documents
+- edit_client_document: Modify documents
+- delete_client_document: Remove documents
+
+PERMISSION LEVELS:
+- all: Complete access to all records
+- added: Access to user-created records
+- owned: Access to assigned records
+- both: Combined added and owned access
+- none: No access to functionality
+
+===========================================
+INTEGRATION POINTS
+===========================================
+
+MODULE INTEGRATIONS:
+- Projects: Client-project associations
+- Invoices: Billing and payment tracking
+- Estimates: Quote management
+- Payments: Financial transaction records
+- Orders: Purchase order management
+- Tickets: Support request handling
+- Leads: Lead conversion to clients
+
+EXTERNAL INTEGRATIONS:
+- Telegram: Messaging integration
+- QuickBooks: Accounting system sync
+- SMS: Communication capabilities
+- Email: Notification system
+
+===========================================
+TECHNICAL IMPLEMENTATION
+===========================================
+
+FRONTEND TECHNOLOGIES:
+- Blade templating engine
+- AJAX for dynamic interactions
+- jQuery for DOM manipulation
+- Bootstrap for responsive design
+- SweetAlert for user confirmations
+- Chart.js for data visualization
+
+BACKEND ARCHITECTURE:
+- Laravel framework
+- MVC pattern implementation
+- Eloquent ORM for database operations
+- Observer pattern for model events
+- Middleware for permission control
+- Scoped queries for data security
+
+DATABASE STRUCTURE:
+- users table: Core user information
+- client_details table: Extended client data
+- client_contacts table: Contact persons
+- client_notes table: Note management
+- client_documents table: File storage
+- Custom fields support
+
+SECURITY FEATURES:
+- Permission-based access control
+- CSRF protection
+- File upload validation
+- SQL injection prevention
+- XSS protection
+- Secure file handling
+
+===========================================
+USER EXPERIENCE FEATURES
+===========================================
+
+RESPONSIVE DESIGN:
+- Mobile-friendly interface
+- Touch-optimized controls
+- Collapsible navigation
+- Adaptive layouts
+
+PERFORMANCE OPTIMIZATION:
+- AJAX-based data loading
+- Lazy loading for large datasets
+- Efficient database queries
+- Caching mechanisms
+
+ACCESSIBILITY:
+- Keyboard navigation support
+- Screen reader compatibility
+- High contrast options
+- Internationalization support
+
+===========================================
+TROUBLESHOOTING AND SUPPORT
+===========================================
+
+COMMON ISSUES:
+- Permission denied errors: Check user role assignments
+- File upload failures: Verify file format and size limits
+- AJAX errors: Check network connectivity and server status
+- Data not loading: Verify database connections and permissions
+
+MAINTENANCE TASKS:
+- Regular permission audits
+- File storage cleanup
+- Database optimization
+- Security updates
+
+This comprehensive guide covers all aspects of the Clients section functionality, providing detailed information about features, URLs, permissions, and implementation details for effective system utilization and maintenance.
