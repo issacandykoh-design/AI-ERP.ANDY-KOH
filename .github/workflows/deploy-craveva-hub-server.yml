@@ -1,4 +1,4 @@
-name: deploy-deerpos-production
+name: deploy-craveva-hub-server
 on:
   workflow_dispatch:
 jobs:
@@ -7,4 +7,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: echo target
-        run: echo "Deploy to GCP project craveva-deerpos"
+        run: echo "Deploy naming based on VM craveva-hub-server"
