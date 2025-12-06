@@ -1,0 +1,293 @@
+LEADS SECTION - COMPREHENSIVE USER GUIDE
+
+OVERVIEW
+The Leads section is a comprehensive customer relationship management module that handles lead generation, tracking, and conversion processes. The system manages leads through deals, providing complete lifecycle management from initial contact to final conversion.
+
+MAIN NAVIGATION
+Access URL: /deals
+The Leads section is accessible through the main navigation menu and provides centralized management of all lead-related activities.
+
+CORE FUNCTIONALITIES
+
+1. LEADS DASHBOARD (INDEX PAGE)
+URL: /deals
+Description: Main interface displaying all leads in a tabular format with comprehensive filtering and management options.
+
+Key Features:
+- Data table with sortable columns for lead information
+- Advanced filtering system with multiple criteria
+- Bulk action capabilities for efficient lead management
+- Export functionality for data analysis
+- Real-time search and filtering
+
+Action Buttons:
+- "Add Deal" Button: Creates new lead entries (URL: /deals/create)
+- "Import from Excel" Button: Bulk import leads from spreadsheet files (URL: /deals/import)
+- Quick Actions Dropdown: Provides batch operations for selected leads
+
+2. KANBAN BOARD VIEW
+URL: /leadboards
+Description: Visual pipeline management interface displaying leads across different stages using drag-and-drop functionality.
+
+Key Features:
+- Interactive Kanban board with customizable stages
+- Drag-and-drop lead movement between stages
+- Stage-specific lead counts and value summaries
+- Real-time updates and collaborative editing
+- Mobile-responsive design with touch support
+
+Action Buttons:
+- "Add Deal" Button: Quick lead creation from board view
+- "Add Stage" Button: Creates new pipeline stages (URL: /leadboards/create)
+- Stage Management: Edit, delete, and reorder pipeline stages
+- View Toggle: Switch between table and Kanban board views
+
+3. LEAD CREATION AND MANAGEMENT
+
+Create New Lead:
+URL: /deals/create
+Description: Comprehensive form for adding new leads with all required and optional information.
+
+Form Fields:
+- Lead Contact: Client selection or new contact creation
+- Deal Name: Descriptive title for the lead
+- Pipeline Selection: Choose appropriate sales pipeline
+- Stage Assignment: Set initial lead stage
+- Deal Value: Monetary value estimation
+- Close Date: Expected completion date
+- Deal Category: Classification for reporting
+- Deal Agent: Assigned sales representative
+- Products: Associated products or services
+- Deal Watcher: Additional team members for notifications
+
+Edit Lead:
+URL: /deals/{id}/edit
+Description: Modify existing lead information with full field access and validation.
+
+4. LEAD DETAIL VIEW
+URL: /deals/{id}
+Description: Comprehensive lead profile with tabbed interface for different information categories.
+
+Available Tabs:
+- Overview: Basic lead information and current status
+- Files: Document management and file attachments (URL: /deals/{id}?tab=files)
+- Follow-up: Scheduled activities and reminders (URL: /deals/{id}?tab=follow-up)
+- Proposals: Generated proposals and quotes (URL: /deals/{id}?tab=proposals)
+- Notes: Internal comments and observations (URL: /deals/{id}?tab=notes)
+- GDPR: Data protection and consent management (URL: /deals/{id}?tab=gdpr)
+- History: Complete audit trail of changes (URL: /deals/{id}?tab=history)
+
+5. FOLLOW-UP MANAGEMENT
+
+Create Follow-up:
+URL: /deals/follow-up/{leadID}
+Description: Schedule follow-up activities with reminder capabilities.
+
+Features:
+- Date and time scheduling with timezone support
+- Reminder notifications with customizable timing
+- Status tracking (pending, completed, canceled)
+- Detailed remarks and notes
+- Integration with calendar systems
+
+Edit Follow-up:
+URL: /deals/follow-up-edit/{id}
+Description: Modify existing follow-up activities with status updates.
+
+6. FILE MANAGEMENT
+
+Add Files:
+URL: /deal-files/create
+Description: Upload and manage documents related to leads.
+
+Features:
+- Multiple file upload with drag-and-drop interface
+- File type validation and size restrictions
+- Thumbnail generation for images
+- Download and sharing capabilities
+- Version control and file history
+
+File Views:
+- List View: Detailed file information with metadata
+- Thumbnail View: Visual grid layout for quick browsing
+
+7. PROPOSAL MANAGEMENT
+
+Create Proposal:
+URL: /proposals/create
+Description: Generate professional proposals and quotes for leads.
+
+Features:
+- Template-based proposal creation
+- Product and service line items
+- Tax calculations and discount applications
+- Digital signature collection
+- PDF generation and email delivery
+- Status tracking (waiting, accepted, declined)
+
+Proposal Actions:
+- Edit Proposal: Modify existing proposals (URL: /proposals/{id}/edit)
+- View Proposal: Display formatted proposal (URL: /proposals/{id})
+- Download PDF: Generate printable version (URL: /proposals/{id}/download)
+- Send Proposal: Email delivery to clients
+- Public Link: Shareable proposal access
+
+8. NOTES MANAGEMENT
+
+Add Notes:
+URL: /client-notes/create
+Description: Create internal notes and observations about leads.
+
+Features:
+- Rich text formatting capabilities
+- Private and shared note options
+- Timestamp and author tracking
+- Search and filtering functionality
+- Export capabilities for reporting
+
+9. FILTERING AND SEARCH SYSTEM
+
+Advanced Filters:
+- Date Range: Filter by creation or modification dates
+- Pipeline: Filter by specific sales pipelines
+- Category: Filter by lead categories
+- Product: Filter by associated products
+- Agent: Filter by assigned sales representatives
+- Stage: Filter by current pipeline stage
+- Value Range: Filter by minimum and maximum deal values
+- Status: Filter by lead status and follow-up requirements
+
+Search Functionality:
+- Text Search: Search across lead names, descriptions, and contact information
+- Real-time Results: Instant filtering as you type
+- Reset Filters: Clear all applied filters with single click
+
+10. BULK OPERATIONS
+
+Quick Actions:
+- Change Stage: Move multiple leads to different pipeline stages
+- Assign Agent: Bulk assignment of sales representatives
+- Delete Leads: Remove multiple leads with confirmation
+- Export Data: Generate reports for selected leads
+
+11. IMPORT/EXPORT FUNCTIONALITY
+
+Import Leads:
+URL: /deals/import
+Description: Bulk import leads from Excel spreadsheets with field mapping.
+
+Features:
+- Excel file upload and validation
+- Field mapping interface for data alignment
+- Error detection and correction
+- Progress tracking for large imports
+- Duplicate detection and handling
+
+Export Options:
+- Excel Export: Generate spreadsheet reports
+- PDF Reports: Formatted lead summaries
+- Custom Field Selection: Choose specific data columns
+
+12. LEAD CONVERSION
+
+Convert to Client:
+Description: Transform qualified leads into active clients with full account setup.
+
+Features:
+- Automatic client account creation
+- Data migration from lead to client records
+- Project and contract initialization
+- Notification system for team members
+
+13. STAGE MANAGEMENT
+
+Stage Operations:
+- Create Stage: Add new pipeline stages (URL: /leadboards/create)
+- Edit Stage: Modify stage properties and settings
+- Delete Stage: Remove unused stages with lead reassignment
+- Reorder Stages: Drag-and-drop stage sequence adjustment
+
+14. REPORTING AND ANALYTICS
+
+Lead Reports:
+URL: /lead-report
+Description: Comprehensive reporting system for lead performance analysis.
+
+Report Types:
+- Conversion Rates: Track lead-to-client conversion statistics
+- Pipeline Analysis: Stage-wise lead distribution and velocity
+- Agent Performance: Individual sales representative metrics
+- Revenue Forecasting: Projected income based on pipeline values
+
+15. SETTINGS AND CONFIGURATION
+
+Lead Settings:
+URL: /lead-settings
+Description: Administrative interface for lead system configuration.
+
+Configuration Options:
+- Pipeline Management: Create and modify sales pipelines
+- Source Settings: Define lead source categories
+- Stage Settings: Configure pipeline stages and properties
+- Agent Settings: Manage sales representative assignments
+- Category Settings: Set up lead classification system
+
+16. PERMISSIONS AND ACCESS CONTROL
+
+Permission Levels:
+- View Permissions: Control lead visibility by user roles
+- Edit Permissions: Restrict modification capabilities
+- Delete Permissions: Limit lead removal access
+- Create Permissions: Control new lead creation rights
+
+17. MOBILE RESPONSIVENESS
+
+Mobile Features:
+- Touch-optimized interface for tablet and smartphone access
+- Responsive design adapting to different screen sizes
+- Gesture support for Kanban board interactions
+- Offline capability for basic lead viewing
+
+18. INTEGRATION CAPABILITIES
+
+External Integrations:
+- Email System: Automatic email notifications and reminders
+- Calendar Integration: Sync follow-up activities with calendar applications
+- API Access: RESTful API for third-party system integration
+- Webhook Support: Real-time data synchronization
+
+TECHNICAL SPECIFICATIONS
+
+URL Structure:
+- Base URL: /deals
+- Resource URLs follow RESTful conventions
+- Query parameters for filtering and pagination
+- AJAX-powered interface for seamless user experience
+
+Security Features:
+- Role-based access control
+- CSRF protection for form submissions
+- Data validation and sanitization
+- Audit logging for compliance requirements
+
+Performance Optimization:
+- Lazy loading for large datasets
+- Caching mechanisms for frequently accessed data
+- Optimized database queries
+- Responsive pagination system
+
+BEST PRACTICES
+
+Data Management:
+- Regular backup of lead information
+- Consistent data entry standards
+- Periodic cleanup of obsolete records
+- Proper categorization and tagging
+
+User Training:
+- Comprehensive onboarding for new users
+- Regular training updates for feature enhancements
+- Documentation and help resources
+- Support ticket system for technical assistance
+
+This comprehensive guide covers all aspects of the Leads section functionality, providing users with detailed information about features, URLs, and operational procedures for effective lead management within the system.

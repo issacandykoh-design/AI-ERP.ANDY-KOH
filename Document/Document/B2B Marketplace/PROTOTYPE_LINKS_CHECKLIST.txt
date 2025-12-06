@@ -1,0 +1,108 @@
+================================================================================
+ALL PROTOTYPE LINKS - CHECKLIST
+================================================================================
+
+Replace "craveva.com" with your domain or use "localhost:8000" for local
+
+================================================================================
+MARKETPLACE PUBLIC PAGES
+================================================================================
+
+1. Marketplace Homepage
+   https://craveva.com/prototype/marketplace
+
+2. Product Listing Page
+   https://craveva.com/prototype/marketplace/products
+
+3. Product Detail Page
+   https://craveva.com/prototype/marketplace/products/1
+
+4. Shopping Cart (Multi-Merchant)
+   https://craveva.com/prototype/marketplace/cart
+
+5. Checkout Page
+   https://craveva.com/prototype/marketplace/checkout
+
+6. Merchant Directory
+   https://craveva.com/prototype/marketplace/merchants
+
+7. Merchant Storefront
+   https://craveva.com/prototype/marketplace/merchants/1
+
+8. Order Management
+   https://craveva.com/prototype/marketplace/order-management
+
+9. Pricing Comparison
+   https://craveva.com/prototype/marketplace/pricing-comparison
+
+10. Delivery Options
+    https://craveva.com/prototype/marketplace/delivery-options
+
+11. AI Recipe Generation
+    https://craveva.com/prototype/marketplace/ai-recipe
+
+
+================================================================================
+BUYER DASHBOARD PAGES
+================================================================================
+
+12. Buyer Dashboard
+    https://craveva.com/prototype/buyer/dashboard
+
+13. Buyer Orders List
+    https://craveva.com/prototype/buyer/orders
+
+14. Buyer Order Detail
+    https://craveva.com/prototype/buyer/orders/1
+
+15. Buyer Account Settings
+    https://craveva.com/prototype/buyer/account
+
+
+================================================================================
+MERCHANT DASHBOARD PAGES
+================================================================================
+
+16. Merchant Dashboard
+    https://craveva.com/prototype/merchant/dashboard
+
+17. Merchant Products List
+    https://craveva.com/prototype/merchant/products
+
+18. Merchant Add Product
+    https://craveva.com/prototype/merchant/products/create
+
+19. Merchant Orders List
+    https://craveva.com/prototype/merchant/orders
+
+20. Merchant Order Detail
+    https://craveva.com/prototype/merchant/orders/1
+
+
+================================================================================
+QUICK COPY-PASTE LIST (for easy checking)
+================================================================================
+
+https://craveva.com/prototype/marketplace
+https://craveva.com/prototype/marketplace/products
+https://craveva.com/prototype/marketplace/products/1
+https://craveva.com/prototype/marketplace/cart
+https://craveva.com/prototype/marketplace/checkout
+https://craveva.com/prototype/marketplace/merchants
+https://craveva.com/prototype/marketplace/merchants/1
+https://craveva.com/prototype/marketplace/order-management
+https://craveva.com/prototype/marketplace/pricing-comparison
+https://craveva.com/prototype/marketplace/delivery-options
+https://craveva.com/prototype/marketplace/ai-recipe
+https://craveva.com/prototype/buyer/dashboard
+https://craveva.com/prototype/buyer/orders
+https://craveva.com/prototype/buyer/orders/1
+https://craveva.com/prototype/buyer/account
+https://craveva.com/prototype/merchant/dashboard
+https://craveva.com/prototype/merchant/products
+https://craveva.com/prototype/merchant/products/create
+https://craveva.com/prototype/merchant/orders
+https://craveva.com/prototype/merchant/orders/1
+
+================================================================================
+

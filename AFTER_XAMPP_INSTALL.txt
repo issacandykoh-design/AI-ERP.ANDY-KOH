@@ -1,0 +1,49 @@
+========================================
+  After XAMPP Installation - Next Steps
+========================================
+
+✅ PHP: Already installed (8.2.14)
+✅ Composer: Already downloaded
+⏳ Laravel Dependencies: Will install after XAMPP
+
+Once XAMPP is installed:
+
+1. Open Command Prompt or PowerShell
+
+2. Navigate to your project:
+   cd "D:\Andy Koh\Craveva\craveva.com"
+
+3. Install Laravel dependencies:
+   C:\xampp\php\php.exe C:\Users\%USERNAME%\AppData\Local\ComposerSetup\bin\composer.phar install
+
+   OR if Composer is in PATH:
+   composer install
+
+4. Start the server:
+   C:\xampp\php\php.exe artisan serve
+
+   OR use the batch file:
+   start_server_final.bat
+
+5. Open your browser:
+   http://localhost:8000
+
+The landing page will be automatically served at the root URL!
+
+========================================
+  Alternative: Use Current PHP Installation
+========================================
+
+If you want to use the PHP we already installed (without waiting for XAMPP):
+
+1. Install dependencies with TLS disabled (local development only):
+   %LOCALAPPDATA%\CravevaTools\PHP\php.exe %LOCALAPPDATA%\ComposerSetup\bin\composer.phar install --disable-tls
+
+2. Start server:
+   %LOCALAPPDATA%\CravevaTools\PHP\php.exe artisan serve
+
+Note: XAMPP is recommended as it includes MySQL and Apache, 
+which you'll need for full Laravel development.
+
+========================================
+

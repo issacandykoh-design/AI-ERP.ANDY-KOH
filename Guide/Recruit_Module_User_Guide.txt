@@ -1,0 +1,556 @@
+RECRUIT MODULE - COMPREHENSIVE USER GUIDE
+
+===========================================
+TABLE OF CONTENTS
+===========================================
+1. MODULE OVERVIEW
+2. DASHBOARD AND ANALYTICS
+3. JOB MANAGEMENT
+4. JOB APPLICATION MANAGEMENT
+5. INTERVIEW SCHEDULING
+6. CANDIDATE DATABASE
+7. REPORTS AND ANALYTICS
+8. SETTINGS AND CONFIGURATION
+9. PUBLIC CAREER SITE
+10. PERMISSIONS AND ACCESS CONTROL
+
+===========================================
+1. MODULE OVERVIEW
+===========================================
+
+The Recruit module is a comprehensive recruitment management system that enables organizations to manage their entire hiring process from job posting to candidate onboarding. The module provides tools for job management, application tracking, interview scheduling, candidate evaluation, and reporting.
+
+Key Features:
+- Job posting and management
+- Application tracking with Kanban board
+- Interview scheduling with calendar integration
+- Candidate database management
+- Comprehensive reporting and analytics
+- Public career site for job applications
+- Email notifications and automation
+- Multi-stage interview process
+- Offer letter management
+- Skills and category management
+
+===========================================
+2. DASHBOARD AND ANALYTICS
+===========================================
+
+2.1 MAIN DASHBOARD
+Location: Recruit > Dashboard
+Route: /recruit-dashboard
+
+The dashboard provides a comprehensive overview of recruitment activities with the following widgets:
+
+METRIC WIDGETS:
+- Total Openings: Displays count of active job positions
+- Applications: Shows total number of job applications received
+- Hired: Number of candidates successfully hired
+- Rejected: Count of rejected applications
+- New Applications: Recent applications received
+- Shortlisted: Candidates moved to shortlisted status
+- Today's Interviews: Scheduled interviews for current date
+
+VISUAL ANALYTICS:
+- Application Sources Chart: Pie chart showing distribution of application sources
+- Candidate Status Chart: Visual representation of candidates by status
+- Total Applications Data Table: Detailed list of recent applications
+
+TODAY'S INTERVIEWS SECTION:
+- Interview schedule with candidate names
+- Interview times and stages
+- Interviewer assignments
+- Interview status indicators
+
+ACTIVE JOBS SECTION:
+- List of currently active job postings
+- Job end dates and recruiter assignments
+- Quick access to job details
+
+===========================================
+3. JOB MANAGEMENT
+===========================================
+
+3.1 JOB LISTING
+Location: Recruit > Jobs
+Route: /jobs
+
+FILTER OPTIONS:
+- Date Range: Filter jobs by creation or modification date
+- Recruiter: Filter by assigned recruiter
+- Search: Text search across job titles and descriptions
+- Department: Filter by organizational department
+- Status: Open/Closed job status filter
+- Location: Filter by job location
+- Work Type: Onsite/Remote work arrangement filter
+
+ACTION BUTTONS:
+- Add Job: Create new job posting
+- Quick Actions: Bulk operations for status changes and deletions
+
+3.2 JOB CREATION AND EDITING
+Location: Recruit > Jobs > Add/Edit
+Route: /jobs/create or /jobs/{id}/edit
+
+JOB BASIC INFORMATION:
+- Job Title: Position name and title
+- Department: Organizational department assignment
+- Location: Job location selection
+- Total Positions: Number of openings available
+- Job Type: Full-time, Part-time, Contract, etc.
+- Work Experience: Required experience level
+- Start Date: Job posting start date
+- End Date: Application deadline
+- Status: Open/Closed status
+
+JOB DETAILS:
+- Job Description: Detailed role description with rich text editor
+- Job Requirement: Required qualifications and skills
+- Skills: Associated technical and soft skills
+- Recruiter Assignment: Responsible recruiter selection
+- Interview Stages: Multi-stage interview process setup
+
+SALARY AND BENEFITS:
+- Salary Range: Minimum and maximum salary
+- Currency: Salary currency selection
+- Benefits: Additional compensation and benefits
+
+ADVANCED SETTINGS:
+- Required Fields: Configure mandatory application fields
+- Custom Questions: Add job-specific application questions
+- Application Form Settings: Customize application form layout
+
+3.3 JOB DUPLICATION
+Feature: Duplicate existing jobs to create similar positions
+- Copies all job details and settings
+- Allows modification before saving
+- Maintains skill and requirement associations
+
+===========================================
+4. JOB APPLICATION MANAGEMENT
+===========================================
+
+4.1 APPLICATION LISTING
+Location: Recruit > Job Applications
+Route: /job-applications
+
+COMPREHENSIVE FILTERS:
+- Date Range: Application submission date filter
+- Job: Filter by specific job position
+- Search: Candidate name and email search
+- Status: Application status filter
+- Location: Candidate location filter
+- Gender: Gender-based filtering
+- Experience: Experience level filter
+- Current Location: Candidate's current location
+- Current CTC: Current compensation filter
+- Expected CTC: Expected salary filter
+
+BULK OPERATIONS:
+- Status Changes: Update multiple application statuses
+- Export: Export application data
+- Delete: Remove multiple applications
+
+4.2 KANBAN BOARD VIEW
+Location: Recruit > Job Applications > Board View
+Route: /job-appboard
+
+BOARD FEATURES:
+- Drag-and-drop application management
+- Status-based columns (Applied, Shortlisted, Interview, etc.)
+- Real-time status updates
+- Application count per status
+- Quick actions for each application
+
+COLUMN MANAGEMENT:
+- Add new status columns
+- Edit existing status properties
+- Delete unused statuses
+- Reorder status workflow
+
+APPLICATION CARDS:
+- Candidate photo and name
+- Applied job position
+- Application date
+- Current status
+- Quick action buttons
+
+4.3 APPLICATION DETAILS
+Location: Application detail modal/page
+Route: /job-applications/{id}
+
+CANDIDATE INFORMATION:
+- Personal details (name, email, phone)
+- Resume and cover letter
+- Skills and experience
+- Education background
+- Portfolio and additional documents
+
+APPLICATION TRACKING:
+- Application timeline
+- Status change history
+- Interview schedules
+- Notes and remarks
+- Evaluation scores
+
+ACTIONS AVAILABLE:
+- Schedule Interview
+- Change Status
+- Add Notes
+- Send Email
+- Download Resume
+- Create Offer Letter
+
+===========================================
+5. INTERVIEW SCHEDULING
+===========================================
+
+5.1 INTERVIEW CALENDAR
+Location: Recruit > Interview Schedule
+Route: /interview-schedule
+
+CALENDAR FEATURES:
+- Monthly, weekly, and daily views
+- Drag-and-drop scheduling
+- Color-coded interview types
+- Integration with company timezone
+- Recurring interview slots
+
+INTERVIEW MANAGEMENT:
+- Schedule new interviews
+- Reschedule existing interviews
+- Cancel interviews
+- Add multiple interviewers
+- Set interview stages and types
+
+5.2 TABLE VIEW
+Location: Recruit > Interview Schedule > Table View
+Route: /interview-schedule/table_view
+
+TABULAR DISPLAY:
+- Interviewer assignments
+- Candidate names and positions
+- Schedule dates and times
+- Interview stages
+- Status indicators
+
+QUICK ACTIONS:
+- Edit interview details
+- Reschedule interviews
+- Update interview status
+- Add interview notes
+
+5.3 INTERVIEW CREATION
+Location: Interview creation modal
+Route: /interview-schedule/create
+
+INTERVIEW SETUP:
+- Candidate selection
+- Interview date and time
+- Duration settings
+- Interview type (Phone, Video, In-person)
+- Interviewer assignments
+- Interview stage selection
+- Location or meeting link
+- Preparation notes
+
+NOTIFICATION SETTINGS:
+- Email notifications to interviewers
+- Candidate interview confirmations
+- Reminder notifications
+- Calendar invitations
+
+5.4 INTERVIEW RESPONSES
+Feature: Interviewer acceptance/rejection system
+- Interview invitation responses
+- Availability confirmation
+- Reschedule requests
+- Interview feedback submission
+
+===========================================
+6. CANDIDATE DATABASE
+===========================================
+
+6.1 CANDIDATE MANAGEMENT
+Location: Recruit > Candidate Database
+Route: /candidate-database
+
+DATABASE FEATURES:
+- Centralized candidate repository
+- Search and filter capabilities
+- Skill-based candidate matching
+- Application history tracking
+- Status management (Active/Inactive)
+
+FILTER OPTIONS:
+- Date Range: Registration or last activity date
+- Skills: Technical and soft skills filter
+- Search: Name and email search
+- Job: Previously applied positions
+- Location: Candidate location
+
+CANDIDATE PROFILES:
+- Complete candidate information
+- Application history across jobs
+- Interview performance records
+- Skills and competency ratings
+- Contact information and availability
+
+BULK OPERATIONS:
+- Status changes (Active/Inactive)
+- Export candidate data
+- Delete candidate records
+- Send bulk communications
+
+===========================================
+7. REPORTS AND ANALYTICS
+===========================================
+
+7.1 RECRUITMENT REPORTS
+Location: Recruit > Reports
+Route: /recruit-job-report
+
+REPORT WIDGETS:
+- Job Applications: Total applications received
+- Jobs Posted: Number of active job postings
+- Candidates Hired: Successful hires count
+- Interview Schedules: Total interviews conducted
+
+VISUAL ANALYTICS:
+- Interactive charts and graphs
+- Date range filtering
+- Trend analysis
+- Performance metrics
+
+REPORT FEATURES:
+- Customizable date ranges
+- Export capabilities
+- Real-time data updates
+- Comparative analysis
+
+===========================================
+8. SETTINGS AND CONFIGURATION
+===========================================
+
+8.1 GENERAL SETTINGS
+Location: Settings > Recruit Settings
+Route: /recruit-settings
+
+CONFIGURATION TABS:
+- General Settings: Basic module configuration
+- Footer Settings: Career site footer customization
+- Recruiter Settings: Recruiter management and permissions
+- Email Notification Settings: Automated email configurations
+- Status Settings: Application status management
+- Custom Question Settings: Job-specific questions
+- Source Settings: Application source tracking
+
+8.2 APPLICATION STATUS MANAGEMENT
+Location: Recruit Settings > Status Settings
+
+STATUS CONFIGURATION:
+- Create custom application statuses
+- Define status colors and properties
+- Set status workflow order
+- Configure status permissions
+- Enable/disable status options
+
+8.3 CUSTOM QUESTIONS
+Location: Recruit Settings > Custom Questions
+
+QUESTION MANAGEMENT:
+- Create job-specific questions
+- Question type selection (Text, Multiple Choice, etc.)
+- Required/Optional question settings
+- Question ordering and grouping
+- Conditional question logic
+
+8.4 EMAIL NOTIFICATIONS
+Location: Recruit Settings > Email Notifications
+
+NOTIFICATION TYPES:
+- Application received confirmations
+- Interview scheduling notifications
+- Status change notifications
+- Offer letter communications
+- Reminder notifications
+
+TEMPLATE MANAGEMENT:
+- Customizable email templates
+- Dynamic content insertion
+- Multi-language support
+- Branding customization
+
+8.5 RECRUITER MANAGEMENT
+Location: Recruit Settings > Recruiter Settings
+
+RECRUITER FEATURES:
+- Assign recruiting responsibilities
+- Set recruiter permissions
+- Define recruiter territories
+- Performance tracking
+- Workload distribution
+
+===========================================
+9. PUBLIC CAREER SITE
+===========================================
+
+9.1 CAREER SITE FEATURES
+Public URL: /job-opening/{company-hash}
+
+SITE COMPONENTS:
+- Company branding and logo
+- Job listings with search and filters
+- Detailed job descriptions
+- Online application forms
+- Company information pages
+
+9.2 JOB APPLICATION FORM
+Public URL: /job-apply/{job-id}
+
+FORM SECTIONS:
+- Personal Information: Name, email, phone, skills
+- Professional Details: Experience, current/expected salary
+- Document Upload: Resume, cover letter, portfolio
+- Custom Questions: Job-specific questions
+- Skills Selection: Relevant technical skills
+
+FORM FEATURES:
+- Mobile-responsive design
+- File upload capabilities
+- Form validation
+- CAPTCHA integration
+- Multi-step form process
+
+9.3 JOB LISTINGS
+Public URL: /job-opening/{company-hash}
+
+LISTING FEATURES:
+- Search functionality
+- Location-based filtering
+- Department filtering
+- Job type filtering
+- Pagination support
+- SEO-optimized URLs
+
+===========================================
+10. PERMISSIONS AND ACCESS CONTROL
+===========================================
+
+10.1 MODULE PERMISSIONS
+The Recruit module includes comprehensive permission system:
+
+JOB MANAGEMENT PERMISSIONS:
+- Add Jobs: Create new job postings
+- Edit Jobs: Modify existing jobs
+- Delete Jobs: Remove job postings
+- View Jobs: Access job listings
+
+APPLICATION PERMISSIONS:
+- Add Applications: Create new applications
+- Edit Applications: Modify application details
+- Delete Applications: Remove applications
+- View Applications: Access application data
+
+INTERVIEW PERMISSIONS:
+- Add Interview Schedule: Create interviews
+- Edit Interview Schedule: Modify interview details
+- Delete Interview Schedule: Remove interviews
+- View Interview Schedule: Access interview calendar
+
+REPORT PERMISSIONS:
+- View Reports: Access recruitment analytics
+
+SETTINGS PERMISSIONS:
+- Recruit Settings: Configure module settings
+
+10.2 ROLE-BASED ACCESS
+Permission levels include:
+- All: Full access to all records
+- Added: Access to self-created records
+- Owned: Access to assigned records
+- Both: Combined added and owned access
+- None: No access
+
+===========================================
+TECHNICAL SPECIFICATIONS
+===========================================
+
+DATABASE TABLES:
+- recruit_jobs: Job postings and details
+- recruit_job_applications: Application records
+- recruit_interview_schedules: Interview scheduling
+- recruit_application_status: Status management
+- recruit_skills: Skills database
+- recruit_settings: Module configuration
+
+KEY CONTROLLERS:
+- JobController: Job management operations
+- JobApplicationController: Application handling
+- InterviewScheduleController: Interview scheduling
+- RecruitDashboardController: Dashboard analytics
+- ReportController: Reporting functionality
+
+FRONTEND COMPONENTS:
+- Responsive Blade templates
+- JavaScript-based interactions
+- AJAX form submissions
+- Real-time notifications
+- Mobile-optimized interfaces
+
+INTEGRATION FEATURES:
+- Email system integration
+- Calendar system compatibility
+- File storage management
+- Multi-language support
+- Timezone handling
+
+===========================================
+BEST PRACTICES
+===========================================
+
+1. WORKFLOW OPTIMIZATION:
+- Define clear application status workflow
+- Set up automated email notifications
+- Configure appropriate permissions
+- Regular data backup and maintenance
+
+2. USER EXPERIENCE:
+- Customize application forms for specific roles
+- Maintain updated job descriptions
+- Provide timely candidate communications
+- Use analytics for process improvement
+
+3. DATA MANAGEMENT:
+- Regular candidate database cleanup
+- Maintain accurate skill databases
+- Archive completed recruitment cycles
+- Export important data regularly
+
+4. SECURITY:
+- Regular permission audits
+- Secure file upload handling
+- Data privacy compliance
+- Access log monitoring
+
+===========================================
+TROUBLESHOOTING
+===========================================
+
+COMMON ISSUES:
+- Email notifications not sending: Check email configuration
+- File upload failures: Verify file size limits and permissions
+- Calendar sync issues: Confirm timezone settings
+- Permission errors: Review user role assignments
+
+MAINTENANCE TASKS:
+- Regular database optimization
+- Log file cleanup
+- Cache clearing
+- Module updates
+
+===========================================
+END OF GUIDE
+===========================================
+
+This comprehensive guide covers all aspects of the Recruit module functionality. For additional support or customization requirements, consult the system administrator or development team.

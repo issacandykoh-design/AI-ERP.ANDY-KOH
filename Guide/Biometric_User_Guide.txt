@@ -1,0 +1,429 @@
+BIOMETRIC MODULE USER GUIDE
+===============================
+
+OVERVIEW
+--------
+The Biometric module provides comprehensive biometric device management and attendance tracking functionality. It enables organizations to integrate ZKTeco biometric devices for employee attendance management, fingerprint registration, and automated time tracking. The module supports device synchronization, employee management, command monitoring, and attendance reporting.
+
+MAIN NAVIGATION
+--------------
+Access the Biometric module through the main navigation menu. The module consists of four primary sections:
+- Biometric Devices: Device management and configuration
+- Biometric Employees: Employee biometric configuration
+- Biometric Commands: Command monitoring and status tracking
+- Biometric Attendance: Attendance records and reporting
+
+BIOMETRIC DEVICES MANAGEMENT
+===========================
+
+Device Listing Interface
+-----------------------
+Route: /biometric-devices
+The main devices page displays all registered biometric devices with the following information:
+- Device Name: Assigned name for identification
+- Serial Number: Hardware serial number
+- Device IP: Network IP address
+- Last Online: Last connection timestamp with relative time
+- Status: Current connection status (online/offline/pending)
+- Actions: Available operations for each device
+
+Filter and Search Controls
+-------------------------
+- Search Field: Real-time text search across device names, serial numbers, and IP addresses
+- Reset Button: Clears all search filters and refreshes the view
+- Auto-refresh: Automatically refreshes every 5 seconds when pending devices exist
+
+Action Buttons
+-------------
+1. Add New Biometric Device Button
+   - Route: /biometric-devices/create
+   - Opens device creation form
+   - Requires device name, IP address, and serial number
+
+2. Sync All Employees Button
+   - Route: /biometric-devices/sync-employees (POST)
+   - Opens employee synchronization modal
+   - Allows bulk employee synchronization to devices
+
+3. Refresh Table Button
+   - Refreshes device list via AJAX
+   - Updates connection status in real-time
+   - Shows loading indicator during refresh
+
+Device Configuration Guide
+-------------------------
+The interface includes a collapsible configuration guide with:
+- ZKTeco device compatibility information (K40 Pro with ADMS mode)
+- ADMS configuration settings table showing:
+  - Server Mode: ADMS
+  - Enable Domain Name: ON
+  - Server Address: Application URL
+  - Enable Proxy Server: OFF
+  - HTTPS: ON (depends on server configuration)
+- Visual cloud server setting panel with toggle switches
+
+Device Status Alerts
+-------------------
+1. Pending Device Alert
+   - Displays when devices have "pending" status
+   - Shows waiting spinner with connection instructions
+   - Automatically hidden when no pending devices exist
+
+2. Connection Established Alert
+   - Appears when device status changes from pending/offline to online
+   - Shows success message with check icon
+   - Auto-hides after 2 minutes
+
+Employee Synchronization Modal
+-----------------------------
+Features:
+- Employee selection table with checkboxes
+- Select all/deselect all functionality
+- Employee information display (photo, name, email)
+- Employee ID and Biometric User ID columns
+- Configuration status indicators
+- Bulk synchronization confirmation
+- Real-time sync progress feedback
+
+Device Actions
+-------------
+1. Delete Device Button
+   - Route: /biometric-devices/{id} (DELETE)
+   - Shows confirmation dialog
+   - Removes device and associated data
+   - Updates table display after deletion
+
+BIOMETRIC EMPLOYEES MANAGEMENT
+=============================
+
+Employee Configuration Interface
+-------------------------------
+Route: /biometric-employees
+The employee management page provides comprehensive biometric configuration for all employees.
+
+Header Controls
+--------------
+1. Refresh Employee List Button
+   - Reloads the employee data
+   - Updates biometric configuration status
+   - Shows loading indicator during refresh
+
+2. Fetch All Biometric Data Button
+   - Route: /biometric-employees/fetch-biometric-data (GET)
+   - Retrieves biometric data from all devices
+   - Shows confirmation dialog before execution
+
+Configuration Instructions Panel
+-------------------------------
+Displays three informational cards:
+1. Employee ID Card: Explains internal employee identification
+2. Biometric User ID Card: Describes device-specific user ID requirements
+3. After Saving Card: Details post-configuration attendance logging
+
+Employee Filter Tabs
+-------------------
+Three filter options:
+1. Active Employees Tab: Shows only active employees
+2. Inactive Employees Tab: Shows only inactive employees  
+3. All Employees Tab: Displays all employees regardless of status
+
+Search Functionality
+-------------------
+- Real-time search input field
+- Searches across employee names and employee IDs
+- Clear search button appears when text is entered
+- Combines with filter tabs for refined results
+
+Employee Configuration Table
+---------------------------
+Columns:
+1. Employee Details: Photo, name, and email display
+2. Employee ID: Internal system ID with copy-to-biometric button
+3. Biometric User ID: Editable input field for device-specific ID
+4. Status: Configuration status with icons for fingerprint/card registration
+5. Action: Remove from device button for configured employees
+
+Employee Row Features
+-------------------
+1. Copy Employee ID Button
+   - Copies internal employee ID to biometric user ID field
+   - Provides visual feedback with arrow icon
+   - Automatically triggers input validation
+
+2. Biometric User ID Input
+   - Text input for device-specific user ID
+   - Real-time validation and status updates
+   - Enables/disables action buttons based on value
+
+3. Status Indicators
+   - Configured: Green check with fingerprint/card icons
+   - Not Configured: Yellow warning icon
+   - Shows registration status for fingerprint and card
+
+4. Remove from Device Button
+   - Route: /biometric-employees/{id}/remove-from-device (DELETE)
+   - Shows confirmation dialog
+   - Creates DELETEUSER commands for all devices
+   - Only visible for configured employees
+
+Form Submission
+--------------
+- Save Button: Submits all biometric user ID configurations
+- Cancel Button: Returns to device listing
+- AJAX form submission with validation
+- Success feedback and page reload
+
+No Devices State
+---------------
+When no biometric devices are configured:
+- Displays centered message with fingerprint icon
+- Explains the need for device setup
+- Provides "Add Biometric Device" button linking to device creation
+
+BIOMETRIC COMMANDS MONITORING
+============================
+
+Command Status Interface
+-----------------------
+Route: /biometric-devices/commands
+Displays all biometric device commands with comprehensive status tracking.
+
+Command Status Definitions Panel
+-------------------------------
+Four status cards explaining:
+1. Pending: Command created, waiting to be sent to device
+2. Sent: Command transmitted to device, awaiting execution
+3. Executed: Command successfully completed by device
+4. Failed: Command execution failed with error
+
+Filter Controls
+--------------
+1. Search Field: Text search across command types, device names, and employee names
+2. Status Filter Dropdown: Filter by command status (all/pending/sent/executed/failed)
+3. Reset Filters Button: Clears all filters and shows all commands
+
+Command Listing Table
+--------------------
+Columns:
+1. # (Number): Sequential command numbering
+2. Employee: Employee details with ID and profile information
+3. Device Name: Target biometric device name
+4. Command Type: Operation type with color-coded badges
+   - CREATEUSER: Blue badge for user creation
+   - DELETEUSER: Red badge for user deletion
+   - QUERYUSER: Default styling for user queries
+5. Status: Current command status with icons and colors
+6. Created At: Command creation timestamp
+7. Sent At: Command transmission timestamp
+8. Executed At: Command completion timestamp
+9. Failed At: Command failure timestamp
+
+Command Type Badges
+------------------
+- CREATEUSER: Blue badge indicating user creation command
+- DELETEUSER: Red badge indicating user removal command
+- QUERYUSER: Standard badge for user information queries
+
+Status Badges
+------------
+- Pending: Yellow badge with clock icon
+- Sent: Blue badge with paper plane icon
+- Executed: Green badge with check circle icon
+- Failed: Red badge with times circle icon
+
+Timestamp Display
+----------------
+All timestamps show:
+- Time in company timezone and format
+- "Today" label for current day entries
+- Full date for previous days
+- Consistent formatting across all columns
+
+Filter Functionality
+-------------------
+- Combined status and search filtering
+- Real-time filter application
+- Reset button visibility based on active filters
+- Maintains filter state during navigation
+
+BIOMETRIC ATTENDANCE REPORTING
+=============================
+
+Attendance Listing Interface
+---------------------------
+Route: /biometric-attendance
+Comprehensive attendance record viewing with advanced filtering capabilities.
+
+Filter Controls Panel
+--------------------
+1. Search Field: Real-time text search across attendance records
+2. Employee Filter: Dropdown with employee selection
+   - "All" option for administrators
+   - Individual employee selection
+   - Live search within employee list
+3. Month Filter: Month selection dropdown with current month default
+4. Year Filter: Year selection (current year and 4 previous years)
+5. Date Range Filter: Date picker for custom date range selection
+6. Reset Filters Button: Clears all active filters
+
+Employee Filter Options
+---------------------
+- All Employees: Available for admin users
+- Individual Selection: Specific employee filtering
+- Live Search: Real-time employee name search
+- User Role Restrictions: Limited access based on permissions
+
+Date Filtering Options
+--------------------
+1. Month/Year Combination: Standard monthly reporting
+2. Custom Date Range: Flexible date range selection
+3. Date Range Picker: Interactive calendar interface
+4. Company Timezone: All dates respect company timezone settings
+
+Attendance Data Table
+-------------------
+The attendance table displays:
+- Employee information with photos and details
+- Clock-in and clock-out timestamps
+- Date and time information
+- Attendance duration calculations
+- Device information for each entry
+- Status indicators for attendance records
+
+Data Export Capabilities
+-----------------------
+- Export buttons for attendance data
+- Multiple format support
+- Filtered data export
+- Date range specific exports
+
+Real-time Data Updates
+--------------------
+- AJAX-powered table updates
+- Filter-based data loading
+- Pagination support
+- Responsive data display
+
+TECHNICAL FEATURES
+=================
+
+Real-time Device Monitoring
+--------------------------
+- Automatic status updates every 5 seconds for pending devices
+- Connection status tracking with last online timestamps
+- Visual indicators for device connectivity
+- Alert system for status changes
+
+AJAX Functionality
+-----------------
+- Asynchronous form submissions
+- Real-time table updates
+- Modal content loading
+- Search and filter operations
+- Status change notifications
+
+Device Communication
+-------------------
+- ADMS protocol support for ZKTeco devices
+- Command queue management
+- Bi-directional data synchronization
+- Error handling and retry mechanisms
+
+Data Synchronization
+------------------
+- Employee data sync to devices
+- Attendance data retrieval from devices
+- Fingerprint and card registration sync
+- Command status tracking
+
+Responsive Design
+----------------
+- Mobile-friendly interface
+- Adaptive table layouts
+- Touch-friendly controls
+- Responsive modal dialogs
+
+Performance Optimization
+----------------------
+- Efficient data loading
+- Pagination for large datasets
+- Optimized search algorithms
+- Caching for frequently accessed data
+
+ADMINISTRATIVE FEATURES
+======================
+
+Permission Management
+-------------------
+- Role-based access control
+- Module-specific permissions
+- Action-level restrictions
+- User role validation
+
+Data Management
+--------------
+- Bulk operations support
+- Data validation and sanitization
+- Error handling and user feedback
+- Transaction management
+
+Integration Capabilities
+----------------------
+- Employee module integration
+- Attendance system connectivity
+- Device manufacturer API support
+- Third-party system compatibility
+
+Audit Trail
+----------
+- Command execution logging
+- Status change tracking
+- User action recording
+- System event monitoring
+
+TROUBLESHOOTING
+==============
+
+Common Issues and Solutions
+-------------------------
+1. Device Connection Problems
+   - Verify network connectivity
+   - Check ADMS configuration settings
+   - Confirm device IP address and port
+   - Review firewall settings
+
+2. Employee Sync Failures
+   - Ensure biometric user IDs are unique
+   - Check device storage capacity
+   - Verify employee data completeness
+   - Review command queue status
+
+3. Attendance Data Issues
+   - Confirm device time synchronization
+   - Check employee biometric registration
+   - Verify device connectivity during attendance
+   - Review data synchronization logs
+
+4. Command Execution Problems
+   - Monitor command status in real-time
+   - Check device response logs
+   - Verify device compatibility
+   - Review network stability
+
+Device Configuration Requirements
+-------------------------------
+- ZKTeco K40 Pro or compatible device
+- ADMS mode enabled
+- Network connectivity to application server
+- Proper firewall configuration
+- Synchronized device time settings
+
+Best Practices
+-------------
+- Regular device status monitoring
+- Periodic data synchronization
+- Employee biometric ID management
+- Command queue maintenance
+- System backup procedures
+
+This comprehensive user guide covers all aspects of the Biometric module, providing detailed explanations of features, functionalities, and user interface elements. The guide serves as a complete reference for understanding and utilizing the biometric device management and attendance tracking capabilities of the system.

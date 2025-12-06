@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Enterprise Training Widget - Preview</title>
+    <link rel="stylesheet" href="/css/ai-enterprise-training-widget.css" />
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    </style>
+    <script>
+      // Seed a sample Training history with quick access to verify persistence/UI
+      try {
+        localStorage.setItem('ai-et-current-mode', 'training');
+        const sample = [
+          { role: 'ai', text: 'Welcome to Craveva Training. Ask about training content.', time: '9:41 AM' },
+          { role: 'user', text: 'How do I track project milestones and invoice clients?', time: '9:42 AM' },
+          { role: 'ai', text: 'To track milestones, use the Projects module; to invoice clients, use Invoices. You can manage clients via the Clients module.', time: '9:42 AM', quickAccess: ['projects','invoices','clients'] }
+        ];
+        localStorage.setItem('ai-et-history-training', JSON.stringify(sample));
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <button id="ai-et-launcher" aria-label="Open AI">Open AI</button>
+
+    <div id="ai-enterprise-training-widget" data-company-id="0" class="ai-et-open" aria-label="AI Training Widget">
+      <div class="ai-et-header">
+        <div class="ai-et-title">Craveva AI</div>
+        <div class="ai-et-actions">
+          <select class="ai-et-select" aria-label="AI Provider">
+            <option value="default">Default</option>
+          </select>
+          <button id="ai-et-close" class="ai-et-close" title="Close" aria-label="Close">✕</button>
+        </div>
+      </div>
+      <div class="ai-et-body">
+        <div class="ai-et-messages" aria-live="polite"></div>
+        <div class="ai-et-input">
+          <textarea class="ai-et-textarea" placeholder="Type a question…"></textarea>
+          <button class="ai-et-send" aria-label="Send">Send</button>
+        </div>
+      </div>
+      <div class="ai-et-resizer" aria-hidden="true"></div>
+    </div>
+
+    <script src="/js/ai-enterprise-training-widget.js"></script>
+  </body>
+</html>

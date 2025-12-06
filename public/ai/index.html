@@ -1,0 +1,357 @@
+<!doctype html><html lang="en" data-ai-interface="true"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Craveva AI Enterprise Business - AI-powered enterprise analytics"/><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><title>Craveva AI Enterprise Business</title>
+<script>
+  (function(){
+    try {
+      var isSmall = Math.min(screen.width, screen.height) <= 820 || window.innerWidth <= 820;
+      var isMobileUA = /Mobile|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if ((isSmall || isMobileUA) && !location.pathname.endsWith('index.mobile.html')) {
+        location.replace('index.mobile.html');
+      }
+    } catch(e) {}
+  })();
+</script>
+<style id="desktop-hide-menu">
+  /* Hide meaningless hamburger/menu button on desktop only */
+  @media (min-width: 821px) {
+    /* 优先隐藏具有语义的切换按钮 */
+    header button[aria-label*="menu" i],
+    header button[aria-label*="sidebar" i],
+    [role="banner"] button[aria-label*="menu" i],
+    [role="banner"] button[aria-label*="sidebar" i],
+    nav button[aria-label*="menu" i],
+    nav button[aria-label*="sidebar" i] {
+      display: none !important;
+    }
+    /* 若无 aria-label，则隐藏头部的第一个按钮与常见汉堡类名 */
+    header > button:first-of-type,
+    [role="banner"] > button:first-of-type,
+    nav > button:first-of-type,
+    header [class*="hamburger"],
+    header [class*="menu-toggle"],
+    [role="banner"] [class*="hamburger"],
+    [role="banner"] [class*="menu-toggle"],
+    header .fa-bars,
+    [role="banner"] .fa-bars {
+      display: none !important;
+    }
+    /* 精确隐藏开发者工具标识的按钮与图标 */
+    .toggle-sidebar-btn,
+    .toggle-sidebar-btn *,
+    svg.lucide.lucide-menu {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+  }
+  /* Ensure layout does not shift after hiding */
+  header, [role="banner"], nav { overflow: visible; }
+</style>
+<script defer src="static/js/main.e32fd843.js"></script>
+<script>
+  // Fallback: remove menu toggle button in desktop runtime
+  (function(){
+    function removeDesktopMenu(){
+      var isDesktop = Math.min(screen.width, screen.height) > 820 && !/Mobile|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if(!isDesktop) return;
+      var header = document.querySelector('header, [role="banner"], nav');
+      if(!header) return;
+      // 1) 删除带有语义的按钮
+      var targets = header.querySelectorAll('button[aria-label*="menu" i], button[aria-label*="sidebar" i]');
+      for(var i=0;i<targets.length;i++){
+        try { targets[i].remove(); } catch(e){ try { targets[i].style.display='none'; } catch(_){} }
+      }
+      // 2) 若依然存在第一个按钮，则删除它（常见为汉堡按钮）
+      var firstBtn = header.querySelector('button');
+      if(firstBtn){ try { firstBtn.remove(); } catch(e){ try { firstBtn.style.display='none'; } catch(_){} } }
+      // 3) 若是独立的图标元素（fa-bars / hamburger），也隐藏
+      var iconCandidates = header.querySelectorAll('[class*="fa-bars"], [class*="hamburger"], [class*="menu-toggle"], svg');
+      for(var j=0;j<iconCandidates.length;j++){
+        var el = iconCandidates[j];
+        // 避免误删右侧品牌或其他图标，只处理靠左的图标
+        var rect = null; try { rect = el.getBoundingClientRect(); } catch(e){}
+        if(rect && rect.x < (window.innerWidth * 0.25)){
+          try { el.remove(); } catch(e){ try { el.style.display='none'; } catch(_){} }
+        }
+      }
+
+      // 4) 基于品牌文案精确移除其左侧的三线图标
+      try {
+        var all = document.querySelectorAll('h1,h2,h3,a,span,div');
+        var brandEl = null;
+        for(var k=0;k<all.length;k++){
+          var t = (all[k].textContent || '').replace(/\s+/g,' ').trim().toLowerCase();
+          if(t.includes('craveva ai enterprise business')){ brandEl = all[k]; break; }
+        }
+        if(brandEl){
+          var bRect = brandEl.getBoundingClientRect();
+          var container = document.body;
+          var candidates = container.querySelectorAll('button, svg, i, [class*="hamburger"], [class*="menu-toggle"], [class*="bars"], [class*="menu"]');
+          var best = null; var bestDx = Infinity;
+          for(var m=0;m<candidates.length;m++){
+            var c = candidates[m];
+            if(c.tagName.toLowerCase() === 'img') continue;
+            var r = null; try { r = c.getBoundingClientRect(); } catch(e){}
+            if(!r) continue;
+            var dx = bRect.x - r.x; var dy = Math.abs(bRect.y - r.y);
+            if(dx > 0 && dx < bestDx && dy < 60 && r.x < bRect.x && dx < 300){
+              bestDx = dx; best = c;
+            }
+          }
+          if(best){ try { best.remove(); } catch(e){ try { best.style.display='none'; } catch(_){} }
+          }
+        }
+      } catch(e){}
+
+      // 5) 开发者工具标识的类名：直接移除按钮与图标
+      try {
+        var explicit = document.querySelectorAll('.toggle-sidebar-btn, svg.lucide.lucide-menu');
+        for(var n=0;n<explicit.length;n++){
+          var node = explicit[n];
+          var btn = node.closest('button') || node;
+          try { btn.remove(); } catch(e){ try { btn.style.display='none'; } catch(_){} }
+        }
+      } catch(e){}
+    }
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', removeDesktopMenu);
+    } else {
+      removeDesktopMenu();
+    }
+
+    // 观察渲染变化，持续尝试移除（最多 8 秒）
+    try {
+      var start = Date.now();
+      var obs = new MutationObserver(function(){
+        removeDesktopMenu();
+        if(Date.now() - start > 8000){ try { obs.disconnect(); } catch(e){} }
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
+    } catch(e){}
+  })();
+</script>
+<!-- <link href="static/css/main.f426a692.css" rel="stylesheet"> -->
+<link href="static/css/craveva-theme-final.css" rel="stylesheet">
+<!-- Mobile-specific resources are only loaded in index.mobile.html to keep desktop independent -->
+</head><body data-ai-interface="true"><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>
+/**
+ * Business Domain Buttons - Auto-Fill Input
+ * Adds business domain buttons that fill the chat input when clicked
+ */
+(function() {
+    'use strict';
+
+    // Wait for React app to be ready
+    function waitForReactApp() {
+        return new Promise((resolve) => {
+            const checkInterval = setInterval(() => {
+                const root = document.getElementById('root');
+                if (root && root.children.length > 0) {
+                    clearInterval(checkInterval);
+                    resolve();
+                }
+            }, 100);
+            setTimeout(() => {
+                clearInterval(checkInterval);
+                resolve();
+            }, 5000);
+        });
+    }
+
+    // Question templates for each domain
+    const domainQuestions = {
+        'SalesMarketing': {
+            'Auto': '[Flash] show me sales and marketing performance analysis for the past 3 months',
+            'DataReports': '[DataReports - SalesMarketing] generate comprehensive sales and marketing report for the past 3 months',
+            'Charts': '[Charts - Bar] visualize sales and marketing trends for the past 3 months',
+            'Graphics': '[Graphics] create sales and marketing infographic for the past 3 months',
+            'Excel': '[Excel - Sales] export sales and marketing data for the past 3 months',
+            'PPT': '[PPT] create sales and marketing presentation for the past 3 months'
+        },
+        'ProductPerformance': {
+            'Auto': '[Flash] analyze product performance and sales trends for the past 3 months',
+            'DataReports': '[DataReports - ProductPerformance] generate product performance report for the past 3 months',
+            'Charts': '[Charts - Bar] visualize top performing products for the past 3 months',
+            'Graphics': '[Graphics] create product performance infographic for the past 3 months',
+            'Excel': '[Excel - Sales] export product performance data for the past 3 months',
+            'PPT': '[PPT] create product performance presentation for the past 3 months'
+        },
+        'CustomerAnalysis': {
+            'Auto': '[Flash] analyze customer data and show trends for the past 3 months',
+            'DataReports': '[DataReports - CustomerAnalysis] generate comprehensive customer analysis report for the past 3 months',
+            'Charts': '[Charts - Pie] visualize customer distribution and trends for the past 3 months',
+            'Graphics': '[Graphics] create customer analysis infographic for the past 3 months',
+            'Excel': '[Excel - Customer] export customer analysis data for the past 3 months',
+            'PPT': '[PPT] create customer analysis presentation for the past 3 months'
+        },
+        'HR': {
+            'Auto': '[Flash] show me HR analytics including employee performance and attendance for the past 3 months',
+            'DataReports': '[DataReports - HR] generate comprehensive HR report for the past 3 months',
+            'Charts': '[Charts - Bar] visualize employee performance and attendance for the past 3 months',
+            'Graphics': '[Graphics] create HR analytics infographic for the past 3 months',
+            'Excel': '[Excel - HR] export HR data for the past 3 months',
+            'PPT': '[PPT] create HR presentation for the past 3 months'
+        },
+        'Finance': {
+            'Auto': '[Flash] what is the total revenue and expenses for the past 3 months',
+            'DataReports': '[DataReports - Finance] generate comprehensive financial report for the past 3 months',
+            'Charts': '[Charts - Line] visualize revenue and expenses trends for the past 3 months',
+            'Graphics': '[Graphics] create financial analysis infographic for the past 3 months',
+            'Excel': '[Excel - Finance] export financial data for the past 3 months',
+            'PPT': '[PPT] create financial presentation for the past 3 months'
+        }
+    };
+
+    // Get selected mode from localStorage
+    function getSelectedMode() {
+        return localStorage.getItem('selectedOption') || 'Auto';
+    }
+
+    // Find and update input field
+    function fillInputField(question) {
+        const selectors = [
+            'textarea.message-input',
+            'textarea.centered-message-input',
+            'textarea[placeholder*="Ask a question"]',
+            'textarea[placeholder*="enterprise data"]'
+        ];
+
+        let input = null;
+        for (const selector of selectors) {
+            input = document.querySelector(selector);
+            if (input) break;
+        }
+
+        if (input) {
+            // Set the value using React's setter
+            const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+                window.HTMLTextAreaElement.prototype,
+                'value'
+            ).set;
+            nativeInputValueSetter.call(input, question);
+            
+            // Dispatch events for React
+            const inputEvent = new Event('input', { bubbles: true });
+            const changeEvent = new Event('change', { bubbles: true });
+            input.dispatchEvent(inputEvent);
+            input.dispatchEvent(changeEvent);
+
+            // Focus and auto-resize
+            input.focus();
+            if (input.style) {
+                input.style.height = 'auto';
+                input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    // Map domain labels to IDs (for finding existing buttons)
+    const domainLabelToId = {
+        'Sales & Marketing': 'SalesMarketing',
+        'Product Performance': 'ProductPerformance',
+        'Customer Analysis': 'CustomerAnalysis',
+        'HR': 'HR',
+        'Finance': 'Finance'
+    };
+
+    // Add click handlers to existing business domain buttons
+    function attachHandlersToExistingButtons() {
+        const subButtonsContainer = document.querySelector('.sub-buttons-container');
+        if (!subButtonsContainer) {
+            return false;
+        }
+
+        const subButtons = subButtonsContainer.querySelectorAll('.sub-button');
+        let handlersAttached = 0;
+
+        subButtons.forEach(button => {
+            const buttonText = button.textContent.trim();
+            const domainId = domainLabelToId[buttonText];
+            
+            // Check if this is a business domain button and hasn't been processed yet
+            if (domainId && !button.hasAttribute('data-handler-attached')) {
+                // Mark as processed
+                button.setAttribute('data-handler-attached', 'true');
+                button.setAttribute('data-domain', domainId);
+                
+                // Store original click handler if any
+                const originalOnClick = button.onclick;
+                
+                // Add new click handler
+                button.addEventListener('click', function(e) {
+                    // Prevent default React behavior if needed
+                    e.stopPropagation();
+                    
+                    const domainId = this.getAttribute('data-domain');
+                    const selectedMode = getSelectedMode();
+                    const questions = domainQuestions[domainId];
+                    if (!questions) return;
+
+                    const question = questions[selectedMode] || questions['Auto'];
+                    
+                    if (fillInputField(question)) {
+                        // Visual feedback
+                        const originalBg = this.style.background;
+                        const originalBorder = this.style.borderColor;
+                        const originalColor = this.style.color;
+                        
+                        this.style.background = 'linear-gradient(135deg, #8b5a3c, #a0673f)';
+                        this.style.borderColor = '#8b5a3c';
+                        this.style.color = '#fff';
+                        
+                        setTimeout(() => {
+                            this.style.background = originalBg;
+                            this.style.borderColor = originalBorder;
+                            this.style.color = originalColor;
+                        }, 300);
+                    }
+                }, true); // Use capture phase to intercept before React
+                
+                handlersAttached++;
+            }
+        });
+
+        return handlersAttached > 0;
+    }
+
+    // Initialize
+    function init() {
+        waitForReactApp().then(() => {
+            // Try to attach handlers immediately
+            attachHandlersToExistingButtons();
+            
+            // Also try after a delay (in case buttons render later)
+            setTimeout(() => {
+                attachHandlersToExistingButtons();
+            }, 500);
+            
+            // Try again after longer delay (for DataReports mode buttons)
+            setTimeout(() => {
+                attachHandlersToExistingButtons();
+            }, 1500);
+        });
+    }
+
+    // Run on page load
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    // Watch for React app updates (when buttons appear/disappear)
+    const observer = new MutationObserver(function(mutations) {
+        const subButtonsContainer = document.querySelector('.sub-buttons-container');
+        if (subButtonsContainer) {
+            attachHandlersToExistingButtons();
+        }
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+})();
+</script></body></html>

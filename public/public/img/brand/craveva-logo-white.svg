@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="76" viewBox="0 0 220 76" role="img" aria-label="Craveva logo (white)">
+  <defs>
+    <style>
+      .wordmark { fill: #ffffff; font-family: Georgia, "Times New Roman", serif; font-size: 42px; font-style: italic; font-weight: 700; }
+      .domain { fill: #ffffff; font-family: Georgia, "Times New Roman", serif; font-size: 16px; font-weight: 700; }
+    </style>
+  </defs>
+  <!-- Simple scalable wordmark; replace with official vector when available -->
+  <rect x="0" y="0" width="220" height="76" fill="none" />
+  <text class="wordmark" x="50%" y="48%" text-anchor="middle">Craveva</text>
+  <text class="domain" x="50%" y="70%" text-anchor="middle">.com</text>
+</svg>

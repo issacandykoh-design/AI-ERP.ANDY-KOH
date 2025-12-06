@@ -1,0 +1,607 @@
+CRAVEVA ERP DASHBOARD USER GUIDE
+=====================================
+
+This comprehensive user guide covers all Dashboard functionalities in the Craveva ERP system, providing detailed explanations of features and their corresponding URLs for AI assistant knowledge base purposes.
+
+TABLE OF CONTENTS
+=================
+1. Dashboard Overview
+2. Admin Dashboard Features
+3. Employee Dashboard Features
+4. Dashboard Tabs and Navigation
+5. Widget Management
+6. URL Routes and Links
+7. Permissions and Access Control
+8. Dashboard Settings and Configuration
+
+1. DASHBOARD OVERVIEW
+=====================
+
+The Dashboard is the central hub of the Craveva ERP system, providing users with real-time insights, quick access to key metrics, and personalized widgets based on their roles and permissions.
+
+Main Dashboard Types:
+- Admin Dashboard: Comprehensive overview for administrators
+- Employee Dashboard: Personalized view for employees
+- Client Dashboard: Client-specific information and metrics
+- Project Dashboard: Project-focused analytics and data
+- HR Dashboard: Human resources metrics and employee data
+- Finance Dashboard: Financial analytics and reporting
+- Ticket Dashboard: Support ticket management and metrics
+
+Base URL: /dashboard
+Advanced Dashboard URL: /dashboard/advanced
+
+2. ADMIN DASHBOARD FEATURES
+===========================
+
+2.1 OVERVIEW TAB
+----------------
+URL: /dashboard/advanced?tab=overview
+Route: dashboard.advanced with tab parameter
+
+Key Features:
+- Total Clients Widget
+  * Displays total number of clients in the system
+  * Links to: /clients (clients.index route)
+  * Permission required: view_overview_dashboard
+
+- Total Employees Widget
+  * Shows total employee count
+  * Links to: /employees (employees.index route)
+  * Permission required: view_overview_dashboard
+
+- Total Projects Widget
+  * Displays total project count
+  * Links to: /projects?projects=all (projects.index route)
+  * Permission required: view_overview_dashboard
+
+- Total Unpaid Invoices Widget
+  * Shows count of pending invoices
+  * Links to: /invoices?status=pending (invoices.index route)
+  * Permission required: view_overview_dashboard
+
+- Total Hours Logged Widget
+  * Displays total time logged across all projects
+  * Links to: /timelogs (timelogs.index route)
+  * Permission required: view_overview_dashboard
+
+- Total Pending Tasks Widget
+  * Shows count of pending tasks
+  * Links to: /tasks?status=pending_task&type=public (tasks.index route)
+  * Permission required: view_overview_dashboard
+
+- Total Today Attendance Widget
+  * Displays today's attendance ratio (present/total employees)
+  * Links to: /attendances (attendances.index route)
+  * Permission required: view_overview_dashboard
+
+- Total Unresolved Tickets Widget
+  * Shows count of open tickets
+  * Links to: /tickets?status=open (tickets.index route)
+  * Permission required: view_overview_dashboard
+
+- Recent Earnings Chart
+  * Bar chart showing income over selected date range
+  * Interactive chart with date filtering
+  * Permission required: payments module access
+
+- Time Logs Chart
+  * Line chart displaying time log trends
+  * Shows data for selected date range
+  * Permission required: timelogs module access
+
+- Pending Leaves Table
+  * Lists leaves awaiting approval
+  * Includes employee details, leave dates, and leave types
+  * Actions: Approve/Reject leaves directly from dashboard
+  * Links to: /leaves/{id} (leaves.show route)
+  * Permission required: leaves module access
+
+- Open Tickets Table
+  * Displays recent open tickets
+  * Shows requester, subject, date, and priority
+  * Links to: /tickets/{ticket_number} (tickets.show route)
+  * Permission required: tickets module access
+
+2.2 PROJECT TAB
+---------------
+URL: /dashboard/advanced?tab=project
+Route: dashboard.advanced with tab parameter
+
+Key Features:
+- Total Projects Widget
+  * Shows total project count with date filtering
+  * Clickable to filter projects by date range
+  * Permission required: view_project_dashboard
+
+- Total Overdue Projects Widget
+  * Displays count of overdue projects
+  * Links to filtered project list showing overdue projects
+  * URL: /projects?status=overdue&deadLineStartDate={start}&deadLineEndDate={end}
+  * Permission required: view_project_dashboard
+
+- Total Hours Logged Widget
+  * Project-specific time logging metrics
+  * Links to: /time-log-report?project=required (time-log-report.index route)
+  * Permission required: view_project_dashboard
+
+- Status Wise Project Chart
+  * Pie chart showing project distribution by status
+  * Interactive chart with full-screen view capability
+  * Permission required: view_project_dashboard
+
+- Pending Milestone Table
+  * Lists milestones awaiting completion
+  * Shows milestone title, cost, and associated project
+  * Links to: /projects/{id} (projects.show route)
+  * Milestone details modal: /milestones/{id} (milestones.show route)
+  * Permission required: view_project_dashboard
+
+2.3 CLIENT TAB
+--------------
+URL: /dashboard/advanced?tab=client
+Route: dashboard.advanced with tab parameter
+
+Key Features:
+- Total Clients Widget
+- Total Leads Widget
+- Total Lead Conversions Widget
+- Total Contracts Generated Widget
+- Total Contracts Signed Widget
+- Client Wise Earnings Chart
+- Client Wise Time Logs Chart
+- Lead vs Status Chart
+- Lead vs Source Chart
+- Latest Client List
+- Recent Login Activities
+- Total Deals Widget
+
+Permission required: view_client_dashboard
+
+2.4 HR TAB
+----------
+URL: /dashboard/advanced?tab=hr
+Route: dashboard.advanced with tab parameter
+
+Key Features:
+- Total Leaves Approved Widget
+- Total New Employees Widget
+- Total Employee Exits Widget
+- Average Attendance Widget
+- Department Wise Employee Chart
+- Designation Wise Employee Chart
+- Gender Wise Employee Chart
+- Role Wise Employee Chart
+- Leaves Taken Chart
+- Late Attendance Mark Widget
+- Headcount Widget
+- Joining vs Attrition Chart
+- Birthday Widget
+- Total Today Attendance Widget
+
+Permission required: view_hr_dashboard
+
+2.5 TICKET TAB
+--------------
+URL: /dashboard/advanced?tab=ticket
+Route: dashboard.advanced with tab parameter
+
+Key Features:
+- Total Tickets Widget
+- Total Unassigned Tickets Widget
+- Type Wise Ticket Chart
+- Status Wise Ticket Chart
+- Channel Wise Ticket Chart
+- New Tickets List
+
+Permission required: view_ticket_dashboard
+
+2.6 FINANCE TAB
+---------------
+URL: /dashboard/advanced?tab=finance
+Route: dashboard.advanced with tab parameter
+
+Key Features:
+- Total Paid Invoices Widget
+- Total Expenses Widget
+- Total Earnings Widget
+- Total Pending Amount Widget
+- Invoice Overview Chart
+- Estimate Overview Chart
+- Proposal Overview Chart
+- Earnings by Client Chart
+- Earnings by Projects Chart
+- Total Unpaid Invoices Widget
+
+Permission required: view_finance_dashboard
+
+3. EMPLOYEE DASHBOARD FEATURES
+==============================
+
+URL: /dashboard/employee
+Route: dashboard.employee
+
+3.1 CLOCK IN/OUT FUNCTIONALITY
+------------------------------
+- Real-time clock display with current time and date
+- Clock In button (when not clocked in)
+- Clock Out button (when clocked in)
+- Location tracking for attendance (latitude/longitude)
+- Shift schedule validation
+- Leave and holiday status checking
+- Auto clock-out functionality
+
+3.2 EMPLOYEE WIDGETS
+--------------------
+The employee dashboard includes various widgets based on permissions:
+
+- Profile Widget
+  * Employee personal information and details
+  * Permission: private-dashboard access
+
+- Shift Schedule Widget
+  * Current and upcoming shift information
+  * Permission: private-dashboard access
+
+- Birthday Widget
+  * Upcoming birthdays of colleagues
+  * Permission: private-dashboard access
+
+- My Tasks Widget
+  * Personal task list and assignments
+  * Links to: /tasks (tasks.index route)
+  * Permission: tasks module access
+
+- My Calendar Widget
+  * Personal calendar with events and appointments
+  * Permission: private-dashboard access
+
+- Projects Widget
+  * Assigned projects and project status
+  * Links to: /projects (projects.index route)
+  * Permission: projects module access
+
+- Week Timelog Widget
+  * Weekly time tracking summary
+  * Links to: /timelogs (timelogs.index route)
+  * Permission: timelogs module access
+
+- Leave Widget
+  * Leave balance and leave requests
+  * Links to: /leaves (leaves.index route)
+  * Permission: leaves module access
+
+- Notices Widget
+  * Company notices and announcements
+  * Links to: /notices (notices.index route)
+  * Permission: notices module access
+
+- Tickets Widget
+  * Assigned support tickets
+  * Links to: /tickets (tickets.index route)
+  * Permission: tickets module access
+
+- Appreciation Widget
+  * Recognition and appreciation messages
+  * Permission: private-dashboard access
+
+- Work Anniversary Widget
+  * Work anniversary notifications
+  * Permission: private-dashboard access
+
+- Contract Widget
+  * Contract expiration and renewal dates
+  * Permission: contracts module access
+
+- Follow Ups Widget
+  * Pending follow-up tasks
+  * Permission: leads module access
+
+- Internship Widget
+  * Internship period tracking
+  * Permission: private-dashboard access
+
+- Notice Period Widget
+  * Notice period tracking for employees
+  * Permission: private-dashboard access
+
+- Probation Widget
+  * Probation period status
+  * Permission: private-dashboard access
+
+- Work From Home Widget
+  * WFH requests and approvals
+  * Permission: private-dashboard access
+
+3.3 EMPLOYEE CALENDAR
+---------------------
+URL: /dashboard/private-calendar
+Route: dashboard.privateCalendar
+
+Features:
+- Personal calendar view with events, tasks, and holidays
+- Event filtering by type (events, holidays, tasks, tickets, leaves)
+- Date range selection
+- Event creation and management
+- Integration with tasks, tickets, and leave management
+
+4. DASHBOARD TABS AND NAVIGATION
+================================
+
+4.1 TAB STRUCTURE
+-----------------
+The admin dashboard uses a tabbed interface for different views:
+
+- Overview Tab: General system overview and key metrics
+- Project Tab: Project-specific analytics and data
+- Client Tab: Client management and lead tracking
+- HR Tab: Human resources and employee management
+- Ticket Tab: Support ticket management
+- Finance Tab: Financial reporting and analytics
+
+4.2 NAVIGATION URLS
+-------------------
+- Overview: /dashboard/advanced?tab=overview
+- Project: /dashboard/advanced?tab=project
+- Client: /dashboard/advanced?tab=client
+- HR: /dashboard/advanced?tab=hr
+- Ticket: /dashboard/advanced?tab=ticket
+- Finance: /dashboard/advanced?tab=finance
+
+4.3 AJAX LOADING
+----------------
+All dashboard tabs use AJAX loading for seamless navigation:
+- URL updates in browser history
+- Content loads without page refresh
+- Date range filters persist across tabs
+- Loading indicators during data fetch
+
+5. WIDGET MANAGEMENT
+====================
+
+5.1 WIDGET CONFIGURATION
+-------------------------
+URL: /dashboard/widget/{dashboard_type}
+Route: dashboard.widget
+
+Dashboard administrators can configure which widgets are displayed:
+- Toggle widgets on/off for each dashboard type
+- Widgets are organized by module permissions
+- Settings persist per company/organization
+- Real-time widget updates
+
+5.2 AVAILABLE WIDGET TYPES
+---------------------------
+
+Admin Dashboard Widgets:
+- total_clients
+- total_employees
+- total_projects
+- total_unpaid_invoices
+- total_hours_logged
+- total_pending_tasks
+- total_today_attendance
+- total_unresolved_tickets
+- recent_earnings
+- settings_leaves
+- new_tickets
+- overdue_tasks
+- pending_follow_up
+- project_activity_timeline
+- user_activity_timeline
+- timelogs
+
+Client Dashboard Widgets:
+- total_clients
+- total_leads
+- total_lead_conversions
+- total_contracts_generated
+- total_contracts_signed
+- client_wise_earnings
+- client_wise_timelogs
+- lead_vs_status
+- lead_vs_source
+- latest_client
+- recent_login_activities
+- total_deals
+
+Finance Dashboard Widgets:
+- total_paid_invoices
+- total_expenses
+- total_earnings
+- total_pending_amount
+- invoice_overview
+- estimate_overview
+- proposal_overview
+- earnings_by_client
+- earnings_by_projects
+- total_unpaid_invoices
+
+HR Dashboard Widgets:
+- total_leaves_approved
+- total_new_employee
+- total_employee_exits
+- average_attendance
+- department_wise_employee
+- designation_wise_employee
+- gender_wise_employee
+- role_wise_employee
+- leaves_taken
+- late_attendance_mark
+- headcount
+- joining_vs_attrition
+- birthday
+- total_today_attendance
+
+Project Dashboard Widgets:
+- total_project
+- total_hours_logged
+- total_overdue_project
+- status_wise_project
+- pending_milestone
+
+Ticket Dashboard Widgets:
+- total_tickets
+- total_unassigned_ticket
+- type_wise_ticket
+- status_wise_ticket
+- channel_wise_ticket
+- new_tickets
+
+Private Dashboard Widgets (Employee):
+- profile
+- shift_schedule
+- birthday
+- my_task
+- my_calendar
+- projects
+- week_timelog
+- leave
+- notices
+- tickets
+- appreciation
+- work_anniversary
+- contract_date
+- follow_ups
+- internship_date
+- notice_period
+- probation_date
+- work_from_home
+
+6. URL ROUTES AND LINKS
+=======================
+
+6.1 MAIN DASHBOARD ROUTES
+--------------------------
+- GET /dashboard - Main dashboard (redirects based on user role)
+- GET /dashboard/advanced - Advanced admin dashboard with tabs
+- GET /dashboard/employee - Employee dashboard
+- GET /dashboard/client - Client dashboard
+- GET /dashboard/checklist - Dashboard checklist view
+- GET /dashboard/member/{userId} - Member-specific dashboard
+- GET /dashboard/unverified - Unverified account dashboard
+
+6.2 DASHBOARD API ROUTES
+-------------------------
+- POST /dashboard/widget/{dashboardType} - Update widget settings
+- GET /dashboard/week-timelog - Weekly timelog data
+- GET /dashboard/private-calendar - Private calendar data
+- GET /dashboard/lead-stage/{pipelineId} - Lead pipeline data
+- POST /dashboard/beam-auth - Pusher Beam authentication
+- POST /dashboard/send-push-notifications - Send push notifications
+
+6.3 AJAX ENDPOINTS
+-------------------
+All dashboard tabs load content via AJAX:
+- /dashboard/advanced?tab=overview (overview.blade.php)
+- /dashboard/advanced?tab=project (project.blade.php)
+- /dashboard/advanced?tab=client (client.blade.php)
+- /dashboard/advanced?tab=hr (hr.blade.php)
+- /dashboard/advanced?tab=ticket (ticket.blade.php)
+- /dashboard/advanced?tab=finance (finance.blade.php)
+
+6.4 WIDGET LINKS AND REDIRECTS
+-------------------------------
+Each widget links to relevant sections:
+- Clients Widget → /clients
+- Employees Widget → /employees
+- Projects Widget → /projects?projects=all
+- Invoices Widget → /invoices?status=pending
+- Tasks Widget → /tasks?status=pending_task&type=public
+- Attendance Widget → /attendances
+- Tickets Widget → /tickets?status=open
+- Time Logs Widget → /timelogs
+- Leaves Widget → /leaves/{id}
+- Milestones Widget → /milestones/{id}
+
+7. PERMISSIONS AND ACCESS CONTROL
+==================================
+
+7.1 DASHBOARD PERMISSIONS
+--------------------------
+- view_overview_dashboard: Access to overview tab
+- view_project_dashboard: Access to project tab
+- view_client_dashboard: Access to client tab
+- view_hr_dashboard: Access to HR tab
+- view_ticket_dashboard: Access to ticket tab
+- view_finance_dashboard: Access to finance tab
+
+7.2 MODULE PERMISSIONS
+----------------------
+Widget visibility depends on module access:
+- clients: Client management features
+- employees: Employee management features
+- projects: Project management features
+- tasks: Task management features
+- timelogs: Time tracking features
+- attendance: Attendance management features
+- leaves: Leave management features
+- tickets: Support ticket features
+- invoices: Invoice management features
+- estimates: Estimate management features
+- leads: Lead management features
+- payments: Payment processing features
+- notices: Notice management features
+- contracts: Contract management features
+
+7.3 ROLE-BASED ACCESS
+----------------------
+- Admin: Full access to all dashboard types and widgets
+- Employee: Access to employee dashboard and permitted widgets
+- Client: Access to client dashboard and client-specific data
+- HR: Access to HR dashboard and employee-related data
+- Project Manager: Access to project dashboard and project data
+
+8. DASHBOARD SETTINGS AND CONFIGURATION
+========================================
+
+8.1 DATE RANGE FILTERING
+-------------------------
+- All dashboard tabs support date range filtering
+- Date picker integration with moment.js
+- Persistent date selection across tab navigation
+- Real-time data updates based on selected range
+
+8.2 WIDGET CUSTOMIZATION
+-------------------------
+- Admin users can enable/disable widgets per dashboard type
+- Widget settings are saved per company
+- Module-based widget visibility
+- Real-time widget configuration updates
+
+8.3 RESPONSIVE DESIGN
+---------------------
+- Mobile-optimized dashboard layouts
+- Collapsible navigation for smaller screens
+- Touch-friendly interface elements
+- Adaptive widget sizing
+
+8.4 REAL-TIME UPDATES
+----------------------
+- Live clock updates on employee dashboard
+- Real-time attendance status
+- Push notification integration
+- Auto-refresh capabilities for time-sensitive data
+
+8.5 LOCALIZATION SUPPORT
+-------------------------
+- Multi-language dashboard interface
+- Localized date and time formats
+- Currency formatting based on company settings
+- Timezone-aware data display
+
+CONCLUSION
+==========
+
+The Craveva ERP Dashboard system provides a comprehensive, role-based interface for managing all aspects of business operations. With its modular widget system, extensive permission controls, and real-time data updates, it serves as the central command center for users across different organizational roles.
+
+This guide covers all major dashboard functionalities, their corresponding URLs, and access patterns to serve as a complete knowledge base for AI assistant integration and user support.
+
+For technical implementation details, refer to:
+- DashboardController.php: Main controller logic
+- Dashboard blade templates: UI implementation
+- DashboardWidget model: Widget configuration
+- Various dashboard traits: Feature-specific implementations
+
+Last Updated: 2024
+Version: Craveva ERP Dashboard v1.0

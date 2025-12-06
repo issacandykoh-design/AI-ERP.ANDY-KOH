@@ -1,0 +1,23 @@
+[Unit]
+Description=Craveva AI Enterprise Business API
+After=network.target mysql.service
+Wants=mysql.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/www/wwwroot/craveva.com/AI_Enterprise_Business
+Environment="PATH=/www/wwwroot/craveva.com/AI_Enterprise_Business/.venv/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/www/wwwroot/craveva.com/AI_Enterprise_Business/.venv/bin/python /www/wwwroot/craveva.com/AI_Enterprise_Business/web_api.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/www/wwwroot/craveva.com/AI_Enterprise_Business/logs/error.log
+StandardError=append:/www/wwwroot/craveva.com/AI_Enterprise_Business/logs/error.log
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+

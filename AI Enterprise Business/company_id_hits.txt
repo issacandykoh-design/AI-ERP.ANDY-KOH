@@ -1,0 +1,10 @@
+32:  `company_id` int(10) UNSIGNED DEFAULT NULL,
+111:  `company_id` int(10) UNSIGNED NOT NULL,
+153:  `company_id` int(10) UNSIGNED DEFAULT NULL,
+164:INSERT INTO `application_sources` (`id`, `company_id`, `application_source`, `created_at`, `updated_at`, `is_predefined`) VALUES
+194:  `company_id` int(10) UNSIGNED DEFAULT NULL,
+209:INSERT INTO `appreciations` (`id`, `company_id`, `award_id`, `award_to`, `award_date`, `image`, `summary`, `added_by`, `created_at`, `updated_at`) VALUES
+220:  `company_id` int(10) UNSIGNED DEFAULT NULL,
+239:INSERT INTO `assets` (`id`, `company_id`, `name`, `asset_type_id`, `serial_number`, `image`, `description`, `status`, `created_at`, `updated_at`, `value`, `location`, `added_by`, `last_updated_by`) VALUES
+255:  `company_id` int(10) UNSIGNED DEFAULT NULL,
+300:  `company_id` int(10) UNSIGNED DEFAULT NULL,

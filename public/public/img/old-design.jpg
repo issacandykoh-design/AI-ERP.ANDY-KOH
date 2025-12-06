@@ -1,0 +1,46 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f8f9fa"/>
+  
+  <!-- Header -->
+  <rect width="400" height="60" fill="#2c3e50"/>
+  <text x="20" y="35" font-family="Arial, sans-serif" font-size="18" fill="white" font-weight="bold">Craveva</text>
+  <text x="350" y="35" font-family="Arial, sans-serif" font-size="12" fill="white">Menu</text>
+  
+  <!-- Navigation -->
+  <rect y="60" width="400" height="40" fill="#34495e"/>
+  <text x="20" y="82" font-family="Arial, sans-serif" font-size="12" fill="white">Dashboard</text>
+  <text x="100" y="82" font-family="Arial, sans-serif" font-size="12" fill="white">Projects</text>
+  <text x="170" y="82" font-family="Arial, sans-serif" font-size="12" fill="white">Tasks</text>
+  <text x="220" y="82" font-family="Arial, sans-serif" font-size="12" fill="white">Reports</text>
+  
+  <!-- Main Content Area -->
+  <rect y="100" width="280" height="180" fill="white" stroke="#e9ecef" stroke-width="1"/>
+  
+  <!-- Sidebar -->
+  <rect x="290" y="100" width="110" height="180" fill="#ecf0f1" stroke="#e9ecef" stroke-width="1"/>
+  
+  <!-- Content Cards -->
+  <rect x="20" y="120" width="240" height="40" fill="#3498db" rx="4"/>
+  <text x="30" y="142" font-family="Arial, sans-serif" font-size="12" fill="white">Welcome to Craveva</text>
+  
+  <rect x="20" y="170" width="115" height="60" fill="#e74c3c" rx="4"/>
+  <text x="25" y="190" font-family="Arial, sans-serif" font-size="10" fill="white">Projects</text>
+  <text x="25" y="205" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">24</text>
+  
+  <rect x="145" y="170" width="115" height="60" fill="#27ae60" rx="4"/>
+  <text x="150" y="190" font-family="Arial, sans-serif" font-size="10" fill="white">Tasks</text>
+  <text x="150" y="205" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">156</text>
+  
+  <!-- Sidebar Content -->
+  <text x="300" y="120" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50" font-weight="bold">Quick Actions</text>
+  <rect x="300" y="130" width="90" height="25" fill="#9b59b6" rx="3"/>
+  <text x="305" y="145" font-family="Arial, sans-serif" font-size="10" fill="white">New Project</text>
+  
+  <rect x="300" y="160" width="90" height="25" fill="#f39c12" rx="3"/>
+  <text x="305" y="175" font-family="Arial, sans-serif" font-size="10" fill="white">Add Task</text>
+  
+  <!-- Footer -->
+  <rect y="280" width="400" height="20" fill="#95a5a6"/>
+  <text x="20" y="292" font-family="Arial, sans-serif" font-size="10" fill="white">© 2024 Craveva - Theme 1</text>
+</svg>

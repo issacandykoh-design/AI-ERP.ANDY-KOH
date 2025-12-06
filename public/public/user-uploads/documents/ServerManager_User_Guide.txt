@@ -1,0 +1,542 @@
+SERVER MANAGER MODULE - COMPREHENSIVE USER GUIDE
+
+OVERVIEW
+The Server Manager module provides comprehensive server infrastructure management functionality for tracking hosting services, domain registrations, and service providers. This module enables organizations to maintain detailed records of their web hosting accounts, domain portfolios, and provider relationships throughout their lifecycle.
+
+MAIN INTERFACE FEATURES
+
+1. SERVER MANAGER DASHBOARD
+   Route: /account/server-manager/
+   Controller: ServerManagerController@index
+   
+   1.1 DASHBOARD STATISTICS
+   - Statistics API: /account/server-manager/statistics
+     * Functionality: Displays real-time statistics for hosting, domains, and providers
+     * Implementation: AJAX-loaded statistics cards with counts and status breakdowns
+   
+   - Recent Activities API: /account/server-manager/activities
+     * Functionality: Shows recent activities and changes across all server resources
+     * Implementation: Dynamic activity feed with timestamps and action descriptions
+
+2. HOSTING MANAGEMENT SECTION
+   Route: /account/hosting
+   Controller: HostingController
+   
+   2.1 HOSTING LISTING PAGE
+   - Main Interface: DataTable-powered listing with advanced filtering
+   - Export Functionality: /account/server-manager/hosting/export-all
+   - Quick Actions: /account/server-manager/hosting/apply-quick-action
+   - Status Changes: /account/server-manager/hosting/change-status
+   
+   2.2 FILTER CONTROLS
+   - Duration Filter: Dropdown selection for time-based filtering
+     * Options: All Time, Last 30 Days, Last 90 Days, Last Year
+     * Functionality: Filters hosting records based on creation/update dates
+     * Implementation: JavaScript date range filtering via DataTable parameters
+   
+   - Status Filter: Multi-select dropdown for hosting status
+     * Available Options: Active, Suspended, Expired, Cancelled
+     * Functionality: Filters hosting based on operational status
+     * Implementation: Status-based filtering with badge display
+   
+   - Provider Filter: Dropdown selection to filter by hosting provider
+     * Functionality: Shows hosting accounts from specific providers
+     * Implementation: Provider data populated from database relationships
+   
+   - Search Field: Text input for comprehensive hosting search
+     * Functionality: Searches across hosting names, IP addresses, and descriptions
+     * Implementation: Real-time search with debounced input handling
+   
+   2.3 ACTION BUTTONS
+   - Add New Hosting: Opens hosting creation modal/form
+     * Route: /account/hosting/create
+     * Permission Required: add_hosting
+     * Functionality: Creates new hosting account records
+   
+   - Quick Actions Dropdown: Bulk operations for selected hostings
+     * Change Status: Bulk status updates for multiple hostings
+     * Delete Selected: Bulk deletion with confirmation
+     * Export Selected: Export filtered hosting data
+   
+   2.4 HOSTING CREATION INTERFACE
+   Route: /account/hosting/create
+   AJAX Route: servermanager::hosting.ajax.create
+   
+   - Hosting Information Fields:
+     * Hosting Name: Required text field for hosting account identification
+     * Provider: Dropdown selection with "Add New Provider" option
+     * Provider URL: Auto-populated from selected provider
+     * Server Type: Dropdown selection (Shared, VPS, Dedicated, Cloud, etc.)
+     * Server Location: Text field for data center location
+     * IP Address: Text field for server IP address
+     * cPanel URL: URL field for control panel access
+     * Username: Text field for hosting account username
+     * Password: Password field with visibility toggle
+   
+   - Billing Information Fields:
+     * Purchase Date: Date picker for hosting purchase date
+     * Renewal Date: Date picker for next renewal date
+     * Billing Cycle: Dropdown (Monthly, Quarterly, Semi-Annual, Annual)
+     * Annual Cost: Numeric field for hosting cost
+   
+   - Association Fields:
+     * Associated Project: Dropdown selection from available projects
+     * Client: Dropdown selection from client database
+     * Status: Dropdown (Active, Suspended, Expired, Cancelled)
+   
+   2.5 HOSTING DETAIL VIEW
+   Route: /account/hosting/{id}
+   AJAX Template: servermanager::hosting.ajax.show
+   
+   - Status Banner: Visual status indicator with renewal warnings
+     * Active: Green banner with renewal date if within 30 days
+     * Suspended: Orange banner with suspension details
+     * Expired: Red banner with expiry information
+     * Cancelled: Gray banner with cancellation date
+   
+   - Information Sections:
+     * Hosting Information: Complete hosting account details
+     * Associated Domains: List of domains hosted on this account
+     * Billing Information: Cost, billing cycle, and payment history
+     * Statistics: Usage statistics and performance metrics
+     * Activities: Recent changes and activity log
+   
+   - Action Modals:
+     * Renew Hosting: Modal for extending hosting subscription
+     * Suspend Hosting: Modal for temporary suspension
+     * Download Backup: Backup download functionality
+     * View Logs: Server log viewing interface
+     * Add Domain: Associate new domains with hosting
+   
+   2.6 HOSTING EDIT INTERFACE
+   Route: /account/hosting/{id}/edit
+   AJAX Route: servermanager::hosting.ajax.edit
+   
+   - Pre-populated form with all hosting information
+   - Same field structure as creation form
+   - Update functionality with validation
+   - Permission-based field access control
+
+3. DOMAIN MANAGEMENT SECTION
+   Route: /account/domain
+   Controller: DomainController
+   
+   3.1 DOMAIN LISTING PAGE
+   - Main Interface: DataTable-powered listing with advanced filtering
+   - Export Functionality: /account/server-manager/domain/export-all
+   - Quick Actions: /account/server-manager/domain/apply-quick-action
+   - Status Changes: /account/server-manager/domain/change-status
+   
+   3.2 FILTER CONTROLS
+   - Duration Filter: Time-based filtering for domain records
+   - Status Filter: Domain status filtering (Active, Expired, Suspended)
+   - Provider Filter: Filter by domain registrar/provider
+   - Search Field: Comprehensive domain name and details search
+   
+   3.3 DOMAIN CREATION INTERFACE
+   Route: /account/domain/create
+   AJAX Route: servermanager::domain.ajax.create
+   
+   - Domain Information Fields:
+     * Domain Name: Required text field for domain name
+     * Provider: Dropdown selection with "Add New Provider" option
+     * Provider URL: Auto-populated from selected provider
+     * Domain Type: Dropdown (Primary, Subdomain, Addon, Parked)
+     * Associated Hosting: Dropdown selection from hosting accounts
+     * Username: Text field for domain account username
+     * Password: Password field with visibility toggle
+     * Status: Dropdown (Active, Expired, Suspended, Transferred)
+   
+   - Registration Information:
+     * Registration Date: Date picker for domain registration
+     * Expiry Date: Date picker for domain expiration
+     * Annual Cost: Numeric field for domain renewal cost
+     * Billing Cycle: Dropdown for billing frequency
+   
+   - Registrar Information:
+     * Registrar URL: URL field for registrar control panel
+     * Registrar Username: Text field for registrar account
+     * Registrar Password: Password field for registrar access
+     * Registrar Status: Status field for registrar account
+   
+   - Association Fields:
+     * Associated Project: Project selection dropdown
+     * Client: Client selection dropdown
+   
+   3.4 DOMAIN DETAIL VIEW
+   Route: /account/domain/{id}
+   AJAX Template: servermanager::domain.ajax.show
+   
+   - Domain Information Display:
+     * Domain name, associated hosting, provider details
+     * Status badges with color coding
+     * WHOIS protection status
+     * Associated project and client information
+   
+   - DNS Information Section:
+     * DNS Details API: /account/server-manager/domain/{id}/dns-details
+     * DNS Health API: /account/server-manager/domain/{id}/dns-health
+     * Real-time DNS record lookup and display
+     * DNS record categorization (A, AAAA, CNAME, MX, NS, TXT, SOA)
+     * Summary cards for total records, nameservers, mail servers, IP addresses
+     * Refresh functionality for updated DNS information
+     * Error handling for DNS lookup failures
+   
+   - Dates and Billing Section:
+     * Registration date, expiry date display
+     * Pricing information and billing cycle
+     * Renewal cost and payment history
+   
+   - Additional Information:
+     * Registrar details and access credentials
+     * WHOIS protection and auto-renewal settings
+     * Domain transfer and management options
+   
+   3.5 DNS MANAGEMENT FEATURES
+   - Dynamic DNS Lookup: Real-time DNS record retrieval
+   - DNS Record Display: Categorized record listing with details
+   - DNS Health Monitoring: Status checking and validation
+   - Nameserver Information: Complete nameserver details
+   - Mail Server Configuration: MX record analysis and display
+
+4. PROVIDER MANAGEMENT SECTION
+   Route: /account/provider
+   Controller: ProviderController
+   
+   4.1 PROVIDER LISTING PAGE
+   - Main Interface: DataTable-powered provider listing
+   - Export Functionality: /account/server-manager/provider/export-all
+   - Quick Actions: /account/server-manager/provider/apply-quick-action
+   - Status Changes: /account/server-manager/provider/change-status
+   - Provider URL API: /account/server-manager/provider/get-url
+   
+   4.2 FILTER CONTROLS
+   - Duration Filter: Time-based provider filtering
+   - Status Filter: Provider status filtering (Active, Inactive)
+   - Type Filter: Provider type filtering (Domain, Hosting, Both)
+   - Search Field: Provider name and details search
+   
+   4.3 PROVIDER CREATION INTERFACE
+   Route: /account/provider/create
+   AJAX Routes: 
+   - servermanager::provider.ajax.create
+   - servermanager::provider.ajax.create_provider (modal version)
+   
+   - Provider Information Fields:
+     * Provider Name: Required text field for provider identification
+     * Provider URL: URL field for provider website
+     * Provider Type: Dropdown selection (Domain, Hosting, Both)
+     * Status: Dropdown selection (Active, Inactive)
+     * Description: Textarea for provider notes and details
+   
+   4.4 PROVIDER DETAIL VIEW
+   Route: /account/provider/{id}
+   AJAX Template: servermanager::provider.ajax.show
+   
+   - Provider Information Display:
+     * Provider name, URL, and type with badge styling
+     * Status indicator with color coding
+     * Description and additional notes
+   
+   - Action Menu:
+     * Edit Provider: Opens edit modal/form
+     * Delete Provider: Confirmation dialog with AJAX deletion
+     * Permission-based action availability
+   
+   4.5 PROVIDER EDIT INTERFACE
+   Route: /account/provider/{id}/edit
+   AJAX Route: servermanager::provider.ajax.edit
+   
+   - Pre-populated form with provider information
+   - Same field structure as creation form
+   - Update functionality with validation
+   - Permission-based access control
+
+===========================================
+PERMISSION SYSTEM
+===========================================
+
+HOSTING PERMISSIONS:
+- add_hosting: Create new hosting accounts
+- view_hosting: Access hosting records
+- edit_hosting: Modify hosting information
+- delete_hosting: Remove hosting accounts
+
+DOMAIN PERMISSIONS:
+- add_domain: Create new domain records
+- view_domain: Access domain information
+- edit_domain: Modify domain details
+- delete_domain: Remove domain records
+
+PROVIDER PERMISSIONS:
+- add_provider: Create new provider records
+- view_provider: Access provider information
+- edit_provider: Modify provider details
+- delete_provider: Remove provider records
+
+PERMISSION LEVELS:
+- all: Complete access to all records
+- added: Access to user-created records
+- owned: Access to assigned records
+- both: Combined added and owned access
+- none: No access to functionality
+
+===========================================
+API ENDPOINTS
+===========================================
+
+WEB ROUTES (Authenticated):
+- GET /account/server-manager/ - Main dashboard
+- GET /account/server-manager/statistics - Dashboard statistics
+- GET /account/server-manager/activities - Recent activities
+
+HOSTING ROUTES:
+- Resource routes: /account/hosting (index, create, store, show, edit, update, destroy)
+- GET /account/server-manager/hosting/export-all - Export all hostings
+- POST /account/server-manager/hosting/apply-quick-action - Bulk actions
+- POST /account/server-manager/hosting/change-status - Status updates
+
+DOMAIN ROUTES:
+- Resource routes: /account/domain (index, create, store, show, edit, update, destroy)
+- GET /account/server-manager/domain/export-all - Export all domains
+- POST /account/server-manager/domain/apply-quick-action - Bulk actions
+- POST /account/server-manager/domain/change-status - Status updates
+- GET /account/server-manager/domain/{id}/dns-details - DNS information
+- GET /account/server-manager/domain/{id}/dns-health - DNS health check
+
+PROVIDER ROUTES:
+- Resource routes: /account/provider (index, create, store, show, edit, update, destroy)
+- GET /account/server-manager/provider/export-all - Export all providers
+- GET /account/server-manager/provider/get-url - Get provider URL
+- POST /account/server-manager/provider/apply-quick-action - Bulk actions
+- POST /account/server-manager/provider/change-status - Status updates
+
+API ROUTES (Sanctum Authentication):
+- GET /api/server-manager/statistics - API statistics
+- GET /api/server-manager/activities - API activities
+- CRUD operations for hosting: /api/server-manager/hosting
+- CRUD operations for domains: /api/server-manager/domain
+
+===========================================
+TECHNICAL FEATURES
+===========================================
+
+DNS LOOKUP SERVICE:
+- Real-time DNS record retrieval using multiple DNS APIs
+- Support for Google DNS, Cloudflare DNS, and OpenDNS
+- Configurable DNS record types (A, AAAA, CNAME, MX, TXT, NS, SOA, PTR)
+- DNS caching with configurable duration (default: 5 minutes)
+- Error handling and fallback mechanisms
+- DNS health monitoring and validation
+
+DATA EXPORT FUNCTIONALITY:
+- Excel export for hosting, domain, and provider data
+- Filtered export based on current view settings
+- Bulk export capabilities for selected records
+- Export classes: HostingExport, DomainExport, ProviderExport
+
+NOTIFICATION SYSTEM:
+- Expiry notifications for hosting and domains
+- Configurable reminder periods (30 days for hosting, 60 days for SSL)
+- Email notifications for upcoming renewals
+- System alerts for expired services
+
+BACKGROUND JOBS:
+- CheckExpiringHostingsJob: Automated hosting expiry checking
+- CheckExpiringDomainsJob: Automated domain expiry monitoring
+- Scheduled execution for proactive notifications
+
+EVENT SYSTEM:
+- HostingCreated, HostingUpdated events
+- DomainCreated, DomainUpdated events
+- Event listeners for automated actions
+- Observer pattern for model lifecycle management
+
+===========================================
+CONFIGURATION OPTIONS
+===========================================
+
+DNS SERVICE CONFIGURATION:
+- DNS_API_KEY: API key for DNS services (optional for public APIs)
+- DNS_API_URL: Primary DNS API endpoint
+- DNS_TIMEOUT: DNS lookup timeout (default: 10 seconds)
+- DNS_CACHE_DURATION: Cache duration (default: 300 seconds)
+
+MODULE SETTINGS:
+- Hosting auto-renewal reminder days: 30
+- SSL reminder days: 60
+- Backup reminder days: 7
+- Domain expiry reminder days: 30
+
+FEATURE FLAGS:
+- dns_lookup: Enable/disable DNS lookup functionality
+- dns_health_check: Enable/disable DNS health monitoring
+- whois_lookup: Enable/disable WHOIS functionality
+- ssl_checker: Enable/disable SSL certificate checking
+
+===========================================
+INTEGRATION POINTS
+===========================================
+
+MODULE INTEGRATIONS:
+- Projects: Hosting and domain-project associations
+- Clients: Client relationship management
+- Users: User assignment and permission management
+- Companies: Multi-company support with data isolation
+
+EXTERNAL INTEGRATIONS:
+- DNS APIs: Google DNS, Cloudflare DNS, OpenDNS
+- Control Panels: cPanel integration support
+- Registrars: Domain registrar API integration capabilities
+- Hosting Providers: Provider API integration framework
+
+===========================================
+TECHNICAL IMPLEMENTATION
+===========================================
+
+FRONTEND TECHNOLOGIES:
+- Blade templating engine for server-side rendering
+- AJAX for dynamic content loading and interactions
+- jQuery for DOM manipulation and event handling
+- Bootstrap for responsive design framework
+- SweetAlert for user confirmations and notifications
+- DataTables for advanced table functionality with filtering and sorting
+
+BACKEND ARCHITECTURE:
+- Laravel framework with modular structure
+- MVC pattern implementation
+- Eloquent ORM for database operations
+- Observer pattern for model events
+- Service layer for business logic
+- Repository pattern for data access
+- Event-driven architecture for notifications
+
+DATABASE STRUCTURE:
+- server_hostings: Hosting account records
+- server_domains: Domain registration records
+- server_providers: Service provider information
+- server_logs: Activity and change logging
+- server_settings: Module configuration
+- server_types: Server type definitions
+
+SECURITY FEATURES:
+- Permission-based access control
+- CSRF protection for all forms
+- Input validation and sanitization
+- Secure password storage
+- Authentication middleware
+- Authorization checks for all operations
+
+===========================================
+USER INTERFACE COMPONENTS
+===========================================
+
+MODAL INTERFACES:
+- Create/Edit forms in modal overlays
+- AJAX-loaded content for improved performance
+- Form validation with real-time feedback
+- Success/error message handling
+
+DASHBOARD WIDGETS:
+- Statistics cards with real-time data
+- Activity feeds with timestamps
+- Status indicators with color coding
+- Quick action buttons and dropdowns
+
+DATA VISUALIZATION:
+- Status badges with semantic colors
+- Progress indicators for renewals
+- Timeline displays for activities
+- Summary cards for DNS information
+
+RESPONSIVE DESIGN:
+- Mobile-friendly interface
+- Adaptive layouts for different screen sizes
+- Touch-friendly controls and interactions
+- Optimized performance for mobile devices
+
+===========================================
+MAINTENANCE AND MONITORING
+===========================================
+
+AUTOMATED TASKS:
+- Daily expiry checks for hosting and domains
+- DNS health monitoring
+- Activity logging and cleanup
+- Cache management and optimization
+
+LOGGING SYSTEM:
+- Comprehensive activity logging
+- Error tracking and reporting
+- Performance monitoring
+- User action auditing
+
+BACKUP AND RECOVERY:
+- Database backup integration
+- Configuration backup support
+- Data export capabilities
+- Recovery procedures documentation
+
+===========================================
+TROUBLESHOOTING GUIDE
+===========================================
+
+COMMON ISSUES:
+1. DNS Lookup Failures:
+   - Check DNS API configuration
+   - Verify network connectivity
+   - Review DNS timeout settings
+   - Check API rate limits
+
+2. Permission Errors:
+   - Verify user permissions
+   - Check role assignments
+   - Review module access settings
+   - Validate permission inheritance
+
+3. Export Issues:
+   - Check file permissions
+   - Verify export class configuration
+   - Review memory limits
+   - Check temporary directory access
+
+4. Notification Problems:
+   - Verify email configuration
+   - Check notification settings
+   - Review job queue status
+   - Validate recipient addresses
+
+PERFORMANCE OPTIMIZATION:
+- Enable DNS caching
+- Optimize database queries
+- Use appropriate indexes
+- Monitor memory usage
+- Implement query caching
+
+===========================================
+BEST PRACTICES
+===========================================
+
+DATA MANAGEMENT:
+- Regular backup of hosting and domain data
+- Periodic review of provider information
+- Consistent naming conventions
+- Proper categorization and tagging
+
+SECURITY PRACTICES:
+- Regular password updates
+- Secure credential storage
+- Access control reviews
+- Activity monitoring
+
+OPERATIONAL PROCEDURES:
+- Proactive renewal management
+- Regular DNS health checks
+- Provider relationship maintenance
+- Documentation updates
+
+USER TRAINING:
+- Permission system understanding
+- Interface navigation training
+- Best practice guidelines
+- Troubleshooting procedures

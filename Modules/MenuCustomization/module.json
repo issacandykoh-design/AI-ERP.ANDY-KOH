@@ -1,0 +1,21 @@
+{
+    "name": "MenuCustomization",
+    "alias": "menucustomization",
+    "description": "Customize sidebar and settings menu visibility/ordering per company",
+    "version": "1.0.0",
+    "keywords": ["settings", "menu", "customization"],
+    "active": true,
+    "order": 50,
+    "providers": [
+        "Modules\\MenuCustomization\\Providers\\MenuCustomizationServiceProvider"
+    ],
+    "aliases": [],
+    "files": [],
+    "permissions": [
+        "manage_menu_customization"
+    ],
+    "roles_permissions": {
+        "admin": [],
+        "manager": []
+    }
+}

@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vanna-core"
+version = "0.1.0"
+description = "Vanna Core - SQL generation framework without web components"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Vanna Core Team"}
+]
+keywords = ["sql", "ai", "llm", "rag", "database"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+# Core dependencies only
+dependencies = [
+    "requests",
+    "tabulate",
+    "plotly",
+    "pandas",
+    "sqlparse",
+    "kaleido",
+    "sqlalchemy",
+]
+
+[project.optional-dependencies]
+# LLM providers
+openai = ["openai"]
+anthropic = ["anthropic"]
+ollama = ["ollama"]
+
+# Vector databases
+chromadb = ["chromadb"]
+pinecone = ["pinecone-client"]
+qdrant = ["qdrant-client"]
+
+# Database connectors
+postgres = ["psycopg2-binary"]
+mysql = ["PyMySQL"]
+sqlite = ["sqlite3"]
+
+# All optional dependencies
+all = [
+    "openai",
+    "anthropic", 
+    "ollama",
+    "chromadb",
+    "pinecone-client",
+    "qdrant-client",
+    "psycopg2-binary",
+    "PyMySQL",
+]
+
+[project.urls]
+Homepage = "https://github.com/vanna-ai/vanna-core"
+Repository = "https://github.com/vanna-ai/vanna-core"
+Documentation = "https://vanna.ai/docs"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"

@@ -1,0 +1,195 @@
+/* Craveva Enterprise AI Theme - High Specificity Override */
+
+/* High specificity overrides for existing classes */
+body .app,
+body div[class*="app"],
+#root .app {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Override sidebar with high specificity */
+body .sidebar,
+body aside[class*="sidebar"],
+#root .sidebar,
+.sidebar:not(.crv-history-sidebar) {
+  width: 320px !important;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+  border-right: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Override chat messages */
+body .message,
+body div[class*="message"],
+#root .message,
+.message.user,
+.message.assistant {
+  margin-bottom: 1rem !important;
+  animation: fadeInUp 0.3s ease-out !important;
+}
+
+body .message.user .message-bubble,
+body div[class*="message"][class*="user"] .message-bubble,
+#root .message.user .message-bubble {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%) !important;
+  color: white !important;
+  border-radius: 18px !important;
+  border-bottom-right-radius: 4px !important;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1) !important;
+  padding: 12px 16px !important;
+  font-weight: 500 !important;
+}
+
+body .message.assistant .message-bubble,
+body div[class*="message"]:not([class*="user"]) .message-bubble,
+#root .message.assistant .message-bubble {
+  background: white !important;
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 18px !important;
+  border-bottom-left-radius: 4px !important;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.05) !important;
+  padding: 12px 16px !important;
+}
+
+/* Override input areas */
+body .chat-input,
+body div[class*="input"],
+#root .chat-input,
+input[type="text"][class*="chat"] {
+  background: white !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  font-family: 'Inter', sans-serif !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05) !important;
+}
+
+body .chat-input:focus,
+body div[class*="input"]:focus,
+#root .chat-input:focus {
+  outline: none !important;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1) !important;
+}
+
+/* Override buttons */
+body button,
+body .btn,
+body button[class*="btn"],
+#root button:not(.crv-history-btn) {
+  border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+body button:hover,
+body .btn:hover,
+#root button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1) !important;
+}
+
+/* Primary buttons */
+body button[class*="primary"],
+body .btn-primary,
+body button[style*="background"]:not([style*="white"]) {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  color: white !important;
+}
+
+/* Secondary buttons */
+body button[class*="secondary"],
+body .btn-secondary {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Override headers and text */
+body h1, body h2, body h3, body h4, body h5, body h6,
+#root h1, #root h2, #root h3, #root h4, #root h5, #root h6 {
+  color: #1e293b !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+}
+
+body p, body span, body div:not([class*=""]),
+#root p, #root span, #root div:not([class*=""]) {
+  color: #475569 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body .app,
+  body div[class*="app"],
+  #root .app {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  }
+  
+  body .sidebar,
+  body aside[class*="sidebar"],
+  #root .sidebar {
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+    border-right-color: #334155 !important;
+  }
+  
+  body .message.assistant .message-bubble,
+  body div[class*="message"]:not([class*="user"]) .message-bubble,
+  #root .message.assistant .message-bubble {
+    background: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+  }
+  
+  body .chat-input,
+  body div[class*="input"],
+  #root .chat-input {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+  }
+  
+  body h1, body h2, body h3, body h4, body h5, body h6,
+  #root h1, #root h2, #root h3, #root h4, #root h5, #root h6 {
+    color: #f1f5f9 !important;
+  }
+  
+  body p, body span, body div:not([class*=""]),
+  #root p, #root span, #root div:not([class*=""]) {
+    color: #cbd5e1 !important;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  body .sidebar,
+  body aside[class*="sidebar"],
+  #root .sidebar {
+    width: 100% !important;
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+  }
+}

@@ -1,0 +1,440 @@
+ORDERS MODULE - COMPREHENSIVE USER GUIDE
+
+===========================================
+TABLE OF CONTENTS
+===========================================
+1. Orders Module Overview
+2. Orders List Management
+3. Order Creation
+4. Order Details and Viewing
+5. Order Editing and Updates
+6. Order Status Management
+7. Payment Processing
+8. Order Actions and Operations
+9. Filtering and Search
+10. Permissions and Access Control
+11. Integration Features
+12. Reporting and Downloads
+13. Route Reference Guide
+
+===========================================
+1. ORDERS MODULE OVERVIEW
+===========================================
+
+The Orders module is a comprehensive order management system that handles the complete order lifecycle from creation to completion. It supports multiple order statuses, payment processing, client management, and integration with invoicing and payment systems.
+
+Key Features:
+- Complete order lifecycle management
+- Multiple payment gateway integration
+- Client and project association
+- Product and inventory management
+- Tax calculation and discount handling
+- PDF generation and downloads
+- Status tracking and notifications
+
+Main Access Route: /orders
+Controller: OrderController.php
+Primary Views: resources/views/orders/
+
+===========================================
+2. ORDERS LIST MANAGEMENT
+===========================================
+
+2.1 ORDERS INDEX PAGE
+Route: /orders (GET)
+Method: OrderController@index
+View: resources/views/orders/index.blade.php
+
+The Orders index page displays a comprehensive list of all orders with advanced filtering and management capabilities.
+
+2.1.1 FILTER OPTIONS
+- Duration Filter: Filter orders by date range (Today, Yesterday, This Week, Last Week, This Month, Last Month, Custom Range)
+- Client Filter: Filter orders by specific client
+- Project Filter: Filter orders by associated project
+- Status Filter: Filter by order status (Pending, On-Hold, Failed, Processing, Completed, Canceled, Refunded)
+- Search Field: Search orders by order number, client name, or other criteria
+
+2.1.2 ACTION BUTTONS
+- Add Order Button: Create new order (Route: /orders/create)
+  - Visibility: Controlled by 'add_order' permission
+  - Opens order creation form in right modal
+
+2.1.3 BULK ACTIONS
+- Delete Selected: Remove multiple orders simultaneously
+- Change Status: Update status for multiple orders
+- Quick Actions Dropdown: Access to bulk operations
+
+2.1.4 ORDER LIST DISPLAY
+Each order row displays:
+- Order Number: Unique identifier
+- Client Name: Associated client information
+- Project: Linked project (if applicable)
+- Order Date: Creation date
+- Status: Current order status with color coding
+- Total Amount: Order total with currency
+- Actions: Individual order operations
+
+===========================================
+3. ORDER CREATION
+===========================================
+
+3.1 CREATE NEW ORDER
+Route: /orders/create (GET)
+Method: OrderController@create
+View: resources/views/orders/ajax/admin_create.blade.php
+
+3.1.1 ORDER INFORMATION SECTION
+- Order Number: Auto-generated unique identifier
+- Client Selection: Dropdown with client search functionality
+  - Displays billing address automatically
+  - Shows shipping address or option to add
+- Project Selection: Associated project dropdown (filtered by client)
+- Company Address: Select generating company address
+- Order Status: Initial status selection (Pending, On-Hold, Failed, Processing, Completed, Canceled)
+
+3.1.2 PRODUCT SELECTION
+- Product Category Filter: Filter products by category
+- Product Dropdown: Select from available products
+- Add New Product: Quick product creation (with permissions)
+
+3.1.3 ORDER ITEMS SECTION
+For each item:
+- Description: Product/service name
+- HSN/SAC Code: Tax classification code (if enabled)
+- Quantity: Number of units
+- Unit Type: Measurement unit
+- SKU: Stock keeping unit
+- Unit Price: Price per unit
+- Tax: Applicable taxes
+- Amount: Calculated total per item
+
+3.1.4 CALCULATIONS SECTION
+- Subtotal: Sum of all items
+- Discount: Percentage or fixed amount discount
+- Tax: Calculated tax amounts
+- Total: Final order amount
+
+3.1.5 ADDITIONAL INFORMATION
+- Client Note: Internal notes for the order
+- Custom Fields: Additional order attributes
+- Shipping Address: Delivery address management
+
+3.1.6 ACTION BUTTONS
+- Submit: Create the order (Route: /orders - POST)
+- Cancel: Return to orders list
+
+===========================================
+4. ORDER DETAILS AND VIEWING
+===========================================
+
+4.1 ORDER DETAILS PAGE
+Route: /orders/{id} (GET)
+Method: OrderController@show
+View: resources/views/orders/ajax/show.blade.php
+
+4.1.1 ORDER HEADER
+- Company Logo and Information
+- Order Number and Date
+- Order Status Badge (color-coded)
+- Client Information (Billed To section)
+
+4.1.2 ORDER ITEMS DISPLAY
+Desktop View:
+- Detailed table with Description, HSN/SAC, Quantity, SKU, Unit Price, Tax, Amount
+- Item summaries and images (if applicable)
+- Downloadable products (for completed orders)
+
+Mobile View:
+- Responsive layout with stacked information
+- Same data presented in mobile-friendly format
+
+4.1.3 ORDER TOTALS
+- Subtotal calculation
+- Discount application
+- Tax breakdown
+- Final total amount
+
+4.1.4 ADDITIONAL INFORMATION
+- Client Notes display
+- Custom fields information
+- Other company information
+
+===========================================
+5. ORDER EDITING AND UPDATES
+===========================================
+
+5.1 EDIT ORDER
+Route: /orders/{id}/edit (GET)
+Method: OrderController@edit
+View: resources/views/orders/ajax/edit.blade.php
+
+5.1.1 EDITABLE FIELDS
+- Order Status: Update current status
+- Company Address: Change generating address
+- Order Items: Modify quantities, prices, descriptions
+- Discount: Adjust discount values
+- Notes: Update client notes
+- Custom Fields: Modify additional attributes
+
+5.1.2 RESTRICTIONS
+- Completed, Canceled, and Refunded orders cannot be edited
+- Permission-based editing controls
+- Item modifications with real-time calculations
+
+5.1.3 UPDATE PROCESS
+Route: /orders/{id} (PUT)
+Method: OrderController@update
+- Validates all item data
+- Updates order totals
+- Handles invoice generation (if status changed to completed)
+- Manages payment creation
+
+===========================================
+6. ORDER STATUS MANAGEMENT
+===========================================
+
+6.1 AVAILABLE STATUSES
+- Pending: Initial order state
+- On-Hold: Temporarily suspended
+- Failed: Order processing failed
+- Processing: Order being fulfilled
+- Completed: Order successfully fulfilled
+- Canceled: Order canceled
+- Refunded: Order refunded
+
+6.2 STATUS CHANGE OPERATIONS
+Route: /orders/change-status (POST)
+Method: OrderController@changeStatus
+
+6.2.1 STATUS CHANGE EFFECTS
+- Completed Status: Automatically creates invoice and payment
+- Refunded Status: Creates credit note (if conditions met)
+- Bank Account Selection: Required for completed orders
+
+6.2.2 AUTOMATED PROCESSES
+- Invoice Generation: Automatic for completed orders
+- Payment Record Creation: Links to invoice
+- Credit Note Creation: For refunded orders
+- Notification Triggers: Status change notifications
+
+===========================================
+7. PAYMENT PROCESSING
+===========================================
+
+7.1 PAYMENT GATEWAYS
+Supported payment methods:
+- Stripe: Credit card processing
+- PayPal: Online payments
+- Razorpay: Indian payment gateway
+- Paystack: African payment gateway
+- Flutterwave: Multi-currency payments
+- Payfast: South African payments
+- Square: Point of sale payments
+- Authorize.net: Payment processing
+- Mollie: European payments
+- Offline Payments: Manual payment methods
+
+7.2 PAYMENT MODALS
+7.2.1 Stripe Payment
+Route: /orders/stripe-modal (GET)
+Method: OrderController@stripeModal
+- Secure payment form
+- Real-time processing
+- Payment confirmation
+
+7.2.2 Offline Payment
+Route: /orders/offline-payment-modal (GET)
+Method: OrderController@offlinePaymentModal
+- Manual payment recording
+- Bank account selection
+- Payment method specification
+
+7.3 PAYMENT PROCESSING
+7.3.1 Payment Success
+- Order status update to completed
+- Invoice generation
+- Payment record creation
+- Notification sending
+
+7.3.2 Payment Failure
+Route: /orders/payment-failed/{id} (POST)
+Method: OrderController@paymentFailed
+- Status update to failed
+- Error message recording
+- Failure notification
+
+===========================================
+8. ORDER ACTIONS AND OPERATIONS
+===========================================
+
+8.1 ORDER ACTIONS DROPDOWN
+Available actions (permission-based):
+
+8.1.1 Download Order
+Route: /orders/{id}/download (GET)
+Method: OrderController@download
+- Generates PDF version
+- Includes all order details
+- Formatted for printing
+
+8.1.2 Mark as Complete
+- Changes status to completed
+- Triggers invoice creation
+- Initiates payment processing
+
+8.1.3 Refund Order
+- Changes status to refunded
+- Creates credit note
+- Updates financial records
+
+8.1.4 View Invoice
+Route: /invoices/{id} (GET)
+- Links to associated invoice
+- Available for completed/refunded orders
+
+8.1.5 Edit Order
+Route: /orders/{id}/edit (GET)
+- Opens edit form
+- Permission and status restrictions apply
+
+8.1.6 Delete Order
+Route: /orders/{id} (DELETE)
+Method: OrderController@destroy
+- Permanent order removal
+- Confirmation required
+- Permission-based access
+
+===========================================
+9. FILTERING AND SEARCH
+===========================================
+
+9.1 ADVANCED FILTERING
+- Date Range Selection: Custom date filtering
+- Client-based Filtering: Orders by specific clients
+- Project Filtering: Orders associated with projects
+- Status Filtering: Multiple status selection
+- Search Functionality: Text-based search across order fields
+
+9.2 FILTER PERSISTENCE
+- Session-based filter storage
+- URL parameter support
+- Reset filter functionality
+
+9.3 EXPORT AND REPORTING
+- Filtered data export
+- PDF generation
+- Excel export capabilities
+
+===========================================
+10. PERMISSIONS AND ACCESS CONTROL
+===========================================
+
+10.1 ORDER PERMISSIONS
+- add_order: Create new orders
+- view_order: View order details
+- edit_order: Modify existing orders
+- delete_order: Remove orders
+
+10.2 PERMISSION LEVELS
+- All: Full access to all orders
+- Added: Access to self-created orders
+- Owned: Access to client's own orders
+- Both: Combined added and owned access
+
+10.3 ROLE-BASED ACCESS
+- Admin: Full system access
+- Employee: Limited based on permissions
+- Client: Access to own orders only
+
+===========================================
+11. INTEGRATION FEATURES
+===========================================
+
+11.1 CLIENT INTEGRATION
+- Automatic address population
+- Project association
+- Contact information sync
+- Billing and shipping management
+
+11.2 PRODUCT INTEGRATION
+- Product catalog access
+- Inventory management
+- Pricing synchronization
+- Category filtering
+
+11.3 INVOICE INTEGRATION
+- Automatic invoice generation
+- Payment linking
+- Tax calculation
+- Credit note creation
+
+11.4 PROJECT INTEGRATION
+- Project-based ordering
+- Resource allocation
+- Timeline integration
+- Budget tracking
+
+===========================================
+12. REPORTING AND DOWNLOADS
+===========================================
+
+12.1 PDF GENERATION
+Route: /orders/{id}/download (GET)
+Method: OrderController@download
+- Professional order formatting
+- Company branding
+- Complete order details
+- Tax and total calculations
+
+12.2 BULK OPERATIONS
+- Multiple order processing
+- Batch status updates
+- Bulk deletion
+- Export functionality
+
+===========================================
+13. ROUTE REFERENCE GUIDE
+===========================================
+
+13.1 MAIN ROUTES
+- GET /orders - Orders list page
+- GET /orders/create - Create new order form
+- POST /orders - Store new order
+- GET /orders/{id} - View order details
+- GET /orders/{id}/edit - Edit order form
+- PUT /orders/{id} - Update order
+- DELETE /orders/{id} - Delete order
+
+13.2 AJAX ROUTES
+- GET /orders/add-item - Add product to order
+- POST /orders/change-status - Update order status
+- GET /orders/{id}/download - Download order PDF
+- GET /orders/stripe-modal - Stripe payment form
+- GET /orders/offline-payment-modal - Offline payment form
+
+13.3 PAYMENT ROUTES
+- POST /orders/payment-failed/{id} - Handle payment failure
+- POST /orders/save-stripe-detail - Process Stripe payment
+- GET /paypal/{id}?type=order - PayPal payment processing
+
+13.4 UTILITY ROUTES
+- GET /orders/clients - Get client data
+- POST /orders/make-invoice - Generate invoice from order
+- POST /orders/store-quantity - Update item quantities
+
+===========================================
+TECHNICAL NOTES
+===========================================
+
+1. All routes support AJAX requests for seamless user experience
+2. Permission checks are implemented at controller level
+3. Real-time calculations using JavaScript
+4. Responsive design for mobile compatibility
+5. Integration with notification system
+6. Multi-currency support
+7. Tax calculation engine
+8. File upload capabilities for item images
+9. Custom field support for extended functionality
+10. Audit trail for order changes
+
+This comprehensive guide covers all aspects of the Orders module functionality, providing detailed information about features, routes, and user interactions for effective system utilization and AI assistant training.

@@ -1,0 +1,61 @@
+PROTOTYPE DIRECT ACCESS LINKS
+================================
+
+Replace "craveva.com" with your actual domain or localhost URL
+
+MARKETPLACE PAGES:
+------------------
+Homepage:
+https://craveva.com/prototype/marketplace
+
+Product Listing:
+https://craveva.com/prototype/marketplace/products
+
+Product Detail:
+https://craveva.com/prototype/marketplace/products/1
+
+Shopping Cart:
+https://craveva.com/prototype/marketplace/cart
+
+Checkout:
+https://craveva.com/prototype/marketplace/checkout
+
+Merchant Directory:
+https://craveva.com/prototype/marketplace/merchants
+
+Merchant Storefront:
+https://craveva.com/prototype/marketplace/merchants/1
+
+
+BUYER DASHBOARD:
+----------------
+Dashboard:
+https://craveva.com/prototype/buyer/dashboard
+
+Orders:
+https://craveva.com/prototype/buyer/orders
+
+Order Detail:
+https://craveva.com/prototype/buyer/orders/1
+
+Account:
+https://craveva.com/prototype/buyer/account
+
+
+MERCHANT DASHBOARD:
+-------------------
+Dashboard:
+https://craveva.com/prototype/merchant/dashboard
+
+Products:
+https://craveva.com/prototype/merchant/products
+
+Add Product:
+https://craveva.com/prototype/merchant/products/create
+
+Orders:
+https://craveva.com/prototype/merchant/orders
+
+Order Detail:
+https://craveva.com/prototype/merchant/orders/1
+

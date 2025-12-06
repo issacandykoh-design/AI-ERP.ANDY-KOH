@@ -1,0 +1,21 @@
+{
+    "name": "EInvoice",
+    "alias": "einvoice",
+    "description": "",
+    "keywords": [],
+    "active": true,
+    "order": 2,
+    "providers": [
+        "Modules\\EInvoice\\Providers\\EInvoiceServiceProvider",
+        "Modules\\EInvoice\\Providers\\EventServiceProvider"
+    ],
+    "aliases": [],
+    "files": [
+        "start.php"
+    ],
+    "permissions": [],
+    "roles_permissions": {
+        "admin": [],
+        "manager": []
+    }
+}

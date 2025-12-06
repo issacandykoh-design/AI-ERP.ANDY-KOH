@@ -1,0 +1,1003 @@
+EVENTS MODULE - COMPREHENSIVE USER GUIDE
+
+===========================================
+TABLE OF CONTENTS
+===========================================
+1. Events Calendar Interface
+2. Event Creation and Management
+3. Event Editing and Updates
+4. Event Table View and Data Management
+5. Event Details and Information Display
+6. Recurring Events Management
+7. Event File Management
+8. Event Status Management and Notifications
+9. Event Attendee Management
+10. Event Filtering and Search
+11. Event Permissions and Access Control
+
+===========================================
+1. EVENTS CALENDAR INTERFACE
+===========================================
+
+The Events Calendar serves as the primary interface for viewing and managing all events within the system. This comprehensive calendar view provides multiple interaction methods and filtering capabilities.
+
+Main Calendar Features:
+- Full calendar display with monthly, weekly, and daily views
+- Interactive event creation by clicking on calendar dates
+- Real-time event display with color-coded categories
+- Drag-and-drop event rescheduling capabilities
+- Integration with holidays, tasks, and leave schedules
+
+Navigation and Controls:
+- Calendar navigation buttons for moving between months/weeks/days
+- Today button to quickly return to current date
+- View toggle buttons (Month/Week/Day/List views)
+- Refresh button to reload calendar data
+
+Access Link: /events (Main Events Calendar Interface)
+Route: events.index
+
+Filter Panel Features:
+The calendar includes comprehensive filtering options located in the top toolbar:
+
+Employee Filter:
+- Dropdown selection to filter events by specific employees
+- "All Employees" option to view events for entire organization
+- Dynamic loading of employee list based on user permissions
+Route Parameter: ?employee={employee_id}
+
+Client Filter:
+- Client-specific event filtering for client-related events
+- "All Clients" option for comprehensive view
+- Restricted based on user access permissions
+Route Parameter: ?client={client_id}
+
+Status Filter:
+- Event status filtering (Pending, Completed, Cancelled)
+- "All Status" option for complete event overview
+- Color-coded status indicators
+Route Parameter: ?status={status_name}
+
+Search Functionality:
+- Real-time search input field for event names
+- Instant filtering as user types
+- Search across event titles and descriptions
+Route Parameter: ?searchText={search_term}
+
+Action Buttons:
+Add New Event Button:
+- Primary action button for creating new events
+- Opens event creation modal/form
+- Link: /events/create
+- Route: events.create
+
+Recurring Events Button:
+- Navigation to recurring events management
+- Link: /events/recurring-event
+- Route: recurring-event.index
+
+Table View Toggle:
+- Switch between calendar and table view
+- Link: /events/table-view
+- Route: events.table_view
+
+===========================================
+2. EVENT CREATION AND MANAGEMENT
+===========================================
+
+The event creation system provides comprehensive functionality for scheduling and organizing events with detailed configuration options.
+
+Event Creation Form Access:
+- Link: /events/create
+- Route: events.create
+- Modal-based interface for streamlined workflow
+
+Basic Event Information Fields:
+
+Event Name Field:
+- Required text input for event title
+- Character limit validation
+- Unique naming recommendations
+- Field Name: event_name
+
+Event Color Selection:
+- Color picker for event categorization
+- Predefined color palette options
+- Custom color input capability
+- Visual calendar representation
+- Field Name: label_color
+
+Location Information:
+- Text input for event venue/location
+- Address formatting support
+- Integration with mapping services
+- Field Name: where
+
+Event Description:
+- Rich text editor for detailed event information
+- HTML formatting capabilities
+- Character count display
+- Field Name: description
+
+Date and Time Configuration:
+
+Start Date Selection:
+- Date picker with calendar interface
+- Timezone consideration
+- Date format based on company settings
+- Field Name: start_date
+
+Start Time Selection:
+- Time picker with hour/minute precision
+- 12/24 hour format support
+- Timezone adjustment
+- Field Name: start_time
+
+End Date Selection:
+- Automatic calculation based on start date
+- Manual override capability
+- Multi-day event support
+- Field Name: end_date
+
+End Time Selection:
+- Duration calculation display
+- Validation against start time
+- Field Name: end_time
+
+Attendee Management:
+
+Department Selection:
+- Dropdown for department-based filtering
+- Dynamic employee list updates
+- Bulk attendee addition by department
+- Field Name: department_id
+
+Employee Attendees:
+- Multi-select dropdown for individual employees
+- Search functionality within employee list
+- Permission-based employee visibility
+- Bulk selection options
+- Field Name: user_id[]
+
+Client Attendees:
+- Client selection for external participants
+- Client contact information integration
+- Permission-based client access
+- Field Name: client_id
+
+Event Host Assignment:
+- Designated event organizer selection
+- Default to current user
+- Host-specific permissions
+- Field Name: host_user_id
+
+Event Configuration Options:
+
+Event Status:
+- Status selection (Pending, Completed, Cancelled)
+- Default status assignment
+- Status change notifications
+- Field Name: status
+
+All Day Event Toggle:
+- Checkbox for full-day events
+- Time field disable/enable
+- Calendar display adjustment
+- Field Name: all_day
+
+Event Link:
+- URL input for related resources
+- Link validation
+- External link handling
+- Field Name: event_link
+
+Reminder Settings:
+- Reminder time selection
+- Multiple reminder options
+- Email notification configuration
+- Field Name: remind_time, remind_type
+
+File Upload Functionality:
+- Multiple file attachment support
+- File type validation
+- Size limit enforcement
+- Preview capabilities
+- Field Name: file[]
+
+Custom Fields Integration:
+- Dynamic custom field rendering
+- Field type validation
+- Required field enforcement
+- Custom field group organization
+
+Form Submission:
+- Data validation before submission
+- Error handling and display
+- Success confirmation
+- Redirect to event details
+- Route: events.store (POST method)
+
+===========================================
+3. EVENT EDITING AND UPDATES
+===========================================
+
+The event editing system allows comprehensive modification of existing events with special handling for recurring events and attendee management.
+
+Event Edit Access:
+- Link: /events/{event_id}/edit
+- Route: events.edit
+- Permission-based access control
+- Modal interface for seamless editing
+
+Edit Form Features:
+
+Pre-populated Fields:
+- All existing event data loaded automatically
+- Current attendee list display
+- File attachment preservation
+- Custom field value retention
+
+Recurring Event Handling:
+- Special interface for recurring event modifications
+- Options to edit single instance or entire series
+- Recurrence pattern modification
+- Future event impact warnings
+
+Attendee Modification:
+- Add new attendees to existing events
+- Remove current attendees with notifications
+- Attendee role changes
+- Bulk attendee operations
+
+Date and Time Updates:
+- Reschedule functionality
+- Conflict detection with other events
+- Automatic notification to attendees
+- Calendar integration updates
+
+Status Changes:
+- Event status modification
+- Status change reason requirement
+- Automatic notification system
+- Status history tracking
+
+File Management in Edit Mode:
+- View existing attachments
+- Add new files
+- Remove existing files
+- File replacement functionality
+
+Update Submission:
+- Validation of modified data
+- Change tracking and logging
+- Notification dispatch to affected users
+- Route: events.update (PUT/PATCH method)
+
+===========================================
+4. EVENT TABLE VIEW AND DATA MANAGEMENT
+===========================================
+
+The table view provides a comprehensive data-centric interface for event management with advanced filtering, sorting, and bulk operations.
+
+Table View Access:
+- Link: /events/table-view
+- Route: events.table_view
+- DataTable-powered interface
+- Export functionality integration
+
+Table Columns and Data Display:
+
+Checkbox Column:
+- Bulk selection functionality
+- Select all/none options
+- Individual row selection
+- Bulk action enablement
+
+Event Name Column:
+- Clickable event titles
+- Link to event details: /events/{event_id}
+- Recurring event indicators
+- Event status badges
+
+Location Column:
+- Event venue display
+- Address information
+- Location-based filtering capability
+
+Date and Time Columns:
+- Start Date: Formatted according to company settings
+- Start Time: Time format based on preferences
+- End Date: Event conclusion date
+- End Time: Event end time
+- Sortable date/time columns
+
+Attendees Column:
+- Visual attendee display with profile images
+- Attendee count indicators
+- Overflow handling for large attendee lists
+- Links to attendee profiles: /employees/{user_id}
+
+Status Column:
+- Color-coded status indicators
+- Status text display
+- Status-based filtering
+
+Action Column:
+- Dropdown menu with available actions
+- View action: /events/{event_id}
+- Edit action: /events/{event_id}/edit
+- Delete action with confirmation
+- Permission-based action visibility
+
+Table Features:
+
+Sorting Functionality:
+- Column-based sorting (ascending/descending)
+- Multi-column sorting support
+- Default sorting by event date
+- Sort state persistence
+
+Pagination:
+- Configurable page size
+- Page navigation controls
+- Total record count display
+- Performance optimization for large datasets
+
+Search Integration:
+- Global search across all visible columns
+- Real-time search results
+- Search term highlighting
+- Advanced search options
+
+Bulk Operations:
+- Bulk delete functionality
+- Bulk status changes
+- Bulk export options
+- Confirmation dialogs for bulk actions
+- Route: events.apply_quick_action (POST method)
+
+Export Functionality:
+- Excel export capability
+- Filtered data export
+- Custom column selection
+- Export progress indication
+
+Table Filters:
+- Month filter dropdown
+- Year selection
+- Employee filter integration
+- Client filter integration
+- Status filter options
+- Search text integration
+
+===========================================
+5. EVENT DETAILS AND INFORMATION DISPLAY
+===========================================
+
+The event details view provides comprehensive information display with interactive elements and management capabilities.
+
+Event Details Access:
+- Link: /events/{event_id}
+- Route: events.show
+- Modal or full-page display options
+- Permission-based information visibility
+
+Event Information Display:
+
+Header Section:
+- Event name with edit button (if permitted)
+- Event status with color coding
+- Creation and modification timestamps
+- Event host information
+
+Event Details Panel:
+- Event description with formatted text
+- Location information with mapping integration
+- Start and end date/time display
+- Event duration calculation
+- Event link (if provided)
+
+Attendee Information:
+
+Employee Attendees:
+- Profile image display
+- Employee name and designation
+- Department information
+- Contact information access
+- Links to employee profiles: /employees/{user_id}
+
+Client Attendees:
+- Client company information
+- Contact person details
+- Client profile access
+- Communication history
+
+Host Information:
+- Event organizer details
+- Host contact information
+- Host permissions and responsibilities
+
+Custom Fields Display:
+- Dynamic custom field rendering
+- Field type-appropriate display
+- Custom field grouping
+- Field value formatting
+
+File Attachments Section:
+- File list with thumbnails
+- File type indicators
+- File size information
+- Upload date and user information
+
+File Actions:
+- View file: Direct file access or lightbox display
+- Download file: /event-files/download/{file_id}
+- Delete file: Permission-based deletion
+- File sharing options
+
+Event Management Actions:
+
+Edit Event Button:
+- Link: /events/{event_id}/edit
+- Permission validation
+- Modal or page-based editing
+
+Delete Event Button:
+- Confirmation dialog
+- Cascade deletion options for recurring events
+- Attendee notification handling
+- Route: events.destroy (DELETE method)
+
+Status Update Actions:
+- Quick status change buttons
+- Status change with notes: /events/event-status-note/{event_id}
+- Automatic notification dispatch
+- Status history tracking
+
+Event Navigation:
+- Previous/Next event navigation
+- Return to calendar/table view
+- Related events display
+
+===========================================
+6. RECURRING EVENTS MANAGEMENT
+===========================================
+
+The recurring events system provides comprehensive management of repeating events with flexible recurrence patterns and individual instance control.
+
+Recurring Events Interface Access:
+- Link: /events/recurring-event
+- Route: recurring-event.index
+- Dedicated interface for recurring event management
+
+Recurring Events List Features:
+
+Table Display:
+- Parent event information
+- Recurrence pattern display
+- Next occurrence information
+- Total instances count
+- Active/inactive status
+
+Recurrence Pattern Information:
+- Frequency display (Daily, Weekly, Monthly, Yearly)
+- Recurrence interval
+- End date or occurrence count
+- Exception dates handling
+
+Recurring Event Actions:
+
+View Recurring Event:
+- Link: /recurring-event/{event_id}
+- Route: recurring-event.show
+- Complete recurrence series display
+- Individual instance management
+
+Edit Recurring Event:
+- Link: /recurring-event/{event_id}/edit
+- Route: recurring-event.edit
+- Recurrence pattern modification
+- Future instance impact options
+
+Delete Recurring Event:
+- Series deletion options
+- Individual instance deletion
+- Future occurrence handling
+- Attendee notification management
+
+Recurring Event Creation:
+
+Recurrence Configuration:
+- Frequency selection (Daily, Weekly, Monthly, Yearly)
+- Interval specification
+- End date or occurrence count
+- Exception date handling
+
+Monthly Recurrence Options:
+- Same date each month
+- Same weekday each month
+- Last day of month options
+- Route: recurring-event.monthly_on (POST method)
+
+Weekly Recurrence Options:
+- Specific weekday selection
+- Multiple weekday options
+- Week interval configuration
+
+Advanced Recurrence Features:
+- Holiday exception handling
+- Weekend skip options
+- Business day only recurrence
+- Custom recurrence patterns
+
+Individual Instance Management:
+- Edit single occurrence
+- Delete single occurrence
+- Status change for individual instances
+- Attendee modification for specific instances
+
+Bulk Operations for Recurring Events:
+- Bulk status updates
+- Bulk deletion with options
+- Bulk attendee modifications
+- Route: recurring-event.apply_quick_action (POST method)
+
+===========================================
+7. EVENT FILE MANAGEMENT
+===========================================
+
+The file management system provides comprehensive functionality for attaching, viewing, and managing files associated with events.
+
+File Upload Functionality:
+
+Upload Interface:
+- Drag-and-drop file upload
+- Multiple file selection
+- File type validation
+- Size limit enforcement
+- Progress indication during upload
+
+Supported File Types:
+- Documents (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX)
+- Images (JPG, PNG, GIF, BMP, SVG)
+- Archives (ZIP, RAR, 7Z)
+- Text files (TXT, CSV)
+- Custom file type configuration
+
+File Size Limitations:
+- Maximum file size per upload
+- Total storage limit per event
+- Compression options for large files
+- Batch upload capabilities
+
+File Display and Management:
+
+File List Interface:
+- Thumbnail generation for images
+- File type icons for documents
+- File name and size display
+- Upload date and user information
+- File description/notes
+
+File Actions Menu:
+
+View File Action:
+- Image lightbox display for images
+- In-browser document viewing
+- External application integration
+- Full-screen viewing options
+
+Download File Action:
+- Direct file download
+- Link: /event-files/download/{file_id}
+- Route: event-files.download
+- Download tracking and logging
+
+Delete File Action:
+- Permission-based file deletion
+- Confirmation dialog
+- Permanent deletion with audit trail
+- Route: event-files.destroy (DELETE method)
+
+File Organization:
+- File categorization options
+- Search within event files
+- Sort by name, date, size, type
+- File tagging system
+
+File Security:
+- Permission-based file access
+- Secure file storage
+- Access logging and audit trail
+- File encryption options
+
+File Sharing:
+- Internal user sharing
+- External link generation
+- Share permission management
+- Share expiration settings
+
+===========================================
+8. EVENT STATUS MANAGEMENT AND NOTIFICATIONS
+===========================================
+
+The status management system provides comprehensive event lifecycle tracking with automated notification capabilities.
+
+Event Status Types:
+
+Pending Status:
+- Default status for new events
+- Indicates upcoming or unconfirmed events
+- Yellow color indicator
+- Reminder notifications active
+
+Completed Status:
+- Marks events as finished
+- Green color indicator
+- Completion notes capability
+- Automatic reminder deactivation
+
+Cancelled Status:
+- Indicates cancelled or postponed events
+- Red color indicator
+- Cancellation reason requirement
+- Automatic attendee notification
+
+Status Change Interface:
+
+Quick Status Update:
+- One-click status change buttons
+- Immediate status update
+- Automatic notification dispatch
+- Status change logging
+
+Status Change with Notes:
+- Link: /events/event-status-note/{event_id}
+- Route: events.event_status_note
+- Modal interface for note entry
+- Required note for certain status changes
+- Route: events.update_status (POST method)
+
+Status Change Notifications:
+
+Automatic Notifications:
+- Email notifications to all attendees
+- Status change reason inclusion
+- Notification customization options
+- Delivery confirmation tracking
+
+Notification Recipients:
+- Event attendees (employees and clients)
+- Event host
+- Department managers (if applicable)
+- Custom notification lists
+
+Notification Content:
+- Event details summary
+- Status change information
+- New event date/time (if rescheduled)
+- Contact information for questions
+
+Status History Tracking:
+- Complete status change log
+- User who made changes
+- Timestamp of changes
+- Reason for status changes
+- Audit trail maintenance
+
+Status-Based Features:
+
+Reminder Management:
+- Automatic reminder deactivation for completed/cancelled events
+- Reminder modification based on status
+- Status-specific reminder templates
+
+Calendar Display:
+- Status-based color coding
+- Status indicators in calendar view
+- Filter by status functionality
+- Status legend display
+
+Reporting Integration:
+- Status-based event reports
+- Completion rate analytics
+- Status change frequency analysis
+- Performance metrics by status
+
+===========================================
+9. EVENT ATTENDEE MANAGEMENT
+===========================================
+
+The attendee management system provides comprehensive functionality for managing event participants with role-based access and communication features.
+
+Attendee Types and Management:
+
+Employee Attendees:
+- Internal staff participation
+- Department-based selection
+- Role and permission consideration
+- Automatic profile integration
+
+Client Attendees:
+- External participant management
+- Client company association
+- Contact information integration
+- Communication preference handling
+
+Attendee Selection Interface:
+
+Department-Based Selection:
+- Filter employees by department
+- Bulk department invitation
+- Department hierarchy support
+- Dynamic employee list updates
+
+Individual Selection:
+- Multi-select employee dropdown
+- Search functionality within employee list
+- Profile preview on selection
+- Availability checking integration
+
+Bulk Attendee Operations:
+- Select all employees option
+- Department-wide invitations
+- Bulk attendee removal
+- Mass communication features
+
+Attendee Information Display:
+
+Profile Integration:
+- Employee profile images
+- Contact information display
+- Department and designation
+- Links to full profiles: /employees/{user_id}
+
+Attendee Status Tracking:
+- Invitation sent status
+- Response tracking (Accepted/Declined/Pending)
+- Attendance confirmation
+- No-show tracking
+
+Attendee Communication:
+
+Invitation System:
+- Automatic invitation emails
+- Custom invitation templates
+- RSVP functionality
+- Reminder notifications
+
+Event Updates:
+- Automatic update notifications
+- Change notification preferences
+- Selective notification options
+- Communication history tracking
+
+Attendee Permissions:
+
+View Permissions:
+- Event details access
+- File download permissions
+- Attendee list visibility
+- Comment and interaction rights
+
+Modification Permissions:
+- Attendee addition rights
+- Attendee removal permissions
+- Event modification access
+- File upload permissions
+
+Host Designation:
+- Event host assignment
+- Host-specific permissions
+- Host responsibility definition
+- Host change notifications
+
+Attendee Analytics:
+- Attendance rate tracking
+- Response time analytics
+- Participation frequency reports
+- Engagement metrics
+
+===========================================
+10. EVENT FILTERING AND SEARCH
+===========================================
+
+The filtering and search system provides powerful tools for locating and organizing events based on multiple criteria and user preferences.
+
+Search Functionality:
+
+Global Search:
+- Real-time search across event names
+- Description content searching
+- Location-based search
+- Attendee name searching
+
+Advanced Search Options:
+- Multi-field search combinations
+- Date range searching
+- Status-specific searches
+- Custom field searching
+
+Search Interface:
+- Search input with autocomplete
+- Search suggestion display
+- Recent search history
+- Saved search functionality
+
+Filter Categories:
+
+Date-Based Filtering:
+- Month selection dropdown
+- Year selection options
+- Date range picker
+- Custom date filtering
+
+Employee Filtering:
+- Individual employee selection
+- Department-based filtering
+- Team-based filtering
+- Role-based filtering
+
+Client Filtering:
+- Client company selection
+- Client contact filtering
+- Client type categorization
+- Client relationship filtering
+
+Status Filtering:
+- Pending events filter
+- Completed events filter
+- Cancelled events filter
+- Multi-status selection
+
+Filter Combinations:
+- Multiple filter application
+- Filter intersection logic
+- Filter union options
+- Complex filter expressions
+
+Filter Persistence:
+- User preference saving
+- Session-based filter retention
+- Default filter settings
+- Filter sharing capabilities
+
+Quick Filters:
+- Predefined filter sets
+- One-click filter application
+- Custom quick filter creation
+- Filter shortcut management
+
+Search Results Management:
+- Result count display
+- Result sorting options
+- Result export functionality
+- Result sharing capabilities
+
+===========================================
+11. EVENT PERMISSIONS AND ACCESS CONTROL
+===========================================
+
+The permission system ensures secure and appropriate access to event functionality based on user roles and organizational hierarchy.
+
+Permission Levels:
+
+View Permissions:
+- All Events: Complete event visibility
+- Added Events: Only user-created events
+- Owned Events: Events where user is attendee or host
+- Both: Combination of added and owned events
+
+Edit Permissions:
+- All Events: Universal edit access
+- Added Events: Edit only user-created events
+- No Edit: Read-only access
+- Conditional Edit: Role-based edit access
+
+Delete Permissions:
+- All Events: Universal delete access
+- Added Events: Delete only user-created events
+- No Delete: No deletion rights
+- Conditional Delete: Role-based delete access
+
+Role-Based Access:
+
+Administrator Access:
+- Complete event management
+- All permission levels available
+- System configuration access
+- User permission management
+
+Manager Access:
+- Department event management
+- Team member event access
+- Reporting and analytics access
+- Limited system configuration
+
+Employee Access:
+- Personal event management
+- Assigned event participation
+- Limited creation permissions
+- Basic reporting access
+
+Client Access:
+- Invited event participation
+- Limited event information access
+- No creation or modification rights
+- Restricted file access
+
+Permission Validation:
+
+Interface-Level Security:
+- Button and link visibility based on permissions
+- Form field access control
+- Menu item filtering
+- Feature availability checking
+
+Backend Security:
+- Route-level permission checking
+- Data access validation
+- Operation authorization
+- Audit trail maintenance
+
+Permission Inheritance:
+- Department-based permissions
+- Team hierarchy respect
+- Role-based inheritance
+- Custom permission overrides
+
+Security Features:
+- Session-based permission caching
+- Permission change notifications
+- Access attempt logging
+- Security violation reporting
+
+===========================================
+TECHNICAL IMPLEMENTATION DETAILS
+===========================================
+
+Backend Architecture:
+- Laravel Framework Implementation
+- MVC Pattern with dedicated controllers
+- Eloquent ORM for database operations
+- Event-driven notification system
+
+Frontend Technologies:
+- Blade templating engine
+- FullCalendar.js integration
+- DataTables for table management
+- AJAX-based dynamic interactions
+
+Database Structure:
+- Events table with comprehensive fields
+- Event attendees relationship table
+- Event files association table
+- Custom fields integration
+
+API Integration:
+- RESTful API endpoints
+- JSON response formatting
+- Authentication middleware
+- Rate limiting implementation
+
+Performance Optimization:
+- Query optimization with eager loading
+- Caching for frequently accessed data
+- Pagination for large datasets
+- Asynchronous processing for notifications
+
+Security Implementation:
+- CSRF protection
+- Input validation and sanitization
+- File upload security
+- Permission-based access control
+
+===========================================
+CONCLUSION
+===========================================
+
+The Events module provides a comprehensive solution for event management within the ERP system. With its robust feature set including calendar integration, attendee management, file handling, and notification systems, it serves as a complete platform for organizing and tracking organizational events. The system's flexibility in handling both single and recurring events, combined with its powerful filtering and search capabilities, makes it suitable for organizations of all sizes and complexity levels.
+
+The module's integration with other system components, such as employee management, client relationships, and notification systems, ensures seamless workflow integration and enhanced productivity. The permission-based access control system maintains security while providing appropriate functionality access based on user roles and organizational hierarchy.
+
+Regular updates and maintenance of this user guide ensure that all features remain accurately documented and accessible to both end-users and system administrators.

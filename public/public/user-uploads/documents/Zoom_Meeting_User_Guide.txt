@@ -1,0 +1,441 @@
+ZOOM MEETING MODULE - COMPREHENSIVE USER GUIDE
+
+=================================================================
+TABLE OF CONTENTS
+=================================================================
+1. Module Overview
+2. Access and Permissions
+3. Main Interface Features
+4. Meeting Management Functions
+5. Calendar View Features
+6. Meeting Configuration Settings
+7. Notes and Documentation
+8. API Routes and Technical Details
+9. Permission System
+10. User Interface Components
+
+=================================================================
+1. MODULE OVERVIEW
+=================================================================
+
+The Zoom Meeting module provides comprehensive video conferencing management capabilities within the ERP system. This module enables users to create, manage, and participate in Zoom meetings with full integration of scheduling, attendee management, and meeting controls.
+
+Primary Functions:
+- Create and schedule Zoom meetings
+- Manage meeting attendees (employees and clients)
+- Configure meeting settings and preferences
+- Track meeting status and history
+- Integrate with calendar systems
+- Manage meeting notes and documentation
+
+=================================================================
+2. ACCESS AND PERMISSIONS
+=================================================================
+
+Permission Levels:
+- add_zoom_meetings: Create new meetings
+- view_zoom_meetings: View meeting details and lists
+- edit_zoom_meetings: Modify existing meetings
+- delete_zoom_meetings: Remove meetings
+- manage_zoom_category: Manage meeting categories
+
+Access Control:
+- All: Full access to all meetings
+- Added: Access to meetings created by the user
+- Owned: Access to meetings where user is host or attendee
+- Both: Combined added and owned permissions
+
+Navigation Access:
+Route: /account/zoom-meetings
+Menu Location: Main sidebar under "Zoom Meeting" icon
+
+=================================================================
+3. MAIN INTERFACE FEATURES
+=================================================================
+
+3.1 MEETING LIST VIEW
+Route: /account/zoom-meetings
+Description: Primary interface displaying all meetings in tabular format
+
+Key Interface Elements:
+- Meeting ID column with unique identifiers
+- Meeting Name with clickable links to details
+- Created By information showing meeting creator
+- Start Date Time with formatted display
+- End Date Time with duration calculation
+- Status indicators (Waiting, Live, Canceled, Finished)
+
+Filter Options:
+- Duration filter for meeting length
+- Status filter (All, Waiting, Live, Canceled, Finished)
+- Project association filter
+- Client filter for client-specific meetings
+- Employee filter for staff-related meetings
+- Category filter for meeting types
+- Search functionality for meeting names
+
+Action Buttons:
+- "Add Meeting" button (route: /account/zoom-meetings/create)
+- Bulk action controls for multiple meeting management
+- "Change Status" bulk operation
+- "Delete" bulk operation
+- View toggle between table and calendar views
+
+3.2 INDIVIDUAL MEETING ACTIONS
+Available for each meeting row:
+
+View Button:
+- Route: /account/zoom-meetings/{id}
+- Function: Display detailed meeting information
+- Shows: Attendees, host details, meeting settings, description
+
+Start/Join Meeting Button:
+- Route: /account/zoom-meetings/start-meeting/{id}
+- Function: Launch meeting interface
+- Conditional display based on user role and meeting status
+- Host users see "Start Meeting"
+- Attendees see "Join Meeting"
+
+Cancel Meeting Button:
+- Route: POST /account/zoom-meeting/cancel-meeting
+- Function: Cancel scheduled meetings
+- Available only to meeting hosts
+- Updates meeting status to "Canceled"
+
+Edit Meeting Button:
+- Route: /account/zoom-meetings/{id}/edit
+- Function: Modify meeting details
+- Permission-based access control
+- Opens edit form with pre-populated data
+
+End Meeting Button:
+- Route: POST /account/zoom-meeting/end-meeting
+- Function: Terminate active meetings
+- Available only during live meetings
+- Updates status to "Finished"
+
+Copy Meeting Link Button:
+- Function: Copy meeting URL to clipboard
+- Provides both start and join URLs
+- JavaScript-based clipboard functionality
+
+Delete Meeting Button:
+- Route: DELETE /account/zoom-meetings/{id}
+- Function: Permanently remove meetings
+- Confirmation dialog required
+- Permission-based access control
+
+=================================================================
+4. MEETING MANAGEMENT FUNCTIONS
+=================================================================
+
+4.1 CREATE MEETING INTERFACE
+Route: /account/zoom-meetings/create
+Description: Comprehensive form for new meeting creation
+
+Form Fields:
+- Meeting Name (required text input)
+- Category selection with dropdown
+- Label Color picker for visual identification
+- Start Date with date picker widget
+- Start Time with time picker widget
+- End Date with date picker widget
+- End Time with time picker widget
+- Description textarea for meeting details
+- Project association dropdown
+- Employee selection (multiple choice)
+- Client selection (multiple choice)
+- Meeting Host designation
+- Host Video Status (Enable/Disable radio buttons)
+- Participant Video Status (Enable/Disable radio buttons)
+
+Recurring Meeting Options:
+- Repeat checkbox to enable recurrence
+- Recurrence Type: Daily, Weekly, Monthly
+- Daily Recurrence: Repeat every N days (1-15)
+- Weekly Recurrence: Repeat every N weeks (1-12) with day selection
+- Monthly Recurrence: Repeat every N months (1-3) with date/day options
+
+End Date Options:
+- End by specific date
+- End after N occurrences (1-20)
+
+Reminder Settings:
+- Send Reminder checkbox
+- Reminder timing (days, hours, minutes before meeting)
+- Customizable reminder intervals
+
+Action Buttons:
+- "Save" button to create meeting
+- "Cancel" button to return to meeting list
+
+4.2 EDIT MEETING INTERFACE
+Route: /account/zoom-meetings/{id}/edit
+Description: Modification form for existing meetings
+
+Features:
+- Pre-populated form fields with current meeting data
+- Same field structure as create form
+- Conditional editing based on meeting status
+- Occurrence-specific editing for recurring meetings
+- Real-time validation and error handling
+
+Special Considerations:
+- Live meetings have limited editing capabilities
+- Past meetings cannot be modified
+- Recurring meeting changes affect future occurrences
+
+=================================================================
+5. CALENDAR VIEW FEATURES
+=================================================================
+
+5.1 CALENDAR INTERFACE
+Route: /account/zoom-meetings/calendar
+Description: Visual calendar display of all meetings
+
+Interface Elements:
+- Full calendar widget with month/week/day views
+- Meeting events displayed with color coding
+- Click-to-view meeting details
+- Drag-and-drop rescheduling capability
+- Meeting status visual indicators
+
+Filter Controls:
+- Status filter (Hide Finished Meetings, All, Waiting, Live, Canceled, Finished)
+- Search functionality for meeting names
+- Project filter dropdown
+- Client filter dropdown
+- Employee filter dropdown
+- Category filter dropdown
+- Clear Filters button
+
+Navigation Controls:
+- View toggle buttons (Table View / Calendar View)
+- "Add Meeting" button for quick meeting creation
+- Month/week/day view switchers
+- Date navigation arrows
+
+Calendar Features:
+- Color-coded meeting display based on label colors
+- Meeting duration visualization
+- Overlap detection for scheduling conflicts
+- Timezone-aware display
+- Responsive design for mobile devices
+
+=================================================================
+6. MEETING CONFIGURATION SETTINGS
+=================================================================
+
+6.1 ZOOM SETTINGS INTERFACE
+Route: /account/zoom-settings
+Description: System-wide Zoom integration configuration
+
+Configuration Fields:
+- Account ID (password-protected input)
+- Client ID (password-protected input)
+- Client Secret (password-protected input)
+- Meeting Client ID (password-protected input)
+- Meeting Client Secret (password-protected input)
+- Secret Token (password-protected input)
+
+Meeting App Settings:
+- Open Zoom App: Yes/No radio buttons
+- Determines whether meetings open in Zoom app or browser
+
+Webhook Configuration:
+- Webhook URL display with copy functionality
+- Automatic webhook endpoint generation
+- Integration instructions and documentation
+
+Security Features:
+- Password-masked input fields
+- View password toggle buttons
+- Secure credential storage
+- Validation and testing capabilities
+
+6.2 CATEGORY MANAGEMENT
+Route: /account/zoom-categories
+Description: Meeting category organization system
+
+Category Features:
+- Category name definition
+- Color coding for visual organization
+- Category-based filtering and sorting
+- Hierarchical category structure support
+
+Management Functions:
+- Create new categories
+- Edit existing categories
+- Delete unused categories
+- Category assignment to meetings
+
+=================================================================
+7. NOTES AND DOCUMENTATION
+=================================================================
+
+7.1 MEETING NOTES SYSTEM
+Route: /account/meeting-note
+Description: Documentation and note-taking for meetings
+
+Note Features:
+- Rich text note creation
+- Meeting-specific note association
+- Timestamp tracking for all notes
+- User attribution for note authors
+- Edit and delete capabilities
+
+Note Management:
+- Create new notes during or after meetings
+- Edit existing notes with version tracking
+- Delete notes with confirmation dialogs
+- Search and filter notes by meeting or date
+
+Interface Elements:
+- Note editor with formatting options
+- Note list with chronological ordering
+- User avatar display for note authors
+- Action buttons for note management
+
+=================================================================
+8. API ROUTES AND TECHNICAL DETAILS
+=================================================================
+
+8.1 PRIMARY ROUTES
+Base URL: /account/
+
+Meeting Management Routes:
+- GET /zoom-meetings - Meeting list view
+- GET /zoom-meetings/create - Create meeting form
+- POST /zoom-meetings - Store new meeting
+- GET /zoom-meetings/{id} - View meeting details
+- GET /zoom-meetings/{id}/edit - Edit meeting form
+- PUT /zoom-meetings/{id} - Update meeting
+- DELETE /zoom-meetings/{id} - Delete meeting
+
+Calendar and Special Functions:
+- GET /zoom-calendar - Calendar view
+- GET /zoom-meetings/start-meeting/{id} - Start meeting interface
+- POST /zoom-meeting/update-occurrence/{id} - Update recurring meeting
+- POST /zoom-meeting/cancel-meeting - Cancel meeting
+- POST /zoom-meeting/end-meeting - End active meeting
+- POST /zoom-meetings/apply-quick-action - Bulk operations
+
+Configuration Routes:
+- GET /zoom-settings - Settings interface
+- PUT /zoom-settings/{id} - Update settings
+- GET /zoom-categories - Category management
+- POST /zoom-categories - Create category
+- PUT /zoom-categories/{id} - Update category
+- DELETE /zoom-categories/{id} - Delete category
+
+Note Management Routes:
+- GET /meeting-note - Note list
+- POST /meeting-note - Create note
+- GET /meeting-note/{id}/edit - Edit note form
+- PUT /meeting-note/{id} - Update note
+- DELETE /meeting-note/{id} - Delete note
+
+Webhook Integration:
+- POST /zoom-webhook/{hash} - Webhook endpoint
+- GET /zoom-webhook/{hash} - Webhook verification
+
+8.2 AJAX ENDPOINTS
+Dynamic content loading routes for enhanced user experience:
+- Meeting detail modals
+- Edit forms in overlay windows
+- Real-time status updates
+- Calendar event loading
+- Filter and search operations
+
+=================================================================
+9. PERMISSION SYSTEM
+=================================================================
+
+9.1 PERMISSION MATRIX
+
+View Permissions:
+- All: View all meetings in system
+- Added: View meetings created by user
+- Owned: View meetings where user is host/attendee
+- Both: Combined added and owned access
+
+Create Permissions:
+- All: Create meetings with any participants
+- Added: Create meetings with limited participant access
+
+Edit Permissions:
+- All: Edit any meeting in system
+- Added: Edit meetings created by user
+- Owned: Edit meetings where user is host/attendee
+- Both: Combined added and owned edit access
+
+Delete Permissions:
+- All: Delete any meeting
+- Added: Delete meetings created by user
+- Owned: Delete meetings where user is host/attendee
+- Both: Combined added and owned delete access
+
+Special Permissions:
+- manage_zoom_category: Full category management access
+
+9.2 ROLE-BASED ACCESS
+Different user roles have varying default permissions:
+- Admin: Full access to all functions
+- Employee: Limited access based on assignments
+- Client: Restricted to meetings they're invited to
+
+=================================================================
+10. USER INTERFACE COMPONENTS
+=================================================================
+
+10.1 INTERACTIVE ELEMENTS
+
+Buttons and Controls:
+- Primary action buttons with icon indicators
+- Secondary action buttons for alternative functions
+- Dropdown menus for selection options
+- Toggle switches for boolean settings
+- Radio buttons for exclusive choices
+- Checkboxes for multiple selections
+
+Form Components:
+- Text input fields with validation
+- Date picker widgets with calendar popup
+- Time picker with 12/24 hour format support
+- Color picker for visual customization
+- Multi-select dropdowns for attendee selection
+- Rich text editors for descriptions
+
+Visual Indicators:
+- Status badges with color coding
+- Progress indicators for meeting duration
+- Avatar displays for user identification
+- Icon buttons for quick actions
+- Tooltip information on hover
+
+10.2 RESPONSIVE DESIGN
+The interface adapts to different screen sizes:
+- Mobile-optimized layouts
+- Touch-friendly button sizing
+- Collapsible navigation menus
+- Responsive table displays
+- Adaptive calendar views
+
+10.3 ACCESSIBILITY FEATURES
+- Keyboard navigation support
+- Screen reader compatibility
+- High contrast mode support
+- Focus indicators for interactive elements
+- Alternative text for images and icons
+
+=================================================================
+CONCLUSION
+=================================================================
+
+The Zoom Meeting module provides a comprehensive solution for video conferencing management within the ERP system. With its extensive feature set, flexible permission system, and intuitive interface, users can efficiently manage all aspects of their meeting workflows from scheduling to documentation.
+
+For technical support or additional configuration requirements, consult the system administrator or refer to the Zoom API documentation for advanced integration options.
+
+Last Updated: Current System Version
+Module Version: Latest Release
+Documentation Version: 1.0

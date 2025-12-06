@@ -1,0 +1,498 @@
+KNOWLEDGE BASE MODULE - COMPREHENSIVE USER GUIDE
+
+==================================================
+OVERVIEW
+==================================================
+
+The Knowledge Base module is a centralized information management system that allows organizations to create, organize, and share knowledge articles with employees and clients. The module provides comprehensive functionality for creating articles with rich content, categorizing information, managing file attachments, and controlling access permissions based on user roles.
+
+==================================================
+MAIN NAVIGATION ACCESS
+==================================================
+
+The Knowledge Base module is accessible through the main navigation menu:
+- Menu Item: "Knowledge Base"
+- Route: /knowledgebase
+- Icon: Knowledge base icon in the sidebar
+- Permission Required: view_knowledgebase
+- Visibility: Available to users with appropriate permissions
+
+==================================================
+MAIN INTERFACE (INDEX PAGE)
+==================================================
+
+URL: /knowledgebase
+Route Name: knowledgebase.index
+Template: resources/views/knowledge-base/index.blade.php
+
+The main Knowledge Base interface consists of several key components:
+
+1. SIDEBAR NAVIGATION
+   - Category Filter Sidebar: Left-side panel displaying all knowledge base categories
+   - Search Functionality: Search input field to filter categories
+   - "All" Category: Default option to view all articles
+   - Dynamic Category Links: Each category links to filtered view (/knowledgebase?id={category_id})
+
+2. HEADER SECTION
+   - Page Title: "Knowledge Base" heading
+   - Add Knowledge Base Button: Primary action button (requires add_knowledgebase permission)
+     * Link: /knowledgebase/create
+     * Class: openRightModal
+     * Text: "Add Knowledge Base"
+     * Icon: Plus icon
+   - Add Category Button: Secondary action button
+     * ID: addCategory
+     * Text: "Add Knowledge Base Category"
+     * Icon: Plus icon
+     * Action: Opens category management modal
+
+3. SEARCH AND FILTER SECTION
+   - Search Input Field:
+     * ID: search-text-field
+     * Placeholder: "Start typing..."
+     * Function: Real-time search through knowledge base articles
+   - Clear Filters Button:
+     * ID: reset-filters
+     * Text: "Clear Filters"
+     * Icon: Times circle
+     * Visibility: Hidden by default, shown when filters are active
+
+4. DATA TABLE
+   The main content area displays a table with the following columns:
+   - Serial Number (#): Sequential numbering of articles
+   - Knowledge Heading: Article title with clickable link to detail view
+   - Knowledge Category: Category name associated with the article
+   - To: Target audience (Employee/Client)
+   - Action: Edit and delete buttons (permission-based)
+
+   Table Features:
+   - Responsive Design: Adapts to different screen sizes
+   - Permission-Based Display: Articles shown based on user roles
+   - Interactive Links: Article headings link to detail view
+   - Action Buttons: Edit and delete options with appropriate permissions
+
+==================================================
+KNOWLEDGE BASE ARTICLE CREATION
+==================================================
+
+URL: /knowledgebase/create
+Route Name: knowledgebase.create
+Template: resources/views/knowledge-base/ajax/create.blade.php
+
+The article creation interface provides comprehensive functionality for creating new knowledge base articles:
+
+1. FORM HEADER
+   - Title: "Knowledge Details"
+   - Modal-based Interface: Opens in right-side modal
+
+2. RECIPIENT SELECTION
+   - Radio Button Options:
+     * To Employee: fieldId="toEmployee", fieldValue="employee" (default selected)
+     * To Client: fieldId="toClient", fieldValue="client" (conditional visibility)
+   - Conditional Display: Client option only shown if clients module is enabled
+
+3. ARTICLE DETAILS SECTION
+   - Heading Input Field:
+     * Field ID: heading
+     * Field Name: heading
+     * Required: Yes
+     * Placeholder: "Knowledge Heading"
+   
+   - Category Selection:
+     * Field ID: category
+     * Type: Dropdown with search functionality
+     * Required: Yes
+     * Options: Populated from existing categories
+     * Add Category Button: Inline button to create new categories
+
+4. CONTENT EDITOR
+   - Rich Text Editor:
+     * ID: description
+     * Type: Quill editor with mention functionality
+     * Features: Full formatting options, mentions, rich content support
+   - Hidden Textarea: description-text (stores final content)
+
+5. FILE UPLOAD SECTION
+   - Dropzone Integration:
+     * ID: file-upload-dropzone
+     * Multiple File Support: Yes
+     * Drag and Drop: Enabled
+     * File Type Restrictions: Based on system configuration
+     * Max File Size: Configurable
+     * Max Files: Configurable
+
+6. ACTION BUTTONS
+   - Save Button:
+     * ID: save-knowledgebase
+     * Text: "Save"
+     * Icon: Check mark
+     * Function: Submits form and processes file uploads
+   - Cancel Button:
+     * Link: Returns to knowledge base index
+     * Text: "Cancel"
+
+==================================================
+KNOWLEDGE BASE ARTICLE EDITING
+==================================================
+
+URL: /knowledgebase/{id}/edit
+Route Name: knowledgebase.edit
+Template: resources/views/knowledge-base/ajax/edit.blade.php
+
+The article editing interface provides comprehensive functionality for modifying existing knowledge base articles:
+
+1. FORM HEADER
+   - Title: "Update Knowledge"
+   - Pre-populated Fields: All fields contain existing article data
+
+2. ARTICLE DETAILS SECTION
+   - Heading Input: Pre-filled with existing article heading
+   - Category Selection: Current category pre-selected
+   - Recipient Selection: Current recipient type pre-selected
+
+3. CONTENT EDITOR
+   - Rich Text Editor: Pre-loaded with existing article content
+   - Full Editing Capabilities: Same as creation interface
+
+4. FILE MANAGEMENT SECTION
+   - Add File Link:
+     * ID: add-file
+     * Text: "Upload File"
+     * Icon: Plus icon
+     * Function: Shows file upload section
+   
+   - File Upload Area:
+     * ID: knowledge-base-file
+     * Initially Hidden: Shown when "Add File" is clicked
+     * Dropzone Integration: Same functionality as creation
+   
+   - Cancel File Upload:
+     * ID: cancel-file
+     * Text: "Cancel"
+     * Function: Hides file upload section
+
+5. EXISTING FILES DISPLAY
+   - File List Container: ID="knowledgebase-file-list"
+   - File Cards: Each attached file displayed as a card
+   - File Actions Dropdown:
+     * View Option: Opens file in new tab or lightbox (for images)
+     * Download Option: Downloads file to user's device
+     * Delete Option: Removes file (with permission check)
+
+6. ACTION BUTTONS
+   - Save Button: Updates article with changes
+   - Cancel Button: Returns to knowledge base index without saving
+
+==================================================
+KNOWLEDGE BASE ARTICLE DETAIL VIEW
+==================================================
+
+URL: /knowledgebase/{id}
+Route Name: knowledgebase.show
+Template: resources/views/knowledge-base/ajax/show.blade.php
+
+The article detail view provides comprehensive display of knowledge base article information:
+
+1. HEADER SECTION
+   - Title: "Knowledge Details"
+   - Actions Dropdown:
+     * Edit Option: Links to edit form (permission-based)
+     * Delete Option: Deletes article with confirmation (permission-based)
+
+2. ARTICLE INFORMATION DISPLAY
+   - Knowledge Heading: Article title
+   - Created At: Article creation date in company format
+   - To: Target audience (Employee/Client)
+   - Description: Full article content with HTML formatting
+
+3. FILE ATTACHMENTS SECTION
+   - File List: All attached files displayed as cards
+   - File Actions:
+     * View: Opens file in appropriate viewer
+     * Download: Downloads file to user's device
+     * Delete: Removes file attachment (with permission check)
+   - No Files Message: Displayed when no files are attached
+
+4. INTERACTIVE FEATURES
+   - Delete Confirmation: SweetAlert confirmation for article deletion
+   - File Management: Individual file deletion with confirmation
+   - Responsive Design: Adapts to different screen sizes
+
+==================================================
+CATEGORY MANAGEMENT
+==================================================
+
+URL: /knowledgebasecategory/create
+Route Name: knowledgebasecategory.create
+Template: resources/views/knowledge-base/create_category.blade.php
+
+The category management interface provides functionality for managing knowledge base categories:
+
+1. MODAL INTERFACE
+   - Title: "Knowledge Category"
+   - Modal Size: Large modal window
+
+2. EXISTING CATEGORIES TABLE
+   - Columns: Serial number, Category name, Actions
+   - Inline Editing: Category names are editable directly in the table
+   - Delete Action: Remove categories with confirmation
+
+3. ADD NEW CATEGORY SECTION
+   - Category Name Input:
+     * Field ID: category_name
+     * Required: Yes
+     * Placeholder: "Category Name"
+
+4. ACTION BUTTONS
+   - Save Button: Creates new category
+   - Close Button: Closes modal without saving
+
+==================================================
+SEARCH AND FILTER FUNCTIONALITY
+==================================================
+
+The Knowledge Base module includes comprehensive search and filtering capabilities:
+
+1. REAL-TIME SEARCH
+   - Search Field: ID="search-text-field"
+   - Function: Filters articles as user types
+   - AJAX Endpoint: /knowledgebase/searchquery/{query}
+   - Parameters: Search query, category ID, CSRF token
+
+2. CATEGORY FILTERING
+   - Sidebar Categories: Click to filter by specific category
+   - URL Parameters: ?id={category_id}
+   - Dynamic Loading: Content updates without page refresh
+
+3. CATEGORY SEARCH
+   - Sidebar Search: ID="search-setting-menu"
+   - Function: Filters category list in sidebar
+   - Real-time Filtering: Updates as user types
+
+4. FILTER RESET
+   - Clear Filters Button: Resets all active filters
+   - Function: Returns to default view showing all articles
+
+==================================================
+PERMISSION SYSTEM
+==================================================
+
+The Knowledge Base module implements a comprehensive permission system:
+
+1. VIEW PERMISSIONS
+   - Permission: view_knowledgebase
+   - Function: Controls access to knowledge base module
+   - Scope: Required for basic module access
+
+2. ADD PERMISSIONS
+   - Permission: add_knowledgebase
+   - Function: Controls ability to create new articles
+   - UI Impact: Shows/hides "Add Knowledge Base" button
+
+3. EDIT PERMISSIONS
+   - Permission: edit_knowledgebase
+   - Levels: 'all' (edit any article) or 'added' (edit own articles only)
+   - UI Impact: Shows/hides edit buttons and options
+
+4. DELETE PERMISSIONS
+   - Permission: delete_knowledgebase
+   - Levels: 'all' (delete any article) or 'added' (delete own articles only)
+   - UI Impact: Shows/hides delete buttons and options
+
+5. ROLE-BASED VISIBILITY
+   - Article Display: Articles shown based on user roles and target audience
+   - Admin Access: Administrators can view all articles regardless of target audience
+   - User Filtering: Regular users only see articles targeted to their role
+
+==================================================
+FILE MANAGEMENT SYSTEM
+==================================================
+
+The Knowledge Base module includes comprehensive file management capabilities:
+
+1. FILE UPLOAD
+   - Dropzone Integration: Drag-and-drop file upload interface
+   - Multiple Files: Support for multiple file attachments per article
+   - File Type Validation: Configurable allowed file types
+   - Size Limitations: Configurable maximum file size
+
+2. FILE STORAGE
+   - Storage Path: knowledgebase/{article_id}/
+   - File Naming: Hashed filenames for security
+   - Storage Options: Local storage or S3 integration
+
+3. FILE DISPLAY
+   - File Cards: Visual representation of attached files
+   - File Information: Filename, upload date, file size
+   - Thumbnail Generation: Automatic thumbnails for supported file types
+
+4. FILE ACTIONS
+   - View Files: Open files in browser or appropriate viewer
+   - Download Files: Direct download to user's device
+   - Delete Files: Remove file attachments with confirmation
+
+5. FILE SECURITY
+   - Access Control: File access controlled by article permissions
+   - Secure URLs: Hashed file identifiers for download links
+   - Permission Checks: File operations require appropriate permissions
+
+==================================================
+JAVASCRIPT FUNCTIONALITY
+==================================================
+
+The Knowledge Base module includes extensive JavaScript functionality:
+
+1. SEARCH FUNCTIONALITY
+   - Real-time Search: showSearchData() function
+   - AJAX Requests: Dynamic content loading without page refresh
+   - Filter Management: Automatic show/hide of clear filters button
+
+2. MODAL MANAGEMENT
+   - Right Modal: openRightModal class for article forms
+   - Large Modal: Category management in large modal
+   - Modal Initialization: Proper modal setup and cleanup
+
+3. FORM HANDLING
+   - Form Validation: Client-side validation before submission
+   - AJAX Submission: Forms submitted via AJAX for better UX
+   - File Upload: Dropzone integration for file handling
+
+4. INTERACTIVE FEATURES
+   - Delete Confirmation: SweetAlert integration for confirmations
+   - Dynamic Content: Content updates based on user interactions
+   - Responsive Behavior: Adaptive interface for different screen sizes
+
+5. EDITOR INTEGRATION
+   - Quill Editor: Rich text editing with mention functionality
+   - Content Processing: Proper handling of rich content
+   - Editor Initialization: Setup and configuration of text editor
+
+==================================================
+RESPONSIVE DESIGN AND MOBILE SUPPORT
+==================================================
+
+The Knowledge Base module is designed with responsive principles:
+
+1. MOBILE-FIRST APPROACH
+   - Responsive Tables: Tables adapt to smaller screens
+   - Mobile Navigation: Collapsible sidebar for mobile devices
+   - Touch-Friendly: Buttons and interactions optimized for touch
+
+2. BREAKPOINT MANAGEMENT
+   - Bootstrap Integration: Utilizes Bootstrap responsive classes
+   - Flexible Layouts: Content adapts to different screen sizes
+   - Mobile Overlays: Proper overlay handling for mobile modals
+
+3. ACCESSIBILITY FEATURES
+   - Keyboard Navigation: Full keyboard accessibility
+   - Screen Reader Support: Proper ARIA labels and descriptions
+   - Focus Management: Logical tab order and focus indicators
+
+==================================================
+INTEGRATION WITH OTHER MODULES
+==================================================
+
+The Knowledge Base module integrates with various system components:
+
+1. USER MANAGEMENT
+   - Permission Integration: Utilizes system permission framework
+   - Role-Based Access: Integrates with user role system
+   - User Tracking: Records article creators and editors
+
+2. NOTIFICATION SYSTEM
+   - Activity Tracking: Logs knowledge base activities
+   - User Notifications: Potential integration with notification system
+   - Audit Trail: Maintains record of article changes
+
+3. FILE SYSTEM
+   - Storage Integration: Utilizes system file storage configuration
+   - Security Framework: Integrates with system security measures
+   - Backup Systems: Files included in system backup procedures
+
+4. SEARCH INTEGRATION
+   - Global Search: Articles may be included in global search results
+   - Indexing: Content indexed for search functionality
+   - SEO Optimization: Proper meta tags and structure for search engines
+
+==================================================
+MAINTENANCE AND MONITORING
+==================================================
+
+The Knowledge Base module includes features for maintenance and monitoring:
+
+1. CONTENT MANAGEMENT
+   - Article Lifecycle: Creation, editing, and deletion tracking
+   - Version Control: Maintains history of article changes
+   - Content Validation: Ensures data integrity and consistency
+
+2. PERFORMANCE MONITORING
+   - Query Optimization: Efficient database queries for large datasets
+   - Caching Strategy: Appropriate caching for frequently accessed content
+   - Load Balancing: Supports distributed system architectures
+
+3. SECURITY MONITORING
+   - Access Logging: Records user access to knowledge base articles
+   - Permission Auditing: Regular validation of permission assignments
+   - Security Updates: Regular updates to maintain security standards
+
+==================================================
+TROUBLESHOOTING GUIDE
+==================================================
+
+Common issues and solutions for the Knowledge Base module:
+
+1. ARTICLE CREATION ISSUES
+   - Problem: Cannot create new articles
+   - Solution: Verify add_knowledgebase permission is assigned
+   - Check: Ensure categories exist before creating articles
+
+2. FILE UPLOAD PROBLEMS
+   - Problem: Files not uploading
+   - Solution: Check file size limits and allowed file types
+   - Verify: Storage permissions and available disk space
+
+3. SEARCH NOT WORKING
+   - Problem: Search returns no results
+   - Solution: Verify database indexes and search configuration
+   - Check: AJAX endpoints are accessible and functional
+
+4. PERMISSION ERRORS
+   - Problem: Users cannot access certain features
+   - Solution: Review and update user permissions
+   - Verify: Role assignments and permission inheritance
+
+5. DISPLAY ISSUES
+   - Problem: Articles not displaying correctly
+   - Solution: Check responsive design and CSS conflicts
+   - Verify: JavaScript functionality and browser compatibility
+
+==================================================
+TECHNICAL SPECIFICATIONS
+==================================================
+
+Backend Components:
+- Controller: KnowledgeBaseController
+- File Controller: KnowledgeBaseFileController
+- Category Controller: KnowledgeBaseCategoryController
+- Models: KnowledgeBase, KnowledgeBaseFile, KnowledgeBaseCategory
+- Routes: Resource routes with custom search and file handling
+
+Frontend Components:
+- Main View: resources/views/knowledge-base/index.blade.php
+- Create Form: resources/views/knowledge-base/ajax/create.blade.php
+- Edit Form: resources/views/knowledge-base/ajax/edit.blade.php
+- Detail View: resources/views/knowledge-base/ajax/show.blade.php
+- Category Management: resources/views/knowledge-base/create_category.blade.php
+
+Key Routes:
+- Index: GET /knowledgebase
+- Create: GET /knowledgebase/create
+- Store: POST /knowledgebase
+- Show: GET /knowledgebase/{id}
+- Edit: GET /knowledgebase/{id}/edit
+- Update: PUT /knowledgebase/{id}
+- Delete: DELETE /knowledgebase/{id}
+- Search: GET /knowledgebase/searchquery/{query}
+- File Download: GET /knowledgebase-files/download/{id}
+
+This comprehensive user guide provides complete documentation of the Knowledge Base module's functionality, ensuring users can effectively utilize all available features while maintaining consistency with the system's overall design and user experience patterns.

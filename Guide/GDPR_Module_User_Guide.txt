@@ -1,0 +1,305 @@
+GDPR MODULE USER GUIDE
+
+OVERVIEW
+The GDPR (General Data Protection Regulation) module provides comprehensive data privacy and protection features for managing customer and lead data in compliance with European data protection regulations. This module enables organizations to handle data subject rights, consent management, data portability, and data erasure requests.
+
+MAIN NAVIGATION ACCESS
+- Access GDPR settings through the main navigation menu item "GDPR" (visible based on user permissions)
+- GDPR settings are also accessible through the settings sidebar menu
+- Public GDPR forms are available for leads through dedicated public URLs
+
+GDPR SETTINGS MANAGEMENT
+
+1. MASTER GDPR TOGGLE
+Location: GDPR Settings > Main Dashboard
+URL: /gdpr-settings
+Description: The master toggle enables or disables the entire GDPR functionality system-wide.
+Features:
+- Toggle switch to enable/disable GDPR compliance features
+- Status indicator showing "Enabled" or "Disabled" state
+- Automatic page reload after toggle change to show/hide GDPR settings panel
+- AJAX-powered real-time updates without full page refresh
+
+2. GENERAL SETTINGS TAB
+Location: GDPR Settings > General Tab
+URL: /gdpr-settings (default tab)
+Description: Configure general GDPR display and navigation settings.
+Features:
+- Enable GDPR link in main navigation menu
+- Enable GDPR link in website footer
+- Configure top information block for public pages
+- Save button to apply general settings changes
+- Real-time form validation and submission
+
+3. RIGHT TO BE INFORMED TAB
+Location: GDPR Settings > Right to be Informed Tab
+URL: /gdpr-settings?tab=right-to-informed
+Description: Manage terms and conditions and privacy policy settings for customers.
+Features:
+- Enable/disable terms and conditions requirement
+- Enable/disable privacy policy requirement
+- Upload and manage terms and conditions documents
+- Upload and manage privacy policy documents
+- Configure display settings for legal documents
+- Save button to apply informed consent settings
+
+4. RIGHT TO ACCESS TAB
+Location: GDPR Settings > Right to Access Tab
+URL: /gdpr-settings?tab=right-to-access
+Description: Configure settings for allowing leads to update their data through public forms.
+Features:
+- Enable/disable public lead data editing capability
+- Configure public page consent information block
+- Set access permissions for lead data modification
+- Save button to apply access rights settings
+
+5. RIGHT TO DATA PORTABILITY TAB
+Location: GDPR Settings > Right to Data Portability Tab
+URL: /gdpr-settings?tab=right-to-data-portability
+Description: Enable and configure customer data export functionality.
+Features:
+- Enable/disable customer data export feature
+- Configure data export format and scope
+- Set data portability permissions
+- Save button to apply data portability settings
+
+6. RIGHT TO ERASURE TAB
+Location: GDPR Settings > Right to Erasure Tab
+URL: /gdpr-settings?tab=right-to-erasure
+Description: Manage data removal request settings for customers and leads.
+Features:
+- Enable/disable customer data removal requests
+- Enable/disable lead data removal requests
+- Configure removal request approval workflow
+- Set data retention policies
+- Save button to apply erasure settings
+
+7. CONSENT MANAGEMENT TAB
+Location: GDPR Settings > Consent Lists Tab
+URL: /gdpr-settings?tab=consent-lists
+Description: Manage consent purposes and customer consent settings.
+Features:
+- Enable/disable consent requirement for customers
+- Enable/disable consent requirement for leads
+- Create new consent purposes with "Add Consent" button
+- Edit existing consent purposes with edit buttons
+- Delete consent purposes with delete buttons
+- Quick actions dropdown for bulk operations
+- Apply button for executing bulk actions
+- Data table with consent purpose listings
+
+REMOVAL REQUEST MANAGEMENT
+
+8. CUSTOMER REMOVAL REQUESTS
+Location: GDPR Settings > Removal Requests Tab
+URL: /gdpr-settings?tab=removal-requests
+Description: Review and manage customer data removal requests.
+Features:
+- Data table displaying all customer removal requests
+- Request details including name, description, status, and submission date
+- Quick actions dropdown for bulk operations (approve, reject, delete)
+- Status change functionality with dropdown selection
+- Apply button for executing bulk actions
+- Individual request approval/rejection buttons
+- Checkbox selection for bulk operations
+- Search and filter capabilities
+
+9. LEAD REMOVAL REQUESTS
+Location: GDPR Settings > Lead Removal Requests Tab
+URL: /gdpr-settings?tab=lead-removal-requests
+Description: Review and manage lead data removal requests.
+Features:
+- Data table displaying all lead removal requests
+- Request details including lead information, description, and status
+- Individual request approval/rejection capabilities
+- Status tracking and management
+- Search and filter functionality
+
+CLIENT GDPR INTERFACE
+
+10. CLIENT GDPR DASHBOARD
+Location: Client Profile > GDPR Tab
+URL: /clients/{id}#gdpr-tab
+Description: Comprehensive GDPR management interface for individual clients.
+Features:
+- Right to be Informed section with terms and conditions display
+- Right to Access section with data update capabilities
+- Right to Data Portability with export functionality
+- Right to Erasure with data removal request options
+- Consent Management with agree/disagree options
+- Dynamic tab display based on enabled GDPR settings
+
+11. CLIENT CONSENT MANAGEMENT
+Location: Client Profile > GDPR Tab > Consent Section
+URL: /gdpr/consent (AJAX loaded)
+Description: Manage individual client consent preferences.
+Features:
+- Consent status display (Agreed/Disagreed)
+- Consent purpose listings with descriptions
+- Update consent button for modifying preferences
+- Real-time consent status updates
+- Consent history tracking
+
+12. CLIENT DATA EXPORT
+Location: Client Profile > GDPR Tab > Data Portability Section
+URL: /gdpr/right-to-data-portability (AJAX loaded)
+Description: Enable clients to export their personal data.
+Features:
+- Export data button for downloading client information
+- Data export format selection
+- Export status tracking
+- Download link generation
+
+13. CLIENT DATA REMOVAL REQUEST
+Location: Client Profile > GDPR Tab > Right to Erasure Section
+URL: /gdpr/right-to-erasure (AJAX loaded)
+Description: Allow clients to request data removal.
+Features:
+- Data removal request form
+- Request reason selection
+- Submit removal request button
+- Request status tracking
+- Confirmation dialogs for data removal
+
+LEAD GDPR INTERFACE
+
+14. LEAD GDPR DASHBOARD
+Location: Lead Profile > GDPR Tab
+URL: /leads/{id}#gdpr-tab
+Description: GDPR management interface for individual leads.
+Features:
+- Consent status display and management
+- Public consent form link generation
+- Lead data update capabilities
+- GDPR compliance status tracking
+
+15. LEAD CONSENT FORM
+Location: Lead Profile > GDPR Tab > Consent Section
+URL: /leads/gdpr/consent-form
+Description: Manage lead consent preferences and opt-in/opt-out settings.
+Features:
+- Consent purpose display with descriptions
+- Opt-in/opt-out toggle switches
+- Additional consent information blocks
+- Save consent preferences button
+- Real-time consent updates
+
+PUBLIC GDPR INTERFACES
+
+16. PUBLIC LEAD CONSENT FORM
+Location: Public Access (No Authentication Required)
+URL: /consent/l/{hash}
+Description: Public-facing consent form for leads to manage their preferences.
+Features:
+- Lead identification through secure hash
+- Consent purpose listings with descriptions
+- Opt-in/opt-out controls for each purpose
+- Submit consent changes button
+- Privacy-compliant data handling
+- Mobile-responsive design
+
+17. PUBLIC LEAD DATA UPDATE
+Location: Public Access (No Authentication Required)
+URL: /consent/l/update/{lead}
+Description: Public form for leads to update their personal information.
+Features:
+- Lead data editing form
+- Field validation and error handling
+- Submit updates button
+- Data change confirmation
+- Secure lead identification
+
+18. PUBLIC LEAD REMOVAL REQUEST
+Location: Public Access (No Authentication Required)
+URL: /consent/remove-lead-request
+Description: Public form for leads to request data removal.
+Features:
+- Lead identification form
+- Removal reason selection
+- Request description text area
+- Submit removal request button
+- Request confirmation messaging
+
+ADMINISTRATIVE FEATURES
+
+19. GDPR SETTINGS NAVIGATION
+Location: GDPR Settings Interface
+Description: Dynamic tab navigation system for GDPR settings management.
+Features:
+- Responsive tab navigation with overflow handling
+- "More" dropdown for additional tabs on smaller screens
+- Active tab highlighting
+- AJAX-powered tab content loading
+- Browser history integration for tab navigation
+
+20. BULK OPERATIONS
+Location: Various GDPR Management Interfaces
+Description: Efficient bulk operation capabilities for managing multiple requests.
+Features:
+- Checkbox selection for multiple items
+- Quick actions dropdown with operation types
+- Bulk approval/rejection of removal requests
+- Bulk status changes
+- Bulk deletion with confirmation dialogs
+- Select all/deselect all functionality
+
+21. DATA VALIDATION AND SECURITY
+Location: All GDPR Forms and Interfaces
+Description: Comprehensive data validation and security measures.
+Features:
+- CSRF token protection for all form submissions
+- Input validation and sanitization
+- Secure AJAX request handling
+- Error handling and user feedback
+- Data encryption for sensitive information
+
+TECHNICAL INTEGRATION
+
+22. AJAX FUNCTIONALITY
+Description: Real-time interface updates without page refreshes.
+Features:
+- Dynamic content loading for tab navigation
+- Real-time form submission and validation
+- Instant status updates and notifications
+- Progressive enhancement for better user experience
+- Error handling with user-friendly messages
+
+23. RESPONSIVE DESIGN
+Description: Mobile-friendly interface design for all GDPR features.
+Features:
+- Mobile-optimized form layouts
+- Touch-friendly button and control sizing
+- Responsive data tables with horizontal scrolling
+- Adaptive navigation for different screen sizes
+- Consistent user experience across devices
+
+24. NOTIFICATION SYSTEM
+Description: Automated notification system for GDPR-related events.
+Features:
+- Admin notifications for new removal requests
+- User notifications for request status changes
+- Email notifications for consent updates
+- System alerts for GDPR compliance events
+- Customizable notification templates
+
+COMPLIANCE AND REPORTING
+
+25. AUDIT TRAIL
+Description: Comprehensive logging and tracking of GDPR-related activities.
+Features:
+- Request submission tracking
+- Status change logging
+- User action auditing
+- Consent change history
+- Data export and removal logs
+
+26. COMPLIANCE MONITORING
+Description: Tools for monitoring and ensuring GDPR compliance.
+Features:
+- Consent status reporting
+- Request processing timelines
+- Data retention policy enforcement
+- Compliance dashboard metrics
+- Automated compliance checks
+
+This comprehensive GDPR module provides organizations with the necessary tools to maintain compliance with data protection regulations while offering users transparent control over their personal data. The system balances administrative efficiency with user rights, ensuring both operational effectiveness and regulatory compliance.

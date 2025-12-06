@@ -1,0 +1,40 @@
+Laravel Framework Documentation
+
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects.
+
+Key Features:
+1. Eloquent ORM - Laravel's Eloquent ORM provides a beautiful, simple ActiveRecord implementation for working with your database.
+
+2. Artisan Console - Artisan is the command-line interface included with Laravel. It provides a number of helpful commands that can assist you while you build your application.
+
+3. Blade Templating - Blade is the simple, yet powerful templating engine provided with Laravel. Unlike other popular PHP templating engines, Blade does not restrict you from using plain PHP code in your views.
+
+4. Migration System - Laravel's schema builder provides a database agnostic way of manipulating tables. It works well with all of Laravel's supported databases and provides a consistent API across all of these systems.
+
+5. Middleware - HTTP middleware provide a convenient mechanism for filtering HTTP requests entering your application. For example, Laravel includes a middleware that verifies the user of your application is authenticated.
+
+Installation:
+Laravel utilizes Composer to manage its dependencies. So, before using Laravel, make sure you have Composer installed on your machine.
+
+You can install Laravel by issuing the Composer create-project command in your terminal:
+composer create-project laravel/laravel example-app
+
+Configuration:
+All of the configuration files for the Laravel framework are stored in the config directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+
+Database Configuration:
+Laravel makes connecting with databases and running queries extremely simple across a variety of database backends using either raw SQL, the fluent query builder, or the Eloquent ORM.
+
+The database configuration for your application is located at config/database.php. In this file you may define all of your database connections, as well as specify which connection should be used by default.
+
+Routing:
+All Laravel routes are defined in your route files, which are located in the routes directory. These files are automatically loaded by the framework. The routes/web.php file defines routes that are for your web interface.
+
+Controllers:
+Controllers can group related request handling logic into a single class. Controllers are stored in the app/Http/Controllers directory.
+
+Models:
+Eloquent models are typically stored in the app/Models directory and extend the Illuminate\Database\Eloquent\Model class.
+
+Views:
+Views contain the HTML served by your application and separate your controller / application logic from your presentation logic. Views are stored in the resources/views directory.

@@ -1,0 +1,18 @@
+{
+    "name": "OCR",
+    "alias": "ocr",
+    "description": "OCR module for text recognition using Tesseract",
+    "version": "1.0.0",
+    "keywords": [
+        "ocr",
+        "tesseract",
+        "text recognition",
+        "image processing"
+    ],
+    "priority": 0,
+    "providers": [
+        "Modules\\OCR\\Providers\\OCRServiceProvider"
+    ],
+    "files": [],
+    "active": true
+}

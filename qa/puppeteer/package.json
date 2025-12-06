@@ -1,0 +1,13 @@
+{
+  "name": "craveva-puppeteer-check",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Automated checks for Telescope and Language Settings using Puppeteer",
+  "scripts": {
+    "check": "node run-check.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^23.7.5"
+  }
+}

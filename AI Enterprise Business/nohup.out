@@ -1,0 +1,62 @@
+ * Serving Flask app 'web_1'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://103.15.50.28:5000
+Press CTRL+C to quit
+118.69.62.113 - - [10/Nov/2025 10:59:34] "GET / HTTP/1.1" 200 -
+118.69.62.113 - - [10/Nov/2025 11:02:22] "GET / HTTP/1.1" 200 -
+118.69.62.113 - - [10/Nov/2025 11:02:23] code 400, message Bad request version ('$E9LÍ;\x92`C¾Q\x07ÑÌß\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+118.69.62.113 - - [10/Nov/2025 11:02:23] "\x16\x03\x01\x07f\x01\x00\x07b\x03\x03\x95¬\x03úFM\x8eÐè/ûtp\x87\x14Í6\x07!ô\x13\x81nWÎã{\x93¶Êû\x13 ï\x9b\x9e\x98Þ+¹\x89q \x9b\x0f\x7f\x06\x1aç\x1d$E9LÍ;\x92`C¾Q\x07ÑÌß\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À" HTTPStatus.BAD_REQUEST -
+118.69.62.113 - - [10/Nov/2025 11:02:23] code 400, message Bad request version ('\x8fõÃ\x8dæÌÐ\x8f\x8f5ÍÝµu\x9d\x8a§Ð±\x92Be»Ç~H]%ôÎ(Þ\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À')
+118.69.62.113 - - [10/Nov/2025 11:02:23] "\x16\x03\x01\x02\x95\x01\x00\x02\x91\x03\x035fÎÊYæ\x04¿\x00¦\x98\x10ØÀ(í\x1d)áá°#V\x0c·Ê\x15ÈÏÚZ¶ \x8fõÃ\x8dæÌÐ\x8f\x8f5ÍÝµu\x9d\x8a§Ð±\x92Be»Ç~H]%ôÎ(Þ\x00"\x13\x01\x13\x03\x13\x02À+À/Ì©Ì¨À,À0À" HTTPStatus.BAD_REQUEST -
+104.244.74.39 - - [10/Nov/2025 11:02:26] "HEAD /.env.local HTTP/1.1" 404 -
+104.244.74.39 - - [10/Nov/2025 11:02:27] "HEAD /.env.prod HTTP/1.1" 404 -
+104.244.74.39 - - [10/Nov/2025 11:02:28] "HEAD /.env.dev HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:02:42] "GET /api/health HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:02:42] "GET /health HTTP/1.1" 404 -
+54.236.60.38 - - [10/Nov/2025 11:03:10] "GET / HTTP/1.1" 200 -
+3.216.78.113 - - [10/Nov/2025 11:03:11] "GET /favicon.ico HTTP/1.1" 404 -
+98.80.244.152 - - [10/Nov/2025 11:03:12] "GET / HTTP/1.1" 200 -
+44.193.81.211 - - [10/Nov/2025 11:03:13] "GET /favicon.ico HTTP/1.1" 404 -
+104.244.74.39 - - [10/Nov/2025 11:03:40] "HEAD /.env.local HTTP/1.1" 404 -
+104.244.74.39 - - [10/Nov/2025 11:03:41] "HEAD /.env.prod HTTP/1.1" 404 -
+104.244.74.39 - - [10/Nov/2025 11:03:42] "HEAD /.env.dev HTTP/1.1" 404 -
+104.244.74.39 - - [10/Nov/2025 11:04:23] "HEAD /.env.local HTTP/1.1" 404 -
+104.244.74.39 - - [10/Nov/2025 11:04:24] "HEAD /.env.prod HTTP/1.1" 404 -
+104.244.74.39 - - [10/Nov/2025 11:04:25] "HEAD /.env.dev HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:04:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Nov/2025 11:04:52] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:07:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Nov/2025 11:07:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Nov/2025 11:07:11] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:07:11] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:08:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Nov/2025 11:09:48] "HEAD /health HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:09:49] "HEAD /health HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:10:05] "GET /api/conversations HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:10:20] "GET /api/ask/stream?question=[Flash]%20how%20much%20is%20my%20sales%20for%20past%206%20months? HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:13:52] "GET /api/conversations HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:14:02] "GET /api/conversations HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:14:17] "GET /api/ask/stream?question=[Flash]%20list%20me%20down%20the%20task%20for%20Ksports%20Mastercup%20Project HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:16:10] "GET /.git/config HTTP/1.1" 404 -
+103.116.52.252 - - [10/Nov/2025 11:21:57] code 400, message Bad request syntax ('\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x03\x00\x00\x00')
+103.116.52.252 - - [10/Nov/2025 11:21:57] "\x03\x00\x00\x13\x0eà\x00\x00\x00\x00\x00\x01\x00\x08\x00\x03\x00\x00\x00" HTTPStatus.BAD_REQUEST -
+127.0.0.1 - - [10/Nov/2025 11:23:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Nov/2025 11:23:43] "HEAD /health HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:23:43] "HEAD /health HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:24:25] "GET /api/conversations HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:24:35] "GET /api/ask/stream?question=[Flash]%20how%20much%20is%20my%20sales%20last%20month? HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:25:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Nov/2025 11:25:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Nov/2025 11:25:12] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [10/Nov/2025 11:25:13] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Nov/2025 11:25:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Nov/2025 11:25:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Nov/2025 11:29:12] "GET / HTTP/1.1" 200 -
+python: can't open file '/www/wwwroot/craveva.com/AI_Enterprise_Business/web_api': [Errno 2] No such file or directory
+python: can't open file '/www/wwwroot/craveva.com/AI_Enterprise_Business/web_api': [Errno 2] No such file or directory
+python: can't open file '/www/wwwroot/craveva.com/AI_Enterprise_Business/web_api': [Errno 2] No such file or directory
+python: can't open file '/www/wwwroot/craveva.com/AI_Enterprise_Business/web_api': [Errno 2] No such file or directory
+python: can't open file '/www/wwwroot/craveva.com/AI_Enterprise_Business/web_api': [Errno 2] No such file or directory

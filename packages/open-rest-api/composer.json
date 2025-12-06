@@ -1,0 +1,34 @@
+{
+    "name": "open/rest-api",
+    "description": "Open source Laravel REST API package - replacement for craveva/laravel-rest-api",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andy Koh",
+            "email": "enquiry@craveva.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0|^11.0",
+        "laravel/sanctum": "^3.0|^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Open\\RestAPI\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Open\\RestAPI\\Providers\\ApiServiceProvider"
+            ],
+            "aliases": {
+                "ApiRoute": "Open\\RestAPI\\Facades\\ApiRoute"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

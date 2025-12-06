@@ -1,0 +1,529 @@
+BIOLINKS MODULE - COMPREHENSIVE USER GUIDE
+
+OVERVIEW
+The Biolinks module enables users to create personalized landing pages with multiple content blocks and customizable settings. Users can build professional bio pages with links, media, contact forms, and payment options.
+
+MAIN NAVIGATION AND ACCESS
+- Access Point: Navigate to Biolinks section from main menu
+- Permission Required: Module access control via middleware
+- Base URL Structure: /account/biolinks for management interface
+
+BIOLINKS MANAGEMENT INTERFACE
+
+1. BIOLINKS LISTING PAGE
+Location: /account/biolinks
+Features:
+- Search Filter: Text input field to search existing biolinks by name or URL
+- Reset Filters Button: Clears all applied search filters
+- Add Biolink Page Button: Creates new biolink (requires create permission)
+- DataTable Display: Shows all biolinks with sortable columns
+- Status Toggle: Change biolink active/inactive status via AJAX
+- Delete Function: Remove biolinks with confirmation dialog
+- Edit Access: Click on biolink to access editing interface
+
+2. CREATE NEW BIOLINK
+Access: Click "Add Biolink Page" button
+Modal Interface:
+- Biolink Page URL Field: Enter custom URL slug (required)
+- URL Preview: Shows full URL path with domain prefix
+- Save Button: Creates biolink and redirects to edit interface
+- Cancel Button: Closes modal without saving
+Route: POST /account/biolinks (biolinks.store)
+
+3. BIOLINK EDITING INTERFACE
+Access: Click on existing biolink from listing
+Layout: Split-screen with editing panel (left) and live preview (right)
+
+Main Components:
+- Page Title Display: Shows current biolink URL
+- Edit URL Button: Modify biolink slug
+- Live Preview: Real-time iframe showing biolink appearance
+- Tab Navigation: Switch between Settings and Blocks
+
+URL EDITING FUNCTIONALITY
+- Edit Icon: Click pencil icon next to URL
+- Modal Interface: Update biolink slug
+- Validation: Ensures unique URL paths
+Route: PUT /account/biolinks/{id}/edit-slug (biolinks.editSlug)
+
+SETTINGS TAB CONFIGURATION
+
+The Settings tab contains accordion-style sections for comprehensive biolink customization:
+
+1. BACKGROUND SETTINGS
+Theme Selection:
+- MonoChrome: Black and white gradient theme
+- Gradienta: Default pink gradient theme  
+- Custom: User-defined two-color gradient
+Custom Color Options:
+- Color Picker One: Primary gradient color
+- Color Picker Two: Secondary gradient color
+- Real-time Preview: Changes apply instantly to preview
+
+2. VERIFIED BADGE SETTINGS
+Badge Position Options:
+- Top Position: Badge appears at top of content area
+- Bottom Position: Badge appears at bottom of content area
+- None: No verified badge displayed
+Visual Impact: Adds credibility indicator to biolink page
+
+3. BRANDING SETTINGS
+Branding Name Field: Custom text for page branding
+Branding URL Field: Link destination for branding text
+Branding Text Color: Color picker for branding text
+Display Control: Branding section hidden if name field empty
+
+4. PROTECTION SETTINGS
+Password Protection:
+- Enable/Disable Toggle: Activate password requirement
+- Password Field: Set access password
+- Password Page: Custom landing for protected links
+Sensitive Content Warning:
+- Enable/Disable Toggle: Show content warning
+- Warning Page: Intermediate warning before content access
+
+5. SEO SETTINGS
+Page Title Field: Custom title for browser tab and search engines
+Meta Description: Page description for search engine results
+Meta Keywords: Comma-separated keywords (uses Tagify for tag input)
+Favicon Upload: Custom icon for browser tab
+
+Font Selection:
+- Font Family Options: Multiple web-safe font choices
+- Live Preview: Font changes apply immediately
+- Font Button Display: Truncated names for space efficiency
+
+Block Spacing Options:
+- Small: 10px gap between blocks
+- Medium: 20px gap between blocks  
+- Large: 30px gap between blocks
+
+Save Settings:
+- Save Button: Applies all settings changes
+- AJAX Processing: Updates without page reload
+Route: PUT /account/biolink-settings/{id} (biolink-settings.update)
+
+BLOCKS TAB MANAGEMENT
+
+The Blocks tab provides comprehensive content block management:
+
+1. BLOCK LISTING AND ORGANIZATION
+Sortable Interface:
+- Drag and Drop: Reorder blocks by dragging sort handles
+- Auto-Save: Position changes save automatically
+- Visual Feedback: UI icons indicate draggable elements
+Route: POST /account/biolink-blocks/sort-fields (biolink-blocks.sortFields)
+
+Block Display:
+- Accordion Layout: Expandable/collapsible block editors
+- Block Preview: Shows truncated content (40 characters max)
+- Action Dropdown: Edit, duplicate, and delete options
+
+2. BLOCK ACTIONS
+Edit Function:
+- Expand Accordion: Click block header to open editor
+- Inline Editing: Modify block properties directly
+- Real-time Preview: Changes reflect immediately in preview
+
+Duplicate Function:
+- Clone Block: Creates identical copy with incremented position
+- Preserve Settings: All styling and content duplicated
+Route: GET /account/biolink-blocks/{id}/duplicate (biolink-blocks.duplicate)
+
+Delete Function:
+- Confirmation Dialog: SweetAlert confirmation required
+- File Cleanup: Associated images deleted automatically
+- Preview Update: Block removed from live preview
+Route: DELETE /account/biolink-blocks/{id} (biolink-blocks.destroy)
+
+3. ADD NEW BLOCK
+Access: Click "Add Block" button
+Block Categories:
+
+STANDARD BLOCKS:
+- Link Block: External website links with custom styling
+- Heading Block: Text headings with typography options
+- Paragraph Block: Multi-line text content with formatting
+- Avatar Block: Profile images with various display styles
+- Image Block: General images with optional links
+- Socials Block: Social media icon collection
+
+ADVANCED BLOCKS:
+- Email Collector: Capture visitor email addresses
+- Phone Collector: Collect phone numbers from visitors
+
+PAYMENT BLOCKS:
+- PayPal Block: Payment processing via PayPal integration
+
+EMBED BLOCKS:
+- SoundCloud: Audio player embeds
+- Spotify: Music player widgets
+- YouTube: Video embeds
+- Threads: Social media content
+- TikTok: Short video embeds
+- Twitch: Live stream widgets
+
+Block Creation Process:
+1. Select block type from grid interface
+2. Block-specific creation modal opens
+3. Configure initial settings
+4. Save to add block to biolink
+Route: GET /account/biolink-blocks/create/{biolinkId}/{blockType} (biolink-blocks.createBlock)
+
+DETAILED BLOCK CONFIGURATION
+
+1. LINK BLOCK SETTINGS
+Basic Properties:
+- URL Field: Destination link (required)
+- Name Field: Display text (required)
+- Open in New Tab: Checkbox for target behavior
+
+Styling Options:
+- Text Color: Color picker for link text
+- Background Color: Color picker for button background
+- Text Alignment: Left, center, right options
+- Animation: Hover animation effects (bounce, spin, ping, pulse)
+
+Border Configuration:
+- Border Width: 0-5px range slider
+- Border Color: Color picker for border
+- Border Style: Solid, dashed, dotted options
+- Border Radius: Straight, rounded, pill options
+
+Shadow Effects:
+- Shadow X Offset: -20px to +20px range
+- Shadow Y Offset: -20px to +20px range  
+- Shadow Blur: 0-20px range
+- Shadow Spread: 0-10px range
+- Shadow Color: Color picker for shadow
+
+Save Function: Updates block with all styling changes
+Route: PUT /account/biolink-blocks/{id} (biolink-blocks.update)
+
+2. HEADING BLOCK SETTINGS
+Content Properties:
+- Heading Text: Display content
+- Heading Type: H1, H2, H3, H4, H5, H6 options
+- Text Color: Color picker for heading text
+- Text Alignment: Left, center, right options
+
+Real-time Updates: Changes apply immediately to preview
+
+3. PARAGRAPH BLOCK SETTINGS
+Content Properties:
+- Paragraph Text: Multi-line text content
+- Text Color: Color picker for text
+- Background Color: Color picker for background
+- Text Alignment: Left, center, right options
+
+Styling Options:
+- Border Configuration: Same options as link blocks
+- Shadow Effects: Same options as link blocks
+- Border Radius: Straight, rounded, custom (20px) options
+
+4. AVATAR BLOCK SETTINGS
+Image Properties:
+- Image Upload: File selection with preview
+- Image Alt Text: Accessibility description
+- Avatar Size: Pixel dimensions for display
+- Object Fit: Cover, contain, fill options
+
+Link Properties:
+- URL Field: Optional destination link
+- Open in New Tab: Target behavior option
+
+Styling Options:
+- Border Configuration: Width, color, style options
+- Border Radius: Straight, rounded, circle options
+- Shadow Effects: Complete shadow customization
+
+5. IMAGE BLOCK SETTINGS
+Image Properties:
+- Image Upload: File selection with Dropify interface
+- Image Alt Text: Accessibility description
+- URL Field: Optional destination link
+- Open in New Tab: Target behavior option
+
+File Management: Automatic deletion of old images on update
+
+6. SOCIALS BLOCK SETTINGS
+Social Media Links:
+- Facebook: Profile/page URL
+- Instagram: Profile URL
+- Twitter: Profile URL
+- LinkedIn: Profile URL
+- YouTube: Channel URL
+- TikTok: Profile URL
+- GitHub: Profile URL
+- Website: Custom website URL
+
+Display Options:
+- Icon Size: Small, medium, large options
+- Icon Style: Platform-specific branded icons
+
+7. EMAIL COLLECTOR BLOCK SETTINGS
+Form Configuration:
+- Name Placeholder: Custom placeholder text
+- Email Placeholder: Custom placeholder text
+- Button Text: Submit button label
+- Thank You Message: Success message text
+- Thank You URL: Redirect after submission
+
+Mailchimp Integration:
+- API Key: Mailchimp account API key
+- List ID: Target mailing list identifier
+- Auto-Subscribe: Direct integration with Mailchimp
+
+Agreement Options:
+- Agreement Text: Terms and conditions text
+- Agreement URL: Link to full terms
+
+Styling Options:
+- Complete styling suite: Colors, borders, shadows
+- Button Customization: Full visual control
+
+Webhook Integration:
+- Webhook URL: External service notification
+- Email Notifications: Admin notification system
+
+8. PHONE COLLECTOR BLOCK SETTINGS
+Form Configuration:
+- Name Placeholder: Custom placeholder text
+- Phone Placeholder: Custom placeholder text
+- Button Text: Submit button label
+- Thank You Message: Success message text
+- Thank You URL: Redirect after submission
+
+Notification System:
+- Email Notifications: Admin alerts for submissions
+- Event Triggering: PhoneCollectionEmailEvent dispatch
+
+Styling Options:
+- Complete styling suite: Same as other blocks
+
+9. PAYPAL BLOCK SETTINGS
+Payment Configuration:
+- PayPal Type: Buy Now, Donation, Add to Cart options
+- PayPal Email: Merchant account email
+- Product Title: Item description
+- Currency Code: Payment currency
+- Price: Item cost
+
+URL Configuration:
+- Thank You URL: Success page redirect
+- Cancelled Payment URL: Cancellation redirect
+
+Styling Options:
+- Complete styling suite: Colors, borders, shadows
+- Button Customization: Full visual control
+
+10. EMBED BLOCKS SETTINGS
+Universal Properties:
+- Embed URL: Source content URL
+- Platform-Specific: Each embed type handles different URL formats
+
+Supported Platforms:
+- SoundCloud: Audio tracks and playlists
+- Spotify: Songs, albums, shows, episodes
+- YouTube: Individual videos
+- Threads: Social media posts
+- TikTok: Short-form videos
+- Twitch: Live streams and clips
+
+PUBLIC BIOLINK PAGE FEATURES
+
+1. PAGE ACCESS AND SECURITY
+URL Structure: /{biolink-slug}
+Route: GET /{slug} (biolink.index)
+
+Security Features:
+- Password Protection: Intermediate password page if enabled
+- Sensitive Content Warning: Optional content warning page
+- Session Management: Remembers authentication status
+
+Password Protection Flow:
+1. User visits protected biolink
+2. Password page displays if not authenticated
+3. Password submission validates against stored hash
+4. Success grants session access to biolink
+Route: POST /{slug}/check-password (biolink.check-password)
+
+Sensitive Content Flow:
+1. Warning page displays if enabled
+2. User acknowledges content warning
+3. Session flag set for direct access
+Route: GET /{slug}/check-sensitive (biolink.check-sensitive)
+
+2. PAGE DISPLAY AND INTERACTION
+Layout Structure:
+- Responsive Design: Mobile-first responsive layout
+- Centered Content: Blocks displayed in centered column
+- Background Theming: Custom gradients and colors
+
+Block Rendering:
+- Sequential Display: Blocks shown in configured order
+- Hover Animations: Smooth or instant scaling effects
+- Click Tracking: Page view incrementation
+
+Interactive Elements:
+- Link Blocks: Direct navigation to external URLs
+- Email Collectors: Modal forms for email capture
+- Phone Collectors: Modal forms for phone capture
+- PayPal Blocks: Direct payment processing links
+
+3. EMAIL COLLECTION FUNCTIONALITY
+Modal Interface:
+- AJAX Modal: Opens email collection form
+- Form Validation: Client and server-side validation
+- Mailchimp Integration: Automatic list subscription
+
+Process Flow:
+1. User clicks email collector block
+2. Modal opens with collection form
+3. User submits email and name
+4. Server processes and adds to Mailchimp
+5. Success/error message displayed
+Route: POST /biolink/subscribe-newsletter/{id} (biolink.subscribe-newsletter)
+
+4. PHONE COLLECTION FUNCTIONALITY
+Modal Interface:
+- AJAX Modal: Opens phone collection form
+- Form Validation: Phone number and name validation
+- Email Notifications: Admin notification system
+
+Process Flow:
+1. User clicks phone collector block
+2. Modal opens with collection form
+3. User submits phone and name
+4. Server processes and triggers email event
+5. Success message displayed
+Route: POST /biolink/phone-collector/{id} (biolink.phone-collector)
+
+TECHNICAL FEATURES AND FUNCTIONALITY
+
+1. REAL-TIME PREVIEW SYSTEM
+Live Preview Features:
+- Iframe Integration: Isolated preview environment
+- Instant Updates: Changes reflect immediately
+- Style Synchronization: CSS changes apply in real-time
+- JavaScript Integration: Interactive preview updates
+
+Preview Update Triggers:
+- Settings Changes: Theme, colors, fonts, spacing
+- Block Modifications: Content, styling, positioning
+- Block Actions: Add, delete, duplicate, reorder
+
+2. AJAX AND FORM HANDLING
+Form Processing:
+- EasyAjax Integration: Streamlined AJAX form submission
+- Validation Feedback: Real-time error display
+- Progress Indicators: Loading states and button disabling
+- Success Handling: Automatic redirects and notifications
+
+File Upload Management:
+- Dropify Integration: Enhanced file upload interface
+- Image Processing: Automatic resizing and optimization
+- File Cleanup: Automatic deletion of replaced files
+- Preview Generation: Immediate image preview display
+
+3. RESPONSIVE DESIGN FEATURES
+Mobile Optimization:
+- Bootstrap Grid: Responsive column system
+- Mobile-First: Optimized for mobile devices
+- Touch-Friendly: Large touch targets for mobile interaction
+- Viewport Optimization: Proper mobile viewport configuration
+
+Cross-Browser Compatibility:
+- Modern Browser Support: Chrome, Firefox, Safari, Edge
+- CSS Fallbacks: Graceful degradation for older browsers
+- JavaScript Polyfills: Compatibility for legacy features
+
+4. SEO AND PERFORMANCE OPTIMIZATION
+SEO Features:
+- Meta Tag Management: Title, description, keywords
+- Open Graph Support: Social media sharing optimization
+- Favicon Support: Custom browser tab icons
+- Semantic HTML: Proper heading hierarchy and structure
+
+Performance Features:
+- Lazy Loading: Images load as needed
+- CSS Optimization: Minimal inline styles
+- JavaScript Efficiency: Event delegation and optimization
+- Caching Headers: Browser caching for static assets
+
+ADMINISTRATIVE FEATURES
+
+1. PERMISSION SYSTEM
+Access Control:
+- Module Permissions: Biolinks module access control
+- Action Permissions: Create, edit, delete permissions
+- User Role Integration: Role-based access control
+
+Security Features:
+- CSRF Protection: Form token validation
+- Input Sanitization: XSS prevention measures
+- File Upload Security: Type and size validation
+
+2. DATA MANAGEMENT
+Database Operations:
+- Efficient Queries: Optimized database interactions
+- Relationship Management: Proper foreign key relationships
+- Data Integrity: Validation and constraint enforcement
+
+Backup and Recovery:
+- Data Export: Biolink configuration export
+- Import Functionality: Bulk biolink import
+- Version Control: Change tracking and history
+
+3. INTEGRATION CAPABILITIES
+Third-Party Services:
+- Mailchimp API: Email marketing integration
+- PayPal Integration: Payment processing
+- Webhook Support: External service notifications
+
+API Endpoints:
+- RESTful Design: Standard HTTP methods
+- JSON Responses: Structured data exchange
+- Error Handling: Comprehensive error responses
+
+TROUBLESHOOTING AND SUPPORT
+
+1. COMMON ISSUES AND SOLUTIONS
+Preview Not Loading:
+- Check iframe permissions and content security policy
+- Verify biolink settings and block configuration
+- Clear browser cache and cookies
+
+Form Submission Errors:
+- Validate required fields and data formats
+- Check server-side validation rules
+- Verify CSRF token presence and validity
+
+Image Upload Problems:
+- Check file size and format restrictions
+- Verify server upload limits and permissions
+- Ensure proper file path configuration
+
+2. PERFORMANCE OPTIMIZATION
+Page Load Speed:
+- Optimize image sizes and formats
+- Minimize CSS and JavaScript files
+- Enable browser caching headers
+
+Database Performance:
+- Index frequently queried columns
+- Optimize database queries and relationships
+- Regular database maintenance and cleanup
+
+3. SECURITY CONSIDERATIONS
+Data Protection:
+- Regular security updates and patches
+- Secure file upload handling
+- Input validation and sanitization
+
+Privacy Compliance:
+- GDPR compliance for email collection
+- Privacy policy integration
+- User consent management
+
+This comprehensive guide covers all aspects of the Biolinks module, from basic navigation to advanced configuration options. Users can reference specific sections based on their needs and experience level.

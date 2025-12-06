@@ -1,0 +1,2494 @@
+.craveva-privacy {
+  background-color: #ffffff;
+  width: 100%;
+  min-width: 1902px;
+  min-height: 4099px;
+  display: flex;
+}
+
+.craveva-privacy .privacy-policy {
+  width: 1902px;
+  height: 4099px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.craveva-privacy .section {
+  display: flex;
+  width: 1902.37px;
+  height: 379.85px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 63.98px 451.19px 0px;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.craveva-privacy .container {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 251.89px;
+}
+
+.craveva-privacy .icon-wrapper {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0.02px 0px 0px;
+  position: absolute;
+  top: 0;
+  left: 468px;
+  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(139, 90, 60, 1) 0%,
+    rgba(212, 165, 116, 1) 100%
+  );
+}
+
+.craveva-privacy .icon {
+  position: relative;
+  width: 31.98px;
+  height: 31.98px;
+}
+
+.craveva-privacy .vector {
+  position: absolute;
+  width: 66.67%;
+  height: 83.35%;
+  top: 4.16%;
+  left: 12.50%;
+}
+
+.craveva-privacy .heading {
+  position: absolute;
+  top: 88px;
+  left: 0;
+  width: 1000px;
+  height: 48px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper {
+  margin-top: 0;
+  width: 327px;
+  height: 48px;
+  margin-left: 337.4px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #1a0f0a;
+  font-size: 48px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 48px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .paragraph {
+  position: absolute;
+  top: 160px;
+  left: 116px;
+  width: 768px;
+  height: 48px;
+  display: flex;
+}
+
+.craveva-privacy .your-privacy-is {
+  margin-top: -0.8px;
+  width: 717px;
+  height: 48px;
+  margin-left: 25.8px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #495565;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.craveva-privacy .div-wrapper {
+  position: absolute;
+  top: 232px;
+  left: 0;
+  width: 1000px;
+  height: 20px;
+  display: flex;
+}
+
+.craveva-privacy .div {
+  margin-top: 0.2px;
+  width: 232px;
+  height: 20px;
+  margin-left: 384.3px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #8a593bb2;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .section-2 {
+  margin-left: 501px;
+  width: 899.99px;
+  height: 3499.55px;
+  margin-top: 0.1px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+@media (max-width: 768px) {
+  .craveva-privacy {
+    min-width: 0;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    overflow-x: hidden;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px;
+  }
+  .craveva-privacy .privacy-policy {
+    width: 100%;
+    height: auto;
+  }
+  .craveva-privacy .section {
+    width: 100%;
+    height: auto;
+    padding: 24px 0 0;
+    align-items: center;
+  }
+  .craveva-privacy .container {
+    width: 100%;
+    height: auto;
+  }
+  .craveva-privacy .icon-wrapper {
+    position: static;
+    margin: 0 auto 12px;
+  }
+  .craveva-privacy .heading,
+  .craveva-privacy .paragraph,
+  .craveva-privacy .div-wrapper {
+    position: static;
+    width: 100%;
+  }
+  .craveva-privacy .text-wrapper {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .craveva-privacy .your-privacy-is {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .craveva-privacy .div {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .craveva-privacy .section-2 {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+    gap: 24px;
+  }
+  .craveva-privacy .container-2,
+  .craveva-privacy .container-6,
+  .craveva-privacy .container-8,
+  .craveva-privacy .container-10,
+  .craveva-privacy .container-12,
+  .craveva-privacy .container-14,
+  .craveva-privacy .container-15,
+  .craveva-privacy .container-16,
+  .craveva-privacy .container-17,
+  .craveva-privacy .container-18,
+  .craveva-privacy .container-19,
+  .craveva-privacy .container-20,
+  .craveva-privacy .container-21,
+  .craveva-privacy .container-22,
+  .craveva-privacy .container-23,
+  .craveva-privacy .container-24,
+  .craveva-privacy .container-25,
+  .craveva-privacy .container-26,
+  .craveva-privacy .container-27,
+  .craveva-privacy .container-28,
+  .craveva-privacy .container-29,
+  .craveva-privacy .container-30,
+  .craveva-privacy .container-31,
+  .craveva-privacy .container-32,
+  .craveva-privacy .container-33,
+  .craveva-privacy .container-34,
+  .craveva-privacy .container-35,
+  .craveva-privacy .container-36,
+  .craveva-privacy .container-37,
+  .craveva-privacy .container-38,
+  .craveva-privacy .container-39,
+  .craveva-privacy .container-40,
+  .craveva-privacy .container-41,
+  .craveva-privacy .container-42,
+  .craveva-privacy .container-43,
+  .craveva-privacy .container-44,
+  .craveva-privacy .container-45,
+  .craveva-privacy .container-46,
+  .craveva-privacy .container-47,
+  .craveva-privacy .container-48,
+  .craveva-privacy .container-49,
+  .craveva-privacy .container-50,
+  .craveva-privacy .container-51,
+  .craveva-privacy .container-52 {
+    width: 100%;
+    height: auto;
+  }
+  .craveva-privacy .heading-2,
+  .craveva-privacy .heading-3,
+  .craveva-privacy .heading-4,
+  .craveva-privacy .heading-5,
+  .craveva-privacy .heading-6,
+  .craveva-privacy .heading-7,
+  .craveva-privacy .heading-8,
+  .craveva-privacy .heading-9,
+  .craveva-privacy .heading-10,
+  .craveva-privacy .heading-11 {
+    position: static;
+    width: 100%;
+  }
+  .craveva-privacy .list,
+  .craveva-privacy .list-2 {
+    position: static;
+    width: 100%;
+  }
+  .craveva-privacy p,
+  .craveva-privacy span {
+    white-space: normal;
+  }
+  .craveva-privacy .footer {
+    width: 100%;
+    height: auto;
+    padding: 16px 0;
+  }
+}
+
+.craveva-privacy .container-2 {
+  display: flex;
+  width: 899.99px;
+  height: 660.49px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 23.99px;
+}
+
+.craveva-privacy .container-3 {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  gap: 11.98px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.craveva-privacy .img {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.craveva-privacy .heading-2 {
+  position: relative;
+  width: 314.53px;
+  height: 32px;
+}
+
+.craveva-privacy .text-wrapper-2 {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #1a0f0a;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 32px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-4 {
+  display: flex;
+  flex-direction: column;
+  height: 596.5px;
+  align-items: flex-start;
+  gap: 23.99px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.craveva-privacy .container-5 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 182.84px;
+}
+
+.craveva-privacy .heading-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 900px;
+  height: 27px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-3 {
+  margin-top: -0.6px;
+  width: 194px;
+  height: 27px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 500;
+  color: #1a0f0a;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 27px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .list {
+  display: flex;
+  flex-direction: column;
+  width: 892px;
+  height: 144px;
+  align-items: flex-start;
+  gap: 8px;
+  position: absolute;
+  top: 39px;
+  left: 8px;
+}
+
+.craveva-privacy .list-item {
+  height: 29.97px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.craveva-privacy .text {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 6px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-4 {
+  margin-top: -0.6px;
+  width: 5px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #d4a574;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-2 {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 455px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .p {
+  margin-top: -0.6px;
+  width: 438px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-3 {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 307px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-5 {
+  margin-top: -0.6px;
+  width: 296px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-4 {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 376px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-6 {
+  margin-top: -0.6px;
+  width: 359px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-5 {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 273px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-7 {
+  margin-top: -0.6px;
+  width: 262px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-wrapper-8 {
+  margin-top: -0.6px;
+  width: 107px;
+  height: 27px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 500;
+  color: #1a0f0a;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 27px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-6 {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 365px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-9 {
+  margin-top: -0.6px;
+  width: 347px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-7 {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 311px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-10 {
+  margin-top: -0.6px;
+  width: 297px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-8 {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 308px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-11 {
+  margin-top: -0.6px;
+  width: 294px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-9 {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 299px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-12 {
+  margin-top: -0.6px;
+  width: 285px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-wrapper-13 {
+  margin-top: -0.6px;
+  width: 130px;
+  height: 27px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 500;
+  color: #1a0f0a;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 27px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .sales-and-wrapper {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 462px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .sales-and {
+  margin-top: -0.6px;
+  width: 440px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .training-materials-wrapper {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 437px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .training-materials {
+  margin-top: -0.6px;
+  width: 418px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-10 {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 433px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-14 {
+  margin-top: -0.6px;
+  width: 413px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-11 {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 422px;
+  height: 26px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-15 {
+  margin-top: -0.6px;
+  width: 400px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-6 {
+  display: flex;
+  width: 899.99px;
+  height: 372.95px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 23.99px;
+  padding: 49.2px 0px 0px;
+  border-top-width: 1.2px;
+  border-top-style: solid;
+  border-color: #d4a57433;
+}
+
+.craveva-privacy .container-7 {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0.02px 0px 0px;
+  position: relative;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(139, 90, 60, 1) 0%,
+    rgba(212, 165, 116, 1) 100%
+  );
+}
+
+.craveva-privacy .icon-2 {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.craveva-privacy .vector-2 {
+  position: absolute;
+  width: 83.34%;
+  height: 58.33%;
+  top: 16.67%;
+  left: 4.16%;
+}
+
+.craveva-privacy .vector-3 {
+  position: absolute;
+  width: 25.00%;
+  height: 25.00%;
+  top: 33.33%;
+  left: 33.33%;
+}
+
+.craveva-privacy .heading-4 {
+  width: 317.6px;
+  position: relative;
+  height: 32px;
+}
+
+.craveva-privacy .container-8 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 259.77px;
+}
+
+.craveva-privacy .container-9 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 900px;
+  height: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .text-12 {
+  margin-top: 4.0px;
+  width: 11.98px;
+  height: 25.98px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-16 {
+  margin-top: -0.6px;
+  width: 14px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #d4a574;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .paragraph-2 {
+  width: 610.48px;
+  height: 23.99px;
+  display: flex;
+}
+
+.craveva-privacy .text-13 {
+  display: flex;
+  margin-top: 1.2px;
+  width: 139.05px;
+  height: 19.26px;
+  position: relative;
+  align-items: flex-start;
+}
+
+.craveva-privacy .text-wrapper-17 {
+  position: relative;
+  flex: 1;
+  margin-top: -1.00px;
+  margin-bottom: -3.74px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #1a0f0a;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.craveva-privacy .to-provide-maintain {
+  margin-top: -0.8px;
+  width: 444px;
+  height: 24px;
+  margin-left: 0;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-10 {
+  position: absolute;
+  top: 46px;
+  left: 0;
+  width: 900px;
+  height: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .paragraph-3 {
+  width: 724.92px;
+  height: 23.99px;
+  position: relative;
+}
+
+.craveva-privacy .text-14 {
+  display: flex;
+  width: 134px;
+  height: 19px;
+  align-items: flex-start;
+  position: absolute;
+  top: 1px;
+  left: 0;
+}
+
+.craveva-privacy .to-customize-AI {
+  position: absolute;
+  top: -1px;
+  left: 134px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-11 {
+  position: absolute;
+  top: 92px;
+  left: 0;
+  width: 900px;
+  height: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .paragraph-4 {
+  width: 696.38px;
+  height: 23.99px;
+  position: relative;
+}
+
+.craveva-privacy .text-15 {
+  display: flex;
+  width: 139px;
+  height: 19px;
+  align-items: flex-start;
+  position: absolute;
+  top: 1px;
+  left: 0;
+}
+
+.craveva-privacy .text-wrapper-18 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  margin-bottom: -3.74px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #1a0f0a;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .to-send-service {
+  position: absolute;
+  top: -1px;
+  left: 139px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-12 {
+  position: absolute;
+  top: 138px;
+  left: 0;
+  width: 900px;
+  height: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .paragraph-5 {
+  width: 607.28px;
+  height: 23.99px;
+  position: relative;
+}
+
+.craveva-privacy .text-16 {
+  display: flex;
+  width: 82px;
+  height: 19px;
+  align-items: flex-start;
+  position: absolute;
+  top: 1px;
+  left: 0;
+}
+
+.craveva-privacy .to-analyze-usage {
+  position: absolute;
+  top: -1px;
+  left: 82px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-13 {
+  position: absolute;
+  top: 184px;
+  left: 0;
+  width: 900px;
+  height: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .paragraph-6 {
+  width: 627.75px;
+  height: 23.99px;
+  position: relative;
+}
+
+.craveva-privacy .text-17 {
+  display: flex;
+  width: 73px;
+  height: 19px;
+  align-items: flex-start;
+  position: absolute;
+  top: 1px;
+  left: 0;
+}
+
+.craveva-privacy .to-detect-prevent {
+  position: absolute;
+  top: -1px;
+  left: 73px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-14 {
+  position: absolute;
+  top: 230px;
+  left: 0;
+  width: 900px;
+  height: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .paragraph-7 {
+  width: 657.01px;
+  height: 23.99px;
+  position: relative;
+}
+
+.craveva-privacy .text-18 {
+  display: flex;
+  width: 104px;
+  height: 19px;
+  align-items: flex-start;
+  position: absolute;
+  top: 1px;
+  left: 0;
+}
+
+.craveva-privacy .to-comply-with-legal {
+  position: absolute;
+  top: -1px;
+  left: 104px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-15 {
+  display: flex;
+  width: 899.99px;
+  height: 428.84px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 23.99px;
+  padding: 49.2px 0px 0px;
+  border-top-width: 1.2px;
+  border-top-style: solid;
+  border-color: #d4a57433;
+}
+
+.craveva-privacy .vector-4 {
+  position: absolute;
+  width: 75.00%;
+  height: 45.83%;
+  top: 41.67%;
+  left: 8.33%;
+}
+
+.craveva-privacy .vector-5 {
+  position: absolute;
+  width: 41.67%;
+  height: 37.50%;
+  top: 4.17%;
+  left: 25.00%;
+}
+
+.craveva-privacy .heading-5 {
+  width: 197.08px;
+  position: relative;
+  height: 32px;
+}
+
+.craveva-privacy .container-16 {
+  display: flex;
+  flex-direction: column;
+  height: 315.66px;
+  align-items: flex-start;
+  gap: 23.99px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.craveva-privacy .paragraph-8 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 51.96px;
+}
+
+.craveva-privacy .we-implement {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 837px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+.craveva-privacy .container-17 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 239.71px;
+}
+
+.craveva-privacy .container-18 {
+  display: flex;
+  flex-direction: column;
+  width: 442px;
+  height: 112px;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 17.2px 17.2px 1.2px 17.2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  border: 1.2px solid;
+  border-color: #d4a5744c;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.craveva-privacy .div-wrapper-2 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 23.99px;
+}
+
+.craveva-privacy .text-wrapper-19 {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #1a0f0a;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .paragraph-9 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 45.49px;
+}
+
+.craveva-privacy .all-data-is {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 375px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #495565;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 22.8px;
+}
+
+.craveva-privacy .container-19 {
+  display: flex;
+  flex-direction: column;
+  width: 442px;
+  height: 112px;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 17.2px 17.2px 1.2px 17.2px;
+  position: absolute;
+  top: 0;
+  left: 458px;
+  border-radius: 10px;
+  border: 1.2px solid;
+  border-color: #d4a5744c;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.craveva-privacy .paragraph-10 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 22.74px;
+}
+
+.craveva-privacy .text-wrapper-20 {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #495565;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 22.8px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-20 {
+  display: flex;
+  flex-direction: column;
+  width: 442px;
+  height: 112px;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 17.2px 17.2px 1.2px 17.2px;
+  position: absolute;
+  top: 128px;
+  left: 0;
+  border-radius: 10px;
+  border: 1.2px solid;
+  border-color: #d4a5744c;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.craveva-privacy .third-party-security {
+  top: 1px;
+  width: 366px;
+  font-weight: 400;
+  color: #495565;
+  font-size: 14px;
+  line-height: 22.8px;
+  position: absolute;
+  left: 0;
+  font-family: "Montserrat", Helvetica;
+  letter-spacing: 0;
+}
+
+.craveva-privacy .container-21 {
+  display: flex;
+  flex-direction: column;
+  width: 442px;
+  height: 112px;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 17.2px 17.2px 1.2px 17.2px;
+  position: absolute;
+  top: 128px;
+  left: 458px;
+  border-radius: 10px;
+  border: 1.2px solid;
+  border-color: #d4a5744c;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.craveva-privacy .customer-data-is {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 398px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #495565;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 22.8px;
+}
+
+.craveva-privacy .container-22 {
+  display: flex;
+  width: 899.99px;
+  height: 368.02px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 23.99px;
+  padding: 49.2px 0px 0px;
+  border-top-width: 1.2px;
+  border-top-style: solid;
+  border-color: #d4a57433;
+}
+
+.craveva-privacy .vector-6 {
+  position: absolute;
+  width: 66.67%;
+  height: 83.35%;
+  top: 4.17%;
+  left: 12.50%;
+}
+
+.craveva-privacy .heading-6 {
+  width: 175.64px;
+  position: relative;
+  height: 32px;
+}
+
+.craveva-privacy .container-23 {
+  display: flex;
+  flex-direction: column;
+  height: 254.84px;
+  align-items: flex-start;
+  gap: 15.99px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.craveva-privacy .div-wrapper-3 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 25.98px;
+}
+
+.craveva-privacy .text-wrapper-21 {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #1a0f0a;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-24 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 212.87px;
+}
+
+.craveva-privacy .container-25 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 442px;
+  height: 53px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .text-19 {
+  margin-top: 4.0px;
+  width: 9.59px;
+  height: 25.98px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-22 {
+  margin-top: -0.6px;
+  width: 10px;
+  height: 26px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #d4a574;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-26 {
+  display: flex;
+  width: 404.55px;
+  height: 52.71px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.99px;
+}
+
+.craveva-privacy .container-27 {
+  position: absolute;
+  top: 0;
+  left: 458px;
+  width: 442px;
+  height: 53px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .container-28 {
+  display: flex;
+  width: 332.86px;
+  height: 52.71px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.99px;
+}
+
+.craveva-privacy .container-29 {
+  position: absolute;
+  top: 69px;
+  left: 0;
+  width: 442px;
+  height: 75px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .container-30 {
+  display: flex;
+  width: 285.39px;
+  height: 52.71px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.99px;
+}
+
+.craveva-privacy .container-31 {
+  position: absolute;
+  top: 69px;
+  left: 458px;
+  width: 442px;
+  height: 75px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .container-32 {
+  display: flex;
+  width: 420.43px;
+  height: 75.46px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.99px;
+}
+
+.craveva-privacy .receive-your-data-in {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 385px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #495565;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 22.8px;
+}
+
+.craveva-privacy .container-33 {
+  position: absolute;
+  top: 160px;
+  left: 0;
+  width: 442px;
+  height: 53px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .container-34 {
+  display: flex;
+  width: 349.73px;
+  height: 52.71px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.99px;
+}
+
+.craveva-privacy .container-35 {
+  position: absolute;
+  top: 160px;
+  left: 458px;
+  width: 442px;
+  height: 53px;
+  display: flex;
+  gap: 12px;
+}
+
+.craveva-privacy .container-36 {
+  display: flex;
+  width: 307.8px;
+  height: 52.71px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.99px;
+}
+
+.craveva-privacy .container-37 {
+  display: flex;
+  width: 899.99px;
+  height: 452.92px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 23.99px;
+  padding: 49.2px 0px 0px;
+  border-top-width: 1.2px;
+  border-top-style: solid;
+  border-color: #d4a57433;
+}
+
+.craveva-privacy .vector-7 {
+  position: absolute;
+  width: 16.67%;
+  height: 33.33%;
+  top: 20.84%;
+  left: 45.83%;
+}
+
+.craveva-privacy .vector-8 {
+  position: absolute;
+  width: 83.33%;
+  height: 83.33%;
+  top: 4.17%;
+  left: 4.17%;
+}
+
+.craveva-privacy .heading-7 {
+  width: 218.51px;
+  position: relative;
+  height: 32px;
+}
+
+.craveva-privacy .container-38 {
+  display: flex;
+  flex-direction: column;
+  height: 339.74px;
+  align-items: flex-start;
+  gap: 15.99px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.craveva-privacy .we-retain-your {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 870px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+.craveva-privacy .container-39 {
+  display: flex;
+  flex-direction: column;
+  height: 271.79px;
+  align-items: flex-start;
+  gap: 15.99px;
+  padding: 25.19px 25.19px 1.2px 25.19px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  border-radius: 10px;
+  border: 1.2px solid;
+  border-color: #d4a5744c;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.craveva-privacy .list-2 {
+  height: 179.44px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.craveva-privacy .list-item-2 {
+  height: 26px;
+  padding: 0px -3.05e-05px 0px 0px;
+  top: 0;
+  display: flex;
+  width: 850px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+}
+
+.craveva-privacy .text-20 {
+  position: relative;
+  width: 178.2px;
+  height: 25.98px;
+}
+
+.craveva-privacy .text-wrapper-23 {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-21 {
+  position: relative;
+  width: 249.57px;
+  height: 25.98px;
+}
+
+.craveva-privacy .text-wrapper-24 {
+  position: absolute;
+  top: -1px;
+  left: 12px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #8b5a3c;
+  font-size: 16px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .list-item-3 {
+  height: 39px;
+  padding: 11.98px -1.53e-05px 0px 0px;
+  top: 38px;
+  border-top-width: 1.2px;
+  border-top-style: solid;
+  border-color: #d4a57433;
+  display: flex;
+  width: 850px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+}
+
+.craveva-privacy .text-22 {
+  position: relative;
+  width: 154.42px;
+  height: 25.98px;
+}
+
+.craveva-privacy .text-23 {
+  position: relative;
+  width: 204.74px;
+  height: 25.98px;
+}
+
+.craveva-privacy .text-wrapper-25 {
+  position: absolute;
+  top: -1px;
+  left: 11px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #8b5a3c;
+  font-size: 16px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .list-item-4 {
+  height: 39px;
+  padding: 11.98px -7.63e-05px 0px 0px;
+  top: 89px;
+  border-top-width: 1.2px;
+  border-top-style: solid;
+  border-color: #d4a57433;
+  display: flex;
+  width: 850px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+}
+
+.craveva-privacy .text-24 {
+  position: relative;
+  width: 123.96px;
+  height: 25.98px;
+}
+
+.craveva-privacy .text-25 {
+  position: relative;
+  width: 203.69px;
+  height: 25.98px;
+}
+
+.craveva-privacy .text-wrapper-26 {
+  position: absolute;
+  top: -1px;
+  left: 8px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #8b5a3c;
+  font-size: 16px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .list-item-5 {
+  height: 39px;
+  padding: 11.98px -3.05e-05px 0px 0px;
+  top: 140px;
+  border-top-width: 1.2px;
+  border-top-style: solid;
+  border-color: #d4a57433;
+  display: flex;
+  width: 850px;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+}
+
+.craveva-privacy .text-26 {
+  position: relative;
+  width: 125.46px;
+  height: 25.98px;
+}
+
+.craveva-privacy .text-27 {
+  position: relative;
+  width: 225.55px;
+  height: 25.98px;
+}
+
+.craveva-privacy .container-40 {
+  display: flex;
+  width: 899.99px;
+  height: 268.5px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 23.99px;
+  padding: 49.2px 0px 0px;
+  border-top-width: 1.2px;
+  border-top-style: solid;
+  border-color: #d4a57433;
+}
+
+.craveva-privacy .vector-9 {
+  position: absolute;
+  width: 83.33%;
+  height: 24.99%;
+  top: 25.00%;
+  left: 4.17%;
+}
+
+.craveva-privacy .vector-10 {
+  position: absolute;
+  width: 83.33%;
+  height: 66.67%;
+  top: 12.50%;
+  left: 4.17%;
+}
+
+.craveva-privacy .heading-8 {
+  width: 166.65px;
+  position: relative;
+  height: 32px;
+}
+
+.craveva-privacy .container-41 {
+  display: flex;
+  flex-direction: column;
+  height: 155.32px;
+  align-items: flex-start;
+  gap: 15.99px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.craveva-privacy .if-you-have-any {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-42 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 115.34px;
+}
+
+.craveva-privacy .container-43 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 438px;
+  height: 115px;
+  display: flex;
+  flex-direction: column;
+  gap: 14.4px;
+  border-radius: 10px;
+  border: 1.2px solid;
+  border-color: #d4a5744c;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.craveva-privacy .heading-9 {
+  margin-left: 25.2px;
+  width: 387.62px;
+  height: 27px;
+  margin-top: 25.2px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-27 {
+  margin-top: -0.6px;
+  width: 52px;
+  height: 27px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 500;
+  color: #1a0f0a;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 27px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .link {
+  display: flex;
+  margin-left: 25.2px;
+  width: 160.1px;
+  height: 19.26px;
+  position: relative;
+  align-items: flex-start;
+}
+
+.craveva-privacy .text-wrapper-28 {
+  position: relative;
+  flex: 1;
+  margin-top: -1.00px;
+  margin-bottom: -5.74px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #8b5a3c;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+.craveva-privacy .container-44 {
+  display: flex;
+  flex-direction: column;
+  width: 438px;
+  height: 115px;
+  align-items: flex-start;
+  gap: 11.98px;
+  padding: 25.19px 25.19px 1.2px 25.19px;
+  position: absolute;
+  top: 0;
+  left: 462px;
+  border-radius: 10px;
+  border: 1.2px solid;
+  border-color: #d4a5744c;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.craveva-privacy .heading-10 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 27px;
+}
+
+.craveva-privacy .text-wrapper-29 {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 500;
+  color: #1a0f0a;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 27px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .text-wrapper-30 {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #495565;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .container-45 {
+  display: flex;
+  width: 899.99px;
+  height: 659.88px;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 23.99px;
+  padding: 49.2px 0px 0px;
+  border-top-width: 1.2px;
+  border-top-style: solid;
+  border-color: #d4a57433;
+}
+
+.craveva-privacy .heading-11 {
+  align-self: stretch;
+  width: 100%;
+  position: relative;
+  height: 32px;
+}
+
+.craveva-privacy .container-46 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 554.7px;
+}
+
+.craveva-privacy .container-47 {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  height: 111px;
+  align-items: flex-start;
+  gap: 11.98px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.craveva-privacy .we-may-use-third-wrapper {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 71.96px;
+}
+
+.craveva-privacy .we-may-use-third {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 869px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.craveva-privacy .container-48 {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  height: 87px;
+  align-items: flex-start;
+  gap: 11.98px;
+  position: absolute;
+  top: 135px;
+  left: 0;
+}
+
+.craveva-privacy .paragraph-11 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 47.97px;
+}
+
+.craveva-privacy .we-use-cookies-and {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 897px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.craveva-privacy .container-49 {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  height: 87px;
+  align-items: flex-start;
+  gap: 11.98px;
+  position: absolute;
+  top: 246px;
+  left: 0;
+}
+
+.craveva-privacy .your-data-may-be {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 876px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.craveva-privacy .container-50 {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  height: 87px;
+  align-items: flex-start;
+  gap: 11.98px;
+  position: absolute;
+  top: 357px;
+  left: 0;
+}
+
+.craveva-privacy .we-may-update-this {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 900px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.craveva-privacy .container-51 {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  height: 87px;
+  align-items: flex-start;
+  gap: 11.98px;
+  position: absolute;
+  top: 468px;
+  left: 0;
+}
+
+.craveva-privacy .our-services-are-not {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 865px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.craveva-privacy .footer {
+  display: flex;
+  width: 1902.37px;
+  height: 165.1px;
+  position: relative;
+  margin-top: 54.4px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 33.19px 501.2px 0px 501.18px;
+  background-color: transparent;
+  border-top-width: 1.2px;
+  border-top-style: solid;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-color: #d4a5744c;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.craveva-privacy .container-52 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 99.93px;
+}
+
+.craveva-privacy .link-2 {
+  position: absolute;
+  top: 0;
+  left: 359px;
+  width: 183px;
+  height: 56px;
+  display: flex;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(139, 90, 60, 1) 0%,
+    rgba(212, 165, 116, 1) 100%
+  );
+}
+
+.craveva-privacy .text-wrapper-31 {
+  margin-top: 15.2px;
+  width: 115px;
+  height: 24px;
+  margin-left: 34.0px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .paragraph-12 {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 900px;
+  height: 20px;
+  display: flex;
+}
+
+.craveva-privacy .text-wrapper-32 {
+  margin-top: 0.2px;
+  width: 260px;
+  height: 20px;
+  margin-left: 320.1px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #697282;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+/* Inject original globals.css and styleguide.css styles here */
+
+.craveva-privacy {
+  background-color: #ffffff;
+  width: 100%;
+  min-height: 4099px;
+  display: flex;
+}
+
+.craveva-privacy .privacy-policy {
+  width: 100%;
+  max-width: 1902px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.craveva-privacy .section {
+  display: flex;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 63.98px 20px 0px;
+  background: linear-gradient(
+    180deg,
+    rgba(250, 248, 245, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.craveva-privacy .container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 251.89px;
+}
+
+.craveva-privacy .icon-wrapper {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0.02px 0px 0px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(139, 90, 60, 1) 0%,
+    rgba(212, 165, 116, 1) 100%
+  );
+}
+
+.craveva-privacy .icon {
+  position: relative;
+  width: 31.98px;
+  height: 31.98px;
+}
+
+.craveva-privacy .vector {
+  position: absolute;
+  width: 66.67%;
+  height: 83.35%;
+  top: 4.16%;
+  left: 12.50%;
+}
+
+.craveva-privacy .heading {
+  position: absolute;
+  top: 88px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  margin-left: -180px;
+}
+
+.craveva-privacy .text-wrapper {
+  margin-top: 0;
+  height: 48px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #1a0f0a;
+  font-size: 48px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 48px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .paragraph {
+  position: absolute;
+  top: 160px;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.craveva-privacy .your-privacy-is {
+  margin-top: -0.8px;
+  max-width: 768px;
+  height: 48px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #495565;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.craveva-privacy .div-wrapper {
+  position: absolute;
+  top: 232px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+
+.craveva-privacy .div {
+  margin-top: 0.2px;
+  height: 20px;
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #8a593bb2;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.craveva-privacy .section-2 {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  margin-top: 0.1px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.craveva-privacy .container-2 {
+  display: flex;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 23.99px;
+}
+
+.craveva-privacy .container-3 {
+  display: flex;
+  align-items: center;
+  gap: 11.98px;
+  position: relative;
+  width: 100%;
+}
+
+.craveva-privacy .img {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.craveva-privacy .heading-2 {
+  position: relative;
+  flex: 1;
+}
+
+.craveva-privacy .text-wrapper-2 {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #1a0f0a;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 32px;
+}
+
+.craveva-privacy .container-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 23.99px;
+  position: relative;
+  width: 100%;
+}
+
+.craveva-privacy .container-5 {
+  position: relative;
+  width: 100%;
+}
+
+.craveva-privacy .heading-3 {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.craveva-privacy .text-wrapper-3 {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 500;
+  color: #1a0f0a;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 27px;
+}
+
+.craveva-privacy .list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 8px;
+  padding-left: 8px;
+  list-style: none;
+  margin: 0;
+}
+
+.craveva-privacy .list-item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.craveva-privacy .text {
+  width: 6px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.craveva-privacy .text-wrapper-4 {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #d4a574;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+.craveva-privacy .text-2,
+.craveva-privacy .text-3,
+.craveva-privacy .text-4,
+.craveva-privacy .text-5,
+.craveva-privacy .text-6,
+.craveva-privacy .text-7,
+.craveva-privacy .text-8,
+.craveva-privacy .text-9,
+.craveva-privacy .text-10,
+.craveva-privacy .text-11,
+.craveva-privacy .sales-and-wrapper,
+.craveva-privacy .training-materials-wrapper {
+  flex: 1;
+  display: flex;
+}
+
+.craveva-privacy .p,
+.craveva-privacy .text-wrapper-5,
+.craveva-privacy .text-wrapper-6,
+.craveva-privacy .text-wrapper-7,
+.craveva-privacy .text-wrapper-9,
+.craveva-privacy .text-wrapper-10,
+.craveva-privacy .text-wrapper-11,
+.craveva-privacy .text-wrapper-12,
+.craveva-privacy .text-wrapper-14,
+.craveva-privacy .text-wrapper-15,
+.craveva-privacy .sales-and,
+.craveva-privacy .training-materials {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 400;
+  color: #354152;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+.craveva-privacy .text-wrapper-8 {
+  font-family: "Montserrat", Helvetica;
+  font-weight: 500;
+  color: #1a0f0a;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 27px
