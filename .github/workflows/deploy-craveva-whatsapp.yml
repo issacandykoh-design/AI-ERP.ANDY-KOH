@@ -1,4 +1,4 @@
-name: deploy-whatsapp-production
+name: deploy-craveva-whatsapp
 on:
   workflow_dispatch:
 jobs:
@@ -7,4 +7,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: echo target
-        run: echo "Deploy to GCP project craveva-whatsapp"
+        run: echo "Deploy naming based on VM craveva-whatsapp"
