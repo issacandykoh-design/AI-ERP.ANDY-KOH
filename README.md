@@ -1,3 +1,37 @@
+# craveva-platform (private)
+
+**Craveva Platform** — Laravel app at **https://craveva.esports3.asia**.
+
+Public platform docs: https://github.com/issacandykoh-design/aiee-platform-docs
+
+## Related repositories
+
+- **Shared server / deployment infrastructure (Docker, Nginx, PHP build, shared across all 4 sites): https://github.com/issacandykoh-design/esports3-infra
+- Sibling app repos on the same Contabo server:
+  - Office ERP (Worksuite): https://github.com/issacandykoh-design/esports3-office
+  - Cafe POS: https://github.com/issacandykoh-design/esports3-cafe
+  - Marketing website: https://github.com/issacandykoh-design/esports3-website
+
+## Stack
+
+- Laravel (Worksuite-derived), Modules under `Modules/`
+- Docker PHP-FPM + MariaDB (infra in esports3-infra repo, not here)
+
+## Setup
+
+```bash
+cp .env.example .env   # fill on server only
+composer install --no-dev
+php artisan migrate --force
+php artisan config:clear && php artisan cache:clear
+```
+
+## Live path
+
+`/var/www/esport3.asia/extracted` (mounted as root_app in docker-compose)
+
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
