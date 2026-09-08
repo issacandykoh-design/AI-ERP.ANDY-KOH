@@ -1,100 +1,188 @@
-# craveva-platform (private)
+# AI ERP Platform
 
-**Craveva Platform** — Laravel app at **https://craveva.esports3.asia**.
-
-Public platform docs: https://github.com/issacandykoh-design/aiee-platform-docs
-
-## Related repositories
-
-- **Shared server / deployment infrastructure (Docker, Nginx, PHP build, shared across all 4 sites): https://github.com/issacandykoh-design/esports3-infra
-- Sibling app repos on the same Contabo server:
-  - Office ERP (Worksuite): https://github.com/issacandykoh-design/esports3-office
-  - Cafe POS: https://github.com/issacandykoh-design/esports3-cafe
-  - Marketing website: https://github.com/issacandykoh-design/esports3-website
-
-## Stack
-
-- Laravel (Worksuite-derived), Modules under `Modules/`
-- Docker PHP-FPM + MariaDB (infra in esports3-infra repo, not here)
-
-## Setup
-
-```bash
-cp .env.example .env   # fill on server only
-composer install --no-dev
-php artisan migrate --force
-php artisan config:clear && php artisan cache:clear
-```
-
-## Live path
-
-`/var/www/esport3.asia/extracted` (mounted as root_app in docker-compose)
+**AI-Powered Enterprise Resource Planning Platform** - A full-featured business management suite built with Laravel, integrating AI automation, CRM, HRM, Finance, Project Management, and Support Ticketing into a single unified platform.
 
 ---
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Key Features
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Core Modules
 
-## About Laravel
+| Module | Capabilities |
+|---|---|
+| **CRM & Sales** | Leads, Deals, Contacts, Companies, Pipelines, Proposals |
+| **HR & Payroll** | Employees, Attendance, Leaves, Holidays, Awards, Payroll, Teams |
+| **Project Management** | Projects, Tasks, Sub-tasks, Tags, Milestones, Time Tracking, Kanban |
+| **Finance & Invoicing** | Invoices, Payments, Expenses, Taxes, Multi-currency, Recurring |
+| **Support Desk** | Tickets, Knowledge Base, SLA, Ticket Tags, Priorities |
+| **Inventory** | Products, Orders, Stock, Suppliers, Categories |
+| **AI Automation** | OCR processing, AI assistants, automated data extraction, smart workflows |
+| **Communications** | Email (IMAP/SMTP), SMS, Push Notifications, Telegram, Slack, Zoom |
+| **Globalization** | 95+ languages, Multi-currency, 200+ country flags, RTL support |
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 15+ Payment Gateways
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Stripe (Cashier) - PayPal - Mollie - Razorpay - Paystack - Square - Flutterwave - Authorize.Net - PayFast - and more.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Enterprise Integrations
 
-## Learning Laravel
+- **Cloud Storage**: AWS S3, MinIO, Wasabi
+- **Accounting**: QuickBooks Online
+- **Communication**: Zoom, Google Workspace, Pusher Realtime
+- **Error Tracking**: Sentry
+- **Authentication**: Social Login (Google, Facebook, Twitter + 10+ providers)
+- **DevOps**: Backups (Spatie), Log Viewer, Telescope Debugger, PHPStan
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Technology Stack
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Layer | Technologies |
+|---|---|
+| **Backend** | PHP 8.2, Laravel 10, Sanctum Auth, Fortify, REST API |
+| **AI & Data** | Python, OCR, Natural Language Processing |
+| **Frontend** | Blade Templates, Vue/React Components, Vite, Bootstrap, SCSS |
+| **Database** | MySQL / MariaDB, Redis Cache, Eloquent ORM, Datatables |
+| **Payments** | Stripe Cashier, PayPal SDK, Mollie, Razorpay, Paystack, Square |
+| **DevOps** | Docker-ready, Queue Workers, Task Scheduler, PHPUnit, Playwright E2E |
+| **Architecture** | Modular (nwidart/laravel-modules), HMVC, Role-based ACL (Entrust) |
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## System Requirements
 
-### Premium Partners
+- PHP >= 8.2
+- MySQL / MariaDB >= 10.5
+- Composer >= 2.x
+- Node.js >= 18 (for asset builds)
+- Python >= 3.9 (for AI modules)
+- PHP Extensions: bcmath, ctype, curl, dom, fileinfo, gd, json, mbstring, openssl, pdo_mysql, tokenizer, xml, zip, imagick
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+---
+
+## Quick Start
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/issacandykoh-design/AI-ERP.ANDY-KOH.git
+cd AI-ERP.ANDY-KOH
+
+# 2. Install PHP dependencies
+composer install --no-dev --optimize-autoloader
+
+# 3. Configure environment
+cp .env.example .env
+# Edit .env with your DB, Mail, Payment, and AI credentials
+
+# 4. Generate app key
+php artisan key:generate
+
+# 5. Run migrations & seeders
+php artisan migrate --force
+
+# 6. Build frontend assets (if needed)
+npm install && npm run build
+
+# 7. Set permissions
+chmod -R 775 storage bootstrap/cache
+
+# 8. Serve
+php artisan serve
+```
+
+The application will be available at `http://localhost:8000`
+
+---
+
+## Documentation
+
+- [Installation Guide](#quick-start)
+- [Module Architecture](./Modules/)
+- [API Routes](./routes/api.php)
+- [Database Models](./app/Models/)
+- [Security Policy](./SECURITY.md)
+- [Contributing](#contributing)
+
+---
+
+## Project Structure
+
+```
+AI-ERP.ANDY-KOH/
+├── app/
+│   ├── Models/           # 30+ Domain models (User, Invoice, Project, Ticket, etc.)
+│   ├── Http/             # Controllers & Middleware
+│   ├── Helper/           # Utility functions
+│   └── Console/          # Artisan commands & Scheduler
+├── Modules/              # HMVC feature modules (OCR, SMS, +custom modules)
+├── packages/             # Composer package symlinks
+│   ├── open-rest-api/    # REST API package
+│   └── craveva/          # Core platform package
+├── public/
+│   ├── ai/               # AI service web entry
+│   ├── i18n/             # 95+ language JSON files
+│   └── flags/            # Country flag assets (1x1 and 4x3)
+├── routes/               # Web, API, Public, Console, Channels
+├── resources/            # Blade views, JS, SCSS
+├── config/               # 40+ service config files
+├── database/             # Migrations, Seeders, Factories
+├── tests/                # PHPUnit & Feature tests
+└── tools/                # Utility scripts
+```
+
+---
+
+## Screenshots
+
+Preview assets are available under `public/front/` and `public/img/`.
+
+---
+
+## Roadmap
+
+- [x] Core ERP Modules (CRM, HR, Finance, Projects, Support)
+- [x] 95+ Language Translations
+- [x] OCR & AI Document Processing Module
+- [x] 15+ Payment Gateways
+- [ ] Advanced AI Analytics Dashboard
+- [ ] Mobile Application (React Native)
+- [ ] Public Marketplace for Modules
+- [ ] GraphQL API Layer
+- [ ] Multi-tenant SaaS Enablement
+
+---
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Contributions, issues, and feature requests are welcome.
 
-## Code of Conduct
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## Security
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+For security vulnerabilities, please review our [Security Policy](./SECURITY.md) and contact the maintainers privately. Do not open public issues for security concerns.
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Maintainers
+
+- **Issac Andy Koh** - [issacandykoh-design](https://github.com/issacandykoh-design)
+- Contact: esports3asia@gmail.com
+
+---
+
+<p align="center">
+  <strong>Built with Laravel - The PHP Framework for Web Artisans</strong>
+</p>
