@@ -97,5 +97,4 @@ AI Enterprise Business/*/index_metadata.pickle
 *.pem
 *.ppk
 *.pub
-GCP_INFRASTRUCTURE Version 1.0.md
 reset_db.sh

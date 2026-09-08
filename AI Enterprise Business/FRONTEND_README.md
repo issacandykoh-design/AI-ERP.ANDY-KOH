@@ -90,7 +90,7 @@ The Flask backend provides the following REST API endpoints:
 Make sure you have a `.env` file with your OpenAI API key:
 
 ```
-OPENAI_API_KEY=***REMOVED***
+OPENAI_API_KEY=your-openai-api-key-here
 OPENAI_MODEL=gpt-4
 # Optional: set a faster model for Flash mode to speed up responses
 OPENAI_FAST_MODEL=gpt-4o-mini
