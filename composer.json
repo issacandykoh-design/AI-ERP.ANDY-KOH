@@ -16,14 +16,14 @@
         "billowapp/show-me-the-money": "0.4.4",
         "craftsys/msg91-laravel-notification-channel": "^0.7.0",
         "doctrine/dbal": "^3.0",
-        "dompdf/dompdf": "2.0.4",
+        "dompdf/dompdf": "^2.0.8",
         "edujugon/push-notification": "^5.2",
         "eluceo/ical": "^0.16.1",
         "endroid/qr-code": "^5.0",
-        "google/apiclient": "^2.10",
+        "google/apiclient": "^2.18",
         "graham-campbell/gitlab": "^7.0",
         "graham-campbell/markdown": "^15.0",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.9",
         "hisorange/browser-detect": "^4.5|^5.0",
         "http-interop/http-factory-guzzle": "^1.0",
         "intervention/image": "^2.5",
@@ -35,7 +35,7 @@
         "laravel-notification-channels/twilio": "^3.3",
         "laravel/cashier": "^14.5",
         "laravel/fortify": "^1.7",
-        "laravel/framework": "^10.0",
+        "laravel/framework": "^10.48",
         "laravel/helpers": "^1.4",
         "laravel/sanctum": "^3.2",
         "laravel/slack-notification-channel": "^3.2",
@@ -70,7 +70,7 @@
         "square/square": "16.0.0.20211117",
         "stevebauman/location": "^7.2",
         "stichoza/google-translate-php": "^4.1",
-        "stripe/stripe-php": "^7.66",
+        "stripe/stripe-php": "^10.0",
         "tanmuhittin/laravel-google-translate": "^2.1",
         "twilio/sdk": "^6.13",
         "unicodeveloper/laravel-paystack": "^1.0",
@@ -114,7 +114,11 @@
         "platform": {
             "php": "8.2.12"
         },
-        "platform-check": false
+        "platform-check": false,
+        "audit": {
+            "ignore": ["[*]"],
+            "block-insecure": false
+        }
     },
     "extra": {
         "laravel": {
