@@ -12,6 +12,16 @@
 venv/
 env/
 AI Enterprise Business/*_venv/
+AI Enterprise Business/*_venv_old/
+AI Enterprise Business/.env.mysql
+AI Enterprise Business/logs/
+AI Enterprise Business/exports/
+AI Enterprise Business/*.bak.*
+AI Enterprise Business/nohup.out
+AI Enterprise Business/chroma.sqlite3
+AI Enterprise Business/conversations.json
+AI Enterprise Business/company_id_*.txt
+AI Enterprise Business/tmp_tables.txt
 AI Enterprise Business/**/venv/
 AI Enterprise Business/**/.venv/
 AI Enterprise Business/**/env/
